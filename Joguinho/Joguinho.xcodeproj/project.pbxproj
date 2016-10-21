@@ -125,8 +125,6 @@
 				8AAEA82B1DBA5D4C00B908A0 /* View */,
 				8AAEA8291DBA5D3100B908A0 /* Controller */,
 				8AAEA8011DBA5CCC00B908A0 /* Assets.xcassets */,
-				8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */,
-				8AAEA7F81DBA5CCC00B908A0 /* Actions.sks */,
 				8AAEA8061DBA5CCC00B908A0 /* Info.plist */,
 			);
 			path = Joguinho;
@@ -164,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				8AAEA7FE1DBA5CCC00B908A0 /* Main.storyboard */,
+				8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */,
+				8AAEA7F81DBA5CCC00B908A0 /* Actions.sks */,
 				8AAEA8031DBA5CCC00B908A0 /* LaunchScreen.storyboard */,
 			);
 			name = View;
