@@ -13,5 +13,10 @@ class Item {
     
     var name: String!
     var price: Double!
+    init(name:name,price:Double)
+    {
+        self.name = name
+        self.price = price
+    }
     
 }
