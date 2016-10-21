@@ -17,6 +17,15 @@
 		8AAEA8051DBA5CCC00B908A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAEA8031DBA5CCC00B908A0 /* LaunchScreen.storyboard */; };
 		8AAEA8101DBA5CCC00B908A0 /* JoguinhoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA80F1DBA5CCC00B908A0 /* JoguinhoTests.swift */; };
 		8AAEA81B1DBA5CCC00B908A0 /* JoguinhoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA81A1DBA5CCC00B908A0 /* JoguinhoUITests.swift */; };
+		8AAEA82E1DBA5D6900B908A0 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA82D1DBA5D6900B908A0 /* Planet.swift */; };
+		8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA82F1DBA765200B908A0 /* Astronaut.swift */; };
+		8AAEA8321DBA766D00B908A0 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8311DBA766D00B908A0 /* Spaceship.swift */; };
+		8AAEA8341DBA76C400B908A0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8331DBA76C400B908A0 /* Player.swift */; };
+		8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8351DBA76E700B908A0 /* Item.swift */; };
+		8AAEA8381DBA770500B908A0 /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8371DBA770500B908A0 /* Clothing.swift */; };
+		8AAEA83B1DBA778C00B908A0 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83A1DBA778C00B908A0 /* Piece.swift */; };
+		8AAEA83D1DBA785200B908A0 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83C1DBA785200B908A0 /* Level.swift */; };
+		8AAEA83F1DBA799700B908A0 /* SurvivalArtefact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83E1DBA799700B908A0 /* SurvivalArtefact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +62,15 @@
 		8AAEA8161DBA5CCC00B908A0 /* JoguinhoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoguinhoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAEA81A1DBA5CCC00B908A0 /* JoguinhoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoguinhoUITests.swift; sourceTree = "<group>"; };
 		8AAEA81C1DBA5CCC00B908A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AAEA82D1DBA5D6900B908A0 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		8AAEA82F1DBA765200B908A0 /* Astronaut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
+		8AAEA8311DBA766D00B908A0 /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spaceship.swift; sourceTree = "<group>"; };
+		8AAEA8331DBA76C400B908A0 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		8AAEA8351DBA76E700B908A0 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		8AAEA8371DBA770500B908A0 /* Clothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
+		8AAEA83A1DBA778C00B908A0 /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		8AAEA83C1DBA785200B908A0 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		8AAEA83E1DBA799700B908A0 /* SurvivalArtefact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurvivalArtefact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +121,9 @@
 		8AAEA7F31DBA5CCC00B908A0 /* Joguinho */ = {
 			isa = PBXGroup;
 			children = (
+				8AAEA82C1DBA5D5400B908A0 /* Model */,
+				8AAEA82B1DBA5D4C00B908A0 /* View */,
+				8AAEA8291DBA5D3100B908A0 /* Controller */,
 				8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */,
 				8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */,
 				8AAEA7F81DBA5CCC00B908A0 /* Actions.sks */,
@@ -132,6 +153,36 @@
 				8AAEA81C1DBA5CCC00B908A0 /* Info.plist */,
 			);
 			path = JoguinhoUITests;
+			sourceTree = "<group>";
+		};
+		8AAEA8291DBA5D3100B908A0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		8AAEA82B1DBA5D4C00B908A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8AAEA82C1DBA5D5400B908A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8AAEA82D1DBA5D6900B908A0 /* Planet.swift */,
+				8AAEA82F1DBA765200B908A0 /* Astronaut.swift */,
+				8AAEA8311DBA766D00B908A0 /* Spaceship.swift */,
+				8AAEA8331DBA76C400B908A0 /* Player.swift */,
+				8AAEA8351DBA76E700B908A0 /* Item.swift */,
+				8AAEA8371DBA770500B908A0 /* Clothing.swift */,
+				8AAEA83A1DBA778C00B908A0 /* Piece.swift */,
+				8AAEA83C1DBA785200B908A0 /* Level.swift */,
+				8AAEA83E1DBA799700B908A0 /* SurvivalArtefact.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,9 +324,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AAEA8321DBA766D00B908A0 /* Spaceship.swift in Sources */,
+				8AAEA83D1DBA785200B908A0 /* Level.swift in Sources */,
 				8AAEA7FB1DBA5CCC00B908A0 /* GameScene.swift in Sources */,
+				8AAEA83B1DBA778C00B908A0 /* Piece.swift in Sources */,
 				8AAEA7FD1DBA5CCC00B908A0 /* GameViewController.swift in Sources */,
+				8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */,
+				8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */,
+				8AAEA83F1DBA799700B908A0 /* SurvivalArtefact.swift in Sources */,
+				8AAEA8341DBA76C400B908A0 /* Player.swift in Sources */,
 				8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */,
+				8AAEA8381DBA770500B908A0 /* Clothing.swift in Sources */,
+				8AAEA82E1DBA5D6900B908A0 /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
