@@ -10,4 +10,10 @@ import Foundation
 
 class Spaceship {
     var name: String!
+    var fuelLevel:Double!
+    init(name:String,fuelLevel:Double)
+    {
+        self.name = name
+        self.fuelLevel  = fuelLevel
+    }
 }

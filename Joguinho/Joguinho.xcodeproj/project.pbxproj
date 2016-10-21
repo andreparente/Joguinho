@@ -124,14 +124,9 @@
 				8AAEA82C1DBA5D5400B908A0 /* Model */,
 				8AAEA82B1DBA5D4C00B908A0 /* View */,
 				8AAEA8291DBA5D3100B908A0 /* Controller */,
-				8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */,
+				8AAEA8011DBA5CCC00B908A0 /* Assets.xcassets */,
 				8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */,
 				8AAEA7F81DBA5CCC00B908A0 /* Actions.sks */,
-				8AAEA7FA1DBA5CCC00B908A0 /* GameScene.swift */,
-				8AAEA7FC1DBA5CCC00B908A0 /* GameViewController.swift */,
-				8AAEA7FE1DBA5CCC00B908A0 /* Main.storyboard */,
-				8AAEA8011DBA5CCC00B908A0 /* Assets.xcassets */,
-				8AAEA8031DBA5CCC00B908A0 /* LaunchScreen.storyboard */,
 				8AAEA8061DBA5CCC00B908A0 /* Info.plist */,
 			);
 			path = Joguinho;
@@ -158,6 +153,9 @@
 		8AAEA8291DBA5D3100B908A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */,
+				8AAEA7FA1DBA5CCC00B908A0 /* GameScene.swift */,
+				8AAEA7FC1DBA5CCC00B908A0 /* GameViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -165,6 +163,8 @@
 		8AAEA82B1DBA5D4C00B908A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8AAEA7FE1DBA5CCC00B908A0 /* Main.storyboard */,
+				8AAEA8031DBA5CCC00B908A0 /* LaunchScreen.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -586,6 +586,7 @@
 				8AAEA8211DBA5CCC00B908A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8AAEA8221DBA5CCC00B908A0 /* Build configuration list for PBXNativeTarget "JoguinhoTests" */ = {
 			isa = XCConfigurationList;
@@ -594,6 +595,7 @@
 				8AAEA8241DBA5CCC00B908A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8AAEA8251DBA5CCC00B908A0 /* Build configuration list for PBXNativeTarget "JoguinhoUITests" */ = {
 			isa = XCConfigurationList;
@@ -602,6 +604,7 @@
 				8AAEA8271DBA5CCC00B908A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
