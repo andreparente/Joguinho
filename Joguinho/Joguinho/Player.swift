@@ -11,5 +11,6 @@ import Foundation
 class Player {
     
     var coinsBalance: Double!
+    var currentLevel: Int!
     
 }
