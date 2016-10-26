@@ -11,6 +11,9 @@ import Foundation
 class Player {
     
     var coinsBalance: Double!
-    var currentLevel: Int!
+    var lastLevel: Int!
+    var spaceShip: Spaceship!
+    var astronaut: Astronaut!
+    var itens: [Item]!
     
 }

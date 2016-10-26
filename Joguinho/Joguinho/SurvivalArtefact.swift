@@ -12,6 +12,7 @@ import Foundation
 class SurvivalArtefact {
     
     var type: ArtefactType!
+    var image: NSData! //ou usamos string com o nome da imagem?
 }
 
 enum ArtefactType: String {

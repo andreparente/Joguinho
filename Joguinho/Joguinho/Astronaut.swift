@@ -10,10 +10,11 @@ import Foundation
 
 
 class Astronaut {
+    
     var name: String!
     var oxygenLevel:Double!
-    init(name:String,oxygenLevel:Double)
-    {
+    
+    init(name:String,oxygenLevel:Double) {
         self.name = name
         self.oxygenLevel = oxygenLevel
     }

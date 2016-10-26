@@ -11,5 +11,8 @@ import Foundation
 
 class Level {
     
+    //var name: String! ????
+    
     var coinsAmount: Double!
+    var survivalArtefacts: [SurvivalArtefact]!
 }

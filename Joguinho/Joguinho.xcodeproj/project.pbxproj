@@ -26,6 +26,7 @@
 		8AAEA83B1DBA778C00B908A0 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83A1DBA778C00B908A0 /* Piece.swift */; };
 		8AAEA83D1DBA785200B908A0 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83C1DBA785200B908A0 /* Level.swift */; };
 		8AAEA83F1DBA799700B908A0 /* SurvivalArtefact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83E1DBA799700B908A0 /* SurvivalArtefact.swift */; };
+		8AAEA8451DC112F500B908A0 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8441DC112F500B908A0 /* DAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		8AAEA83A1DBA778C00B908A0 /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		8AAEA83C1DBA785200B908A0 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		8AAEA83E1DBA799700B908A0 /* SurvivalArtefact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurvivalArtefact.swift; sourceTree = "<group>"; };
+		8AAEA8441DC112F500B908A0 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,15 @@
 		8AAEA82C1DBA5D5400B908A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8AAEA8431DC10E7700B908A0 /* Database */,
+				8AAEA8421DC10E6E00B908A0 /* Classes */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8AAEA8421DC10E6E00B908A0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
 				8AAEA82D1DBA5D6900B908A0 /* Planet.swift */,
 				8AAEA82F1DBA765200B908A0 /* Astronaut.swift */,
 				8AAEA8311DBA766D00B908A0 /* Spaceship.swift */,
@@ -182,7 +193,15 @@
 				8AAEA83C1DBA785200B908A0 /* Level.swift */,
 				8AAEA83E1DBA799700B908A0 /* SurvivalArtefact.swift */,
 			);
-			name = Model;
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		8AAEA8431DC10E7700B908A0 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				8AAEA8441DC112F500B908A0 /* DAO.swift */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +354,7 @@
 				8AAEA8341DBA76C400B908A0 /* Player.swift in Sources */,
 				8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */,
 				8AAEA8381DBA770500B908A0 /* Clothing.swift in Sources */,
+				8AAEA8451DC112F500B908A0 /* DAO.swift in Sources */,
 				8AAEA82E1DBA5D6900B908A0 /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
