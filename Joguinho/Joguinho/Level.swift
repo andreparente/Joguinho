@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Level:SKNode {
+class Level {
     
     var coinsAmount: Double!
     var image:NSData!
