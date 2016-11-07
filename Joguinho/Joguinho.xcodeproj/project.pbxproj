@@ -25,7 +25,6 @@
 		8AAEA8381DBA770500B908A0 /* Clothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8371DBA770500B908A0 /* Clothing.swift */; };
 		8AAEA83B1DBA778C00B908A0 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83A1DBA778C00B908A0 /* Piece.swift */; };
 		8AAEA83D1DBA785200B908A0 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83C1DBA785200B908A0 /* Level.swift */; };
-		8AAEA83F1DBA799700B908A0 /* SurvivalArtefact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83E1DBA799700B908A0 /* SurvivalArtefact.swift */; };
 		8AAEA8451DC112F500B908A0 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8441DC112F500B908A0 /* DAO.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +70,6 @@
 		8AAEA8371DBA770500B908A0 /* Clothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clothing.swift; sourceTree = "<group>"; };
 		8AAEA83A1DBA778C00B908A0 /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		8AAEA83C1DBA785200B908A0 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		8AAEA83E1DBA799700B908A0 /* SurvivalArtefact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurvivalArtefact.swift; sourceTree = "<group>"; };
 		8AAEA8441DC112F500B908A0 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,7 +189,6 @@
 				8AAEA8371DBA770500B908A0 /* Clothing.swift */,
 				8AAEA83A1DBA778C00B908A0 /* Piece.swift */,
 				8AAEA83C1DBA785200B908A0 /* Level.swift */,
-				8AAEA83E1DBA799700B908A0 /* SurvivalArtefact.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -350,7 +347,6 @@
 				8AAEA7FD1DBA5CCC00B908A0 /* GameViewController.swift in Sources */,
 				8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */,
 				8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */,
-				8AAEA83F1DBA799700B908A0 /* SurvivalArtefact.swift in Sources */,
 				8AAEA8341DBA76C400B908A0 /* Player.swift in Sources */,
 				8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */,
 				8AAEA8381DBA770500B908A0 /* Clothing.swift in Sources */,

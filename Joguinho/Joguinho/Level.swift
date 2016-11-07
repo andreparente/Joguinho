@@ -7,12 +7,20 @@
 //
 
 import Foundation
+import SpriteKit
 
-
-class Level {
-    
-    //var name: String! ????
+class Level:SKNode {
     
     var coinsAmount: Double!
-    var survivalArtefacts: [SurvivalArtefact]!
+    var image:NSData!
+}
+
+class TerrestrialLevel:Level
+{
+    var oxygenLevel:Int!
+}
+
+class GaseousLevel:Level
+{
+    var fuelLevel:Int!
 }
