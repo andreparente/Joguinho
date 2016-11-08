@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D23694C1DD2330F00C749BA /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694B1DD2330F00C749BA /* Component.swift */; };
+		3D23694E1DD236BB00C749BA /* SurvivalArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */; };
+		3D2369501DD238D500C749BA /* PhysicalPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */; };
 		8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */; };
 		8AAEA7F71DBA5CCC00B908A0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */; };
 		8AAEA7F91DBA5CCC00B908A0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F81DBA5CCC00B908A0 /* Actions.sks */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D23694B1DD2330F00C749BA /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurvivalArtifact.swift; sourceTree = "<group>"; };
+		3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalPlanet.swift; sourceTree = "<group>"; };
 		8AAEA7F11DBA5CCC00B908A0 /* Joguinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joguinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -181,14 +187,17 @@
 		8AAEA8421DC10E6E00B908A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3D23694B1DD2330F00C749BA /* Component.swift */,
+				8AAEA8351DBA76E700B908A0 /* Item.swift */,
 				8AAEA82D1DBA5D6900B908A0 /* Planet.swift */,
+				3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */,
 				8AAEA82F1DBA765200B908A0 /* Astronaut.swift */,
 				8AAEA8311DBA766D00B908A0 /* Spaceship.swift */,
 				8AAEA8331DBA76C400B908A0 /* Player.swift */,
-				8AAEA8351DBA76E700B908A0 /* Item.swift */,
 				8AAEA8371DBA770500B908A0 /* Clothing.swift */,
 				8AAEA83A1DBA778C00B908A0 /* Piece.swift */,
 				8AAEA83C1DBA785200B908A0 /* Level.swift */,
+				3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -341,11 +350,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AAEA8321DBA766D00B908A0 /* Spaceship.swift in Sources */,
+				3D23694E1DD236BB00C749BA /* SurvivalArtifact.swift in Sources */,
 				8AAEA83D1DBA785200B908A0 /* Level.swift in Sources */,
 				8AAEA7FB1DBA5CCC00B908A0 /* GameScene.swift in Sources */,
 				8AAEA83B1DBA778C00B908A0 /* Piece.swift in Sources */,
+				3D2369501DD238D500C749BA /* PhysicalPlanet.swift in Sources */,
 				8AAEA7FD1DBA5CCC00B908A0 /* GameViewController.swift in Sources */,
 				8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */,
+				3D23694C1DD2330F00C749BA /* Component.swift in Sources */,
 				8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */,
 				8AAEA8341DBA76C400B908A0 /* Player.swift in Sources */,
 				8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */,

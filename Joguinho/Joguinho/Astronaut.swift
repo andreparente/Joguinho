@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class Astronaut {
     
     var name: String!

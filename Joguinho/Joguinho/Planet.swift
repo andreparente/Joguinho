@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class Planet {
     
     var name: String!
@@ -18,6 +19,7 @@ class Planet {
 }
 
 enum PlanetType:String {
+    
     case gaseous = "Gaseous"
     case terrestrial = "Terrestrial"
 }

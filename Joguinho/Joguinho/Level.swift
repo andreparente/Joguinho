@@ -11,16 +11,24 @@ import SpriteKit
 
 class Level {
     
+    var id: Int!
     var coinsAmount: Double!
-    var image:NSData!
+    
+    func setUpBackground() {
+        
+    }
+    
+    func runLevel() {
+        
+    }
 }
 
-class TerrestrialLevel:Level
+class TerrestrialLevel: Level
 {
     var oxygenLevel:Int!
 }
 
-class GaseousLevel:Level
+class GaseousLevel: Level
 {
     var fuelLevel:Int!
 }
