@@ -16,4 +16,14 @@ class Player {
     var astronaut: Astronaut!
     var itens: [Item]!
     
+    func buyItem()
+    {
+        
+    }
+    
+    func buyCash()
+    {
+        
+    }
+    
 }

@@ -10,4 +10,15 @@ import Foundation
 
 class DAO {
     
+    var error:NSError?
+    
+    func fetchClothes()
+    {
+        
+    }
+    
+    func fetchPieces()
+    {
+        
+    }
 }

@@ -17,4 +17,8 @@ class Spaceship {
         self.name = name
         self.fuelLevel  = fuelLevel
     }
+    func changePieces()
+    {
+        
+    }
 }

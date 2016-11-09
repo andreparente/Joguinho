@@ -7,14 +7,18 @@
 //
 
 import Foundation
+import SpriteKit
 
 class Astronaut {
     
-    var name: String!
     var oxygenLevel:Double!
-    
-    init(name:String,oxygenLevel:Double) {
-        self.name = name
+   
+    init(oxygenLevel:Double) {
         self.oxygenLevel = oxygenLevel
+    }
+    
+    func changeClothes()
+    {
+        
     }
 }

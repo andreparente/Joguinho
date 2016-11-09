@@ -18,5 +18,5 @@ enum PieceType: String {
     
     case Wing = "Wing"
     case Tank = "Tank"
-    //mais partes please
+    case Engine = "Engine"
 }

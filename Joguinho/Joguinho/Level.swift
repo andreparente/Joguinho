@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Level {
+class Level:SKScene {
     
     var id: Int!
     var coinsAmount: Double!

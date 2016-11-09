@@ -12,4 +12,6 @@ import SpriteKit
 class Component : SKSpriteNode {
     
     var imageName: String?
+    
+    
 }
