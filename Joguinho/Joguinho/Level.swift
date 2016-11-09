@@ -14,6 +14,16 @@ class Level:SKScene {
     var id: Int!
     var coinsAmount: Double!
     
+    init(id:Int,coinsAmount:Double) {
+        super.init()
+        self.id = id
+        self.coinsAmount = coinsAmount
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func setUpBackground() {
         
     }

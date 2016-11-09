@@ -16,6 +16,14 @@ class Player {
     var astronaut: Astronaut!
     var itens: [Item]!
     
+    init(coinsBalance:Double,lastLevel:Int,spaceShip:Spaceship,astronaut:Astronaut,itens:[Item])
+    {
+        self.coinsBalance = coinsBalance
+        self.lastLevel = lastLevel
+        self.spaceShip = spaceShip
+        self.astronaut = astronaut
+        self.itens = itens
+    }
     func buyItem()
     {
         

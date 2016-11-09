@@ -16,6 +16,14 @@ class Planet {
     var type: PlanetType!
     var levels: [Level]!
     
+    init(name:String,gravity:Double,type:PlanetType,levels:[Level])
+    {
+        self.name = name
+        self.gravity = gravity
+        self.type = type
+        self.levels = levels
+    }
+    
 }
 
 enum PlanetType:String {
