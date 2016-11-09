@@ -45,6 +45,24 @@
             </objects>
             <point key="canvasLocation" x="1159" y="36"/>
         </scene>
+        <!--Planets View Controller-->
+        <scene sceneID="kv2-7E-VwK">
+            <objects>
+                <viewController id="smb-5b-IfC" customClass="PlanetsViewController" customModule="Joguinho" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hKt-ZW-08c"/>
+                        <viewControllerLayoutGuide type="bottom" id="1KR-QU-0Yf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4TG-kp-2xb">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2b-wN-mqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1981" y="36"/>
+        </scene>
         <!--Selected Planet View Controller-->
         <scene sceneID="Vlh-ka-GQx">
             <objects>
@@ -61,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KC0-a2-JHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2065" y="36"/>
+            <point key="canvasLocation" x="2804" y="36"/>
         </scene>
     </scenes>
 </document>

@@ -30,6 +30,7 @@
 		8AAEA8451DC112F500B908A0 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8441DC112F500B908A0 /* DAO.swift */; };
 		9C1EB7101DD39D6E002B921B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EB70F1DD39D6E002B921B /* MainViewController.swift */; };
 		9C1EB7121DD39E14002B921B /* SelectedPlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EB7111DD39E14002B921B /* SelectedPlanetViewController.swift */; };
+		9C1EB7141DD3A36E002B921B /* PlanetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EB7131DD3A36E002B921B /* PlanetsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		8AAEA8441DC112F500B908A0 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		9C1EB70F1DD39D6E002B921B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9C1EB7111DD39E14002B921B /* SelectedPlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPlanetViewController.swift; sourceTree = "<group>"; };
+		9C1EB7131DD3A36E002B921B /* PlanetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				8AAEA7FC1DBA5CCC00B908A0 /* GameViewController.swift */,
 				9C1EB70F1DD39D6E002B921B /* MainViewController.swift */,
 				9C1EB7111DD39E14002B921B /* SelectedPlanetViewController.swift */,
+				9C1EB7131DD3A36E002B921B /* PlanetsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */,
 				8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */,
 				8AAEA8341DBA76C400B908A0 /* Player.swift in Sources */,
+				9C1EB7141DD3A36E002B921B /* PlanetsViewController.swift in Sources */,
 				8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */,
 				8AAEA8381DBA770500B908A0 /* Clothing.swift in Sources */,
 				8AAEA8451DC112F500B908A0 /* DAO.swift in Sources */,
