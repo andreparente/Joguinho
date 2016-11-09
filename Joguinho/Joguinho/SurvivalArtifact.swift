@@ -7,12 +7,32 @@
 //
 
 import Foundation
+import SpriteKit
 
-enum Artifact {
-    case oxygen, fuel
+enum Artifact:String {
+    case oxygen = "Oxygen"
+    case fuel = "Fuel"
 }
 
-class SurvivalArtifact {
+class SurvivalArtifact:Component {
     
     var type: Artifact!
+    
+    init(type:Artifact)
+    {
+        self.type = type
+        if type.rawValue == "Fuel"
+        {
+        super.init(imageNamed: "fueldrop")
+        }
+        else{
+        super.init(imageNamed: "")
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
+
+

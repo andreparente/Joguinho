@@ -32,6 +32,7 @@
 		9C1EB7101DD39D6E002B921B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EB70F1DD39D6E002B921B /* MainViewController.swift */; };
 		9C1EB7121DD39E14002B921B /* SelectedPlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EB7111DD39E14002B921B /* SelectedPlanetViewController.swift */; };
 		9C1EB7141DD3A36E002B921B /* PlanetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1EB7131DD3A36E002B921B /* PlanetsViewController.swift */; };
+		9C493FC91DD3E51400A345F7 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C493FC81DD3E51400A345F7 /* Component.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		9C1EB70F1DD39D6E002B921B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9C1EB7111DD39E14002B921B /* SelectedPlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPlanetViewController.swift; sourceTree = "<group>"; };
 		9C1EB7131DD3A36E002B921B /* PlanetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetsViewController.swift; sourceTree = "<group>"; };
+		9C493FC81DD3E51400A345F7 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				8AAEA83A1DBA778C00B908A0 /* Piece.swift */,
 				8AAEA83C1DBA785200B908A0 /* Level.swift */,
 				3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */,
+				9C493FC81DD3E51400A345F7 /* Component.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AAEA8321DBA766D00B908A0 /* Spaceship.swift in Sources */,
+				9C493FC91DD3E51400A345F7 /* Component.swift in Sources */,
 				3D23694E1DD236BB00C749BA /* SurvivalArtifact.swift in Sources */,
 				8AAEA83D1DBA785200B908A0 /* Level.swift in Sources */,
 				8AAEA7FB1DBA5CCC00B908A0 /* GameScene.swift in Sources */,

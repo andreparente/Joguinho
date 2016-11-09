@@ -7,18 +7,26 @@
 //
 
 import Foundation
+import SpriteKit
 
-class Spaceship {
+class Spaceship:Component {
     
-    var name: String!
     var fuelLevel:Double!
     
-    init(name:String,fuelLevel:Double) {
-        self.name = name
+    init(fuelLevel:Double) {
         self.fuelLevel  = fuelLevel
+         super.init(imageNamed: "rocket fase")
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func changePieces()
     {
         
     }
 }
+
+
+

@@ -9,21 +9,16 @@
 import Foundation
 import SpriteKit
 
-class Astronaut: SKSpriteNode {
+class Astronaut: Component {
     
     var oxygenLevel:Double!
-    var imageNamed:String?
     
-    init(oxygenLevel:Double,imageNamed:String) {
+    
+    init(oxygenLevel:Double) {
         self.oxygenLevel = oxygenLevel
-        self.imageNamed = imageNamed
+        super.init(imageNamed: "")
     }
     
-    init()
-    {
-        super.init(texture: SKTexture(imageNamed: imageNamed!))
-    }
- 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
