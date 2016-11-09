@@ -25,6 +25,6 @@ class GameScene: SKScene {
     }
     override func sceneDidLoad() {
 
-        }
+    }
     
 }
