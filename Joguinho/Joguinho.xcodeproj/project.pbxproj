@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D23694C1DD2330F00C749BA /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694B1DD2330F00C749BA /* Component.swift */; };
 		3D23694E1DD236BB00C749BA /* SurvivalArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */; };
 		3D2369501DD238D500C749BA /* PhysicalPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */; };
 		8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */; };
@@ -51,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3D23694B1DD2330F00C749BA /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurvivalArtifact.swift; sourceTree = "<group>"; };
 		3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalPlanet.swift; sourceTree = "<group>"; };
 		8AAEA7F11DBA5CCC00B908A0 /* Joguinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joguinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,7 +191,6 @@
 		8AAEA8421DC10E6E00B908A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3D23694B1DD2330F00C749BA /* Component.swift */,
 				8AAEA8351DBA76E700B908A0 /* Item.swift */,
 				8AAEA82D1DBA5D6900B908A0 /* Planet.swift */,
 				3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */,
@@ -365,7 +362,6 @@
 				8AAEA7FD1DBA5CCC00B908A0 /* GameViewController.swift in Sources */,
 				9C1EB7101DD39D6E002B921B /* MainViewController.swift in Sources */,
 				8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */,
-				3D23694C1DD2330F00C749BA /* Component.swift in Sources */,
 				8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */,
 				8AAEA8341DBA76C400B908A0 /* Player.swift in Sources */,
 				8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */,
