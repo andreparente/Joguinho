@@ -19,6 +19,10 @@ class GameScene: SKScene {
     var smallrock = Component(imageNamed: "rock2")
     override func didMove(to view: SKView) {
         spaceship = Spaceship(fuelLevel: 100)
+        spaceship.physicsBody?.affectedByGravity = true
+        spaceship.physicsBody?.linearDamping = 0.75
+        spaceship.physicsBody?.isDynamic = true
+        spaceship.physicsBody?.angularDamping = 0.75
         progressView.center = CGPoint(x: 300, y: 40)
         progressView.progress = 0.8
         progressView.progressTintColor = UIColor.black
@@ -39,6 +43,10 @@ class GameScene: SKScene {
     }
     override func sceneDidLoad() {
 
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+       let spaceshipMove = SKAction.moveBy(x: spaceship.position.x + 1, y: spaceship.position.y + 1, duration: 1)
+        spaceship.run(spaceshipMove)
     }
     
 }
