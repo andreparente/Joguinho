@@ -10,9 +10,19 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet weak var shoppingButton: UIButton!
+    @IBOutlet weak var travelButton: UIButton!
+    @IBOutlet weak var configButton: UIButton!
+    @IBOutlet weak var standingsButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.backgroundColor = UIColor.init(patternImage: UIImage(named: "background")!)
+        
+        travelButton.imageView?.animationDuration = 0.8
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -31,5 +41,20 @@ class MainViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func shoppingAction(_ sender: UIButton) {
+    }
 
+    @IBAction func travelAction(_ sender: UIButton) {
+        
+        //deixar bonitinho com animação
+        travelButton.imageView?.startAnimating()
+        self.performSegue(withIdentifier: "MainToPlanets", sender: self)
+    }
+    
+    @IBAction func configurationAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func standingsAction(_ sender: UIButton) {
+    }
+    
 }
