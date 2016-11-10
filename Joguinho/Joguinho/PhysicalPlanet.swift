@@ -8,7 +8,30 @@
 
 import Foundation
 
-class PhysicalPlanet: Planet {
+class PhysicalPlanet: Component {
     
-    var size: Double!
+    var planetSize: Double!
+    
+    init(planetSize:Double,planetName:PlanetName)
+    {
+        self.planetSize = planetSize
+        super.init(imageNamed: planetName.rawValue)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+enum PlanetName:String
+{
+    case Sun  = "Sun"
+    case Mercury = "Mercury"
+    case Venus = "Venus"
+    case Earth = "Earth"
+    case Mars = "Mars"
+    case Jupiter = "Jupiter"
+    case Saturn = "Saturn"
+    case Uranus = "Uranus"
+    case Neptune = "Neptune"
 }

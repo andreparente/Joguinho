@@ -11,12 +11,12 @@ import Foundation
 
 class Planet {
     
-    var name: String!
+    var name: PlanetName!
     var gravity: Double!
     var type: PlanetType!
     var levels: [Level]!
     
-    init(name:String,gravity:Double,type:PlanetType,levels:[Level])
+    init(name:PlanetName,gravity:Double,type:PlanetType,levels:[Level])
     {
         self.name = name
         self.gravity = gravity
@@ -31,3 +31,4 @@ enum PlanetType:String {
     case gaseous = "Gaseous"
     case terrestrial = "Terrestrial"
 }
+
