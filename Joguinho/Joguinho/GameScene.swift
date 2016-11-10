@@ -11,17 +11,24 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var entities = [GKEntity]()
-    var graphs = [String : GKGraph]()
-    
-    private var lastUpdateTime : TimeInterval = 0
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    var astronauta:SKSpriteNode?
-    
+    var spaceship:Spaceship!
+    var fuelDrops:SurvivalArtifact!
+    var background = Component(imageNamed:"background")
+    var bigrock = Component(imageNamed: "rock1")
+    var smallrock = Component(imageNamed: "rock2")
     override func didMove(to view: SKView) {
-    astronauta = self.childNode(withName: "astronauta_teste") as? SKSpriteNode
-
+        spaceship = Spaceship(fuelLevel: 100)
+        fuelDrops = SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)
+        self.background.size = CGSize(width: UIScreen.main.bounds.width + 600, height: UIScreen.main.bounds.height + 600)
+        self.spaceship.position = CGPoint(x: 50, y: 150)
+        self.bigrock.position = CGPoint(x:400,y:200)
+        self.fuelDrops.position = CGPoint(x:500,y:50)
+        self.smallrock.position = CGPoint(x:200,y:80)
+        self.addChild(background)
+        self.addChild(spaceship)
+        self.addChild(bigrock)
+        self.addChild(fuelDrops)
+        self.addChild(smallrock)
     }
     override func sceneDidLoad() {
 

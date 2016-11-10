@@ -12,7 +12,6 @@ import SpriteKit
 class Spaceship:Component {
     
     var fuelLevel:Double!
-    
     init(fuelLevel:Double) {
         self.fuelLevel  = fuelLevel
          super.init(imageNamed: "rocket fase")
