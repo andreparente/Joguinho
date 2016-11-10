@@ -13,11 +13,16 @@ class GameScene: SKScene {
     
     var spaceship:Spaceship!
     var fuelDrops:SurvivalArtifact!
+    let progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.bar)
     var background = Component(imageNamed:"background")
     var bigrock = Component(imageNamed: "rock1")
     var smallrock = Component(imageNamed: "rock2")
     override func didMove(to view: SKView) {
         spaceship = Spaceship(fuelLevel: 100)
+        progressView.center = CGPoint(x: 300, y: 40)
+        progressView.progress = 0.8
+        progressView.progressTintColor = UIColor.black
+        progressView.backgroundColor = UIColor.orange
         fuelDrops = SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)
         self.background.size = CGSize(width: UIScreen.main.bounds.width + 600, height: UIScreen.main.bounds.height + 600)
         self.spaceship.position = CGPoint(x: 50, y: 150)
@@ -29,6 +34,8 @@ class GameScene: SKScene {
         self.addChild(bigrock)
         self.addChild(fuelDrops)
         self.addChild(smallrock)
+        view.addSubview(progressView)
+      
     }
     override func sceneDidLoad() {
 
