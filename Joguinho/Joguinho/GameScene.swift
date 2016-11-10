@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var fuelDrops:SurvivalArtifact!
     let progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.bar)
     var background = Component(imageNamed:"background")
+    var background2 = Component(imageNamed: "background")
     var bigrock = Component(imageNamed: "rock1")
     var smallrock = Component(imageNamed: "rock2")
     override func didMove(to view: SKView) {
@@ -28,12 +29,23 @@ class GameScene: SKScene {
         progressView.progressTintColor = UIColor.black
         progressView.backgroundColor = UIColor.orange
         fuelDrops = SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)
-        self.background.size = CGSize(width: UIScreen.main.bounds.width + 600, height: UIScreen.main.bounds.height + 600)
+        background.anchorPoint = CGPoint(x: 0, y: 0)
+        background.position = CGPoint(x: 0, y: 0)
+        background.zPosition = 2
+        
+        self.background.size = CGSize(width: UIScreen.main.bounds.width + 1200, height: UIScreen.main.bounds.height)
+        background2.anchorPoint = CGPoint(x: 0, y: 0)
+        background2.position = CGPoint(x:background2.size.width - 1,y:0)
         self.spaceship.position = CGPoint(x: 50, y: 150)
+        spaceship.zPosition = 10
         self.bigrock.position = CGPoint(x:400,y:200)
+        bigrock.zPosition = 10
         self.fuelDrops.position = CGPoint(x:500,y:50)
+        fuelDrops.zPosition = 10
         self.smallrock.position = CGPoint(x:200,y:80)
+        smallrock.zPosition = 10
         self.addChild(background)
+        self.addChild(background2)
         self.addChild(spaceship)
         self.addChild(bigrock)
         self.addChild(fuelDrops)
@@ -47,6 +59,19 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        let spaceshipMove = SKAction.moveBy(x: spaceship.position.x + 1, y: spaceship.position.y + 1, duration: 1)
         spaceship.run(spaceshipMove)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        background.position = CGPoint(x:background.position.x - 5,y:background.position.y)
+        background2.position = CGPoint(x:background2.position.x - 5,y:background2.position.y)
+        if background.position.x <= -background.size.width
+        {
+            background.position = CGPoint(x:background2.position.x + background2.size.width,y:background.position.y)
+        }
+        if background2.position.x < -background2.size.width
+        {
+            background2.position = CGPoint(x:background.position.x + background.size.width,y:background2.position.y)
+        }
     }
     
 }

@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let skView = self.view as! SKView
-        skView.ignoresSiblingOrder = false
+        skView.ignoresSiblingOrder = true
         self.scene = GameScene(size: skView.bounds.size)
         self.scene.scaleMode = .aspectFit
         skView.presentScene(scene)
