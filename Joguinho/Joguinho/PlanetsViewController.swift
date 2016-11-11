@@ -116,7 +116,7 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         let sunImage = UIImage(named: "Sun")
         let sunView = UIImageView(image: sunImage)
         let sunSize = sunView.frame.size
-        sunView.frame = CGRect(x: 611 * size.width / 667, y: 32.45 * size.height / 375, width: sunSize.width * size.width / 667, height: sunSize.height * size.height / 375)
+        sunView.frame = CGRect(x: 611 * size.width / 667, y: -49 * size.height / 375, width: sunSize.width * size.width / 667, height: sunSize.height * size.height / 375)
         self.content.addSubview(sunView)
         
 
