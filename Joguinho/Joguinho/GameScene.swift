@@ -8,7 +8,8 @@
 
 import SpriteKit
 import GameplayKit
-
+var j = 0
+var k = 0
 struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
@@ -26,7 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var background = Component(imageNamed:"background")
     var bigrock = Component(imageNamed: "rock1")
     var smallrock = Component(imageNamed: "rock2")
-    
+    var rock1:Component = Component(imageNamed: "rock1")
     override func didMove(to view: SKView) {
         
         physicsWorld.gravity = CGVector(dx: 0, dy: -1.115)
@@ -82,6 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(spaceship)
         self.addChild(surface)
         self.addChild(surface2)
+       
         self.addChild(background)
         self.addChild(bigrock)
         self.addChild(fuelDrops)
@@ -101,6 +103,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         smallrock.run(rockMove2)
         let rockMove = SKAction.applyImpulse(CGVector(dx: -2, dy:0), duration: 0.5)
         bigrock.run(rockMove)
+        criaRocks()
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -125,4 +129,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func criaRocks()
+    {
+        
+            rock1 = Component(imageNamed: "rock1")
+            print("Entrou aqui")
+            rock1.physicsBody = SKPhysicsBody(texture: rock1.texture!,
+                                              size: CGSize(width: rock1.size.width, height: rock1.size.height))
+            rock1.physicsBody?.affectedByGravity = false
+            rock1.position = CGPoint(x:500 + j,y:80 + k)
+            rock1.zPosition = 10
+            let rockMove3 = SKAction.applyForce(CGVector(dx: -30, dy: 0), duration: 1)
+            rock1.run(rockMove3)
+            self.addChild(rock1)
+          if CGFloat(j) > UIScreen.main.bounds.size.width
+          {
+            j = 100
+          }
+        else
+          {
+            if CGFloat(k) > UIScreen.main.bounds.height
+            {
+                k = 80
+            }
+         else
+            {
+            j+=50
+            k+=10
+        }
+        }
+
+}
 }
