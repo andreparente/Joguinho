@@ -25,6 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.bar)
     var surface = Component(imageNamed: "NeptuneSurface")
     var surface2 = Component(imageNamed: "NeptuneSurface")
+    var level:Level!
     var background = Component(imageNamed:"background")
     var bigrock = Component(imageNamed: "rock1")
     var smallrock = Component(imageNamed: "rock2")
@@ -50,11 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         surface2.position = CGPoint(x: surface.size.width, y: surface.size.height/3)
         surface2.zPosition = 2
         surface2.size = CGSize(width: UIScreen.main.bounds.width + 600, height: surface.size.height)
-        
-        background.anchorPoint = CGPoint(x: 0, y: 0)
-        background.position = CGPoint(x: 0, y: 0)
-        background.zPosition = 1
-        background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        setUpBackground()
         bigrock.position = CGPoint(x:1000,y:200)
         bigrock.zPosition = 10
         bigrock.physicsBody = SKPhysicsBody(texture: bigrock.texture!,
@@ -111,6 +108,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Spaceship is off bounderies
         }
     
+    func setUpBackground() {
+        background.anchorPoint = CGPoint(x: 0, y: 0)
+        background.position = CGPoint(x: 0, y: 0)
+        background.zPosition = 1
+        background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    }
+
     func criaRocks()
     {
         

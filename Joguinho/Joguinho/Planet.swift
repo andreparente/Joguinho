@@ -14,14 +14,12 @@ class Planet {
     var name: PlanetName!
     var gravity: Double!
     var type: PlanetType!
-    var levels: [Level]!
     
-    init(name:PlanetName,gravity:Double,type:PlanetType,levels:[Level])
+    init(name:PlanetName,gravity:Double,type:PlanetType)
     {
         self.name = name
         self.gravity = gravity
         self.type = type
-        self.levels = levels
     }
     
 }
@@ -31,4 +29,5 @@ enum PlanetType:String {
     case gaseous = "Gaseous"
     case terrestrial = "Terrestrial"
 }
+
 
