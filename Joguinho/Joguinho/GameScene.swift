@@ -10,6 +10,7 @@ import SpriteKit
 import GameplayKit
 var j = 0
 var k = 0
+
 struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
@@ -19,7 +20,7 @@ struct PhysicsCategory {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var spaceship: Spaceship!
+    var spaceship: Spaceship = Spaceship(fuelLevel: 100)
     var fuelDrops: SurvivalArtifact!
     let progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.bar)
     var surface = Component(imageNamed: "NeptuneSurface")
@@ -32,13 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.gravity = CGVector(dx: 0, dy: -1.115)
         physicsWorld.contactDelegate = self
-        
-        spaceship = Spaceship(fuelLevel: 100)
-        spaceship.physicsBody = SKPhysicsBody(texture: spaceship.texture!,
-                                              size: CGSize(width: spaceship.size.width, height: spaceship.size.height))
-        spaceship.physicsBody?.affectedByGravity = true
-        spaceship.physicsBody?.isDynamic = true
-        spaceship.physicsBody?.usesPreciseCollisionDetection = true
+        spaceship.startMoment()
         spaceship.physicsBody?.collisionBitMask = PhysicsCategory.None
 //        spaceship.physicsBody?.categoryBitMask = PhysicsCategory.Monster
 //        spaceship.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile
@@ -60,10 +55,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.position = CGPoint(x: 0, y: 0)
         background.zPosition = 1
         background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        
-        spaceship.position = CGPoint(x: 50, y: 150)
-        spaceship.zPosition = 10
-        
         bigrock.position = CGPoint(x:1000,y:200)
         bigrock.zPosition = 10
         bigrock.physicsBody = SKPhysicsBody(texture: bigrock.texture!,
@@ -96,9 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let spaceshipMove = SKAction.applyImpulse(CGVector(dx: 0, dy: 5), duration: 0.1)
-        spaceship.run(spaceshipMove)
-        
+        spaceship.spaceshipMovement()
         let rockMove2 = SKAction.applyForce(CGVector(dx: -2, dy: 0), duration: 0.5)
         smallrock.run(rockMove2)
         let rockMove = SKAction.applyImpulse(CGVector(dx: -2, dy:0), duration: 0.5)
@@ -119,15 +108,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             surface2.position = CGPoint(x:surface.position.x + surface.size.width,y:surface2.position.y)
         }
-        
         // Spaceship is off bounderies
-        if spaceship.position.y < 0 || spaceship.position.y > UIScreen.main.bounds.height {
-            print("\nYou're dead.\n")
         }
-        else {
-            print("\nYou're NOT dead.\n")
-        }
-    }
     
     func criaRocks()
     {
@@ -160,4 +142,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
 }
+func isDead() -> Bool
+    {
+        if spaceship.position.y < 0 || spaceship.position.y > UIScreen.main.bounds.height {
+            print("\nYou're dead.\n")
+            return true
+        }
+        else {
+            print("\nYou're NOT dead.\n")
+            return false
+        }
+    }
 }
