@@ -20,19 +20,32 @@ struct PhysicsCategory {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var spaceship: Spaceship = Spaceship(fuelLevel: 100)
+    var level: Level!
+    var background = Component(imageNamed:"background")
+    var surface: Component!
+    var surface2: Component!
+    var spaceship: Spaceship!
+    var astronaut: Astronaut!
     var fuelDrops: SurvivalArtifact!
     let progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.bar)
-    var surface = Component(imageNamed: "NeptuneSurface")
-    var surface2 = Component(imageNamed: "NeptuneSurface")
-    var level:Level!
-    var background = Component(imageNamed:"background")
     var bigrock = Component(imageNamed: "rock1")
     var smallrock = Component(imageNamed: "rock2")
     var rock1:Component = Component(imageNamed: "rock1")
+    
+    init(size: CGSize, level: Level) {
+        super.init(size: size)
+        
+        self.level = level
+        self.surface = Component(imageNamed: "\(level.planet.name.rawValue)Surface")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMove(to view: SKView) {
         
-        physicsWorld.gravity = CGVector(dx: 0, dy: -1.115)
+        physicsWorld.gravity = CGVector(dx: 0, dy: level.planet.gravity)
         physicsWorld.contactDelegate = self
         spaceship.startMoment()
         spaceship.physicsBody?.collisionBitMask = PhysicsCategory.None
@@ -44,14 +57,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         progressView.progressTintColor = UIColor.white
         progressView.backgroundColor = UIColor.orange
         
-        surface.position = CGPoint(x: 0, y: surface.size.height/3)
-        surface.zPosition = 2
-        surface.size = CGSize(width: UIScreen.main.bounds.width + 600, height: surface.size.height)
-        
-        surface2.position = CGPoint(x: surface.size.width, y: surface.size.height/3)
-        surface2.zPosition = 2
-        surface2.size = CGSize(width: UIScreen.main.bounds.width + 600, height: surface.size.height)
-        setUpBackground()
         bigrock.position = CGPoint(x:1000,y:200)
         bigrock.zPosition = 10
         bigrock.physicsBody = SKPhysicsBody(texture: bigrock.texture!,
@@ -67,15 +72,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         smallrock.physicsBody = SKPhysicsBody(texture: smallrock.texture!,
                                               size: CGSize(width: smallrock.size.width, height: smallrock.size.height))
         smallrock.physicsBody?.affectedByGravity = false
-        
-        self.addChild(spaceship)
-        self.addChild(surface)
-        self.addChild(surface2)
        
-        self.addChild(background)
-        self.addChild(bigrock)
-        self.addChild(fuelDrops)
-        self.addChild(smallrock)
+        addChild(bigrock)
+        addChild(fuelDrops)
+        addChild(smallrock)
         view.addSubview(progressView)
       
     }
@@ -105,49 +105,68 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             surface2.position = CGPoint(x:surface.position.x + surface.size.width,y:surface2.position.y)
         }
-        // Spaceship is off bounderies
-        }
+    }
     
-    func setUpBackground() {
+    func setUpInicialScene() {
         background.anchorPoint = CGPoint(x: 0, y: 0)
         background.position = CGPoint(x: 0, y: 0)
         background.zPosition = 1
         background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        surface.position = CGPoint(x: 0, y: surface.size.height/3)
+        surface.zPosition = 2
+        surface.size = CGSize(width: UIScreen.main.bounds.width + 600, height: surface.size.height)
+        
+        surface2.texture = surface.texture
+        surface2.position = CGPoint(x: surface.size.width, y: surface.size.height/3)
+        surface2.zPosition = 2
+        surface2.size = CGSize(width: UIScreen.main.bounds.width + 600, height: surface.size.height)
+        
+        addChild(background)
+        addChild(surface)
+        addChild(surface2)
+
+    }
+    
+    func setUpPlayer() {
+        if level.planet.type == .gaseous {
+            spaceship = Spaceship(fuelLevel: 100)
+            addChild(spaceship)
+        }
+        else {
+            astronaut = Astronaut(oxygenLevel: 100)
+            addChild(astronaut)
+        }
     }
 
-    func criaRocks()
-    {
+    func criaRocks() {
         
-            rock1 = Component(imageNamed: "rock1")
-            print("Entrou aqui")
-            rock1.physicsBody = SKPhysicsBody(texture: rock1.texture!,
-                                              size: CGSize(width: rock1.size.width, height: rock1.size.height))
-            rock1.physicsBody?.affectedByGravity = false
-            rock1.position = CGPoint(x:500 + j,y:80 + k)
-            rock1.zPosition = 10
-            let rockMove3 = SKAction.applyForce(CGVector(dx: -30, dy: 0), duration: 1)
-            rock1.run(rockMove3)
-            self.addChild(rock1)
-          if CGFloat(j) > UIScreen.main.bounds.size.width
-          {
+        rock1 = Component(imageNamed: "rock1")
+        print("Entrou aqui")
+        rock1.physicsBody = SKPhysicsBody(texture: rock1.texture!,
+                                            size: CGSize(width: rock1.size.width, height: rock1.size.height))
+        rock1.physicsBody?.affectedByGravity = false
+        rock1.position = CGPoint(x:500 + j,y:80 + k)
+        rock1.zPosition = 10
+        let rockMove3 = SKAction.applyForce(CGVector(dx: -30, dy: 0), duration: 1)
+        rock1.run(rockMove3)
+        self.addChild(rock1)
+        if CGFloat(j) > UIScreen.main.bounds.size.width {
             j = 100
-          }
-        else
-          {
-            if CGFloat(k) > UIScreen.main.bounds.height
-            {
+        }
+        else {
+            if CGFloat(k) > UIScreen.main.bounds.height {
                 k = 80
             }
-         else
-            {
-            j+=50
-            k+=10
-        }
+            else {
+                j+=50
+                k+=10
+            }
         }
 
-}
-func isDead() -> Bool
-    {
+    }
+    
+    func isDead() -> Bool {
         if spaceship.position.y < 0 || spaceship.position.y > UIScreen.main.bounds.height {
             print("\nYou're dead.\n")
             return true

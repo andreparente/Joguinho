@@ -8,6 +8,7 @@
 
 import Foundation
 import SpriteKit
+
 class Level
 {
     var rocks:[CGPoint]!
@@ -22,6 +23,7 @@ class Level
         self.planet = planet
         self.rocks = []
         self.gems = []
+        
         switch planet.name.rawValue
         {
             case "Neptune":
@@ -60,32 +62,40 @@ class Level
             break
         }
     }
+    
     func createLevelUranus()
     {
         
     }
+    
     func createLevelSaturn()
     {
         
     }
+    
     func createLevelJupiter()
     {
         
     }
+    
     func createLevelMars()
     {
         
     }
+    
     func createLevelEarth()
     {
         
     }
+    
     func createLevelVenus()
     {
         
     }
+    
     func createLevelMercury()
     {
         
     }
+    
 }
