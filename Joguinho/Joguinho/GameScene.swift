@@ -153,6 +153,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             surface2.position = CGPoint(x:surface.position.x + surface.size.width,y:surface2.position.y)
         }
+        for rock in realrocks
+        {
+            let rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+            rock.run(rockMove3)
+        }
+        for gem in realgems
+        {
+            let gemMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+            gem.run(gemMove)
+        }
+        for fuelDrop in realFuelDrops
+        {
+            let fuelMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+            fuelDrop.run(fuelMove)
+        }
         //if isDead()
       //  {
             //Chamar a View que é mostrada quando o player morre
@@ -193,8 +208,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realrocks[i].physicsBody?.categoryBitMask = CollisionTypes.rock.rawValue
             realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.gem.rawValue | CollisionTypes.fuelDrop.rawValue
             realrocks[i].physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
-            let rockMove3 = SKAction.applyForce(CGVector(dx: -20, dy: 0), duration: 2)
-           realrocks[i].run(rockMove3)
+           
             self.addChild(realrocks[i])
         }
     }
@@ -216,8 +230,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realgems[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue
             realgems[i].physicsBody?.collisionBitMask = 0
 
-            let gemMove = SKAction.applyForce(CGVector(dx: -20, dy: 0), duration: 2)
-            realgems[i].run(gemMove)
+            
             self.addChild(realgems[i])
         }
 
@@ -239,8 +252,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.gem.rawValue
             realrocks[i].physicsBody?.collisionBitMask = 0
 
-            let fuelMove = SKAction.applyForce(CGVector(dx: -20, dy: 0), duration: 2)
-            realFuelDrops[i].run(fuelMove)
             self.addChild(realFuelDrops[i])
         }
 
