@@ -38,6 +38,7 @@ class Spaceship:Component {
         self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody = SKPhysicsBody(texture: self.texture!,
                                               size: CGSize(width: self.size.width, height: self.size.height))
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None
     }
     
     func spaceshipMovement()

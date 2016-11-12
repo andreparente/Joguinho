@@ -17,10 +17,12 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         }
     override func viewWillLayoutSubviews() {
+        //O id e o planeta tem que vir do segue
+        var level = Level(id: 1, planet: Planet(name: PlanetName.Neptune, gravity: 1.115, type: PlanetType.gaseous))
         super.viewWillLayoutSubviews()
         let skView = self.view as! SKView
         skView.ignoresSiblingOrder = false
-        self.scene = GameScene(size: skView.bounds.size)
+        self.scene = GameScene(size: skView.bounds.size,level:level)
         self.scene.scaleMode = .aspectFit
         skView.presentScene(scene)
         
