@@ -11,10 +11,10 @@ import SpriteKit
 
 class Spaceship:Component {
     
-    var fuelLevel:Double!
+    var fuelLevel:Int!
     
     
-    init(fuelLevel:Double) {
+    init(fuelLevel:Int) {
         self.fuelLevel  = fuelLevel
          super.init(imageNamed: "rocket fase")
     }
@@ -28,6 +28,15 @@ class Spaceship:Component {
         
     }
     
+    func increaseFuelLevel()
+    {
+        self.fuelLevel = self.fuelLevel + 10
+    }
+    func decreaseFuelLevel()
+    {
+        self.fuelLevel = self.fuelLevel - 1
+    }
+    
     func startMoment()
     {
         self.fuelLevel = 100
@@ -38,7 +47,11 @@ class Spaceship:Component {
         self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody = SKPhysicsBody(texture: self.texture!,
                                               size: CGSize(width: self.size.width, height: self.size.height))
-        self.physicsBody?.collisionBitMask = PhysicsCategory.None
+         self.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
+        self.physicsBody?.contactTestBitMask = CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue | CollisionTypes.gem.rawValue
+        self.physicsBody?.collisionBitMask = CollisionTypes.rock.rawValue
+        
+       
     }
     
     func spaceshipMovement()

@@ -11,11 +11,12 @@ import GameplayKit
 var j = 0
 var k = 0
 
-struct PhysicsCategory {
-    static let None      : UInt32 = 0
-    static let All       : UInt32 = UInt32.max
-    static let Monster   : UInt32 = 0b1
-    static let Projectile: UInt32 = 0b10
+enum CollisionTypes: UInt32 {
+    case player = 1
+    case rock = 2
+    case fuelDrop = 4
+    case oxygenDrop = 8
+    case gem = 16
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -32,7 +33,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      var realgems:[Component] = [Component(imageNamed: "crystal")]
     var realFuelDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)]
     var realOxygenDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!)]
-
+    var numberOfGems:Int = 0
+    var qtdFuel = UILabel(frame: CGRect(x: 250, y: 200, width: 200, height: 21))
+    var fuelDropname : [String] = []
+    var gemName : [String] = []
     
     init(size: CGSize, level: Level) {
         super.init(size: size)
@@ -54,6 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setUpPlayer()
         spaceship.startMoment()
         
+        
         setUpRocks()
         setUpGems()
         if level.planet.type == PlanetType.gaseous
@@ -64,22 +69,76 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             setUpOxygenDrops()
         }
-//        spaceship.physicsBody?.categoryBitMask = PhysicsCategory.Monster
-//        spaceship.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile
-        progressView.center = CGPoint(x: 300, y: 40)
-        progressView.progress = 0.8
-        progressView.progressTintColor = UIColor.white
-        progressView.backgroundColor = UIColor.orange
+        qtdFuel.center = CGPoint(x:160, y:284)
+        qtdFuel.textAlignment = NSTextAlignment.center
+        qtdFuel.text = String(spaceship.fuelLevel)
+        view.addSubview(qtdFuel)
+      //  progressView.center = CGPoint(x: 300, y: 40)
+     //   progressView.setProgress(10, animated: true)
+      //  progressView.progressTintColor = UIColor.white
+      //  progressView.backgroundColor = UIColor.orange
         
-        view.addSubview(progressView)
+      //  view.addSubview(progressView)
       
     }
     override func sceneDidLoad() {
 
     }
-    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if firstBody.categoryBitMask == CollisionTypes.player.rawValue && secondBody.categoryBitMask == CollisionTypes.fuelDrop.rawValue
+        {
+            let name1 = secondBody.node?.name
+            let index = fuelDropname.index(of: name1!)
+            
+            if fuelDropname.contains(name1!)
+            {
+            secondBody.node?.removeFromParent()
+            spaceship.increaseFuelLevel()
+            qtdFuel.text = String(spaceship.fuelLevel)
+            fuelDropname.remove(at: index!)
+            }
+        }
+        else
+        {
+            if firstBody.categoryBitMask == CollisionTypes.player.rawValue && secondBody.categoryBitMask == CollisionTypes.gem.rawValue
+            {
+                let name1 = secondBody.node?.name
+                let index = gemName.index(of: name1!)
+                if gemName.contains(name1!)
+                {
+                secondBody.node?.removeFromParent()
+                numberOfGems += 1
+                print(numberOfGems)
+                gemName.remove(at: index!)
+                }
+            }
+            else
+            {
+                if firstBody.categoryBitMask == CollisionTypes.player.rawValue && secondBody.categoryBitMask == CollisionTypes.rock.rawValue
+                {
+                    print("Bateu na pedra e morreu")
+                    //Chamar a view que é mostrada quando o player morre
+                }
+                
+            }
+        }
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         spaceship.spaceshipMovement()
+       // progressView.setProgress(progressView.progress - 1, animated: true)
+        spaceship.decreaseFuelLevel()
+        qtdFuel.text = String(spaceship.fuelLevel)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -94,10 +153,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             surface2.position = CGPoint(x:surface.position.x + surface.size.width,y:surface2.position.y)
         }
-        if isDead()
-        {
+        //if isDead()
+      //  {
             //Chamar a View que é mostrada quando o player morre
-        }
+       // }
     }
     
     func setUpInicialScene() {
@@ -121,15 +180,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func setUpRocks()
     {
-              realrocks.removeAll()
+        realrocks.removeAll()
         for i in 0...level.rocks.count - 1
         {
             realrocks.append(Component(imageNamed: "rock1"))
+            realrocks[i].name = "Rock\(i)"
             realrocks[i].position = level.rocks[i]
             realrocks[i].zPosition = 10
             realrocks[i].physicsBody = SKPhysicsBody(texture: realrocks[i].texture!,
                                                      size: CGSize(width: realrocks[i].size.width, height: realrocks[i].size.height))
             realrocks[i].physicsBody?.affectedByGravity = false
+            realrocks[i].physicsBody?.categoryBitMask = CollisionTypes.rock.rawValue
+            realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.gem.rawValue | CollisionTypes.fuelDrop.rawValue
+            realrocks[i].physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
             let rockMove3 = SKAction.applyForce(CGVector(dx: -20, dy: 0), duration: 2)
            realrocks[i].run(rockMove3)
             self.addChild(realrocks[i])
@@ -142,13 +205,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in 0...level.gems.count - 1
         {
             realgems.append(Component(imageNamed: "crystal"))
+            realgems[i].name = "Gem\(i)"
+            gemName.append(realgems[i].name!)
             realgems[i].position = level.gems[i]
             realgems[i].zPosition = 10
             realgems[i].physicsBody = SKPhysicsBody(texture: realgems[i].texture!,
                                                      size: CGSize(width: realgems[i].size.width, height: realgems[i].size.height))
             realgems[i].physicsBody?.affectedByGravity = false
+            realgems[i].physicsBody?.categoryBitMask = CollisionTypes.gem.rawValue
+            realgems[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue
+            realgems[i].physicsBody?.collisionBitMask = 0
+
             let gemMove = SKAction.applyForce(CGVector(dx: -20, dy: 0), duration: 2)
-            realgems[i].physicsBody?.categoryBitMask = PhysicsCategory.None
             realgems[i].run(gemMove)
             self.addChild(realgems[i])
         }
@@ -161,10 +229,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in 0...level.fueldrops.count - 1
         {
             realFuelDrops.append(SurvivalArtifact(type: Artifact(rawValue: "Fuel")!))
+             realFuelDrops[i].name = "FuelDrop\(i)"
+            fuelDropname.append(realFuelDrops[i].name!)
             realFuelDrops[i].position = level.fueldrops[i]
             realFuelDrops[i].zPosition = 10
             realFuelDrops[i].physicsBody = SKPhysicsBody(texture: realFuelDrops[i].texture!,size: CGSize(width: realFuelDrops[i].size.width, height: realFuelDrops[i].size.height))
             realFuelDrops[i].physicsBody?.affectedByGravity = false
+            realFuelDrops[i].physicsBody?.categoryBitMask = CollisionTypes.fuelDrop.rawValue
+            realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.gem.rawValue
+            realrocks[i].physicsBody?.collisionBitMask = 0
+
             let fuelMove = SKAction.applyForce(CGVector(dx: -20, dy: 0), duration: 2)
             realFuelDrops[i].run(fuelMove)
             self.addChild(realFuelDrops[i])
@@ -177,10 +251,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in 0...level.oxygendrops.count - 1
         {
             realOxygenDrops.append(SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!))
+             realrocks[i].name = "OxygenDrop\(i)"
             realOxygenDrops[i].position = level.oxygendrops[i]
             realOxygenDrops[i].zPosition = 10
             realOxygenDrops[i].physicsBody = SKPhysicsBody(texture: realOxygenDrops[i].texture!,size: CGSize(width: realOxygenDrops[i].size.width, height: realOxygenDrops[i].size.height))
             realOxygenDrops[i].physicsBody?.affectedByGravity = false
+            realOxygenDrops[i].physicsBody?.categoryBitMask = CollisionTypes.oxygenDrop.rawValue
+            realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+            realrocks[i].physicsBody?.collisionBitMask = 0
+
             let oxygenMove = SKAction.applyForce(CGVector(dx: -20, dy: 0), duration: 2)
             realOxygenDrops[i].run(oxygenMove)
             self.addChild(realOxygenDrops[i])

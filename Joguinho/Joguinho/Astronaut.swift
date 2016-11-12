@@ -11,10 +11,10 @@ import SpriteKit
 
 class Astronaut: Component {
     
-    var oxygenLevel:Double!
+    var oxygenLevel:Int!
     
     
-    init(oxygenLevel:Double) {
+    init(oxygenLevel:Int) {
         self.oxygenLevel = oxygenLevel
         super.init(imageNamed: "")
     }
@@ -26,5 +26,13 @@ class Astronaut: Component {
     func changeClothes()
     {
         
+    }
+    func increaseOxygenLevel()
+    {
+        self.oxygenLevel = self.oxygenLevel + 10
+    }
+    func decreaseOxygenLevel()
+    {
+        self.oxygenLevel = self.oxygenLevel - 1
     }
 }
