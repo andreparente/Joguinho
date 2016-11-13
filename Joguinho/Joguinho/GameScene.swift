@@ -37,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var qtdFuel = UILabel(frame: CGRect(x: 250, y: 200, width: 200, height: 21))
     var fuelDropname : [String] = []
     var gemName : [String] = []
-    
+    var pauseButton = UIButton()
     init(size: CGSize, level: Level) {
         super.init(size: size)
         
@@ -57,8 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setUpInicialScene()
         setUpPlayer()
         spaceship.startMoment()
-        
-        
+        setPauseButton()
         setUpRocks()
         setUpGems()
         if level.planet.type == PlanetType.gaseous
@@ -83,6 +82,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     override func sceneDidLoad() {
 
+    }
+    func setPauseButton()
+    {
+        pauseButton.setImage(UIImage(named: "pause"), for: .normal)
+        pauseButton.frame = CGRect(x: 470, y: 20, width: 50, height: 50)
+        pauseButton.addTarget(self, action: #selector(pressedPause), for: .touchUpInside)
+        view?.addSubview(pauseButton)
+    }
+    func pressedPause()
+    {
+        scene?.view?.isPaused = true
     }
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
