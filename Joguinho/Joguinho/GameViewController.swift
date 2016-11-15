@@ -13,6 +13,8 @@ import GameplayKit
 class GameViewController: UIViewController {
     
     var scene:GameScene!
+    var levelId:Int!
+    var planetName:PlanetName!
     override func viewDidLoad() {
         super.viewDidLoad()
         }
