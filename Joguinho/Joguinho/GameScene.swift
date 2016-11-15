@@ -23,6 +23,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var level: Level!
     var background = Component(imageNamed:"background")
+    var progressBar = Component(imageNamed: "fuelbar")
+    var insideProgressBar = Component(imageNamed: "fuel")
     var surface: Component!
     var surface2: Component!
     var spaceship: Spaceship!
@@ -33,6 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      var realgems:[Component] = [Component(imageNamed: "crystal")]
     var realFuelDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)]
     var realOxygenDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!)]
+    
     var numberOfGems:Int = 0
     var qtdFuel = UILabel(frame: CGRect(x: 250, y: 200, width: 200, height: 21))
     var fuelDropname : [String] = []
@@ -56,6 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         setUpInicialScene()
         setUpPlayer()
+        setUpFuelBar()
         spaceship.startMoment()
         setPauseButton()
         setUpRocks()
@@ -83,6 +87,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func sceneDidLoad() {
 
     }
+    func setUpFuelBar()
+    {
+        progressBar.zPosition = 2
+        progressBar.position = CGPoint(x: 250, y: 280)
+        insideProgressBar.zPosition = 3
+        insideProgressBar.position = CGPoint(x: 300, y: 280)
+        addChild(insideProgressBar)
+        addChild(progressBar)
+    }
     func setPauseButton()
     {
         pauseButton.setImage(UIImage(named: "pause"), for: .normal)
@@ -92,7 +105,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func pressedPause()
     {
+        if j == 0
+        {
         scene?.view?.isPaused = true
+            j+=1
+        }
+        else
+        {
+            scene?.view?.isPaused = false
+            j = 0
+        }
     }
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
@@ -115,6 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
             secondBody.node?.removeFromParent()
             spaceship.increaseFuelLevel()
+            insideProgressBar.position.x += 10
             qtdFuel.text = String(spaceship.fuelLevel)
             fuelDropname.remove(at: index!)
             }
@@ -145,13 +168,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !(scene?.isPaused)!
+        {
         spaceship.spaceshipMovement()
        // progressView.setProgress(progressView.progress - 1, animated: true)
         spaceship.decreaseFuelLevel()
         qtdFuel.text = String(spaceship.fuelLevel)
+        insideProgressBar.position.x -= 1
+    }
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if !(scene?.isPaused)!
+        {
         surface.position = CGPoint(x:surface.position.x - 5,y:surface.position.y)
         surface2.position = CGPoint(x:surface2.position.x - 5,y:surface2.position.y)
         
@@ -182,6 +211,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       //  {
             //Chamar a View que é mostrada quando o player morre
        // }
+    }
     }
     
     func setUpInicialScene() {
