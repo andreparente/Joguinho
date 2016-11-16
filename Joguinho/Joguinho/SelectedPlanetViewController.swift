@@ -50,7 +50,7 @@ class SelectedPlanetViewController: UIViewController {
     }
     func selectedLevel(_ sender:UIButton)
     {
-        levelId = sender.tag
+      //  levelId = sender.tag
         present(GameViewController(), animated: true, completion: nil)
     }
     

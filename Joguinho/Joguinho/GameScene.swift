@@ -36,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.bar)
     var rock1:Component = Component(imageNamed: "rock1")
     var realrocks:[Component] = [Component(imageNamed: "rock1")]
-     var realgems:[Component] = [Component(imageNamed: "crystal")]
+    var realgems:[Component] = [Component(imageNamed: "crystal")]
     var realFuelDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)]
     var realOxygenDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!)]
     var counter: CGFloat! = 0
@@ -71,7 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setUpGems()
         if level.planet.type == PlanetType.gaseous
         {
-             setUpFuelDrops()
+            setUpFuelDrops()
         }
         else
         {
@@ -81,23 +81,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         qtdFuel.textAlignment = NSTextAlignment.center
         qtdFuel.text = String(spaceship.fuelLevel)
         view.addSubview(qtdFuel)
-      //  progressView.center = CGPoint(x: 300, y: 40)
-     //   progressView.setProgress(10, animated: true)
-      //  progressView.progressTintColor = UIColor.white
-      //  progressView.backgroundColor = UIColor.orange
+        //  progressView.center = CGPoint(x: 300, y: 40)
+        //   progressView.setProgress(10, animated: true)
+        //  progressView.progressTintColor = UIColor.white
+        //  progressView.backgroundColor = UIColor.orange
         
-      //  view.addSubview(progressView)
-      
+        //  view.addSubview(progressView)
+        
     }
     override func sceneDidLoad() {
-
+        
     }
     func setUpFuelBar()
     {
         progressBar.zPosition = 2
         progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
         insideProgressBar.zPosition = 3
-        insideProgressBar.position = CGPoint(x: screenSize.width/2-60, y: 7*screenSize.height/8)
+        insideProgressBar.qtd = 100
+        //insideProgressBar.position = CGPoint(x: screenSize.width/2-60, y: 7*screenSize.height/8)
         addChild(insideProgressBar)
         addChild(progressBar)
     }
@@ -105,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         pauseButton.setImage(UIImage(named: "pause"), for: .normal)
         pauseButton.frame = CGRect(x: 7*screenSize.width/8, y: 7*screenSize.height/8, width: 50, height: 50)
-    
+        
         pauseButton.addTarget(self, action: #selector(pressedPause), for: .touchUpInside)
         view?.addSubview(pauseButton)
     }
@@ -113,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     {
         if j == 0
         {
-        scene?.view?.isPaused = true
+            scene?.view?.isPaused = true
             j+=1
         }
         else
@@ -141,12 +142,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if fuelDropname.contains(name1!)
             {
-            secondBody.node?.removeFromParent()
-            spaceship.increaseFuelLevel()
-            insideProgressBar.size.width += 6
-           // insideProgressBar.position.x += 10
-            qtdFuel.text = String(spaceship.fuelLevel)
-            fuelDropname.remove(at: index!)
+                secondBody.node?.removeFromParent()
+                spaceship.increaseFuelLevel()
+                if counter >= 3 {
+                    counter = counter - 3
+                } else {
+                    counter = 0
+                }
+                insideProgressBar.change(increase: 6)
+                //insideProgressBar.qtd = insideProgressBar.qtd! + 3
+                qtdFuel.text = String(spaceship.fuelLevel)
+                fuelDropname.remove(at: index!)
             }
         }
         else
@@ -157,10 +163,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let index = gemName.index(of: name1!)
                 if gemName.contains(name1!)
                 {
-                secondBody.node?.removeFromParent()
-                numberOfGems += 1
-                print(numberOfGems)
-                gemName.remove(at: index!)
+                    secondBody.node?.removeFromParent()
+                    numberOfGems += 1
+                    print(numberOfGems)
+                    gemName.remove(at: index!)
                 }
             }
             else
@@ -182,8 +188,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spaceship.decreaseFuelLevel()
             qtdFuel.text = String(spaceship.fuelLevel)
             counter = counter + 1
-
-            insideProgressBar.decrease(qtd: counter)
+            
+           // insideProgressBar.decrease(qtd: counter)
+            insideProgressBar.change(increase: -2)
             //insideProgressBar.position.x -= 1
             //setFuelBar(decrease: 2)
             
@@ -194,37 +201,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         if !(scene?.isPaused)!
         {
-        surface.position = CGPoint(x:surface.position.x - 5,y:surface.position.y)
-        surface2.position = CGPoint(x:surface2.position.x - 5,y:surface2.position.y)
-        
-        if surface.position.x <= -surface.size.width
-        {
-            surface.position = CGPoint(x:surface2.position.x + surface2.size.width,y:surface.position.y)
-        }
-        if surface2.position.x <= -surface2.size.width
-        {
-            surface2.position = CGPoint(x:surface.position.x + surface.size.width,y:surface2.position.y)
-        }
-        for rock in realrocks
-        {
-            let rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
-            rock.run(rockMove3)
-        }
-        for gem in realgems
-        {
-            let gemMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
-            gem.run(gemMove)
-        }
-        for fuelDrop in realFuelDrops
-        {
-            let fuelMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
-            fuelDrop.run(fuelMove)
-        }
-        //if isDead()
-      //  {
+            surface.position = CGPoint(x:surface.position.x - 5,y:surface.position.y)
+            surface2.position = CGPoint(x:surface2.position.x - 5,y:surface2.position.y)
+            
+            if surface.position.x <= -surface.size.width
+            {
+                surface.position = CGPoint(x:surface2.position.x + surface2.size.width,y:surface.position.y)
+            }
+            if surface2.position.x <= -surface2.size.width
+            {
+                surface2.position = CGPoint(x:surface.position.x + surface.size.width,y:surface2.position.y)
+            }
+            for rock in realrocks
+            {
+                let rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+                rock.run(rockMove3)
+            }
+            for gem in realgems
+            {
+                let gemMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+                gem.run(gemMove)
+            }
+            for fuelDrop in realFuelDrops
+            {
+                let fuelMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+                fuelDrop.run(fuelMove)
+            }
+            //if isDead()
+            //  {
             //Chamar a View que é mostrada quando o player morre
-       // }
-    }
+            // }
+        }
     }
     
     func setUpInicialScene() {
@@ -244,7 +251,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(background)
         addChild(surface)
         addChild(surface2)
-
+        
     }
     func setUpRocks()
     {
@@ -261,13 +268,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realrocks[i].physicsBody?.categoryBitMask = CollisionTypes.rock.rawValue
             realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.gem.rawValue | CollisionTypes.fuelDrop.rawValue
             realrocks[i].physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
-           
+            
             self.addChild(realrocks[i])
         }
     }
     func setUpGems()
     {
-       
+        
         realgems.removeAll()
         for i in 0...level.gems.count - 1
         {
@@ -277,25 +284,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realgems[i].position = level.gems[i]
             realgems[i].zPosition = 10
             realgems[i].physicsBody = SKPhysicsBody(texture: realgems[i].texture!,
-                                                     size: CGSize(width: realgems[i].size.width, height: realgems[i].size.height))
+                                                    size: CGSize(width: realgems[i].size.width, height: realgems[i].size.height))
             realgems[i].physicsBody?.affectedByGravity = false
             realgems[i].physicsBody?.categoryBitMask = CollisionTypes.gem.rawValue
             realgems[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue
             realgems[i].physicsBody?.collisionBitMask = 0
-
+            
             
             self.addChild(realgems[i])
         }
-
+        
     }
     func setUpFuelDrops()
     {
-      
+        
         realFuelDrops.removeAll()
         for i in 0...level.fueldrops.count - 1
         {
             realFuelDrops.append(SurvivalArtifact(type: Artifact(rawValue: "Fuel")!))
-             realFuelDrops[i].name = "FuelDrop\(i)"
+            realFuelDrops[i].name = "FuelDrop\(i)"
             fuelDropname.append(realFuelDrops[i].name!)
             realFuelDrops[i].position = level.fueldrops[i]
             realFuelDrops[i].zPosition = 10
@@ -304,10 +311,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realFuelDrops[i].physicsBody?.categoryBitMask = CollisionTypes.fuelDrop.rawValue
             realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.gem.rawValue
             realrocks[i].physicsBody?.collisionBitMask = 0
-
+            
             self.addChild(realFuelDrops[i])
         }
-
+        
     }
     func setUpOxygenDrops()
     {
@@ -315,7 +322,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in 0...level.oxygendrops.count - 1
         {
             realOxygenDrops.append(SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!))
-             realrocks[i].name = "OxygenDrop\(i)"
+            realrocks[i].name = "OxygenDrop\(i)"
             realOxygenDrops[i].position = level.oxygendrops[i]
             realOxygenDrops[i].zPosition = 10
             realOxygenDrops[i].physicsBody = SKPhysicsBody(texture: realOxygenDrops[i].texture!,size: CGSize(width: realOxygenDrops[i].size.width, height: realOxygenDrops[i].size.height))
@@ -323,12 +330,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realOxygenDrops[i].physicsBody?.categoryBitMask = CollisionTypes.oxygenDrop.rawValue
             realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
             realrocks[i].physicsBody?.collisionBitMask = 0
-
+            
             let oxygenMove = SKAction.applyForce(CGVector(dx: -20, dy: 0), duration: 2)
             realOxygenDrops[i].run(oxygenMove)
             self.addChild(realOxygenDrops[i])
         }
-
+        
     }
     func setUpPlayer() {
         if level.planet.type == .gaseous {

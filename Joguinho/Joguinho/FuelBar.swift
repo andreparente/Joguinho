@@ -11,23 +11,40 @@ import UIKit
 
 class FuelBar: Component {
     
-    
+    var fuelSize: CGFloat!
+    var pivo = screenSize.width/4 - 10
     var max: Int!
     var min: Int! = 0
     var qtd: Int!
     
-    func decrease(qtd: CGFloat) {
-        self.size.width -= 2
-        self.position = CGPoint(x: (screenSize.width/2) - 60 - qtd, y: 7*screenSize.height/8)
+//    func decrease(qtd: CGFloat) {
+//        self.size.width -= 2
+//        self.position = CGPoint(x: (screenSize.width/2) - 60 - qtd, y: 7*screenSize.height/8)
+//
+//    }
+//    
+//    func increase(qtd: CGFloat) {
+//        self.size.width += 6
+//        self.position = CGPoint(x: (screenSize.width/2) - 60 + qtd, y: 7*screenSize.height/8)
+//
+//    }
+    
+    func change(increase newValue: Int!) {
+
+        fuelSize = fuelSize + CGFloat(newValue)
+        self.size.width = fuelSize
+        print(fuelSize)
+        self.position = CGPoint(x: pivo + (fuelSize/2), y: 7*screenSize.height/8)
+        self.qtd = newValue
 
     }
     
-    func increase(qtd: Int) {
-        
-    }
-    
     init(image: String?) {
+        
         super.init(imageNamed: image)
+         self.qtd = 100
+        fuelSize = screenSize.width/2
+       
     }
     
     required init?(coder aDecoder: NSCoder) {
