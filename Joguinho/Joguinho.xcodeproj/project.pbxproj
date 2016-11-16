@@ -10,6 +10,8 @@
 		3D23694E1DD236BB00C749BA /* SurvivalArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */; };
 		3D2369501DD238D500C749BA /* PhysicalPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */; };
 		496EFB471DD3BB2300A7B163 /* Futura.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 496EFB461DD3BABC00A7B163 /* Futura.ttc */; };
+		8A61114A1DDCA79900D6109D /* FuelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6111491DDCA79900D6109D /* FuelBar.swift */; };
+		8A61114C1DDCAB1C00D6109D /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */; };
 		8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */; };
 		8AAEA7F71DBA5CCC00B908A0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */; };
 		8AAEA7F91DBA5CCC00B908A0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F81DBA5CCC00B908A0 /* Actions.sks */; };
@@ -56,6 +58,8 @@
 		3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurvivalArtifact.swift; sourceTree = "<group>"; };
 		3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalPlanet.swift; sourceTree = "<group>"; };
 		496EFB461DD3BABC00A7B163 /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
+		8A6111491DDCA79900D6109D /* FuelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuelBar.swift; sourceTree = "<group>"; };
+		8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		8AAEA7F11DBA5CCC00B908A0 /* Joguinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joguinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 				3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */,
 				9C493FC81DD3E51400A345F7 /* Component.swift */,
 				9C9BE4A61DD63E4400561120 /* Level.swift */,
+				8A6111491DDCA79900D6109D /* FuelBar.swift */,
+				8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -376,9 +382,11 @@
 				8AAEA7FB1DBA5CCC00B908A0 /* GameScene.swift in Sources */,
 				9C1EB7121DD39E14002B921B /* SelectedPlanetViewController.swift in Sources */,
 				8AAEA83B1DBA778C00B908A0 /* Piece.swift in Sources */,
+				8A61114A1DDCA79900D6109D /* FuelBar.swift in Sources */,
 				3D2369501DD238D500C749BA /* PhysicalPlanet.swift in Sources */,
 				8AAEA7FD1DBA5CCC00B908A0 /* GameViewController.swift in Sources */,
 				9C1EB7101DD39D6E002B921B /* MainViewController.swift in Sources */,
+				8A61114C1DDCAB1C00D6109D /* ScreenSize.swift in Sources */,
 				8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */,
 				8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */,
 				8AAEA8341DBA76C400B908A0 /* Player.swift in Sources */,
