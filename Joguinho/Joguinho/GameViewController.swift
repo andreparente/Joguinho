@@ -12,7 +12,7 @@ import GameplayKit
 var levelId:Int = 1
 class GameViewController: UIViewController {
     
-    var scene:GameScene!
+    var scene:PlanetsScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,9 @@ class GameViewController: UIViewController {
         super.viewWillLayoutSubviews()
         let skView = self.view as! SKView
         skView.ignoresSiblingOrder = false
-        self.scene = GameScene(size: skView.bounds.size,level:level)
+        //Aqui vai ter que apresentar a first Scene e depois as outras scenes navegam entre si
+        self.scene = PlanetsScene()
+     //   self.scene = GameScene(size: skView.bounds.size,level:level)
         self.scene.scaleMode = .aspectFit
         skView.presentScene(scene)
        

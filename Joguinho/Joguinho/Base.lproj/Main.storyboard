@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="smb-5b-IfC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -98,48 +98,11 @@
                         <outlet property="shoppingButton" destination="LDm-Qr-0lK" id="ncv-KQ-aKr"/>
                         <outlet property="standingsButton" destination="Zo9-v3-vce" id="nDb-0e-4Du"/>
                         <outlet property="travelButton" destination="Ey5-YH-cfq" id="EeQ-a6-0Qa"/>
-                        <segue destination="smb-5b-IfC" kind="show" identifier="MainToPlanets" id="37X-vX-LUB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcf-Wb-pVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1228" y="36"/>
-        </scene>
-        <!--Planets View Controller-->
-        <scene sceneID="kv2-7E-VwK">
-            <objects>
-                <viewController id="smb-5b-IfC" customClass="PlanetsViewController" customModule="Joguinho" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hKt-ZW-08c"/>
-                        <viewControllerLayoutGuide type="bottom" id="1KR-QU-0Yf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4TG-kp-2xb">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n2b-wN-mqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1981" y="36"/>
-        </scene>
-        <!--Selected Planet View Controller-->
-        <scene sceneID="Vlh-ka-GQx">
-            <objects>
-                <viewController id="sEG-6c-vZu" customClass="SelectedPlanetViewController" customModule="Joguinho" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="T7Y-eN-GHa"/>
-                        <viewControllerLayoutGuide type="bottom" id="UHp-hP-EWe"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0QF-dT-v8g">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KC0-a2-JHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1227" y="906"/>
         </scene>
     </scenes>
     <resources>
