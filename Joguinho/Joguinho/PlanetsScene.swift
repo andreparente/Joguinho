@@ -8,25 +8,27 @@
 
 import SpriteKit
 
-class PlanetsScene: SKScene
-
-{
+class PlanetsScene: SKScene{
     
-  /*  override func didMove(to view: SKView) {
     
-        view.backgroundColor = UIColor.init(patternImage: UIImage(named: "background")!)
+    override func didMove(to view: SKView) {
         
+//        self.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         let size = view.frame.size
+        
+        //backgroung
+        let background = SKSpriteNode(imageNamed: "background")
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
+        addChild(background)
         
         
         //neptune
         let neptune = Component(imageNamed: "Neptune")
-        //Aqui tem que mexer na position e não no frame
-        neptune.frame = CGRect(x: 26 * size.width / 667, y: 159 * size.height / 375, width: neptune.width * size.width / 667, height: neptune.height * size.height / 375)
-        
-        neptune.addTarget(self, action: #selector(selectedPlanet), for: UIControlEvents.touchUpInside)
+        neptune.position = CGPoint(x: 26 * size.width / 667, y: 216 * size.height / 375)
+        neptune.size = CGSize(width: 49 * size.width / 667, height: 49 * size.height / 375)
         addChild(neptune)
-        
+       /*
         //uranus
         let uranusImage = UIImage(named: "Uranus")
         let uranusView = UIImageView(image: uranusImage)
@@ -110,9 +112,10 @@ class PlanetsScene: SKScene
         let sunSize = sunView.frame.size
         sunView.frame = CGRect(x: 611 * size.width / 667, y: -49 * size.height / 375, width: sunSize.width * size.width / 667, height: sunSize.height * size.height / 375)
         self.content.addSubview(sunView)
-        
+ */
         
     }
+    
     
   
     
@@ -145,12 +148,16 @@ class PlanetsScene: SKScene
         scene.size = skView.bounds.size
         scene.scaleMode = .aspectFill
         skView.presentScene(scene)
-*/
+        
+  /*
    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     for touch in touches
     {
         let location = touch.location(in: self)
         
     }
+}
+ */
+        
 }
 }
