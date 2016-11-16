@@ -12,7 +12,6 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
     
     let scroll = UIScrollView()
     let content = UIView()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +38,9 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         let neptune = UIButton()
         neptune.setImage(neptuneImage, for: UIControlState())
         neptune.frame = CGRect(x: 26 * size.width / 667, y: 159 * size.height / 375, width: neptuneSize.width * size.width / 667, height: neptuneSize.height * size.height / 375)
-        neptune.addTarget(self, action: #selector(PlanetsViewController.selectedPlanet), for: UIControlEvents.touchUpInside)
+        neptune.tag = 1
+       
+        neptune.addTarget(self, action: #selector(selectedPlanet), for: UIControlEvents.touchUpInside)
         self.content.addSubview(neptune)
         
         //uranus
@@ -49,7 +50,8 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         let uranus = UIButton()
         uranus.setImage(uranusImage, for: UIControlState())
         uranus.frame = CGRect(x: 99 * size.width / 667, y: 150 * size.height / 375, width: uranusSize.width * size.width / 667, height: uranusSize.height * size.height / 375)
-        uranus.addTarget(self, action: #selector(PlanetsViewController.selectedPlanet), for: UIControlEvents.touchUpInside)
+        uranus.tag = 2
+        uranus.addTarget(self, action: #selector(selectedPlanet), for: UIControlEvents.touchUpInside)
         self.content.addSubview(uranus)
         
         //saturn
@@ -59,7 +61,8 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         let saturn = UIButton()
         saturn.setImage(saturnImage, for: UIControlState())
         saturn.frame = CGRect(x: 164 * size.width / 667, y: 125 * size.height / 375, width: saturnSize.width * size.width / 667, height: saturnSize.height * size.height / 375)
-        saturn.addTarget(self, action: #selector(PlanetsViewController.selectedPlanet), for: UIControlEvents.touchUpInside)
+        saturn.tag = 3
+        saturn.addTarget(self, action: #selector(selectedPlanet), for: UIControlEvents.touchUpInside)
         self.content.addSubview(saturn)
         
         //jupiter
@@ -69,7 +72,8 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         let jupiter = UIButton()
         jupiter.setImage(jupiterImage, for: UIControlState())
         jupiter.frame = CGRect(x: 323 * size.width / 667, y: 113 * size.height / 375, width: jupiterSize.width * size.width / 667, height: jupiterSize.height * size.height / 375)
-        jupiter.addTarget(self, action: #selector(PlanetsViewController.selectedPlanet), for: UIControlEvents.touchUpInside)
+        jupiter.tag = 4
+        jupiter.addTarget(self, action: #selector(selectedPlanet), for: UIControlEvents.touchUpInside)
         self.content.addSubview(jupiter)
         
         //mars
@@ -79,7 +83,8 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         let mars = UIButton()
         mars.setImage(marsImage, for: UIControlState())
         mars.frame = CGRect(x: 486 * size.width / 667, y: 180 * size.height / 375, width: marsSize.width * size.width / 667, height: marsSize.height * size.height / 375)
-        mars.addTarget(self, action: #selector(PlanetsViewController.selectedPlanet), for: UIControlEvents.touchUpInside)
+        mars.tag = 5
+       mars.addTarget(self, action: #selector(selectedPlanet), for: UIControlEvents.touchUpInside)
         self.content.addSubview(mars)
         
         //earth
@@ -89,7 +94,8 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         let earth = UIButton()
         earth.setImage(earthImage, for: UIControlState())
         earth.frame = CGRect(x: 514 * size.width / 667, y: 177 * size.height / 375, width: earthSize.width * size.width / 667, height: earthSize.height * size.height / 375)
-        earth.addTarget(self, action: #selector(PlanetsViewController.selectedPlanet), for: UIControlEvents.touchUpInside)
+        earth.tag = 6
+       earth.addTarget(self, action: #selector(selectedPlanet), for: UIControlEvents.touchUpInside)
         self.content.addSubview(earth)
         
         //venus 
@@ -99,7 +105,8 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         let venus = UIButton()
         venus.setImage(venusImage, for: UIControlState())
         venus.frame = CGRect(x: 545 * size.width / 667, y: 177 * size.height / 375, width: venusSize.width * size.width / 667, height: venusSize.height * size.height / 375)
-        venus.addTarget(self, action: #selector(PlanetsViewController.selectedPlanet), for: UIControlEvents.touchUpInside)
+        venus.tag = 7
+        venus.addTarget(self, action: #selector(selectedPlanet), for: UIControlEvents.touchUpInside)
         self.content.addSubview(venus)
         
         //mercury
@@ -109,7 +116,8 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         let mercury = UIButton()
         mercury.setImage(mercuryImage, for: UIControlState())
         mercury.frame = CGRect(x: 578 * size.width / 667, y: 181 * size.height / 375, width: mercurySize.width * size.width / 667, height: mercurySize.height * size.height / 375)
-        mercury.addTarget(self, action: #selector(PlanetsViewController.selectedPlanet), for: UIControlEvents.touchUpInside)
+        mercury.tag = 8
+       mercury.addTarget(self, action: #selector(selectedPlanet), for: UIControlEvents.touchUpInside)
         self.content.addSubview(mercury)
         
         //sun
@@ -128,7 +136,29 @@ class PlanetsViewController: UIViewController, UIScrollViewDelegate {
         updateMinZoomScaleForSize(size: view.bounds.size)
     }
     
-    func selectedPlanet(){
+    func selectedPlanet(_ sender:UIButton){
+        //currentPlanet = planet
+        var btSendTag:UIButton = sender
+        switch btSendTag.tag {
+        case 1:
+            currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.115, type:PlanetType.gaseous)
+        case 2:
+            currentPlanet = Planet(name: PlanetName.Uranus, gravity: 0.887, type:PlanetType.gaseous)
+        case 3:
+            currentPlanet = Planet(name: PlanetName.Saturn, gravity: 1.044, type:PlanetType.gaseous)
+        case 4:
+          currentPlanet = Planet(name: PlanetName.Jupiter, gravity: 2.492, type:PlanetType.gaseous)
+        case 5:
+            currentPlanet = Planet(name: PlanetName.Mars, gravity: 0.371, type: PlanetType.terrestrial)
+        case 6:
+            currentPlanet = Planet(name: PlanetName.Earth, gravity: 0.97, type: PlanetType.terrestrial)
+        case 7:
+            currentPlanet = Planet(name: PlanetName.Venus, gravity: 0.887, type: PlanetType.terrestrial)
+        case 8:
+            currentPlanet = Planet(name: PlanetName.Mercury, gravity: 0.37, type: PlanetType.terrestrial)
+        default:
+            break
+        }
         let selectedPlanet = SelectedPlanetViewController()
         present(selectedPlanet, animated: true, completion: nil)
     }

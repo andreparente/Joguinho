@@ -19,9 +19,11 @@ enum CollisionTypes: UInt32 {
     case gem = 16
 }
 
+var currentPlanet:Planet = Planet(name: PlanetName.Neptune, gravity: 1.115, type: PlanetType.gaseous)
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    
+    var viewController:UIViewController?
     var screenSize = UIScreen.main.bounds
     var level: Level!
     var background = Component(imageNamed:"background")
