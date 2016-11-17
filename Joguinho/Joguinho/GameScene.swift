@@ -45,6 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var qtdFuel = UILabel(frame: CGRect(x: 250, y: 200, width: 200, height: 21))
     var fuelDropname : [String] = []
     var gemName : [String] = []
+
    
     init(size: CGSize, level: Level) {
         super.init(size: size)
@@ -62,6 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
         physicsWorld.contactDelegate = self
+        
         setUpInicialScene()
         setUpPlayer()
         setUpFuelBar()
@@ -83,9 +85,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        // view.addSubview(qtdFuel)
         
     }
-    override func sceneDidLoad() {
-        
-    }
+    
     func setUpFuelBar()
     {
         progressBar.zPosition = 2
@@ -98,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func setPauseButton()
     {
-        pauseButton.position = CGPoint(x: 7*screenSize.width/8, y: 7*screenSize.height/8)
+        pauseButton.position = CGPoint(x: 7.5*screenSize.width/8, y: 7*screenSize.height/8)
         pauseButton.zPosition = 4
         addChild(pauseButton)
        
@@ -168,11 +168,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 {
                     print("Bateu na pedra e morreu")
                     let  scene = GameOverScene()
-                    let skView = self.view! as SKView
+                    if let skView = self.view! as SKView?
+                    {
                     skView.ignoresSiblingOrder = false
                     scene.size = skView.bounds.size
                     scene.scaleMode = .aspectFill
                     skView.presentScene(scene)
+                    }
+                    else
+                    {
+                        print("Deu crash")
+                    }
                 }
                 
             }
@@ -182,30 +188,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !(scene?.isPaused)!
         {
             spaceship.spaceshipMovement()
-            // progressView.setProgress(progressView.progress - 1, animated: true)
             spaceship.decreaseFuelLevel()
             qtdFuel.text = String(spaceship.fuelLevel)
             counter = counter + 1
-            
-           // insideProgressBar.decrease(qtd: counter)
             insideProgressBar.change(increase: -2)
-            //insideProgressBar.position.x -= 1
-            //setFuelBar(decrease: 2)
             
-        }
-        for touch in touches
-        {
-            let location = touch.location(in: self)
-            if self.nodes(at: location)[0] == self.pauseButton
+            for touch in touches
             {
-                pressedPause()
+                let location = touch.location(in: self)
+                if self.nodes(at: location)[0] == self.pauseButton
+                {
+                   // scene?.view?.isPaused = true
+                    let  scene1 = PauseScene()
+                    let skView = self.view! as SKView
+                    let transition = SKTransition.fade(withDuration: 1.0)
+                    scene1.currentSceneState = self
+                    skView.ignoresSiblingOrder = false
+                    scene1.size = skView.bounds.size
+                    scene1.scaleMode = .aspectFill
+                    skView.presentScene(scene1, transition: transition)
+                }
+                
             }
             
-        }
 
-    }
-    
-    
+        }
+}
+
     override func update(_ currentTime: TimeInterval) {
         if !(scene?.isPaused)!
         {
@@ -385,11 +394,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func isDead() -> Bool {
         if spaceship.position.y < 0 || spaceship.position.y > UIScreen.main.bounds.height {
-            print("\nYou're dead.\n")
             return true
         }
         else {
-            print("\nYou're NOT dead.\n")
             return false
         }
     }

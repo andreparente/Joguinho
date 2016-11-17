@@ -22,7 +22,6 @@ class FuelBar: Component {
 
         fuelSize = fuelSize + CGFloat(newValue)
         self.size.width = fuelSize
-        print(fuelSize)
         self.position = CGPoint(x: pivo + (fuelSize/2), y: 7*screenSize.height/8)
         self.qtd = newValue
 

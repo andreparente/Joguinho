@@ -39,6 +39,7 @@
 		9C9BE4A71DD63E4400561120 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9BE4A61DD63E4400561120 /* Level.swift */; };
 		9CB427FD1DDDE39F0017E617 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */; };
 		9CB427FF1DDDF1410017E617 /* LevelCompletedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */; };
+		9CB428011DDE2D4A0017E617 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB428001DDE2D4A0017E617 /* PauseScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		9C9BE4A61DD63E4400561120 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCompletedScene.swift; sourceTree = "<group>"; };
+		9CB428001DDE2D4A0017E617 /* PauseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				9C4E270A1DDCD96100DE549C /* SelectedPlanetScene.swift */,
 				9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */,
 				9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */,
+				9CB428001DDE2D4A0017E617 /* PauseScene.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				8A61114C1DDCAB1C00D6109D /* ScreenSize.swift in Sources */,
 				8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */,
 				8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */,
+				9CB428011DDE2D4A0017E617 /* PauseScene.swift in Sources */,
 				9CB427FF1DDDF1410017E617 /* LevelCompletedScene.swift in Sources */,
 				9C4E270B1DDCD96100DE549C /* SelectedPlanetScene.swift in Sources */,
 				8AAEA8341DBA76C400B908A0 /* Player.swift in Sources */,
