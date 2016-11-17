@@ -104,50 +104,12 @@ class PlanetsScene: SKScene{
                 
                 let planet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous)
                 let transition = SKTransition.reveal(with: SKTransitionDirection.up, duration: 1.0)
-                
+                let transition2 = SKTransition.doorway(withDuration: 1.0)
                 let nextScene = SelectedPlanetScene(size: self.size)
                 nextScene.scaleMode = SKSceneScaleMode.aspectFill
                 nextScene.selectedPlanetClass = planet
-                self.scene?.view?.presentScene(nextScene, transition: transition)
+                self.scene?.view?.presentScene(nextScene, transition: transition2)
             }
         }
     }
-    
-  
-    
-    func selectedPlanet(_ sender:UIButton){
-        //currentPlanet = planet
-        var btSendTag:UIButton = sender
-        switch btSendTag.tag {
-        case 1:
-            currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.115, type:PlanetType.gaseous)
-        case 2:
-            currentPlanet = Planet(name: PlanetName.Uranus, gravity: 0.887, type:PlanetType.gaseous)
-        case 3:
-            currentPlanet = Planet(name: PlanetName.Saturn, gravity: 1.044, type:PlanetType.gaseous)
-        case 4:
-            currentPlanet = Planet(name: PlanetName.Jupiter, gravity: 2.492, type:PlanetType.gaseous)
-        case 5:
-            currentPlanet = Planet(name: PlanetName.Mars, gravity: 0.371, type: PlanetType.terrestrial)
-        case 6:
-            currentPlanet = Planet(name: PlanetName.Earth, gravity: 0.97, type: PlanetType.terrestrial)
-        case 7:
-            currentPlanet = Planet(name: PlanetName.Venus, gravity: 0.887, type: PlanetType.terrestrial)
-        case 8:
-            currentPlanet = Planet(name: PlanetName.Mercury, gravity: 0.37, type: PlanetType.terrestrial)
-        default:
-            break
-        }
-        let  scene = SelectedPlanetScene()
-        let skView = self.view! as SKView
-        skView.ignoresSiblingOrder = false
-        scene.size = skView.bounds.size
-        scene.scaleMode = .aspectFill
-        skView.presentScene(scene)
-        
-   }
-    
-    
-    
-    
 }

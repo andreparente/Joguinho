@@ -81,6 +81,7 @@ class Level
             self.gems.append(CGPoint(x: 1750, y: 225))
             self.gems.append(CGPoint(x: 2200, y: 35))
             self.gems.append(CGPoint(x: 3000, y: 125))
+            self.gems.append(CGPoint(x: 5200, y: 150))
             self.fueldrops.append(CGPoint(x: 550, y: 125))
             self.fueldrops.append(CGPoint(x: 1200, y: 235))
             self.fueldrops.append(CGPoint(x: 3850, y: 145))

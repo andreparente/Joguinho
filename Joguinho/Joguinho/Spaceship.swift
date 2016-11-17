@@ -56,7 +56,7 @@ class Spaceship:Component {
     
     func spaceshipMovement()
     {
-        let spaceshipMove = SKAction.applyImpulse(CGVector(dx: 0, dy: 15), duration: 0.1)
+        let spaceshipMove = SKAction.applyImpulse(CGVector(dx: 0, dy: 5), duration: 0.1)
         self.run(spaceshipMove)
     }
     

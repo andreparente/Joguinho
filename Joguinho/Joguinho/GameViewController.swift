@@ -21,13 +21,11 @@ class GameViewController: UIViewController {
         }
     override func viewWillLayoutSubviews() {
         
-        let level = Level(id: levelId, planet: currentPlanet)
-        //var skView:SKView = SKView()
+        
         super.viewWillLayoutSubviews()
         let skView = self.view as! SKView
         skView.ignoresSiblingOrder = false
         //Aqui vai ter que apresentar a first Scene e depois as outras scenes navegam entre si
-//        self.scene = PlanetsScene(size: CGSize(width: 667, height: 375))
         self.menuScene = FirstScene(size: skView.frame.size)
         self.scene = PlanetsScene(size: skView.frame.size)
      //   self.scene = GameScene(size: skView.bounds.size,level:level)

@@ -72,4 +72,22 @@ class SelectedPlanetScene: SKScene {
         level8.position = CGPoint(x: 6*screenSize.width/4 / 2, y: 1*screenSize.height/3)
         self.addChild(level8)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches
+        {
+            let location = touch.location(in: self)
+            if self.nodes(at: location)[0] == self.level1
+            {
+                levelId = 1
+                let level = Level(id: levelId, planet: currentPlanet)
+                let  scene = GameScene(size: self.size, level: level)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene)
+            }
+        }
+    }
 }

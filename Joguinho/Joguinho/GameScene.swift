@@ -23,7 +23,6 @@ var currentPlanet:Planet = Planet(name: PlanetName.Neptune, gravity: 1.115, type
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var viewController:UIViewController?
     var screenSize = UIScreen.main.bounds
     var level: Level!
     var background = Component(imageNamed:"background")
@@ -80,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         qtdFuel.center = CGPoint(x:160, y:284)
         qtdFuel.textAlignment = NSTextAlignment.center
         qtdFuel.text = String(spaceship.fuelLevel)
-        view.addSubview(qtdFuel)
+       // view.addSubview(qtdFuel)
         //  progressView.center = CGPoint(x: 300, y: 40)
         //   progressView.setProgress(10, animated: true)
         //  progressView.progressTintColor = UIColor.white
@@ -108,7 +107,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton.frame = CGRect(x: 7*screenSize.width/8, y: 7*screenSize.height/8, width: 50, height: 50)
         
         pauseButton.addTarget(self, action: #selector(pressedPause), for: .touchUpInside)
-        view?.addSubview(pauseButton)
+       // view?.addSubview(pauseButton)
     }
     func pressedPause()
     {
@@ -174,7 +173,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if firstBody.categoryBitMask == CollisionTypes.player.rawValue && secondBody.categoryBitMask == CollisionTypes.rock.rawValue
                 {
                     print("Bateu na pedra e morreu")
-                    //Chamar a view que é mostrada quando o player morre
+                    let  scene = GameOverScene()
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = false
+                    scene.size = skView.bounds.size
+                    scene.scaleMode = .aspectFill
+                    skView.presentScene(scene)
                 }
                 
             }
@@ -227,10 +231,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let fuelMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
                 fuelDrop.run(fuelMove)
             }
-            //if isDead()
-            //  {
-            //Chamar a View que é mostrada quando o player morre
-            // }
+            if isDead()
+             {
+                let transition = SKTransition.fade(withDuration: 1.0)
+                let  scene = GameOverScene()
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+               skView.presentScene(scene, transition: transition)
+             }
+        }
+        if spaceship.position.x > realgems[realgems.count-1].position.x && spaceship.position.y > realgems[realgems.count-1].position.y
+        {
+             let transition = SKTransition.fade(withDuration: 1.0)
+            let  scene = LevelCompletedScene()
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = false
+            scene.size = skView.bounds.size
+            scene.scaleMode = .aspectFill
+            skView.presentScene(scene, transition: transition)
+
         }
     }
     
