@@ -129,11 +129,13 @@ class PlanetsScene: SKScene{
             // Check if the location of the touch is within the button's bounds
             if neptune.contains(location) {
                 print("tapped Neptune!")
+                
+                let planet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous)
                 let transition = SKTransition.reveal(with: SKTransitionDirection.up, duration: 1.0)
                 
-                let nextScene = PlanetsScene(size: self.size)
+                let nextScene = SelectedPlanetScene(size: self.size)
                 nextScene.scaleMode = SKSceneScaleMode.aspectFill
-                
+                nextScene.selectedPlanetClass = planet
                 self.scene?.view?.presentScene(nextScene, transition: transition)
             }
         }
