@@ -10,9 +10,11 @@ import UIKit
 import SpriteKit
 import GameplayKit
 var levelId:Int = 1
+
 class GameViewController: UIViewController {
     
     var scene:PlanetsScene!
+    var menuScene: FirstScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +28,11 @@ class GameViewController: UIViewController {
         skView.ignoresSiblingOrder = false
         //Aqui vai ter que apresentar a first Scene e depois as outras scenes navegam entre si
 //        self.scene = PlanetsScene(size: CGSize(width: 667, height: 375))
+        self.menuScene = FirstScene(size: skView.frame.size)
         self.scene = PlanetsScene(size: skView.frame.size)
      //   self.scene = GameScene(size: skView.bounds.size,level:level)
 //        self.scene.scaleMode = .aspectFit
-        skView.presentScene(scene)
+        skView.presentScene(menuScene)
         
     }
     override var shouldAutorotate: Bool {

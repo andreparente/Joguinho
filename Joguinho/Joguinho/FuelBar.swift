@@ -16,18 +16,7 @@ class FuelBar: Component {
     var max: Int!
     var min: Int! = 0
     var qtd: Int!
-    
-//    func decrease(qtd: CGFloat) {
-//        self.size.width -= 2
-//        self.position = CGPoint(x: (screenSize.width/2) - 60 - qtd, y: 7*screenSize.height/8)
-//
-//    }
-//    
-//    func increase(qtd: CGFloat) {
-//        self.size.width += 6
-//        self.position = CGPoint(x: (screenSize.width/2) - 60 + qtd, y: 7*screenSize.height/8)
-//
-//    }
+
     
     func change(increase newValue: Int!) {
 

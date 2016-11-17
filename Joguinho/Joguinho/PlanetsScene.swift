@@ -11,6 +11,7 @@ import SpriteKit
 class PlanetsScene: SKScene{
     
     
+    var neptune: Component!
     override func didMove(to view: SKView) {
         
 //        self.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
@@ -24,7 +25,7 @@ class PlanetsScene: SKScene{
         
         
         //neptune
-        let neptune = Component(imageNamed: "Neptune")
+        neptune = Component(imageNamed: "Neptune")
         neptune.position = CGPoint(x: 26 * size.width / 667, y: 216 * size.height / 375)
         neptune.size = CGSize(width: 49 * size.width / 667, height: 49 * size.height / 375)
         addChild(neptune)
@@ -114,8 +115,29 @@ class PlanetsScene: SKScene{
         self.content.addSubview(sunView)
  */
         
+        
+        
     }
     
+    
+    //FUNCAO USADA PARA ACHAR QUAL BOTAO/PLANETA FOI SELECIONADO!
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        for touch in touches {
+            // Get the location of the touch in this scene
+            let location = (touch as AnyObject).location(in: self)
+            // Check if the location of the touch is within the button's bounds
+            if neptune.contains(location) {
+                print("tapped Neptune!")
+                let transition = SKTransition.reveal(with: SKTransitionDirection.up, duration: 1.0)
+                
+                let nextScene = PlanetsScene(size: self.size)
+                nextScene.scaleMode = SKSceneScaleMode.aspectFill
+                
+                self.scene?.view?.presentScene(nextScene, transition: transition)
+            }
+        }
+    }
     
   
     
@@ -149,15 +171,7 @@ class PlanetsScene: SKScene{
         scene.scaleMode = .aspectFill
         skView.presentScene(scene)
         
-  /*
-   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    for touch in touches
-    {
-        let location = touch.location(in: self)
         
-    }
-}
- */
         
 }
 }
