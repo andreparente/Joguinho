@@ -20,6 +20,8 @@ class PlanetsScene: SKScene{
     var venus: Component!
     var mercury: Component!
     
+    var back: SKSpriteNode!
+    
     
     override func didMove(to view: SKView) {
         
@@ -31,6 +33,11 @@ class PlanetsScene: SKScene{
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
         addChild(background)
+        
+        back = SKSpriteNode(imageNamed: "back")
+        back.position = CGPoint(x: 53 * size.width / 667, y: 350 * size.height / 375)
+        back.size = CGSize(width: 58 * size.width / 667, height: 22 * size.height / 375)
+        self.addChild(back)
         
         
         //neptune
@@ -109,6 +116,16 @@ class PlanetsScene: SKScene{
                 nextScene.scaleMode = SKSceneScaleMode.aspectFill
                 nextScene.selectedPlanetClass = planet
                 self.scene?.view?.presentScene(nextScene, transition: transition2)
+            }
+            
+            if self.nodes(at: location)[0] == self.back{
+                let scene = FirstScene()
+                let skView = self.view! as SKView
+                let transition = SKTransition.fade(withDuration: 1.0)
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene, transition: transition)
             }
         }
     }
