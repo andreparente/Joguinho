@@ -38,13 +38,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var realgems:[Component] = [Component(imageNamed: "crystal")]
     var realFuelDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)]
     var realOxygenDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!)]
+     var pauseButton = Component(imageNamed: "pause")
     var counter: CGFloat! = 0
     
     var numberOfGems:Int = 0
     var qtdFuel = UILabel(frame: CGRect(x: 250, y: 200, width: 200, height: 21))
     var fuelDropname : [String] = []
     var gemName : [String] = []
-    var pauseButton = UIButton()
+   
     init(size: CGSize, level: Level) {
         super.init(size: size)
         
@@ -80,12 +81,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         qtdFuel.textAlignment = NSTextAlignment.center
         qtdFuel.text = String(spaceship.fuelLevel)
        // view.addSubview(qtdFuel)
-        //  progressView.center = CGPoint(x: 300, y: 40)
-        //   progressView.setProgress(10, animated: true)
-        //  progressView.progressTintColor = UIColor.white
-        //  progressView.backgroundColor = UIColor.orange
-        
-        //  view.addSubview(progressView)
         
     }
     override func sceneDidLoad() {
@@ -103,11 +98,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func setPauseButton()
     {
-        pauseButton.setImage(UIImage(named: "pause"), for: .normal)
-        pauseButton.frame = CGRect(x: 7*screenSize.width/8, y: 7*screenSize.height/8, width: 50, height: 50)
-        
-        pauseButton.addTarget(self, action: #selector(pressedPause), for: .touchUpInside)
-       // view?.addSubview(pauseButton)
+        pauseButton.position = CGPoint(x: 7*screenSize.width/8, y: 7*screenSize.height/8)
+        pauseButton.zPosition = 4
+        addChild(pauseButton)
+       
     }
     func pressedPause()
     {
@@ -199,6 +193,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //setFuelBar(decrease: 2)
             
         }
+        for touch in touches
+        {
+            let location = touch.location(in: self)
+            if self.nodes(at: location)[0] == self.pauseButton
+            {
+                pressedPause()
+            }
+            
+        }
+
     }
     
     
