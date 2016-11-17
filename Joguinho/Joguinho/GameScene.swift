@@ -242,6 +242,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                skView.presentScene(scene, transition: transition)
              }
         }
+        if spaceship.fuelLevel <= 0
+        {
+            let transition = SKTransition.fade(withDuration: 1.0)
+            let  scene = GameOverScene()
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = false
+            scene.size = skView.bounds.size
+            scene.scaleMode = .aspectFill
+            skView.presentScene(scene, transition: transition)
+        }
         if spaceship.position.x > realgems[realgems.count-1].position.x && spaceship.position.y > realgems[realgems.count-1].position.y
         {
              let transition = SKTransition.fade(withDuration: 1.0)
