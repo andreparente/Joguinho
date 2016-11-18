@@ -20,9 +20,9 @@ class PauseScene: SKScene
     background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
     background.size = CGSize(width:size.width, height:size.height)
     background.zPosition = 0
-    resumeButton.position =  CGPoint(x: 5*screenSize.width/4 / 2, y: 1*screenSize.height/3)
+    resumeButton.position =  CGPoint(x: 6*screenSize.width/4 / 2, y: screenSize.height/2)
     resumeButton.zPosition = 10
-    menuButtton.position = CGPoint(x: 3*screenSize.width/4 / 2 , y: 1*screenSize.height/3)
+    menuButtton.position = CGPoint(x: 2*screenSize.width/4 / 2 , y: screenSize.height/2)
     menuButtton.zPosition = 10
     addChild(background)
     addChild(resumeButton)
@@ -37,11 +37,26 @@ class PauseScene: SKScene
             {
                 let transition = SKTransition.fade(withDuration: 1.0)
                 let scene1 = currentSceneState
+                scene1?.isPaused = true
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = false
                 scene1!.size = skView.bounds.size
                 scene1!.scaleMode = .aspectFill
                 skView.presentScene(scene1!, transition: transition)
+            }
+            else
+            {
+               if self.nodes(at: location)[0] == self.menuButtton
+                {
+                    let transition = SKTransition.fade(withDuration: 1.0)
+                    let scene1 = PlanetsScene()
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = false
+                    scene1.size = skView.bounds.size
+                    scene1.scaleMode = .aspectFill
+                    skView.presentScene(scene1, transition: transition)
+
+                }
             }
         }
 

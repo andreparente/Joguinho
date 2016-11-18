@@ -60,7 +60,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        
+        if !(background.parent == self)
+        {
         physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
         physicsWorld.contactDelegate = self
         
@@ -83,6 +84,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         qtdFuel.textAlignment = NSTextAlignment.center
         qtdFuel.text = String(spaceship.fuelLevel)
        // view.addSubview(qtdFuel)
+        }
+        scene?.isPaused = false
         
     }
     
@@ -92,7 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
         insideProgressBar.zPosition = 3
         insideProgressBar.qtd = 100
-        //insideProgressBar.position = CGPoint(x: screenSize.width/2-60, y: 7*screenSize.height/8)
+        insideProgressBar.position = CGPoint(x: screenSize.width/2-60, y: 7*screenSize.height/8)
         addChild(insideProgressBar)
         addChild(progressBar)
     }
@@ -198,7 +201,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let location = touch.location(in: self)
                 if self.nodes(at: location)[0] == self.pauseButton
                 {
-                   // scene?.view?.isPaused = true
+                    scene?.isPaused = true
                     let  scene1 = PauseScene()
                     let skView = self.view! as SKView
                     let transition = SKTransition.fade(withDuration: 1.0)
@@ -207,6 +210,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scene1.size = skView.bounds.size
                     scene1.scaleMode = .aspectFill
                     skView.presentScene(scene1, transition: transition)
+
                 }
                 
             }
