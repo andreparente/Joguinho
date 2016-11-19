@@ -23,8 +23,9 @@ class SelectedPlanetScene: SKScene {
     var planetLabel: SKLabelNode!
     var back: SKSpriteNode!
     var selectedPlanetClass: Planet!
-
-
+    var textAboutPlanet:SKNode!
+    var closeText:SKNode!
+    
     override func didMove(to view: SKView) {
         
         let size = view.frame.size
