@@ -20,7 +20,7 @@ class GameOverScene: SKScene
     semibackground.size = CGSize(width:size.width, height:size.height)
     semibackground.zPosition = 0
     background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        background.zPosition = 10
+    background.zPosition = 10
     playAgainButton.position =  CGPoint(x: 5*screenSize.width/4 / 3, y: 1*screenSize.height/5)
     playAgainButton.zPosition = 10
     menuButtton.position = CGPoint(x: 6*screenSize.width/4 / 2 , y: 1*screenSize.height/5)

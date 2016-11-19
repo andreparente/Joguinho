@@ -14,6 +14,8 @@ class PauseScene: SKScene
     let background = Component(imageNamed: "background")
     let resumeButton = Component(imageNamed: "rocket menu")
     let menuButtton = Component(imageNamed: "System")
+    let resumeLabel:SKLabelNode = SKLabelNode(fontNamed: "Futura")
+    let menuLabel:SKLabelNode = SKLabelNode(fontNamed: "Futura")
     
     override func didMove(to view: SKView) {
     currentSceneState.isPaused = true
@@ -24,6 +26,16 @@ class PauseScene: SKScene
     resumeButton.zPosition = 10
     menuButtton.position = CGPoint(x: 2*screenSize.width/4 / 2 , y: screenSize.height/2)
     menuButtton.zPosition = 10
+    resumeLabel.text = "Resume"
+    resumeLabel.fontSize = 20
+    resumeLabel.position = CGPoint(x: resumeButton.position.x , y:resumeButton.position.y - 80)
+    resumeLabel.zPosition = 10
+    menuLabel.text = "Menu"
+    menuLabel.fontSize = 20
+    menuLabel.position =  CGPoint(x: menuButtton.position.x , y:menuButtton.position.y - 85)
+    menuLabel.zPosition = 10
+    addChild(menuLabel)
+    addChild(resumeLabel)
     addChild(background)
     addChild(resumeButton)
     addChild(menuButtton)

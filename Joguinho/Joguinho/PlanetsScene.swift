@@ -19,7 +19,7 @@ class PlanetsScene: SKScene{
     var earth: Component!
     var venus: Component!
     var mercury: Component!
-    
+    var saturnShade:Component!
     var back: SKSpriteNode!
     
     
@@ -47,6 +47,7 @@ class PlanetsScene: SKScene{
         neptune.size = CGSize(width: 49 * size.width / 667, height: 49 * size.height / 375)
         addChild(neptune)
         
+        
         //uranus
         uranus = Component(imageNamed: "Uranus")
         uranus.position = CGPoint(x: 124.5 * size.width / 667, y: frame.size.height / 2)
@@ -54,10 +55,17 @@ class PlanetsScene: SKScene{
         addChild(uranus)
         
         //saturn
-        saturn = Component(imageNamed: "Saturn")
+      /*  saturn = Component(imageNamed: "Saturn")
         saturn.position = CGPoint(x: 237 * size.width / 667, y: frame.size.height / 2)
         saturn.size = CGSize(width: 158 * size.width / 667, height: 116 * size.height / 375)
         addChild(saturn)
+ */
+        //Saturn blocked
+        saturnShade = Component(imageNamed: "saturnShade")
+        saturnShade.position = CGPoint(x: 237 * size.width / 667, y: frame.size.height / 2)
+        saturnShade.size = CGSize(width: 158 * size.width / 667, height: 116 * size.height / 375)
+        addChild(saturnShade)
+
         
         //jupiter
         jupiter = Component(imageNamed: "Jupiter")
