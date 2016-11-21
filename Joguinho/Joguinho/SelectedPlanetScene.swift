@@ -97,6 +97,15 @@ class SelectedPlanetScene: SKScene {
         level8 = SKSpriteNode(imageNamed: "lock")
         level8.position = CGPoint(x: 572 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level8)
+        
+        closeText = SKSpriteNode(imageNamed: "exit")
+        closeText.position = CGPoint(x:572 * size.width / 667,y:110 * size.height / 375)
+        closeText.zPosition = 10
+        
+        textAboutPlanet = SKSpriteNode(imageNamed: "textNeptune")
+        textAboutPlanet.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        textAboutPlanet.zPosition = 10
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -124,6 +133,18 @@ class SelectedPlanetScene: SKScene {
                 scene.size = skView.bounds.size
                 scene.scaleMode = .aspectFill
                 skView.presentScene(scene, transition: transition)
+            }
+            
+            if self.nodes(at: location)[0] == self.moreInfo
+            {
+                addChild(textAboutPlanet)
+                addChild(closeText)
+            }
+            
+            if self.nodes(at: location)[0] == self.closeText
+            {
+                textAboutPlanet.removeFromParent()
+                closeText.removeFromParent()
             }
         }
     }
