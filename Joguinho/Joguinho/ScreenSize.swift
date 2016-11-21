@@ -14,6 +14,7 @@ var screenSize: ScreenSize! = ScreenSize.init()
 
 public class ScreenSize {
     
+    
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
 }

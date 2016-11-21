@@ -42,10 +42,11 @@ class FirstScene: SKScene {
 
         startButton = SKSpriteNode(imageNamed: "rocket menu")
         startButton.position = CGPoint(x: 3*screenSize.width/4, y: screenSize.height/2)
+        startButton.zPosition = 2
         self.addChild(startButton)
         
         fire = SKSpriteNode(imageNamed: "fire rocket menu")
-        fire.position = CGPoint(x: startButton.position.x - startButton.frame.width/2, y: startButton.position.y + startButton.frame.height/2)
+        fire.position = CGPoint(x: startButton.position.x - startButton.frame.width/1.9, y: startButton.position.y - startButton.frame.height/8)
         self.addChild(fire)
         
         startLabel = SKLabelNode(fontNamed: "Futura")

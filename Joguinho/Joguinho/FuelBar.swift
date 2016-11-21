@@ -26,6 +26,7 @@ class FuelBar: Component {
     init(image: String?, spaceship: Spaceship) {
         
         super.init(imageNamed: image)
+        var proportional = screenSize.width/self.size.width
         print(spaceship.fuelLevel)
         self.spaceship = spaceship
         //spaceship.fuelLevel = Int(screenSize.width/2)
