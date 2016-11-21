@@ -11,8 +11,8 @@ import UIKit
 
 class FuelBar: Component {
     
-    var spaceship:Spaceship!
-    var pivo = screenSize.width/4 - 10
+    var spaceship: Spaceship!
+    var pivo = (screenSize.width/667) * (screenSize.width/4 - 10)
 
     
     func change(increase newValue: Int!) {
@@ -27,11 +27,10 @@ class FuelBar: Component {
         
         super.init(imageNamed: image)
         var proportional = screenSize.width/self.size.width
-        print(spaceship.fuelLevel)
         self.spaceship = spaceship
-        //spaceship.fuelLevel = Int(screenSize.width/2)
         self.size.width = CGFloat(spaceship.fuelLevel)
-        self.position = CGPoint(x: pivo + CGFloat(spaceship.fuelLevel/2), y: 7*screenSize.height/8)
+        self.position = CGPoint(x: (pivo + CGFloat(spaceship.fuelLevel/2)), y: 7*screenSize.height/8)
+        print(pivo + CGFloat(spaceship.fuelLevel/2))
         
        
     }
@@ -39,7 +38,8 @@ class FuelBar: Component {
     func finish() {
         spaceship.fuelLevel = 0
         self.size.width = CGFloat(spaceship.fuelLevel)
-        self.position = CGPoint(x: pivo + CGFloat(spaceship.fuelLevel/2), y: 7*screenSize.height/8)
+        self.position = CGPoint(x: (pivo + CGFloat(spaceship.fuelLevel/2)), y: 7*screenSize.height/8)
+        print(pivo + CGFloat(spaceship.fuelLevel/2))
     }
     
     required init?(coder aDecoder: NSCoder) {
