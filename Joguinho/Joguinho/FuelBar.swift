@@ -30,8 +30,11 @@ class FuelBar: Component {
     init(image: String?) {
         
         super.init(imageNamed: image)
-         self.qtd = 100
+        self.qtd = 100
         fuelSize = screenSize.width/2
+        //self.size.width = fuelSize
+        self.position = CGPoint(x: pivo + (fuelSize/2), y: 7*screenSize.height/8)
+        
        
     }
     

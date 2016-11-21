@@ -25,6 +25,7 @@ class SelectedPlanetScene: SKScene {
     var selectedPlanetClass: Planet!
     var textAboutPlanet:SKNode!
     var closeText:SKNode!
+    var descriptionLabel: SKLabelNode!
     
     override func didMove(to view: SKView) {
         
@@ -53,38 +54,44 @@ class SelectedPlanetScene: SKScene {
         planetLabel = SKLabelNode(fontNamed: "Futura-Bold")
         planetLabel.text = selectedPlanetClass.name.rawValue
         planetLabel.fontSize = 27
-        planetLabel.position = CGPoint(x: screenSize.width/2, y: 4*screenSize.height/5)
+        planetLabel.position = CGPoint(x: 0.95*screenSize.width/2, y: 4*screenSize.height/5)
         self.addChild(planetLabel)
+        
+        descriptionLabel = SKLabelNode(fontNamed: "Futura")
+        descriptionLabel.text = "the windiest planet"
+        descriptionLabel.fontSize = 20
+        descriptionLabel.position = CGPoint(x: planetLabel.position.x  + planetLabel.frame.width/2 + descriptionLabel.frame.width/2 + 15, y: planetLabel.position.y)
+        self.addChild(descriptionLabel)
         
         level1 = SKSpriteNode(imageNamed: "1")
         level1.position = CGPoint(x: 281 * size.width / 667, y: 220 * size.height / 375)
         self.addChild(level1)
         
-        level2 = SKSpriteNode(imageNamed: "2")
+        level2 = SKSpriteNode(imageNamed: "lock")
         level2.position = CGPoint(x: 378 * size.width / 667, y: 220 * size.height / 375)
         self.addChild(level2)
         
-        level3 = SKSpriteNode(imageNamed: "3")
+        level3 = SKSpriteNode(imageNamed: "lock")
         level3.position = CGPoint(x: 475 * size.width / 667, y: 220 * size.height / 375)
         self.addChild(level3)
         
-        level4 = SKSpriteNode(imageNamed: "4")
+        level4 = SKSpriteNode(imageNamed: "lock")
         level4.position = CGPoint(x: 572 * size.width / 667, y: 220 * size.height / 375)
         self.addChild(level4)
         
-        level5 = SKSpriteNode(imageNamed: "5")
+        level5 = SKSpriteNode(imageNamed: "lock")
         level5.position = CGPoint(x: 281 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level5)
         
-        level6 = SKSpriteNode(imageNamed: "6")
+        level6 = SKSpriteNode(imageNamed: "lock")
         level6.position = CGPoint(x: 378 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level6)
         
-        level7 = SKSpriteNode(imageNamed: "7")
+        level7 = SKSpriteNode(imageNamed: "lock")
         level7.position = CGPoint(x: 475 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level7)
         
-        level8 = SKSpriteNode(imageNamed: "8")
+        level8 = SKSpriteNode(imageNamed: "lock")
         level8.position = CGPoint(x: 572 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level8)
     }

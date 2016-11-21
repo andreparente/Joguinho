@@ -38,7 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var realgems:[Component] = [Component(imageNamed: "crystal")]
     var realFuelDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)]
     var realOxygenDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!)]
-     var pauseButton = Component(imageNamed: "pause")
+    var pauseButton = Component(imageNamed: "pause")
     var counter: CGFloat! = 0
     
     var numberOfGems:Int = 0
@@ -94,8 +94,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         progressBar.zPosition = 2
         progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
         insideProgressBar.zPosition = 3
-        insideProgressBar.qtd = 100
-        insideProgressBar.position = CGPoint(x: screenSize.width/2-60, y: 7*screenSize.height/8)
+        insideProgressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
+        insideProgressBar.size.width = progressBar.size.width
         addChild(insideProgressBar)
         addChild(progressBar)
     }

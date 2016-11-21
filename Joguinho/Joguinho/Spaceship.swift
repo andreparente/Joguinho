@@ -34,7 +34,7 @@ class Spaceship:Component {
     }
     func decreaseFuelLevel()
     {
-        self.fuelLevel = self.fuelLevel - 1
+        self.fuelLevel = self.fuelLevel - 2
     }
     
     func startMoment()

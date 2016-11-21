@@ -185,14 +185,14 @@
 			isa = PBXGroup;
 			children = (
 				8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */,
-				8AAEA7FA1DBA5CCC00B908A0 /* GameScene.swift */,
 				8AAEA7FC1DBA5CCC00B908A0 /* GameViewController.swift */,
 				9C4E27061DDCD8EB00DE549C /* FirstScene.swift */,
 				9C4E27081DDCD94C00DE549C /* PlanetsScene.swift */,
 				9C4E270A1DDCD96100DE549C /* SelectedPlanetScene.swift */,
-				9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */,
-				9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */,
+				8AAEA7FA1DBA5CCC00B908A0 /* GameScene.swift */,
 				9CB428001DDE2D4A0017E617 /* PauseScene.swift */,
+				9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */,
+				9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
