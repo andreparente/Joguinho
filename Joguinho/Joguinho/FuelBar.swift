@@ -11,31 +11,34 @@ import UIKit
 
 class FuelBar: Component {
     
-    var fuelSize: CGFloat!
+    var spaceship:Spaceship!
     var pivo = screenSize.width/4 - 10
-    var max: Int!
-    var min: Int! = 0
-    var qtd: Int!
 
     
     func change(increase newValue: Int!) {
 
-        fuelSize = fuelSize + CGFloat(newValue)
-        self.size.width = fuelSize
-        self.position = CGPoint(x: pivo + (fuelSize/2), y: 7*screenSize.height/8)
-        self.qtd = newValue
+        spaceship.fuelLevel = spaceship.fuelLevel + newValue
+        self.size.width = CGFloat(spaceship.fuelLevel)
+        self.position = CGPoint(x: pivo + CGFloat(spaceship.fuelLevel/2), y: 7*screenSize.height/8)
 
     }
     
-    init(image: String?) {
+    init(image: String?, spaceship: Spaceship) {
         
         super.init(imageNamed: image)
-        self.qtd = 100
-        fuelSize = screenSize.width/2
-        //self.size.width = fuelSize
-        self.position = CGPoint(x: pivo + (fuelSize/2), y: 7*screenSize.height/8)
+        print(spaceship.fuelLevel)
+        self.spaceship = spaceship
+        //spaceship.fuelLevel = Int(screenSize.width/2)
+        self.size.width = CGFloat(spaceship.fuelLevel)
+        self.position = CGPoint(x: pivo + CGFloat(spaceship.fuelLevel/2), y: 7*screenSize.height/8)
         
        
+    }
+    
+    func finish() {
+        spaceship.fuelLevel = 0
+        self.size.width = CGFloat(spaceship.fuelLevel)
+        self.position = CGPoint(x: pivo + CGFloat(spaceship.fuelLevel/2), y: 7*screenSize.height/8)
     }
     
     required init?(coder aDecoder: NSCoder) {

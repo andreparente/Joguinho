@@ -16,7 +16,7 @@ class Spaceship:Component {
     
     init(fuelLevel:Int) {
         self.fuelLevel  = fuelLevel
-         super.init(imageNamed: "rocket fase")
+        super.init(imageNamed: "rocket fase")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,7 +39,6 @@ class Spaceship:Component {
     
     func startMoment()
     {
-        self.fuelLevel = 100
         self.position = CGPoint(x: 50, y: 150)
         self.zPosition = 10
         self.physicsBody?.affectedByGravity = true

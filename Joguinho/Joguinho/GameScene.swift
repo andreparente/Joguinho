@@ -19,6 +19,7 @@ enum CollisionTypes: UInt32 {
     case gem = 16
 }
 
+//MUDAR ESSAPORRA
 var currentPlanet:Planet = Planet(name: PlanetName.Neptune, gravity: 1.115, type: PlanetType.gaseous)
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -27,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var level: Level!
     var background = Component(imageNamed:"background")
     var progressBar = Component(imageNamed: "fuelbar")
-    var insideProgressBar = FuelBar(image: "fuel")
+    var insideProgressBar: FuelBar!
     var surface: Component!
     var surface2: Component!
     var spaceship: Spaceship!
@@ -42,6 +43,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var counter: CGFloat! = 0
     
     var numberOfGems:Int = 0
+    
+    //MUDAR ESSA PORRA TBM, SKLABELNODE PLEASE
     var qtdFuel = UILabel(frame: CGRect(x: 250, y: 200, width: 200, height: 21))
     var fuelDropname : [String] = []
     var gemName : [String] = []
@@ -91,11 +94,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpFuelBar()
     {
+        insideProgressBar = FuelBar(image: "fuel", spaceship: self.spaceship)
         progressBar.zPosition = 2
         progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
         insideProgressBar.zPosition = 3
-        insideProgressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
-        insideProgressBar.size.width = progressBar.size.width
         addChild(insideProgressBar)
         addChild(progressBar)
     }
@@ -146,7 +148,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     counter = 0
                 }
                 insideProgressBar.change(increase: 6)
-                //insideProgressBar.qtd = insideProgressBar.qtd! + 3
                 qtdFuel.text = String(spaceship.fuelLevel)
                 fuelDropname.remove(at: index!)
             }
@@ -190,12 +191,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !(scene?.isPaused)!
         {
-            spaceship.spaceshipMovement()
-            spaceship.decreaseFuelLevel()
-            qtdFuel.text = String(spaceship.fuelLevel)
-            counter = counter + 1
-            insideProgressBar.change(increase: -2)
-            
             for touch in touches
             {
                 let location = touch.location(in: self)
@@ -211,11 +206,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scene1.scaleMode = .aspectFill
                     skView.presentScene(scene1, transition: transition)
 
+                } else {
+                    
+                    spaceship.spaceshipMovement()
+                    
+                    if insideProgressBar.spaceship.fuelLevel < 4 {
+                        insideProgressBar.finish()
+                    }else {
+                        insideProgressBar.change(increase: -4)
+                    }
+                    qtdFuel.text = String(spaceship.fuelLevel)
                 }
-                
             }
-            
-
         }
 }
 
@@ -387,7 +389,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func setUpPlayer() {
         if level.planet.type == .gaseous {
-            spaceship = Spaceship(fuelLevel: 100)
+            spaceship = Spaceship(fuelLevel: 350)
             addChild(spaceship)
         }
         else {
