@@ -49,7 +49,13 @@ class PlanetsScene: SKScene{
         
         
         //uranus
-        uranus = Component(imageNamed: "Uranus")
+   /*     uranus = Component(imageNamed: "Uranus")
+        uranus.position = CGPoint(x: 124.5 * size.width / 667, y: frame.size.height / 2)
+        uranus.size = CGSize(width: 51 * size.width / 667, height: 65 * size.height / 375)
+        addChild(uranus)
+ */
+        //Uranus blocked
+        uranus = Component(imageNamed: "uranusShade")
         uranus.position = CGPoint(x: 124.5 * size.width / 667, y: frame.size.height / 2)
         uranus.size = CGSize(width: 51 * size.width / 667, height: 65 * size.height / 375)
         addChild(uranus)
@@ -68,35 +74,62 @@ class PlanetsScene: SKScene{
 
         
         //jupiter
-        jupiter = Component(imageNamed: "Jupiter")
+     /*   jupiter = Component(imageNamed: "Jupiter")
         jupiter.position = CGPoint(x: 393 * size.width / 667, y: frame.size.height / 2)
         jupiter.size = CGSize(width: 140 * size.width / 667, height: 140 * size.height / 375)
         addChild(jupiter)
-        
+    */
+        //Jupiter blocked
+        jupiter = Component(imageNamed: "jupiterShade")
+        jupiter.position = CGPoint(x: 393 * size.width / 667, y: frame.size.height / 2)
+        jupiter.size = CGSize(width: 140 * size.width / 667, height: 140 * size.height / 375)
+        addChild(jupiter)
         //mars
-        mars = Component(imageNamed: "Mars")
+    /*    mars = Component(imageNamed: "Mars")
+        mars.position = CGPoint(x: 489.5 * size.width / 667, y: frame.size.height / 2)
+        mars.size = CGSize(width: 7 * size.width / 667, height: 7 * size.height / 375)
+        addChild(mars)
+    */
+        //Mars blocked
+        mars = Component(imageNamed: "marsShade")
         mars.position = CGPoint(x: 489.5 * size.width / 667, y: frame.size.height / 2)
         mars.size = CGSize(width: 7 * size.width / 667, height: 7 * size.height / 375)
         addChild(mars)
         
         //earth
-        earth = Component(imageNamed: "Earth")
+      /*  earth = Component(imageNamed: "Earth")
+        earth.position = CGPoint(x: 520.5 * size.width / 667, y: frame.size.height / 2)
+        earth.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
+        addChild(earth)
+     */
+        //Earth blocked
+        earth = Component(imageNamed: "terraShade")
         earth.position = CGPoint(x: 520.5 * size.width / 667, y: frame.size.height / 2)
         earth.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
         addChild(earth)
         
         //venus
-        venus = Component(imageNamed: "Venus")
+     /*   venus = Component(imageNamed: "Venus")
+        venus.position = CGPoint(x: 551.5 * size.width / 667, y: frame.size.height / 2)
+        venus.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
+        addChild(venus)
+       */
+        //Venus blocked
+        venus = Component(imageNamed: "venusShade")
         venus.position = CGPoint(x: 551.5 * size.width / 667, y: frame.size.height / 2)
         venus.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
         addChild(venus)
         
         //mercury
-        mercury = Component(imageNamed: "Mercury")
+      /*  mercury = Component(imageNamed: "Mercury")
         mercury.position = CGPoint(x: 580.5 * size.width / 667, y: frame.size.height / 2)
         mercury.size = CGSize(width: 5 * size.width / 667, height: 5 * size.height / 375)
         addChild(mercury)
-        
+     */
+        mercury = Component(imageNamed: "mercuryShade")
+        mercury.position = CGPoint(x: 580.5 * size.width / 667, y: frame.size.height / 2)
+        mercury.size = CGSize(width: 5 * size.width / 667, height: 5 * size.height / 375)
+        addChild(mercury)
         //sun
         let sun = SKSpriteNode(imageNamed: "Sun")
         sun.position = CGPoint(x: 844 * size.width / 667, y: frame.size.height / 2)
