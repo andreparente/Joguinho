@@ -51,6 +51,8 @@ class SelectedPlanetScene: SKScene {
         moreInfo.position = CGPoint(x: 60 * size.width / 667, y: 129 * size.height / 375)
         moreInfo.size = CGSize(width: 55 * size.width / 667, height: 55 * size.height / 375)
         self.addChild(moreInfo)
+        
+        
 
         planetLabel = SKLabelNode(fontNamed: "Futura-Bold")
         planetLabel.text = selectedPlanetClass.name.rawValue
