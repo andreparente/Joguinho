@@ -126,7 +126,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
-        
+        if k == 0
+        {
         if firstBody.categoryBitMask == CollisionTypes.player.rawValue && secondBody.categoryBitMask == CollisionTypes.fuelDrop.rawValue
         {
             let name1 = secondBody.node?.name
@@ -138,6 +139,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 insideProgressBar.change(increase: 6)
                 fuelDropname.remove(at: index!)
             }
+            k+=1
         }
         else
         {
@@ -152,6 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     print(numberOfGems)
                     gemName.remove(at: index!)
                 }
+                k+=1
             }
             else
             {
@@ -170,9 +173,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     {
                         print("Deu crash")
                     }
+                    k+=1
                 }
                 
             }
+        }
+    }
+        else
+        {
+            k = 0
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
