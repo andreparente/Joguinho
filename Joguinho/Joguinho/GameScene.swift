@@ -44,8 +44,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var numberOfGems:Int = 0
     
-    //MUDAR ESSA PORRA TBM, SKLABELNODE PLEASE
-    var qtdFuel = UILabel(frame: CGRect(x: 250, y: 200, width: 200, height: 21))
     var fuelDropname : [String] = []
     var gemName : [String] = []
 
@@ -83,10 +81,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             setUpOxygenDrops()
         }
-        qtdFuel.center = CGPoint(x:160, y:284)
-        qtdFuel.textAlignment = NSTextAlignment.center
-        qtdFuel.text = String(spaceship.fuelLevel)
-       // view.addSubview(qtdFuel)
         }
         scene?.isPaused = false
         
@@ -141,14 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if fuelDropname.contains(name1!)
             {
                 secondBody.node?.removeFromParent()
-                spaceship.increaseFuelLevel()
-                if counter >= 3 {
-                    counter = counter - 3
-                } else {
-                    counter = 0
-                }
                 insideProgressBar.change(increase: 6)
-                qtdFuel.text = String(spaceship.fuelLevel)
                 fuelDropname.remove(at: index!)
             }
         }
@@ -210,12 +197,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     spaceship.spaceshipMovement()
                     
-                    if insideProgressBar.spaceship.fuelLevel < 4 {
+                    if insideProgressBar.spaceship.fuelLevel < 2 {
                         insideProgressBar.finish()
-                    }else {
-                        insideProgressBar.change(increase: -4)
+                    } else {
+                        insideProgressBar.change(increase: -2)
                     }
-                    qtdFuel.text = String(spaceship.fuelLevel)
                 }
             }
         }
