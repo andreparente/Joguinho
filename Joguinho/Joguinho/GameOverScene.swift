@@ -53,10 +53,8 @@ class GameOverScene: SKScene
             {
                 if  self.nodes(at: location)[0] == self.menuButtton
                 {
-                    let transition = SKTransition.reveal(with: SKTransitionDirection.up, duration: 1.0)
-                    let planet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous) //Temporario.Tem que passar pra essa tela o planeta atual
-                    let  scene = SelectedPlanetScene()
-                    scene.selectedPlanetClass = planet
+                    let transition = SKTransition.fade(withDuration: 1.0)
+                    let  scene = PlanetsScene()
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = false
                     scene.size = skView.bounds.size

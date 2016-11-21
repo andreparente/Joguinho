@@ -27,6 +27,7 @@ class SelectedPlanetScene: SKScene {
     var closeText:SKNode!
     var descriptionLabel: SKLabelNode!
     
+    
     override func didMove(to view: SKView) {
         
         let size = view.frame.size
