@@ -16,6 +16,7 @@ class LevelCompletedScene: SKScene
     
     override func didMove(to view: SKView)
     {
+        userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         semibackground.size = CGSize(width:size.width, height:size.height)
         semibackground.zPosition = 0

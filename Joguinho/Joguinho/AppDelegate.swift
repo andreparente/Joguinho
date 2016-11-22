@@ -8,6 +8,8 @@
 
 import UIKit
 
+let userDefaults = UserDefaults.standard
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if userDefaults.data(forKey: "lastLevel") == nil
+        {
+            userDefaults.set(1, forKey: "lastLevel")
+            userDefaults.set(0, forKey: "coinsBalance")
+        }
         return true
     }
 
