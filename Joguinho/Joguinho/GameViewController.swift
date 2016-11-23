@@ -9,11 +9,8 @@
 import UIKit
 import SpriteKit
 import GameplayKit
-var levelId:Int = 1
 
-//Por enquanto spaceship,astronaut e o array de items são todos nil porque não criamos a loja do jogo ainda.
 
-var player = Player(coinsBalance: userDefaults.value(forKey: "coinsBalance") as! Int, lastLevel: userDefaults.value(forKey: "lastLevel") as! Int, spaceShip: nil, astronaut: nil, itens: nil)
 
 class GameViewController: UIViewController {
     
@@ -29,11 +26,7 @@ class GameViewController: UIViewController {
         super.viewWillLayoutSubviews()
         let skView = self.view as! SKView
         skView.ignoresSiblingOrder = false
-        //Aqui vai ter que apresentar a first Scene e depois as outras scenes navegam entre si
         self.menuScene = FirstScene(size: skView.frame.size)
-        self.scene = PlanetsScene(size: skView.frame.size)
-     //   self.scene = GameScene(size: skView.bounds.size,level:level)
-//        self.scene.scaleMode = .aspectFit
         skView.presentScene(menuScene)
         
     }

@@ -17,8 +17,7 @@ class Planet {
     var description: String!
     var index:PlanetIndex!
     
-    init(name:PlanetName,gravity:Double,type:PlanetType,index:PlanetIndex)
-    {
+    init(name:PlanetName,gravity:Double,type:PlanetType,index:PlanetIndex) {
         self.name = name
         self.gravity = gravity
         self.type = type

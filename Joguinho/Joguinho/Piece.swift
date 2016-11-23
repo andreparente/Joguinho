@@ -13,8 +13,7 @@ class Piece: Item {
     
     var pieceType: PieceType!
     
-    init(pieceType:PieceType)
-    {
+    init(pieceType:PieceType) {
         self.pieceType = pieceType
         
         switch pieceType.rawValue

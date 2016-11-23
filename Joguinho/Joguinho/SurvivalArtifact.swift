@@ -18,8 +18,7 @@ class SurvivalArtifact:Component {
     
     var type: Artifact!
     
-    init(type:Artifact)
-    {
+    init(type:Artifact) {
         self.type = type
         if type.rawValue == "Fuel"
         {

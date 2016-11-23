@@ -159,7 +159,7 @@ class PlanetsScene: SKScene{
                 self.scene?.view?.presentScene(nextScene, transition: transition2)
             }
             
-            if self.nodes(at: location)[0] == self.back{
+            if self.nodes(at: location)[0] == self.back { 
                 let scene = FirstScene()
                 let skView = self.view! as SKView
                 let transition = SKTransition.fade(withDuration: 1.0)

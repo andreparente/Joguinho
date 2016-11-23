@@ -11,12 +11,10 @@ import Foundation
 class Clothing: Item {
     
     var clothingType: ClothingType!
-    init(clothingType:ClothingType)
-    {
+    init(clothingType:ClothingType) {
         self.clothingType = clothingType
         
-        switch clothingType.rawValue
-        {
+        switch clothingType.rawValue {
         case "Helmet":
         super.init(price: 5, imageNamed: "Helmet")
         case "UpperBody":

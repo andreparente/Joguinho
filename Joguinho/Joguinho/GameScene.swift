@@ -8,23 +8,9 @@
 
 import SpriteKit
 import GameplayKit
-var j = 0
-var k = 0
-
-enum CollisionTypes: UInt32 {
-    case player = 1
-    case rock = 2
-    case fuelDrop = 4
-    case oxygenDrop = 8
-    case gem = 16
-}
-
-//MUDAR ESSAPORRA
-var currentPlanet:Planet = Planet(name: PlanetName.Neptune, gravity: 1.115, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var screenSize = UIScreen.main.bounds
     var level: Level!
     var background = Component(imageNamed:"background")
     var progressBar = Component(imageNamed: "fuelbar")
@@ -33,17 +19,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var surface2: Component!
     var spaceship: Spaceship!
     var astronaut: Astronaut!
-    let progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.bar)
     var rock1:Component = Component(imageNamed: "rock1")
     var realrocks:[Component] = [Component(imageNamed: "rock1")]
     var realgems:[Component] = [Component(imageNamed: "crystal")]
     var realFuelDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)]
     var realOxygenDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!)]
     var pauseButton = Component(imageNamed: "pause")
-    var counter: CGFloat! = 0
     
-    var numberOfGems:Int = 0
-    
+
     var fuelDropname : [String] = []
     var gemName : [String] = []
 
@@ -61,8 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        if !(background.parent == self)
-        {
+        if !(background.parent == self) {
         physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
         physicsWorld.contactDelegate = self
         
@@ -73,48 +55,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setPauseButton()
         setUpRocks()
         setUpGems()
-        if level.planet.type == PlanetType.gaseous
-        {
+        if level.planet.type == PlanetType.gaseous {
             setUpFuelDrops()
         }
-        else
-        {
+        else {
             setUpOxygenDrops()
         }
         }
         scene?.isPaused = false
         
     }
-    
-    func setUpFuelBar()
-    {
-        insideProgressBar = FuelBar(image: "fuel", spaceship: self.spaceship)
-        progressBar.zPosition = 2
-        progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
-        insideProgressBar.zPosition = 3
-        addChild(insideProgressBar)
-        addChild(progressBar)
-    }
-    func setPauseButton()
-    {
-        pauseButton.position = CGPoint(x: 7.5*screenSize.width/8, y: 7*screenSize.height/8)
-        pauseButton.zPosition = 4
-        addChild(pauseButton)
-       
-    }
-    func pressedPause()
-    {
-        if j == 0
-        {
-            scene?.view?.isPaused = true
-            j+=1
-        }
-        else
-        {
-            scene?.view?.isPaused = false
-            j = 0
-        }
-    }
+ 
+
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
@@ -126,64 +78,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
-        if k == 0
-        {
-        if firstBody.categoryBitMask == CollisionTypes.player.rawValue && secondBody.categoryBitMask == CollisionTypes.fuelDrop.rawValue
-        {
+        if firstBody.categoryBitMask == CollisionTypes.player.rawValue {
+        switch secondBody.categoryBitMask {
+        case CollisionTypes.fuelDrop.rawValue:
             let name1 = secondBody.node?.name
             let index = fuelDropname.index(of: name1!)
             
-            if fuelDropname.contains(name1!)
-            {
+            if fuelDropname.contains(name1!) {
                 secondBody.node?.removeFromParent()
                 insideProgressBar.change(increase: 6)
                 fuelDropname.remove(at: index!)
             }
             k+=1
-        }
-        else
-        {
-            if firstBody.categoryBitMask == CollisionTypes.player.rawValue && secondBody.categoryBitMask == CollisionTypes.gem.rawValue
-            {
-                let name1 = secondBody.node?.name
-                let index = gemName.index(of: name1!)
-                if gemName.contains(name1!)
-                {
-                    secondBody.node?.removeFromParent()
-                    userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int + 1, forKey: "coinsBalance")
-                    player.coinsBalance = userDefaults.value(forKey: "coinsBalance") as! Int
-                    gemName.remove(at: index!)
-                }
-                k+=1
+        case  CollisionTypes.gem.rawValue:
+            let name1 = secondBody.node?.name
+            let index = gemName.index(of: name1!)
+            if gemName.contains(name1!) {
+                secondBody.node?.removeFromParent()
+                userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int + 1, forKey: "coinsBalance")
+                player.coinsBalance = userDefaults.value(forKey: "coinsBalance") as! Int
+                gemName.remove(at: index!)
             }
-            else
-            {
-                if firstBody.categoryBitMask == CollisionTypes.player.rawValue && secondBody.categoryBitMask == CollisionTypes.rock.rawValue
-                {
-                    print("Bateu na pedra e morreu")
-                    let  scene = GameOverScene()
-                    if let skView = self.view! as SKView?
-                    {
-                    skView.ignoresSiblingOrder = false
-                    scene.size = skView.bounds.size
-                    scene.scaleMode = .aspectFill
-                    skView.presentScene(scene)
-                    }
-                    else
-                    {
-                        print("Deu crash")
-                    }
-                    k+=1
-                }
-                
-            }
+            k+=1
+         case CollisionTypes.rock.rawValue:
+            print("Bateu na pedra e morreu")
+            actWhenDead()
+            k+=1
+        default:
+        break
         }
     }
-        else
-        {
-            k = 0
-        }
-    }
+}
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !(scene?.isPaused)!
         {
@@ -217,68 +144,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 }
 
     override func update(_ currentTime: TimeInterval) {
-        if !(scene?.isPaused)!
-        {
+        if !(scene?.isPaused)! {
             surface.position = CGPoint(x:surface.position.x - 5,y:surface.position.y)
             surface2.position = CGPoint(x:surface2.position.x - 5,y:surface2.position.y)
             
-            if surface.position.x <= -surface.size.width
-            {
+            if surface.position.x <= -surface.size.width {
                 surface.position = CGPoint(x:surface2.position.x + surface2.size.width,y:surface.position.y)
             }
-            if surface2.position.x <= -surface2.size.width
-            {
+            if surface2.position.x <= -surface2.size.width {
                 surface2.position = CGPoint(x:surface.position.x + surface.size.width,y:surface2.position.y)
             }
-            for rock in realrocks
-            {
-                let rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
-                rock.run(rockMove3)
-            }
-            for gem in realgems
-            {
-                let gemMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
-                gem.run(gemMove)
-            }
-            for fuelDrop in realFuelDrops
-            {
-                let fuelMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
-                fuelDrop.run(fuelMove)
-            }
-            if isDead()
-             {
-                let transition = SKTransition.fade(withDuration: 1.0)
-                let  scene = GameOverScene()
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = false
-                scene.size = skView.bounds.size
-                scene.scaleMode = .aspectFill
-               skView.presentScene(scene, transition: transition)
-             }
+            
+            setUpActionsForComponents()
+            
+        if isDead() {
+                actWhenDead()
         }
-        if spaceship.fuelLevel <= 0
-        {
-            let transition = SKTransition.fade(withDuration: 1.0)
-            let  scene = GameOverScene()
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = false
-            scene.size = skView.bounds.size
-            scene.scaleMode = .aspectFill
-            skView.presentScene(scene, transition: transition)
         }
-        if spaceship.position.x > realgems[realgems.count-1].position.x && spaceship.position.y > realgems[realgems.count-1].position.y
-        {
-             let transition = SKTransition.fade(withDuration: 1.0)
-            let  scene = LevelCompletedScene()
-            scene.level = self.level.id
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = false
-            scene.size = skView.bounds.size
-            scene.scaleMode = .aspectFill
-            skView.presentScene(scene, transition: transition)
-
+        if (spaceship.position.x > realgems[realgems.count-1].position.x && spaceship.position.y > realgems[realgems.count-1].position.y) || (spaceship.position.x > realrocks[realrocks.count - 1].position.x && spaceship.position.y > realrocks[realrocks.count - 1].position.y) {
+            
+             actWhenCompletedLevel()
         }
     }
+    
+    
+//Funções auxiliares da classe
     
     func setUpInicialScene() {
         background.anchorPoint = CGPoint(x: 0, y: 0)
@@ -299,11 +189,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(surface2)
         
     }
-    func setUpRocks()
-    {
+    
+    
+    func setUpFuelBar() {
+        insideProgressBar = FuelBar(image: "fuel", spaceship: self.spaceship)
+        progressBar.zPosition = 11
+        progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
+        insideProgressBar.zPosition = 12
+        addChild(insideProgressBar)
+        addChild(progressBar)
+    }
+    
+    func setPauseButton() {
+        pauseButton.position = CGPoint(x: 7.5*screenSize.width/8, y: 7*screenSize.height/8)
+        pauseButton.zPosition = 4
+        addChild(pauseButton)
+        
+    }
+    
+    func pressedPause() {
+        if j == 0 {
+            scene?.view?.isPaused = true
+            j+=1
+        }
+        else {
+            scene?.view?.isPaused = false
+            j = 0
+        }
+    }
+    
+    func setUpRocks() {
         realrocks.removeAll()
-        for i in 0...level.rocks.count - 1
-        {
+        for i in 0...level.rocks.count - 1 {
             realrocks.append(Component(imageNamed: "rock1"))
             realrocks[i].name = "Rock\(i)"
             realrocks[i].position = level.rocks[i]
@@ -318,12 +235,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(realrocks[i])
         }
     }
-    func setUpGems()
-    {
+    
+    
+    func setUpGems() {
         
         realgems.removeAll()
-        for i in 0...level.gems.count - 1
-        {
+        for i in 0...level.gems.count - 1 {
             realgems.append(Component(imageNamed: "crystal"))
             realgems[i].name = "Gem\(i)"
             gemName.append(realgems[i].name!)
@@ -341,12 +258,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
-    func setUpFuelDrops()
-    {
+    
+    
+    func setUpFuelDrops() {
         
         realFuelDrops.removeAll()
-        for i in 0...level.fueldrops.count - 1
-        {
+        for i in 0...level.fueldrops.count - 1 {
             realFuelDrops.append(SurvivalArtifact(type: Artifact(rawValue: "Fuel")!))
             realFuelDrops[i].name = "FuelDrop\(i)"
             fuelDropname.append(realFuelDrops[i].name!)
@@ -362,11 +279,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
-    func setUpOxygenDrops()
-    {
+    
+    
+    func setUpOxygenDrops() {
         realOxygenDrops.removeAll()
-        for i in 0...level.oxygendrops.count - 1
-        {
+        for i in 0...level.oxygendrops.count - 1 {
             realOxygenDrops.append(SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!))
             realrocks[i].name = "OxygenDrop\(i)"
             realOxygenDrops[i].position = level.oxygendrops[i]
@@ -383,6 +300,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
+    
+    
     func setUpPlayer() {
         if level.planet.type == .gaseous {
             spaceship = Spaceship(fuelLevel: 350)
@@ -394,12 +313,56 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    
+    func setUpActionsForComponents() {
+        for rock in realrocks {
+            let rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+            rock.run(rockMove3)
+        }
+        for gem in realgems {
+            let gemMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+            gem.run(gemMove)
+        }
+        for fuelDrop in realFuelDrops {
+            let fuelMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+            fuelDrop.run(fuelMove)
+        }
+
+    }
+    
     func isDead() -> Bool {
         if spaceship.position.y < 0 || spaceship.position.y > UIScreen.main.bounds.height {
             return true
         }
-        else {
-            return false
+        if spaceship.fuelLevel <= 0 {
+            return true
         }
+
+         return false
     }
+    
+    
+    func actWhenDead() {
+        let transition = SKTransition.fade(withDuration: 1.0)
+        let  scene = GameOverScene()
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = false
+        scene.size = skView.bounds.size
+        scene.scaleMode = .aspectFill
+        skView.presentScene(scene, transition: transition)
+
+    }
+    
+    
+    func actWhenCompletedLevel() {
+        let transition = SKTransition.fade(withDuration: 1.0)
+        let  scene = LevelCompletedScene()
+        scene.level = self.level.id
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = false
+        scene.size = skView.bounds.size
+        scene.scaleMode = .aspectFill
+        skView.presentScene(scene, transition: transition)
+    }
+    
 }

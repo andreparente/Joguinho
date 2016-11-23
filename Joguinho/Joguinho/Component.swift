@@ -12,8 +12,7 @@ import SpriteKit
 class Component:SKSpriteNode
 {
     var imageNamed:String?
-    init(imageNamed:String?)
-    {
+    init(imageNamed:String?) {
         self.imageNamed = imageNamed
         let texture = SKTexture(imageNamed: imageNamed!)
         super.init(texture: texture, color: UIColor.blue, size: texture.size())

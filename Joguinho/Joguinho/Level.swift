@@ -13,29 +13,25 @@ class Level
 {
     var rocks:[CGPoint]!
     var gems:[CGPoint]!
-     var fueldrops:[CGPoint]!
-     var oxygendrops:[CGPoint]!
+    var fueldrops:[CGPoint]!
+    var oxygendrops:[CGPoint]!
     var planet:Planet!
     var id: Int!
     
-    init(id:Int!,planet:Planet)
-    {
+    init(id:Int!,planet:Planet) {
 
         self.id = id
         self.planet = planet
         self.rocks = []
         self.gems = []
         
-        if planet.type.rawValue == "Gaseous"
-        {
+        if planet.type.rawValue == "Gaseous" {
             self.fueldrops = []
         }
-        else
-        {
+        else {
             self.oxygendrops = []
         }
-        switch planet.name.rawValue
-        {
+        switch planet.name.rawValue {
             case "Neptune":
             createLevelNeptune()
             case "Uranus":
@@ -58,8 +54,7 @@ class Level
     }
     
   
-    func createLevelNeptune()
-    {
+    func createLevelNeptune() {
         switch self.id {
         case 1:
             self.rocks.append(CGPoint(x: 500, y: 55))
@@ -67,7 +62,7 @@ class Level
             self.rocks.append(CGPoint(x: 1500, y: 75))
             self.rocks.append(CGPoint(x: 2000, y: 200))
             self.rocks.append(CGPoint(x: 1700, y: 175))
-            self.rocks.append(CGPoint(x: 2200, y: 235))
+            self.rocks.append(CGPoint(x: 2000, y: 205))
             self.rocks.append(CGPoint(x: 2200, y: 235))
             self.rocks.append(CGPoint(x: 2500, y: 150))
             self.rocks.append(CGPoint(x: 3200, y: 175))
@@ -85,44 +80,62 @@ class Level
             self.fueldrops.append(CGPoint(x: 550, y: 125))
             self.fueldrops.append(CGPoint(x: 1200, y: 235))
             self.fueldrops.append(CGPoint(x: 3850, y: 145))
-    
+        case 2:
+            self.rocks.append(CGPoint(x: 300, y: 155))
+            self.rocks.append(CGPoint(x: 800, y: 200))
+            self.rocks.append(CGPoint(x: 1100, y: 45))
+            self.rocks.append(CGPoint(x: 1400, y: 170))
+            self.rocks.append(CGPoint(x: 1700, y: 220))
+            self.rocks.append(CGPoint(x: 2000, y: 235))
+            self.rocks.append(CGPoint(x: 2250, y: 135))
+            self.rocks.append(CGPoint(x: 2500, y: 170))
+            self.rocks.append(CGPoint(x: 3000, y: 275))
+            self.rocks.append(CGPoint(x: 3400, y: 240))
+            self.rocks.append(CGPoint(x: 3850, y: 129))
+            self.rocks.append(CGPoint(x: 4250, y: 200))
+            self.rocks.append(CGPoint(x: 4400, y: 190))
+            self.rocks.append(CGPoint(x: 4800, y: 200))
+            self.gems.append(CGPoint(x: 600, y: 125))
+            self.gems.append(CGPoint(x: 1300, y: 79))
+            self.gems.append(CGPoint(x: 1650, y: 210))
+            self.gems.append(CGPoint(x: 2000, y: 70))
+            self.gems.append(CGPoint(x: 3000, y: 225))
+            self.gems.append(CGPoint(x: 5500, y: 55))
+            self.fueldrops.append(CGPoint(x: 950, y: 215))
+            self.fueldrops.append(CGPoint(x: 1600, y: 110))
+            self.fueldrops.append(CGPoint(x: 2750, y: 145))
+            self.fueldrops.append(CGPoint(x: 4100, y: 175))
+
         default:
             break
         }
     }
     
-    func createLevelUranus()
-    {
+    func createLevelUranus() {
         
     }
     
-    func createLevelSaturn()
-    {
+    func createLevelSaturn() {
         
     }
     
-    func createLevelJupiter()
-    {
+    func createLevelJupiter() {
         
     }
     
-    func createLevelMars()
-    {
+    func createLevelMars() {
         
     }
     
-    func createLevelEarth()
-    {
+    func createLevelEarth() {
         
     }
     
-    func createLevelVenus()
-    {
+    func createLevelVenus() {
         
     }
     
-    func createLevelMercury()
-    {
+    func createLevelMercury() {
         
     }
     

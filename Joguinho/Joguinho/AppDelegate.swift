@@ -8,8 +8,7 @@
 
 import UIKit
 
-let userDefaults = UserDefaults.standard
-var levels:[[String]] = [[]]
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,17 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if userDefaults.value(forKey: "lastLevel") == nil
-        {
+        if userDefaults.value(forKey: "lastLevel") == nil {
             userDefaults.set(1, forKey: "lastLevel")
             userDefaults.set(0, forKey: "coinsBalance")
         }
         
-        if userDefaults.value(forKey: "levels") == nil
-        {
+        if userDefaults.value(forKey: "levels") == nil {
         levels.removeAll()
-           for _ in 0...7
-          {
+           for _ in 0...7 {
             levels.append(["lock","lock","lock","lock","lock","lock","lock","lock"])
          }
            

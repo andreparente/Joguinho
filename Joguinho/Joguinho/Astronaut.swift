@@ -23,16 +23,13 @@ class Astronaut: Component {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func changeClothes()
-    {
+    func changeClothes() {
         
     }
-    func increaseOxygenLevel()
-    {
+    func increaseOxygenLevel() {
         self.oxygenLevel = self.oxygenLevel + 10
     }
-    func decreaseOxygenLevel()
-    {
+    func decreaseOxygenLevel() {
         self.oxygenLevel = self.oxygenLevel - 1
     }
 }

@@ -23,22 +23,18 @@ class Spaceship:Component {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func changePieces()
-    {
+    func changePieces() {
         
     }
     
-    func increaseFuelLevel()
-    {
+    func increaseFuelLevel() {
         self.fuelLevel = self.fuelLevel + 10
     }
-    func decreaseFuelLevel()
-    {
+    func decreaseFuelLevel() {
         self.fuelLevel = self.fuelLevel - 2
     }
     
-    func startMoment()
-    {
+    func startMoment() {
         self.position = CGPoint(x: 50, y: 150)
         self.zPosition = 10
         self.physicsBody?.affectedByGravity = true
@@ -53,14 +49,8 @@ class Spaceship:Component {
        
     }
     
-    func spaceshipMovement()
-    {
+    func spaceshipMovement() {
         let spaceshipMove = SKAction.applyImpulse(CGVector(dx: 0, dy: 5), duration: 0.1)
         self.run(spaceshipMove)
     }
-    
-   
 }
-
-
-

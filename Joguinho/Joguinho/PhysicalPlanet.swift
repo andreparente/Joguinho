@@ -12,8 +12,7 @@ class PhysicalPlanet: Component {
     
     var planetSize: Double!
     
-    init(planetSize:Double,planetName:PlanetName)
-    {
+    init(planetSize:Double,planetName:PlanetName) {
         self.planetSize = planetSize
         super.init(imageNamed: planetName.rawValue)
     }
@@ -23,8 +22,7 @@ class PhysicalPlanet: Component {
     }
 }
 
-enum PlanetName:String
-{
+enum PlanetName:String {
     case Sun  = "Sun"
     case Mercury = "Mercury"
     case Venus = "Venus"
@@ -36,8 +34,7 @@ enum PlanetName:String
     case Neptune = "Neptune"
 }
 
-enum PlanetIndex:Int
-{
+enum PlanetIndex:Int {
     case Mercury = 7
     case Venus = 6
     case Earth = 5
