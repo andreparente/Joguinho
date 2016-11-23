@@ -12,6 +12,7 @@
 		496EFB471DD3BB2300A7B163 /* Futura.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 496EFB461DD3BABC00A7B163 /* Futura.ttc */; };
 		8A61114A1DDCA79900D6109D /* FuelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6111491DDCA79900D6109D /* FuelBar.swift */; };
 		8A61114C1DDCAB1C00D6109D /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */; };
+		8A78FA8D1DE6556300276774 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A78FA8B1DE6556300276774 /* Model.xcdatamodeld */; };
 		8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */; };
 		8AAEA7F71DBA5CCC00B908A0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */; };
 		8AAEA7F91DBA5CCC00B908A0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8AAEA7F81DBA5CCC00B908A0 /* Actions.sks */; };
@@ -64,6 +65,7 @@
 		496EFB461DD3BABC00A7B163 /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
 		8A6111491DDCA79900D6109D /* FuelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuelBar.swift; sourceTree = "<group>"; };
 		8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		8A78FA8C1DE6556300276774 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8AAEA7F11DBA5CCC00B908A0 /* Joguinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joguinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AAEA7F61DBA5CCC00B908A0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -155,7 +157,6 @@
 		8AAEA7F31DBA5CCC00B908A0 /* Joguinho */ = {
 			isa = PBXGroup;
 			children = (
-				496EFB451DD3BA9200A7B163 /* Fonts */,
 				8AAEA82C1DBA5D5400B908A0 /* Model */,
 				8AAEA82B1DBA5D4C00B908A0 /* View */,
 				8AAEA8291DBA5D3100B908A0 /* Controller */,
@@ -213,6 +214,7 @@
 		8AAEA82C1DBA5D5400B908A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				496EFB451DD3BA9200A7B163 /* Fonts */,
 				9CAB538C1DE64284006F9788 /* GlobalVariables.swift */,
 				8AAEA8431DC10E7700B908A0 /* Database */,
 				8AAEA8421DC10E6E00B908A0 /* Classes */,
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				8AAEA8441DC112F500B908A0 /* DAO.swift */,
+				8A78FA8B1DE6556300276774 /* Model.xcdatamodeld */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				8AAEA7F51DBA5CCC00B908A0 /* AppDelegate.swift in Sources */,
 				8AAEA8381DBA770500B908A0 /* Clothing.swift in Sources */,
 				8AAEA8451DC112F500B908A0 /* DAO.swift in Sources */,
+				8A78FA8D1DE6556300276774 /* Model.xcdatamodeld in Sources */,
 				9C9BE4A71DD63E4400561120 /* Level.swift in Sources */,
 				8AAEA82E1DBA5D6900B908A0 /* Planet.swift in Sources */,
 			);
@@ -683,6 +687,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8A78FA8B1DE6556300276774 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8A78FA8C1DE6556300276774 /* Model.xcdatamodel */,
+			);
+			currentVersion = 8A78FA8C1DE6556300276774 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8AAEA7E91DBA5CCC00B908A0 /* Project object */;
 }
