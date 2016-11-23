@@ -161,7 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 actWhenDead()
         }
         }
-        if (spaceship.position.x > realgems[realgems.count-1].position.x && spaceship.position.y > realgems[realgems.count-1].position.y) || (spaceship.position.x > realrocks[realrocks.count - 1].position.x && spaceship.position.y > realrocks[realrocks.count - 1].position.y) {
+        if spaceship.position.x > realgems[realgems.count-1].position.x || spaceship.position.x > realrocks[realrocks.count - 1].position.x {
             
              actWhenCompletedLevel()
         }
