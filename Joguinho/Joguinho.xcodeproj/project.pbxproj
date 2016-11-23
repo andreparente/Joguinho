@@ -195,7 +195,6 @@
 				9CB428001DDE2D4A0017E617 /* PauseScene.swift */,
 				9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */,
 				9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */,
-				9CAB538C1DE64284006F9788 /* GlobalVariables.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -214,6 +213,7 @@
 		8AAEA82C1DBA5D5400B908A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9CAB538C1DE64284006F9788 /* GlobalVariables.swift */,
 				8AAEA8431DC10E7700B908A0 /* Database */,
 				8AAEA8421DC10E6E00B908A0 /* Classes */,
 			);
