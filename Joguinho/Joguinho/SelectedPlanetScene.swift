@@ -67,35 +67,50 @@ class SelectedPlanetScene: SKScene {
         self.addChild(descriptionLabel)
         
         
-        level1 = SKSpriteNode(imageNamed: "1")
+        level1 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][0])
+        
+        
+        level2 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][1])
+       
+        
+        level3 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][2])
+            
+        level4 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][3])
+       
+        
+        level5 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][4])
+        
+        
+        level6 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][5])
+        
+        
+        level7 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][6])
+        
+        
+        level8 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][7])
+        
+        
         level1.position = CGPoint(x: 281 * size.width / 667, y: 220 * size.height / 375)
         self.addChild(level1)
         
-        level2 = SKSpriteNode(imageNamed: "lock")
         level2.position = CGPoint(x: 378 * size.width / 667, y: 220 * size.height / 375)
         self.addChild(level2)
         
-        level3 = SKSpriteNode(imageNamed: "lock")
         level3.position = CGPoint(x: 475 * size.width / 667, y: 220 * size.height / 375)
         self.addChild(level3)
         
-        level4 = SKSpriteNode(imageNamed: "lock")
         level4.position = CGPoint(x: 572 * size.width / 667, y: 220 * size.height / 375)
         self.addChild(level4)
         
-        level5 = SKSpriteNode(imageNamed: "lock")
         level5.position = CGPoint(x: 281 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level5)
         
-        level6 = SKSpriteNode(imageNamed: "lock")
         level6.position = CGPoint(x: 378 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level6)
         
-        level7 = SKSpriteNode(imageNamed: "lock")
         level7.position = CGPoint(x: 475 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level7)
         
-        level8 = SKSpriteNode(imageNamed: "lock")
         level8.position = CGPoint(x: 572 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level8)
         
