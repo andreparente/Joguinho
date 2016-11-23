@@ -20,6 +20,8 @@ class LevelCompletedScene: SKScene
         player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
         levels[currentPlanet.index.rawValue][userDefaults.value(forKey: "lastLevel") as! Int - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int)
         userDefaults.set(levels, forKey: "levels")
+        print(levels)
+        print(userDefaults.value(forKey: "levels") as! [[String]])
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         semibackground.size = CGSize(width:size.width, height:size.height)
         semibackground.zPosition = 0

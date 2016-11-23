@@ -71,7 +71,7 @@ class SelectedPlanetScene: SKScene {
         
         
         level2 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][1])
-       
+       print(levels[currentPlanet.index.rawValue][1])
         
         level3 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][2])
             
