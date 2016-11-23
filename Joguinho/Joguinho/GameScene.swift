@@ -270,6 +270,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
              let transition = SKTransition.fade(withDuration: 1.0)
             let  scene = LevelCompletedScene()
+            scene.level = self.level.id
             let skView = self.view! as SKView
             skView.ignoresSiblingOrder = false
             scene.size = skView.bounds.size

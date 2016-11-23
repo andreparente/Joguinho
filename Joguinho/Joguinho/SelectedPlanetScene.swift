@@ -42,7 +42,7 @@ class SelectedPlanetScene: SKScene {
         back.size = CGSize(width: 58 * size.width / 667, height: 22 * size.height / 375)
         self.addChild(back)
 
-        selectedPlanet = SKSpriteNode(imageNamed: "BigNeptune")
+        selectedPlanet = SKSpriteNode(imageNamed: selectedPlanetClass.name.rawValue)
         selectedPlanet.position = CGPoint(x: 116 * size.width / 667, y: 220 * size.height / 375)
         selectedPlanet.size = CGSize(width: 188 * size.width / 667, height: 188 * size.height / 375)
         self.addChild(selectedPlanet)
