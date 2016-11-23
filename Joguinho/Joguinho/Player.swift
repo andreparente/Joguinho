@@ -10,13 +10,13 @@ import Foundation
 
 class Player {
     
-    var coinsBalance: Double!
+    var coinsBalance: Int!
     var lastLevel: Int!
     var spaceShip: Spaceship!
     var astronaut: Astronaut!
     var itens: [Item]!
     
-    init(coinsBalance:Double,lastLevel:Int,spaceShip:Spaceship,astronaut:Astronaut,itens:[Item])
+    init(coinsBalance:Int,lastLevel:Int,spaceShip:Spaceship?,astronaut:Astronaut?,itens:[Item]?)
     {
         self.coinsBalance = coinsBalance
         self.lastLevel = lastLevel

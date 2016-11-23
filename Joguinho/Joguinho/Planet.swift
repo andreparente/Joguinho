@@ -15,12 +15,14 @@ class Planet {
     var gravity: Double!
     var type: PlanetType!
     var description: String!
+    var index:PlanetIndex!
     
-    init(name:PlanetName,gravity:Double,type:PlanetType)
+    init(name:PlanetName,gravity:Double,type:PlanetType,index:PlanetIndex)
     {
         self.name = name
         self.gravity = gravity
         self.type = type
+        self.index = index
     }
     
 }

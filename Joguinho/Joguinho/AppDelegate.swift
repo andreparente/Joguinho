@@ -9,19 +9,34 @@
 import UIKit
 
 let userDefaults = UserDefaults.standard
+var levels:[[String]] = [[]]
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         if userDefaults.data(forKey: "lastLevel") == nil
         {
             userDefaults.set(1, forKey: "lastLevel")
             userDefaults.set(0, forKey: "coinsBalance")
+        }
+        
+        if userDefaults.data(forKey: "levels") == nil
+        {
+        levels.removeAll()
+           for _ in 0...7
+          {
+            levels.append(["lock","lock","lock","lock","lock","lock","lock","lock"])
+         }
+           
+            levels[0][0] = "1"
+            
+            print("\(levels) \n")
+            
+            userDefaults.set(levels, forKey: "levels")
         }
         return true
     }

@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+
 class SelectedPlanetScene: SKScene {
 
     var level1: SKNode!
@@ -31,7 +32,6 @@ class SelectedPlanetScene: SKScene {
     override func didMove(to view: SKView) {
         
         let size = view.frame.size
-        
         let background = SKSpriteNode(imageNamed: "background")
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
@@ -65,6 +65,7 @@ class SelectedPlanetScene: SKScene {
         descriptionLabel.fontSize = 20
         descriptionLabel.position = CGPoint(x: planetLabel.position.x  + planetLabel.frame.width/2 + descriptionLabel.frame.width/2 + 15, y: planetLabel.position.y)
         self.addChild(descriptionLabel)
+        
         
         level1 = SKSpriteNode(imageNamed: "1")
         level1.position = CGPoint(x: 281 * size.width / 667, y: 220 * size.height / 375)

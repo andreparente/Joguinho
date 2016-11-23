@@ -11,6 +11,10 @@ import SpriteKit
 import GameplayKit
 var levelId:Int = 1
 
+//Por enquanto spaceship,astronaut e o array de items são todos nil porque não criamos a loja do jogo ainda.
+
+var player = Player(coinsBalance: userDefaults.value(forKey: "coinsBalance") as! Int, lastLevel: userDefaults.value(forKey: "lastLevel") as! Int, spaceShip: nil, astronaut: nil, itens: nil)
+
 class GameViewController: UIViewController {
     
     var scene:PlanetsScene!

@@ -150,7 +150,7 @@ class PlanetsScene: SKScene{
             if neptune.contains(location) {
                 print("tapped Neptune!")
                 
-                let planet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous)
+                let planet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
                 let transition = SKTransition.reveal(with: SKTransitionDirection.up, duration: 1.0)
                 let transition2 = SKTransition.doorway(withDuration: 1.0)
                 let nextScene = SelectedPlanetScene(size: self.size)

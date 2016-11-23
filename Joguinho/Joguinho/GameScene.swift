@@ -20,7 +20,7 @@ enum CollisionTypes: UInt32 {
 }
 
 //MUDAR ESSAPORRA
-var currentPlanet:Planet = Planet(name: PlanetName.Neptune, gravity: 1.115, type: PlanetType.gaseous)
+var currentPlanet:Planet = Planet(name: PlanetName.Neptune, gravity: 1.115, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -150,8 +150,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if gemName.contains(name1!)
                 {
                     secondBody.node?.removeFromParent()
-                    numberOfGems += 1
-                    print(numberOfGems)
+                    userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int + 1, forKey: "coinsBalance")
+                    player.coinsBalance = userDefaults.value(forKey: "coinsBalance") as! Int
                     gemName.remove(at: index!)
                 }
                 k+=1
