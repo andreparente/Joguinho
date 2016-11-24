@@ -74,7 +74,8 @@ class LevelCompletedScene: SKScene
                 //Esse if aqui é só pra não dar crash por enquanto que não tem level 3
                 if levelId == 1
                 {
-                let level = Level(id: levelId + 1, planet: currentPlanet)
+                levelId += 1
+                let level = Level(id: levelId , planet: currentPlanet)
                 let  scene = GameScene(size: self.size, level: level)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = false

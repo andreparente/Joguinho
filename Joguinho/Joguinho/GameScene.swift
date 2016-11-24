@@ -99,6 +99,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 player.coinsBalance = userDefaults.value(forKey: "coinsBalance") as! Int
                 gemName.remove(at: index!)
             }
+            if secondBody.node?.name == realgems[realgems.count - 1].name
+            {
+                actWhenCompletedLevel()
+            }
             k+=1
          case CollisionTypes.rock.rawValue:
             print("Bateu na pedra e morreu")
@@ -113,7 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let action = SKAction.rotate(toAngle: -0.3, duration: 0.5)
+        let action = SKAction.rotate(toAngle: -0.4, duration: 0.5)
         spaceship.run(action)
     }
     
@@ -169,7 +173,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 actWhenDead()
         }
         }
-        if spaceship.position.x > realgems[realgems.count-1].position.x || spaceship.position.x > realrocks[realrocks.count - 1].position.x {
+        if spaceship.position.x > realgems[realgems.count-1].position.x {
             
              actWhenCompletedLevel()
         }
@@ -249,6 +253,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         realgems.removeAll()
         for i in 0...level.gems.count - 1 {
+           
             realgems.append(Component(imageNamed: "crystal"))
             realgems[i].name = "Gem\(i)"
             gemName.append(realgems[i].name!)
@@ -261,7 +266,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realgems[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue
             realgems[i].physicsBody?.collisionBitMask = 0
             
-            
+            if i == level.gems.count - 1
+            {
+                realgems[i].size = CGSize(width: screenSize.width/2, height: screenSize.height/2)
+            }
             self.addChild(realgems[i])
         }
     }
