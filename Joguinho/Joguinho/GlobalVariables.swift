@@ -38,3 +38,45 @@ enum CollisionTypes: UInt32 {
     case oxygenDrop = 8
     case gem = 16
 }
+
+func getArrayPlanets() -> [Planet] {
+    
+    var planetsAux: [Planet]
+    var neptune,uranus,saturn,jupiter,mars,earth,venus,mercury: Planet
+    
+    neptune = Planet(name: PlanetName.Neptune, gravity: 0, type: PlanetType.gaseous, index: PlanetIndex.Neptune)
+    neptune.info = "texto falando sobre netuno"
+    neptune.shortInfo = "texto curto sobre netuno"
+    
+    uranus = Planet(name: PlanetName.Uranus, gravity: 0, type: PlanetType.gaseous, index: PlanetIndex.Uranus)
+    uranus.info = "texto falando sobre Uranus"
+    uranus.shortInfo = "texto curto sobre Uranus"
+    
+    saturn = Planet(name: PlanetName.Saturn, gravity: 0, type: PlanetType.gaseous, index: PlanetIndex.Saturn)
+    saturn.info = "texto falando sobre Saturn"
+    saturn.shortInfo = "texto curto sobre Saturn"
+    
+    jupiter = Planet(name: PlanetName.Jupiter, gravity: 0, type: PlanetType.gaseous, index: PlanetIndex.Jupiter)
+    jupiter.info = "texto falando sobre Jupiter"
+    jupiter.shortInfo = "texto curto sobre Jupiter"
+    
+    mars = Planet(name: PlanetName.Mars, gravity: 0, type: PlanetType.gaseous, index: PlanetIndex.Mars)
+    mars.info = "texto falando sobre Mars"
+    mars.shortInfo = "texto curto sobre Mars"
+    
+    earth = Planet(name: PlanetName.Earth, gravity: 0, type: PlanetType.gaseous, index: PlanetIndex.Earth)
+    earth.info = "texto falando sobre Earth"
+    earth.shortInfo = "texto curto sobre Earth"
+    
+    venus = Planet(name: PlanetName.Venus, gravity: 0, type: PlanetType.gaseous, index: PlanetIndex.Venus)
+    venus.info = "texto falando sobre Venus"
+    venus.shortInfo = "texto curto sobre Venus"
+    
+    mercury = Planet(name: PlanetName.Mercury, gravity: 0, type: PlanetType.gaseous, index: PlanetIndex.Mercury)
+    mercury.info = "texto falando sobre mercury"
+    mercury.shortInfo = "texto curto sobre mercury"
+    
+    planetsAux = [neptune,uranus,saturn,jupiter,mars,earth,venus,mercury]
+    
+    return planetsAux
+}
