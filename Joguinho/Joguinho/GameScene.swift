@@ -268,7 +268,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if i == level.gems.count - 1
             {
-                realgems[i].size = CGSize(width: screenSize.width/2, height: screenSize.height/2)
+                realgems[i].size = CGSize(width: screenSize.width/2 * 21/38, height: screenSize.height/2)
             }
             self.addChild(realgems[i])
         }
