@@ -104,7 +104,34 @@ class Level
             self.fueldrops.append(CGPoint(x: 1600, y: 110))
             self.fueldrops.append(CGPoint(x: 2750, y: 145))
             self.fueldrops.append(CGPoint(x: 4100, y: 175))
-
+            
+        case 3:
+            self.rocks.append(CGPoint(x: screenSize.width/2, y: 2*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 1.3*screenSize.width/3, y: 4*screenSize.height/8))
+            self.rocks.append(CGPoint(x: screenSize.width, y: 3*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 1.4*screenSize.width, y: 6.3*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 2*screenSize.width, y: screenSize.height/8))
+            self.rocks.append(CGPoint(x: 2.2*screenSize.width, y: 6.1*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 2.9*screenSize.width, y: 2*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 3.8*screenSize.width, y: 6*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 4.5*screenSize.width, y: 2*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 5*screenSize.width, y: 5.5*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 5.1*screenSize.width, y: 2.4*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 6*screenSize.width, y: 6*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 6.4*screenSize.width, y: 2.5*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 7*screenSize.width, y: screenSize.height/8))
+            self.rocks.append(CGPoint(x: 8*screenSize.width, y: 5*screenSize.height/8))
+            self.rocks.append(CGPoint(x: 9*screenSize.width, y: 3.5*screenSize.height/8))
+            self.gems.append(CGPoint(x: screenSize.width/2, y: 3.5*screenSize.height/8))
+            self.gems.append(CGPoint(x: screenSize.width, y: 2*screenSize.height/8))
+            self.gems.append(CGPoint(x: 2*screenSize.width, y: 4*screenSize.height/8))
+            self.gems.append(CGPoint(x: 4*screenSize.width, y: 4.5*screenSize.height/8))
+            self.gems.append(CGPoint(x: 6*screenSize.width, y: 2.5*screenSize.height/8))
+            self.gems.append(CGPoint(x: 9*screenSize.width, y: 1.7*screenSize.height/8))
+            self.fueldrops.append(CGPoint(x: 1.5*screenSize.width/2, y: 2*screenSize.height/8))
+            self.fueldrops.append(CGPoint(x: 2.5*screenSize.width, y: 4*screenSize.height/8))
+            self.fueldrops.append(CGPoint(x: 4.5*screenSize.width, y: 5*screenSize.height/8))
+            self.fueldrops.append(CGPoint(x: 7.8*screenSize.width, y: 3.7*screenSize.height/8))
         default:
             break
         }

@@ -87,7 +87,7 @@ class DAO {
                         break
                     }
                     
-                    planetAux = Planet(name: PlanetName(rawValue: planet.value(forKey: "name") as! String)!, gravity: planet.value(forKey: "gravity") as! Double, type: type, index: planet.value(forKey: "index") as! PlanetIndex)
+                    planetAux = Planet(name: PlanetName(rawValue: planet.value(forKey: "name") as! String)!, gravity: planet.value(forKey: "gravity") as! Double, type: type, index: PlanetIndex(rawValue: planet.value(forKey: "index") as! Int)!)
                     
                     planetsAux.append(planetAux)
                 }

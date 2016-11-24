@@ -154,6 +154,19 @@ class SelectedPlanetScene: SKScene {
                 scene.scaleMode = .aspectFill
                 skView.presentScene(scene, transition: transition)
             }
+            
+            if self.nodes(at: location)[0] == self.level3 {
+                
+                levelId = 3
+                let level = Level(id: levelId, planet: currentPlanet)
+                let scene = GameScene(size: self.size, level: level)
+                let skView = self.view! as SKView
+                let transition = SKTransition.fade(withDuration: 1.0)
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene, transition: transition)
+            }
 
             if self.nodes(at: location)[0] == self.back{
                 let scene = PlanetsScene()
