@@ -40,12 +40,12 @@ class DAO {
             
             let managed = NSManagedObject(entity: entity!, insertInto: context)
             //set the entity values
-            managed.setValue(planet.name, forKey: "name")
+            managed.setValue(planet.name.rawValue, forKey: "name")
             managed.setValue(planet.gravity, forKey: "gravity")
-            managed.setValue(planet.index, forKey: "index")
+            managed.setValue(planet.index.rawValue, forKey: "index")
             managed.setValue(planet.info, forKey: "info")
             managed.setValue(planet.shortInfo, forKey: "shortInfo")
-            managed.setValue(planet.type, forKey: "type")
+            managed.setValue(planet.type.rawValue, forKey: "type")
             
             //save the object
             do {
