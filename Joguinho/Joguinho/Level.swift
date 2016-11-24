@@ -60,7 +60,6 @@ class Level
             self.rocks.append(CGPoint(x: 500, y: 55))
             self.rocks.append(CGPoint(x: 1000, y: 100))
             self.rocks.append(CGPoint(x: 1500, y: 75))
-            self.rocks.append(CGPoint(x: 2000, y: 200))
             self.rocks.append(CGPoint(x: 1700, y: 175))
             self.rocks.append(CGPoint(x: 2000, y: 205))
             self.rocks.append(CGPoint(x: 2200, y: 235))

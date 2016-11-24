@@ -102,7 +102,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             k+=1
          case CollisionTypes.rock.rawValue:
             print("Bateu na pedra e morreu")
-            actWhenDead()
+            let action = SKAction.applyForce(CGVector.init(dx: 0, dy: -10), at: spaceship.position, duration: 1.0)
+            spaceship.run(action)
+       //     actWhenDead()
             k+=1
         default:
         break
@@ -110,10 +112,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let action = SKAction.rotate(toAngle: -0.3, duration: 0.5)
+        spaceship.run(action)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !(scene?.isPaused)!
         {
+            let action = SKAction.rotate(toAngle: 1.0, duration: 0.5)
+            spaceship.run(action)
             for touch in touches
             {
                 let location = touch.location(in: self)
@@ -256,7 +264,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.addChild(realgems[i])
         }
-        
     }
     
     
