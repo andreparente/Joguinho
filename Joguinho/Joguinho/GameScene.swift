@@ -29,7 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var fuelDropname : [String] = []
     var gemName : [String] = []
-
+    var currentlyTouching:Bool!
    
     init(size: CGSize, level: Level) {
         super.init(size: size)
@@ -47,7 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !(background.parent == self) {
         physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
         physicsWorld.contactDelegate = self
-        
+        currentlyTouching = false
         setUpInicialScene()
         setUpPlayer()
         setUpFuelBar()
@@ -117,11 +117,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        currentlyTouching = false
+        spaceship.removeAllActions()
         let action = SKAction.rotate(toAngle: -0.4, duration: 0.5)
         spaceship.run(action)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        currentlyTouching = true
         if !(scene?.isPaused)!
         {
             let action = SKAction.rotate(toAngle: 1.0, duration: 0.5)
@@ -141,15 +144,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     scene1.scaleMode = .aspectFill
                     skView.presentScene(scene1, transition: transition)
 
-                } else {
-                    
-                    spaceship.spaceshipMovement()
-                    
-                    if insideProgressBar.spaceship.fuelLevel < 2 {
-                        insideProgressBar.finish()
-                    } else {
-                        insideProgressBar.change(increase: -2)
-                    }
                 }
             }
         }
@@ -167,6 +161,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 surface2.position = CGPoint(x:surface.position.x + surface.size.width,y:surface2.position.y)
             }
             
+            if currentlyTouching == true
+            {
+            spaceship.spaceshipMovement()
+            
+            if insideProgressBar.spaceship.fuelLevel < 2 {
+                insideProgressBar.finish()
+            } else {
+                insideProgressBar.change(increase: -2)
+            }
+            }
             setUpActionsForComponents()
             
         if isDead() {
