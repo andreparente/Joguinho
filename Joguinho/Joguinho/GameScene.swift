@@ -190,11 +190,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         surface.position = CGPoint(x: 0, y: surface.size.height/3)
         surface.zPosition = 2
-        surface.size = CGSize(width: UIScreen.main.bounds.width + 600, height: surface.size.height)
+        surface.size = CGSize(width: UIScreen.main.bounds.width + 800, height: surface.size.height)
         
         surface2.position = CGPoint(x: surface.size.width, y: surface.size.height/3)
         surface2.zPosition = 2
-        surface2.size = CGSize(width: UIScreen.main.bounds.width + 600, height: surface.size.height)
+        surface2.size = CGSize(width: UIScreen.main.bounds.width + 800, height: surface.size.height)
         
         addChild(background)
         addChild(surface)
