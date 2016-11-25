@@ -14,7 +14,7 @@ let userDefaults = UserDefaults.standard
 var levels:[[String]] = [[]]
 
 //Level atual que o usuário está jogando
-var levelId:Int = 1
+var levelId:Int? = 1
 
 //Por enquanto spaceship,astronaut e o array de items são todos nil porque não criamos a loja do jogo ainda.
 

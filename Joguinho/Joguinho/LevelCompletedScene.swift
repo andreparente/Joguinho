@@ -20,15 +20,8 @@ class LevelCompletedScene: SKScene
     override func didMove(to view: SKView)
     {
         
-        if !levelFound() {
-            userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
-            player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
-            levels[currentPlanet.index.rawValue][userDefaults.value(forKey: "lastLevel") as! Int - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int)
-            userDefaults.set(levels, forKey: "levels")
-            print(levels)
-            print(userDefaults.value(forKey: "levels") as! [[String]])
-        }
-                semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        setUserDefaultsWhenCompletedLevel()
+        semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         semibackground.size = CGSize(width:size.width, height:size.height)
         semibackground.zPosition = 0
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
@@ -54,6 +47,20 @@ class LevelCompletedScene: SKScene
         return false
     }
     
+    
+    func setUserDefaultsWhenCompletedLevel() {
+        
+        if !levelFound() {
+            userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
+            player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
+            levels[currentPlanet.index.rawValue][userDefaults.value(forKey: "lastLevel") as! Int - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int)
+            userDefaults.set(levels, forKey: "levels")
+            print(levels)
+            print(userDefaults.value(forKey: "levels") as! [[String]])
+        }
+    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches
         {
@@ -74,7 +81,7 @@ class LevelCompletedScene: SKScene
                 //Esse if aqui é só pra não dar crash por enquanto que não tem level 3
                 if levelId == 1 || levelId == 2
                 {
-                levelId += 1
+                levelId = levelId! + 1
                 let level = Level(id: levelId , planet: currentPlanet)
                 let  scene = GameScene(size: self.size, level: level)
                 let skView = self.view! as SKView

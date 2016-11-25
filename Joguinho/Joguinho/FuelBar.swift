@@ -26,7 +26,6 @@ class FuelBar: Component {
     init(image: String?, spaceship: Spaceship) {
         
         super.init(imageNamed: image)
-        var proportional = screenSize.width/self.size.width
         self.spaceship = spaceship
         self.size.width = CGFloat(spaceship.fuelLevel)
         self.position = CGPoint(x: (pivo + CGFloat(spaceship.fuelLevel/2)), y: 7*screenSize.height/8)

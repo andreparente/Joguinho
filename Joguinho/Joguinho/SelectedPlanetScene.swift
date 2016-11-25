@@ -53,7 +53,6 @@ class SelectedPlanetScene: SKScene {
         self.addChild(moreInfo)
         
         
-
         planetLabel = SKLabelNode(fontNamed: "Futura-Bold")
         planetLabel.text = selectedPlanetClass.name.rawValue
         planetLabel.fontSize = 27
@@ -66,17 +65,82 @@ class SelectedPlanetScene: SKScene {
         descriptionLabel.position = CGPoint(x: planetLabel.position.x  + planetLabel.frame.width/2 + descriptionLabel.frame.width/2 + 15, y: planetLabel.position.y)
         self.addChild(descriptionLabel)
         
+        setSpriteForLevels()
+        
+        setPositionsForLevels()
+        
+        
+        closeText = SKSpriteNode(imageNamed: "exit")
+        closeText.position = CGPoint(x:572 * size.width / 667,y:110 * size.height / 375)
+        closeText.zPosition = 10
+        
+        textAboutPlanet = SKSpriteNode(imageNamed: "textNeptune")
+        textAboutPlanet.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        textAboutPlanet.zPosition = 10
+
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches
+        {
+            let location = touch.location(in: self)
+            //Quando criar outro level adicionar nesse switch
+            switch self.nodes(at: location)[0] {
+            case level1:
+            levelId = 1
+            case level2:
+            levelId = 2
+            case level3:
+            levelId = 3
+            default:
+            levelId = nil
+            }
+            
+            if levelId != nil {
+            let level = Level(id: levelId, planet: currentPlanet)
+            let scene = GameScene(size: self.size, level: level)
+            let skView = self.view! as SKView
+            let transition = SKTransition.fade(withDuration: 1.0)
+            skView.ignoresSiblingOrder = false
+            scene.size = skView.bounds.size
+            scene.scaleMode = .aspectFill
+            skView.presentScene(scene, transition: transition)
+            }
+            
+            if self.nodes(at: location)[0] == self.back{
+                let scene = PlanetsScene()
+                let skView = self.view! as SKView
+                let transition = SKTransition.fade(withDuration: 1.0)
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene, transition: transition)
+            }
+            
+            if self.nodes(at: location)[0] == self.moreInfo
+            {
+                addChild(textAboutPlanet)
+                addChild(closeText)
+            }
+            
+            if self.nodes(at: location)[0] == self.closeText
+            {
+                textAboutPlanet.removeFromParent()
+                closeText.removeFromParent()
+            }
+        }
+    }
+    func setSpriteForLevels() {
         
         level1 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][0])
         
         
         level2 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][1])
-       print(levels[currentPlanet.index.rawValue][1])
         
         level3 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][2])
-            
+        
         level4 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][3])
-       
+        
         
         level5 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][4])
         
@@ -88,8 +152,10 @@ class SelectedPlanetScene: SKScene {
         
         
         level8 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][7])
-        
-        
+
+    }
+    
+    func setPositionsForLevels() {
         level1.position = CGPoint(x: 281 * size.width / 667, y: 220 * size.height / 375)
         self.addChild(level1)
         
@@ -113,82 +179,5 @@ class SelectedPlanetScene: SKScene {
         
         level8.position = CGPoint(x: 572 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level8)
-        
-        closeText = SKSpriteNode(imageNamed: "exit")
-        closeText.position = CGPoint(x:572 * size.width / 667,y:110 * size.height / 375)
-        closeText.zPosition = 10
-        
-        textAboutPlanet = SKSpriteNode(imageNamed: "textNeptune")
-        textAboutPlanet.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        textAboutPlanet.zPosition = 10
-
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches
-        {
-            let location = touch.location(in: self)
-            if self.nodes(at: location)[0] == self.level1
-            {
-                levelId = 1
-                let level = Level(id: levelId, planet: currentPlanet)
-                let scene = GameScene(size: self.size, level: level)
-                let skView = self.view! as SKView
-                let transition = SKTransition.fade(withDuration: 1.0)
-                skView.ignoresSiblingOrder = false
-                scene.size = skView.bounds.size
-                scene.scaleMode = .aspectFill
-                skView.presentScene(scene, transition: transition)
-            }
-            
-            
-            if self.nodes(at: location)[0] == self.level2
-            {
-                levelId = 2
-                let level = Level(id: levelId, planet: currentPlanet)
-                let scene = GameScene(size: self.size, level: level)
-                let skView = self.view! as SKView
-                let transition = SKTransition.fade(withDuration: 1.0)
-                skView.ignoresSiblingOrder = false
-                scene.size = skView.bounds.size
-                scene.scaleMode = .aspectFill
-                skView.presentScene(scene, transition: transition)
-            }
-            
-            if self.nodes(at: location)[0] == self.level3 {
-                
-                levelId = 3
-                let level = Level(id: levelId, planet: currentPlanet)
-                let scene = GameScene(size: self.size, level: level)
-                let skView = self.view! as SKView
-                let transition = SKTransition.fade(withDuration: 1.0)
-                skView.ignoresSiblingOrder = false
-                scene.size = skView.bounds.size
-                scene.scaleMode = .aspectFill
-                skView.presentScene(scene, transition: transition)
-            }
-
-            if self.nodes(at: location)[0] == self.back{
-                let scene = PlanetsScene()
-                let skView = self.view! as SKView
-                let transition = SKTransition.fade(withDuration: 1.0)
-                skView.ignoresSiblingOrder = false
-                scene.size = skView.bounds.size
-                scene.scaleMode = .aspectFill
-                skView.presentScene(scene, transition: transition)
-            }
-            
-            if self.nodes(at: location)[0] == self.moreInfo
-            {
-                addChild(textAboutPlanet)
-                addChild(closeText)
-            }
-            
-            if self.nodes(at: location)[0] == self.closeText
-            {
-                textAboutPlanet.removeFromParent()
-                closeText.removeFromParent()
-            }
-        }
     }
 }
