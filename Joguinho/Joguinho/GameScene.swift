@@ -25,6 +25,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var realFuelDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)]
     var realOxygenDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!)]
     var pauseButton = Component(imageNamed: "pause")
+    var countGems: SKLabelNode!
+    var gemsCounter: Int = 0
     
 
     var fuelDropname : [String] = []
@@ -47,6 +49,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !(background.parent == self) {
         physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
         physicsWorld.contactDelegate = self
+            
+            
         currentlyTouching = false
         setUpInicialScene()
         setUpPlayer()
@@ -55,6 +59,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setPauseButton()
         setUpRocks()
         setUpGems()
+        setUpCountGems()
+            
         if level.planet.type == PlanetType.gaseous {
             setUpFuelDrops()
         }
@@ -91,6 +97,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             k+=1
         case  CollisionTypes.gem.rawValue:
+            gemsCounter += 1
+            countGems.text = "\(gemsCounter)-\(realgems.count)"
             let name1 = secondBody.node?.name
             let index = gemName.index(of: name1!)
             if gemName.contains(name1!) {
@@ -200,6 +208,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         surface2.zPosition = 2
         surface2.size = CGSize(width: UIScreen.main.bounds.width + 800, height: surface.size.height)
         
+        
         addChild(background)
         addChild(surface)
         addChild(surface2)
@@ -214,6 +223,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         insideProgressBar.zPosition = 12
         addChild(insideProgressBar)
         addChild(progressBar)
+    }
+    
+    func setUpCountGems() {
+        
+        countGems = SKLabelNode(fontNamed: "Futura")
+        countGems.text = "0/\(realgems.count)"
+        countGems.fontSize = 20
+        countGems.color = UIColor.white
+        countGems.position = CGPoint(x: progressBar.position.x - progressBar.frame.width/2 - countGems.frame.width/2 - 20 , y:progressBar.position.y - 10)
+        countGems.zPosition = 4
+        addChild(countGems)
+
+        
     }
     
     func setPauseButton() {
@@ -381,6 +403,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         skView.ignoresSiblingOrder = false
         scene.size = skView.bounds.size
         scene.scaleMode = .aspectFill
+        scene.spaceShip = spaceship
+        scene.gemsCollected = Double(gemsCounter)
+        scene.totalGems = Double(realgems.count)
         skView.presentScene(scene, transition: transition)
     }
     

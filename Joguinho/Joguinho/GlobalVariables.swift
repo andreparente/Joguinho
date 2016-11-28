@@ -80,3 +80,5 @@ func getArrayPlanets() -> [Planet] {
     
     return planetsAux
 }
+
+

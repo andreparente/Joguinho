@@ -16,6 +16,10 @@ class LevelCompletedScene: SKScene
     let continueButton = Component(imageNamed: "continue")
     let retry = Component(imageNamed: "retry")
     var level: Int!
+    var spaceShip: Spaceship!
+    var gemsCollected: Double!
+    var totalGems: Double!
+    //var scoreStar = Component!
     
     override func didMove(to view: SKView)
     {
@@ -36,6 +40,33 @@ class LevelCompletedScene: SKScene
         addChild(retry)
     }
     
+    
+    func setUpScore() {
+        print(spaceShip.fuelLevel)
+        print("total de gems  ", totalGems)
+        print("total coletado ", gemsCollected)
+        var fuelDivFor3 = Double(350/3)
+        var gemsDivFor3 = Double(totalGems/3)
+        //setar a scoreStar bonitinha
+        //setar a scoreStar bonitinha
+        //setar a scoreStar bonitinha
+
+        
+        if (Double(spaceShip.fuelLevel) >= (fuelDivFor3*1.5) && gemsCollected >= (gemsDivFor3*1.5)) || (Double(spaceShip.fuelLevel) >= (fuelDivFor3*2.0) && gemsCollected >= (gemsDivFor3)) || (Double(spaceShip.fuelLevel) >= (fuelDivFor3) && gemsCollected >= (gemsDivFor3*2.0)) {
+            //3 estrelas!!
+            //setar a scoreStar bonitinha
+            print("3 estrelas!!!!")
+        } else if (Double(spaceShip.fuelLevel) >= (fuelDivFor3) && gemsCollected >= (gemsDivFor3)) || (Double(spaceShip.fuelLevel) >= (fuelDivFor3*2.0) && gemsCollected >= 0) || (Double(spaceShip.fuelLevel) >= 0 && gemsCollected >= (gemsDivFor3*2.0)) {
+            //2 estrelas!!
+            //setar a scoreStar bonitinha
+            print("2 estrelas!!!!")
+
+        } else {
+            //1 estrela loser total
+            //setar a scoreStar bonitinha
+            print("1 estrela!!!!")
+        }
+    }
     
     func levelFound() -> Bool {
         
