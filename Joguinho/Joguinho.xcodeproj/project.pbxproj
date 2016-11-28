@@ -10,6 +10,7 @@
 		3D23694E1DD236BB00C749BA /* SurvivalArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */; };
 		3D2369501DD238D500C749BA /* PhysicalPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */; };
 		496EFB471DD3BB2300A7B163 /* Futura.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 496EFB461DD3BABC00A7B163 /* Futura.ttc */; };
+		49B7A5E81DECBD13003ED5FB /* fire.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 49B7A5E71DECBD13003ED5FB /* fire.atlas */; };
 		8A61114A1DDCA79900D6109D /* FuelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6111491DDCA79900D6109D /* FuelBar.swift */; };
 		8A61114C1DDCAB1C00D6109D /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */; };
 		8A78FA8D1DE6556300276774 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A78FA8B1DE6556300276774 /* Model.xcdatamodeld */; };
@@ -63,6 +64,7 @@
 		3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurvivalArtifact.swift; sourceTree = "<group>"; };
 		3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalPlanet.swift; sourceTree = "<group>"; };
 		496EFB461DD3BABC00A7B163 /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
+		49B7A5E71DECBD13003ED5FB /* fire.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fire.atlas; sourceTree = "<group>"; };
 		8A6111491DDCA79900D6109D /* FuelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuelBar.swift; sourceTree = "<group>"; };
 		8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		8A78FA8C1DE6556300276774 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				8AAEA82B1DBA5D4C00B908A0 /* View */,
 				8AAEA8291DBA5D3100B908A0 /* Controller */,
 				8AAEA8011DBA5CCC00B908A0 /* Assets.xcassets */,
+				49B7A5E71DECBD13003ED5FB /* fire.atlas */,
 				8AAEA8061DBA5CCC00B908A0 /* Info.plist */,
 			);
 			path = Joguinho;
@@ -319,7 +322,7 @@
 				TargetAttributes = {
 					8AAEA7F01DBA5CCC00B908A0 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = XBEPC2JPC9;
+						DevelopmentTeam = GQU3QL4RG3;
 						ProvisioningStyle = Automatic;
 					};
 					8AAEA80A1DBA5CCC00B908A0 = {
@@ -361,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B7A5E81DECBD13003ED5FB /* fire.atlas in Resources */,
 				496EFB471DD3BB2300A7B163 /* Futura.ttc in Resources */,
 				8AAEA8001DBA5CCC00B908A0 /* Main.storyboard in Resources */,
 				8AAEA7F71DBA5CCC00B908A0 /* GameScene.sks in Resources */,
@@ -567,7 +571,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XBEPC2JPC9;
+				DEVELOPMENT_TEAM = GQU3QL4RG3;
 				INFOPLIST_FILE = Joguinho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -581,7 +585,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XBEPC2JPC9;
+				DEVELOPMENT_TEAM = GQU3QL4RG3;
 				INFOPLIST_FILE = Joguinho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
