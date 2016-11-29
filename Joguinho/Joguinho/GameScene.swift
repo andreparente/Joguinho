@@ -97,12 +97,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 k+=1
             case  CollisionTypes.gem.rawValue:
-                gemsCounter += 1
-                countGems.text = "\(gemsCounter)-\(realgems.count)"
                 let name1 = secondBody.node?.name
                 let index = gemName.index(of: name1!)
                 if gemName.contains(name1!) {
                     secondBody.node?.removeFromParent()
+                    gemsCounter += 1
+                    countGems.text = "\(gemsCounter)/\(realgems.count)"
                     userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int + 1, forKey: "coinsBalance")
                     player.coinsBalance = userDefaults.value(forKey: "coinsBalance") as! Int
                     gemName.remove(at: index!)
