@@ -33,8 +33,8 @@ class PlanetsScene: SKScene{
         self.addChild(instructionLabel)
         
         gemsLabel = SKLabelNode(fontNamed: "Futura")
-        let balance = userDefaults.value(forKey: "totalCoins") as! String
-        gemsLabel.text = NSLocalizedString("Planet_Instruction", comment: "Select a Planet") + balance + "x"
+        let balance = userDefaults.value(forKey: "totalCoins") as! Int
+        gemsLabel.text = NSLocalizedString("Planet_Instruction", comment: "Select a Planet") + String(balance) + "x"
         gemsLabel.fontSize = 15/568 * screenSize.width
         gemsLabel.position = CGPoint(x: gemsLabel.frame.size.width/2 + 20, y: gemsLabel.frame.size.height/2)
         gemsLabel.zPosition = 3
