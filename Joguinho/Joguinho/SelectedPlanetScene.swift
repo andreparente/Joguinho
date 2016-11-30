@@ -54,7 +54,7 @@ class SelectedPlanetScene: SKScene {
         
         
         planetLabel = SKLabelNode(fontNamed: "Futura-Bold")
-        planetLabel.text = selectedPlanetClass.name.rawValue
+        planetLabel.text = NSLocalizedString("\(selectedPlanetClass.name.rawValue)",comment:"Planet Name")
         planetLabel.fontSize = 27
         planetLabel.position = CGPoint(x: 0.95*screenSize.width/2, y: 4*screenSize.height/5)
         self.addChild(planetLabel)

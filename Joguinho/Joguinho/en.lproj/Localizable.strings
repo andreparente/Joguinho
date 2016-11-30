@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Joguinho
+
+  Created by Felipe Viberti on 30/11/16.
+  Copyright © 2016 Andre Machado Parente. All rights reserved.
+*/
+RESUME = "Resume";
+
+Neptune = "Neptune";

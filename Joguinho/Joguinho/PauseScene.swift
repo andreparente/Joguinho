@@ -27,7 +27,7 @@ class PauseScene: SKScene
     resumeButton.zPosition = 10
     menuButtton.position = CGPoint(x: 2*screenSize.width/4 / 2 , y: screenSize.height/2)
     menuButtton.zPosition = 10
-    resumeLabel.text = "Resume"
+    resumeLabel.text = NSLocalizedString("RESUME",comment:"Resume")
     resumeLabel.fontSize = 20
     resumeLabel.position = CGPoint(x: resumeButton.position.x , y:resumeButton.position.y - 80)
     resumeLabel.zPosition = 10
