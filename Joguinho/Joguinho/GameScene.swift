@@ -126,7 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = false
-        let action = SKAction.rotate(toAngle: -0.4, duration: 0.5)
+        let action = SKAction.rotate(toAngle: -0.5, duration: 0.8)
         spaceship.run(action)
     }
     
@@ -134,11 +134,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = true
         spaceship.fireMovement()
-
         if !(scene?.isPaused)!
         {
-            let action = SKAction.rotate(toAngle: 1.0, duration: 0.5)
-            spaceship.run(action)
+            let rotate = SKAction.rotate(toAngle: 0.5, duration: 0.8)
+            spaceship.run(rotate)
             for touch in touches
             {
                 let location = touch.location(in: self)
