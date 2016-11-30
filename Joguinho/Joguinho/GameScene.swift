@@ -397,11 +397,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scene.size = skView.bounds.size
         scene.scaleMode = .aspectFill
         skView.presentScene(scene, transition: transition)
-        
     }
     
     
     func actWhenCompletedLevel() {
+        
+        let levelCoins = userDefaults.value(forKey: "coinsBalance") as! Int
+        let balance = userDefaults.value(forKey: "totalCoins") as! Int
+        userDefaults.set(balance + levelCoins, forKey: "totalCoins")
+        
         let transition = SKTransition.fade(withDuration: 1.0)
         let  scene = LevelCompletedScene()
         scene.level = self.level.id

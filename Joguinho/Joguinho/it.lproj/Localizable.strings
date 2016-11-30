@@ -10,3 +10,7 @@ RESUME = "Continuare";
 Neptune = "Nettuno";
 
 Neptune_Description = "il pianeta del vento";
+
+Planet_Instruction = "Scegli un pianeta";
+
+Total_Coins = "Totale di monete: ";

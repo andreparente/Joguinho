@@ -10,7 +10,8 @@ import SpriteKit
 
 class PlanetsScene: SKScene{
     
-    
+    var instructionLabel: SKLabelNode!
+    var gemsLabel: SKLabelNode!
     var neptune: Component!
     var uranus: Component!
     var saturn: Component!
@@ -24,6 +25,22 @@ class PlanetsScene: SKScene{
     
     override func didMove(to view: SKView) {
         
+        instructionLabel = SKLabelNode(fontNamed: "Futura")
+        instructionLabel.text = NSLocalizedString("Planet_Instruction", comment: "Select a Planet")
+        instructionLabel.fontSize = 30/568 * screenSize.width
+        instructionLabel.position = CGPoint(x: instructionLabel.frame.size.width/2 + 20, y: screenSize.height - 40)
+        instructionLabel.zPosition = 2
+        self.addChild(instructionLabel)
+        
+        gemsLabel = SKLabelNode(fontNamed: "Futura")
+        let balance = userDefaults.value(forKey: "totalCoins") as! String
+        gemsLabel.text = NSLocalizedString("Planet_Instruction", comment: "Select a Planet") + balance + "x"
+        gemsLabel.fontSize = 15/568 * screenSize.width
+        gemsLabel.position = CGPoint(x: gemsLabel.frame.size.width/2 + 20, y: gemsLabel.frame.size.height/2)
+        gemsLabel.zPosition = 3
+        self.addChild(gemsLabel)
+        
+        
 //        self.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         let size = view.frame.size
          levels = userDefaults.value(forKey: "levels") as! [[String]]
@@ -32,7 +49,6 @@ class PlanetsScene: SKScene{
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
         addChild(background)
-        
         
         
         //neptune

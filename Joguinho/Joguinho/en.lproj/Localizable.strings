@@ -10,3 +10,7 @@ RESUME = "Resume";
 Neptune = "Neptune";
 
 Neptune_Description = "the windiest planet";
+
+Planet_Instruction = "Select a planet";
+
+Total_Coins = "Total coins: ";
