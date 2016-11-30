@@ -60,7 +60,7 @@ class SelectedPlanetScene: SKScene {
         self.addChild(planetLabel)
         
         descriptionLabel = SKLabelNode(fontNamed: "Futura")
-        descriptionLabel.text = "the windiest planet"
+        descriptionLabel.text = NSLocalizedString("Neptune_Description", comment: "Description")
         descriptionLabel.fontSize = 20
         descriptionLabel.position = CGPoint(x: planetLabel.position.x  + planetLabel.frame.width/2 + descriptionLabel.frame.width/2 + 15, y: planetLabel.position.y)
         self.addChild(descriptionLabel)

@@ -5,8 +5,8 @@
   Created by Felipe Viberti on 30/11/16.
   Copyright © 2016 Andre Machado Parente. All rights reserved.
 */
-RESUME = "Resume";
+RESUME = "Continuare";
 
-Neptune = "Neptune";
+Neptune = "Nettuno";
 
-Neptune_Description = "the windiest planet";
+Neptune_Description = "il pianeta del vento";
