@@ -15,7 +15,7 @@ class FuelBar: Component {
     var pivo = (screenSize.width/667) * (screenSize.width/4 - 10)
 
     
-    func change(increase newValue: Int!) {
+    func change(increase newValue: Double!) {
 
         spaceship.fuelLevel = spaceship.fuelLevel + newValue
         self.size.width = CGFloat(spaceship.fuelLevel)

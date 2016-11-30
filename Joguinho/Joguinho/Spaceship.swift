@@ -15,10 +15,10 @@ class Spaceship:Component {
     var TextureArray = [SKTexture]()
     var fire = SKSpriteNode()
     
-    var fuelLevel:Int!
+    var fuelLevel:Double!
     
     
-    init(fuelLevel:Int) {
+    init(fuelLevel:Double) {
         self.fuelLevel  = fuelLevel
         self.fire = SKSpriteNode(imageNamed: "fire_1")
         super.init(imageNamed: "rocket fase")
