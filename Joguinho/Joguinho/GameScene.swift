@@ -291,8 +291,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gemName.append(realgems[i].name!)
             realgems[i].position = level.gems[i]
             realgems[i].zPosition = 10
-            realgems[i].physicsBody = SKPhysicsBody(texture: realgems[i].texture!,
-                                                    size: CGSize(width: realgems[i].size.width, height: realgems[i].size.height))
+            realgems[i].physicsBody = SKPhysicsBody(texture: realgems[i].texture!, alphaThreshold: 0.02, size: CGSize(width: realgems[i].size.width, height: realgems[i].size.height))
             realgems[i].physicsBody?.affectedByGravity = false
             realgems[i].physicsBody?.categoryBitMask = CollisionTypes.gem.rawValue
             realgems[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue
