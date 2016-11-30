@@ -15,6 +15,7 @@ class LevelCompletedScene: SKScene
     let background = Component(imageNamed: "gameWin")
     let continueButton = Component(imageNamed: "continue")
     let retry = Component(imageNamed: "retry")
+    var star: Component!
     var level: Int!
     var spaceShip: Spaceship!
     var gemsCollected: Double!
@@ -38,6 +39,7 @@ class LevelCompletedScene: SKScene
         addChild(background)
         addChild(continueButton)
         addChild(retry)
+        setUpScore()
     }
     
     
@@ -45,8 +47,8 @@ class LevelCompletedScene: SKScene
         print(spaceShip.fuelLevel)
         print("total de gems  ", totalGems)
         print("total coletado ", gemsCollected)
-        var fuelDivFor3 = Double(350/3)
-        var gemsDivFor3 = Double(totalGems/3)
+        let fuelDivFor3 = Double(350/3)
+        let gemsDivFor3 = Double(totalGems/3)
         //setar a scoreStar bonitinha
         //setar a scoreStar bonitinha
         //setar a scoreStar bonitinha
@@ -55,17 +57,30 @@ class LevelCompletedScene: SKScene
         if (Double(spaceShip.fuelLevel) >= (fuelDivFor3*1.5) && gemsCollected >= (gemsDivFor3*1.5)) || (Double(spaceShip.fuelLevel) >= (fuelDivFor3*2.0) && gemsCollected >= (gemsDivFor3)) || (Double(spaceShip.fuelLevel) >= (fuelDivFor3) && gemsCollected >= (gemsDivFor3*2.0)) {
             //3 estrelas!!
             //setar a scoreStar bonitinha
+            star = Component(imageNamed: "stars3")
+            star.position = background.position
+            star.zPosition = 11
+            
             print("3 estrelas!!!!")
         } else if (Double(spaceShip.fuelLevel) >= (fuelDivFor3) && gemsCollected >= (gemsDivFor3)) || (Double(spaceShip.fuelLevel) >= (fuelDivFor3*2.0) && gemsCollected >= 0) || (Double(spaceShip.fuelLevel) >= 0 && gemsCollected >= (gemsDivFor3*2.0)) {
             //2 estrelas!!
             //setar a scoreStar bonitinha
+            star = Component(imageNamed: "stars2")
+            star.position = background.position
+            star.zPosition = 11
+
             print("2 estrelas!!!!")
 
         } else {
             //1 estrela loser total
             //setar a scoreStar bonitinha
+            star = Component(imageNamed: "stars1")
+            star.position = background.position
+            star.zPosition = 11
+
             print("1 estrela!!!!")
         }
+        self.addChild(star)
     }
     
     func levelFound() -> Bool {
