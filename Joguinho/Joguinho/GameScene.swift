@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -114,6 +115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 k+=1
             case CollisionTypes.rock.rawValue:
                 print("Bateu na pedra e morreu")
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 let action = SKAction.applyForce(CGVector.init(dx: 0, dy: -10), at: spaceship.position, duration: 1.0)
                 spaceship.run(action)
                 //     actWhenDead()
