@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userDefaults.value(forKey: "lastLevel") == nil {
             userDefaults.set(1, forKey: "lastLevel")
             userDefaults.set(0, forKey: "coinsBalance")
-            userDefaults.set(0, forKey: "totalCoins")
             planetsGlobal = getArrayPlanets()
             DAO().savePlanets(planets: planetsGlobal)
         } else {

@@ -12,6 +12,7 @@ class PlanetsScene: SKScene{
     
     var instructionLabel: SKLabelNode!
     var gemsLabel: SKLabelNode!
+    var gem: Component!
     var neptune: Component!
     var uranus: Component!
     var saturn: Component!
@@ -33,12 +34,20 @@ class PlanetsScene: SKScene{
         self.addChild(instructionLabel)
         
         gemsLabel = SKLabelNode(fontNamed: "Futura")
-        let balance = userDefaults.value(forKey: "totalCoins") as! Int
-        gemsLabel.text = NSLocalizedString("Planet_Instruction", comment: "Select a Planet") + String(balance) + "x"
+        let balance = userDefaults.value(forKey: "coinsBalance") as! Int
+        gemsLabel.text = NSLocalizedString("Total_Coins", comment: "Total coins: ") + String(balance) + " x "
         gemsLabel.fontSize = 15/568 * screenSize.width
         gemsLabel.position = CGPoint(x: gemsLabel.frame.size.width/2 + 20, y: gemsLabel.frame.size.height/2)
         gemsLabel.zPosition = 3
         self.addChild(gemsLabel)
+        
+        gem = Component(imageNamed: "crystal")
+        let labelPosition = gemsLabel.position
+        let labelSize = gemsLabel.frame.size
+        gem.position = CGPoint(x: labelPosition.x + labelSize.width/2 + 10, y: labelPosition.y + 10)
+        gem.zPosition = 2
+        gem.size = CGSize(width: gem.size.width/2, height: gem.size.height/2)
+        addChild(gem)
         
         
 //        self.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
