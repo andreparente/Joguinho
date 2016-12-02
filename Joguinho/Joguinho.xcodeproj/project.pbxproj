@@ -180,6 +180,7 @@
 				8AAEA82C1DBA5D5400B908A0 /* Model */,
 				8AAEA82B1DBA5D4C00B908A0 /* View */,
 				8AAEA8291DBA5D3100B908A0 /* Controller */,
+				9C9544EF1DEF40BE005833F4 /* Localizable.strings */,
 				8AAEA8011DBA5CCC00B908A0 /* Assets.xcassets */,
 				49B7A5E71DECBD13003ED5FB /* fire.atlas */,
 				8AAEA8061DBA5CCC00B908A0 /* Info.plist */,
@@ -211,7 +212,6 @@
 				8AAEA7F41DBA5CCC00B908A0 /* AppDelegate.swift */,
 				8AAEA7FC1DBA5CCC00B908A0 /* GameViewController.swift */,
 				3D52A7BC1DEF4E4200254F84 /* Scenes */,
-				9C9544EF1DEF40BE005833F4 /* Localizable.strings */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -333,7 +333,7 @@
 				TargetAttributes = {
 					8AAEA7F01DBA5CCC00B908A0 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = XBEPC2JPC9;
+						DevelopmentTeam = 6PMD3Q4LVK;
 						ProvisioningStyle = Automatic;
 					};
 					8AAEA80A1DBA5CCC00B908A0 = {
@@ -599,7 +599,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XBEPC2JPC9;
+				DEVELOPMENT_TEAM = 6PMD3Q4LVK;
 				INFOPLIST_FILE = Joguinho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -613,7 +613,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XBEPC2JPC9;
+				DEVELOPMENT_TEAM = 6PMD3Q4LVK;
 				INFOPLIST_FILE = Joguinho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

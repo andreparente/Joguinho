@@ -116,8 +116,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case CollisionTypes.rock.rawValue:
                 print("Bateu na pedra e morreu")
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                let action = SKAction.applyForce(CGVector.init(dx: 0, dy: -10), at: spaceship.position, duration: 1.0)
-                spaceship.run(action)
+                //let action = SKAction.applyImpulse(CGVector.init(dx: -0.5, dy: -2), at: spaceship.position, duration: 0.5)
+                //spaceship.run(action)
+                //spaceship.collidedWithRock()
                 //     actWhenDead()
                 k+=1
             default:
@@ -125,13 +126,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        currentlyTouching = false
-        let action = SKAction.rotate(toAngle: -0.5, duration: 0.8)
-        spaceship.run(action)
-    }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = true
@@ -160,7 +154,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        currentlyTouching = false
+        //let action = SKAction.rotate(toAngle: -0.5, duration: 0.8)
+        //spaceship.run(action)
+    }
     
     override func update(_ currentTime: TimeInterval) {
         if !(scene?.isPaused)! {
@@ -174,7 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 surface2.position = CGPoint(x:surface.position.x + surface.size.width,y:surface2.position.y)
             }
             
-            if currentlyTouching == true{
+            if currentlyTouching == true {
                 spaceship.spaceshipMovement()
 
                 if insideProgressBar.spaceship.fuelLevel < 2 {
@@ -184,7 +182,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-            else{
+            else {
+                spaceship.drag()
                 spaceship.removeAllChildren()
             }
             setUpActionsForComponents()
@@ -193,6 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 actWhenDead()
             }
         }
+        
         if spaceship.position.x > realgems[realgems.count-1].position.x {
             
             actWhenCompletedLevel()
@@ -402,11 +402,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func actWhenCompletedLevel() {
-        
-        let levelCoins = userDefaults.value(forKey: "coinsBalance") as! Int
-        let balance = userDefaults.value(forKey: "totalCoins") as! Int
-        userDefaults.set(balance + levelCoins, forKey: "totalCoins")
-        
         let transition = SKTransition.fade(withDuration: 1.0)
         let  scene = LevelCompletedScene()
         scene.level = self.level.id

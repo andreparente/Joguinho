@@ -40,7 +40,7 @@ class Spaceship:Component {
     }
     
     func startMoment() {
-        self.position = CGPoint(x: 70, y: 150)
+        self.position = CGPoint(x: 100, y: 150)
         self.zPosition = 10
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.isDynamic = true
@@ -50,7 +50,6 @@ class Spaceship:Component {
         self.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
         self.physicsBody?.contactTestBitMask = CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue | CollisionTypes.gem.rawValue
         self.physicsBody?.collisionBitMask = CollisionTypes.rock.rawValue
-        
     }
     
     func spaceshipMovement() {
@@ -58,8 +57,29 @@ class Spaceship:Component {
 //        self.run(spaceshipMove)
         
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 8))
-
+        let vector = CGVector(dx: 2, dy: 8)
+        self.physicsBody?.applyImpulse(vector)
+        self.updateDirectionTo(vector: vector)
+    }
+    
+    func drag() {
+        let vector = CGVector(dx: -0.07, dy: 0)
+        self.physicsBody?.applyImpulse(vector)
+        self.updateDirectionTo(vector: CGVector(dx: -0.05, dy: 0.05))
+    }
+    
+    func collidedWithRock() {
+        let vector = CGVector(dx: -1, dy: -2)
+        self.physicsBody?.applyImpulse(vector)
+        //self.updateDirectionTo(vector: vector)
+    }
+    
+    func updateDirectionTo(vector: CGVector) {
+        let angle = atan2(vector.dx, vector.dy)
+        var action = SKAction.init(named: "rotate")
+        action = SKAction.rotate(toAngle: angle, duration: 0.8)
+        self.run(action!)
+        //self.removeAction(forKey: "rotate")
     }
     
     func fireMovement() {
