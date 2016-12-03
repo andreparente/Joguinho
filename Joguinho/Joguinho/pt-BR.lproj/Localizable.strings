@@ -14,3 +14,5 @@ Neptune_Description = "o planeta do vento";
 Planet_Instruction = "Escolha um planeta";
 
 Total_Coins = "Total de moedas: ";
+
+Neptune_Complete_Description = "";
