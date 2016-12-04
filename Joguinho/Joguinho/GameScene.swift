@@ -29,7 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var countGems: SKLabelNode!
     var gemsCounter: Int = 0
     
-    
+    var TextureAtlas = SKTextureAtlas()
+    var TextureArray = [SKTexture]()
     var fuelDropname : [String] = []
     var gemName : [String] = []
     var currentlyTouching:Bool!
@@ -116,6 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case CollisionTypes.rock.rawValue:
                 print("Bateu na pedra e morreu")
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+             //   handleCollisionWithRock(name: secondBody.node!.name!)
                 //let action = SKAction.applyImpulse(CGVector.init(dx: -0.5, dy: -2), at: spaceship.position, duration: 0.5)
                 //spaceship.run(action)
                 //spaceship.collidedWithRock()
@@ -424,4 +426,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         skView.presentScene(scene, transition: transition)
     }
     
+    func animateRock(i:Int)
+    {
+        TextureAtlas = SKTextureAtlas (named: "rock")
+        for i in 1...TextureAtlas.textureNames.count{
+            let name = "rock\(i).png"
+            TextureArray.append(SKTexture(imageNamed: name))
+        }
+        print(TextureArray)
+        realrocks[i] = Component(imageNamed: TextureAtlas.textureNames[0])
+        let action = SKAction.repeatForever(SKAction.animate(with: TextureArray, timePerFrame: 0.1))
+        realrocks[i].run(action, withKey: "rockMovement")
+        addChild(realrocks[i])
+
+    }
+    func handleCollisionWithRock(name:String)
+    {
+        var index:Int = 0
+        print(name)
+        for i  in 0...realrocks.count - 1
+        {
+            if realrocks[i].name == name
+            {
+                index = i
+                print("Entrou aqui")
+                break
+            }
+            
+        }
+        animateRock(i: index)
+    }
 }
