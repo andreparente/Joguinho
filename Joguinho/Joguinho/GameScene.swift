@@ -379,7 +379,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func isDead() -> Bool {
-        if spaceship.position.y < 0 || spaceship.position.y > UIScreen.main.bounds.height {
+        let spaceshipRightBoundsX = spaceship.position.x + spaceship.frame.width/2
+        let spaceshipUpBoundsY = spaceship.position.y + spaceship.frame.height/2
+        let spaceshipDownBoundsY = spaceship.position.y - spaceship.frame.height/2
+        if spaceshipUpBoundsY < 0 {
+            return true
+        }
+        if spaceshipDownBoundsY > UIScreen.main.bounds.height {
+            return true
+        }
+        if spaceshipRightBoundsX < 0 || spaceshipRightBoundsX > UIScreen.main.bounds.width {
             return true
         }
         if spaceship.fuelLevel <= 0 {
