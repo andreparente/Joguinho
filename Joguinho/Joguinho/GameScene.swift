@@ -34,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var fuelDropname : [String] = []
     var gemName : [String] = []
     var currentlyTouching:Bool!
+    var backgroundSound:AVAudioPlayer!
     
     init(size: CGSize, level: Level) {
         super.init(size: size)
@@ -48,6 +49,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
+        let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
         if !(background.parent == self) {
             physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
             physicsWorld.contactDelegate = self
@@ -69,6 +72,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else {
                 setUpOxygenDrops()
             }
+            
+            do {
+                let sound = try AVAudioPlayer(contentsOf: url)
+                backgroundSound = sound
+                print("Passou por aqui")
+                sound.play()
+            } catch {
+                // couldn't load file :(
+                print("Merda")
+            }
+           
         }
         scene?.isPaused = false
         

@@ -41,6 +41,7 @@
 		9CB427FF1DDDF1410017E617 /* LevelCompletedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */; };
 		9CB428011DDE2D4A0017E617 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB428001DDE2D4A0017E617 /* PauseScene.swift */; };
 		9CD911381DF4CD3600EFDF62 /* rock.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9CD911371DF4CD3600EFDF62 /* rock.atlas */; };
+		9CD911411DF4DD4800EFDF62 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CD911401DF4DD4800EFDF62 /* background.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCompletedScene.swift; sourceTree = "<group>"; };
 		9CB428001DDE2D4A0017E617 /* PauseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		9CD911371DF4CD3600EFDF62 /* rock.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = rock.atlas; path = ../../../.Trash/rock.atlas; sourceTree = "<group>"; };
+		9CD911401DF4DD4800EFDF62 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 		8AAEA7F31DBA5CCC00B908A0 /* Joguinho */ = {
 			isa = PBXGroup;
 			children = (
+				9CD911401DF4DD4800EFDF62 /* background.mp3 */,
 				8AAEA82C1DBA5D5400B908A0 /* Model */,
 				8AAEA82B1DBA5D4C00B908A0 /* View */,
 				8AAEA8291DBA5D3100B908A0 /* Controller */,
@@ -384,6 +387,7 @@
 				496EFB471DD3BB2300A7B163 /* Futura.ttc in Resources */,
 				8AAEA8001DBA5CCC00B908A0 /* Main.storyboard in Resources */,
 				9CD911381DF4CD3600EFDF62 /* rock.atlas in Resources */,
+				9CD911411DF4DD4800EFDF62 /* background.mp3 in Resources */,
 				8AAEA8021DBA5CCC00B908A0 /* Assets.xcassets in Resources */,
 				9C9544ED1DEF40BE005833F4 /* Localizable.strings in Resources */,
 				8AAEA8051DBA5CCC00B908A0 /* LaunchScreen.storyboard in Resources */,
