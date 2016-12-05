@@ -171,7 +171,7 @@ class PlanetsScene: SKScene{
                 print("tapped Neptune!")
                 
                 currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
-                let transition2 = SKTransition.doorway(withDuration: 1.0)
+                let transition2 = SKTransition.fade(withDuration: 1.0)
                 let nextScene = SelectedPlanetScene(size: self.size)
                 nextScene.scaleMode = SKSceneScaleMode.aspectFill
                 nextScene.selectedPlanetClass = currentPlanet
