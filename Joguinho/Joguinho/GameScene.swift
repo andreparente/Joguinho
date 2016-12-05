@@ -37,6 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backgroundSound:AVAudioPlayer!
     var hitRockSound:AVAudioPlayer!
     var spaceshipOnSound:AVAudioPlayer!
+    var gemCaughtSound:AVAudioPlayer!
     var countDownLabel:SKLabelNode!
     var timerDidEnd:Bool = false
     
@@ -130,6 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if fuelDropname.contains(name1!) {
                     secondBody.node?.removeFromParent()
+                   // produceSoundWhenCaughtGem()
                     insideProgressBar.change(increase: 6)
                     fuelDropname.remove(at: index!)
                 }
@@ -139,6 +141,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let index = gemName.index(of: name1!)
                 if gemName.contains(name1!) {
                     secondBody.node?.removeFromParent()
+                 //   produceSoundWhenCaughtGem()
                     gemsCounter += 1
                     countGems.text = "\(gemsCounter)/\(realgems.count)"
                     userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int + 1, forKey: "coinsBalance")
@@ -518,7 +521,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } catch {
               print("File sound couldn't be loaded")
         }
-
+    }
+    
+    func produceSoundWhenCaughtGem() {
+        //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
+        let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do {
+            let sound = try AVAudioPlayer(contentsOf: url)
+            gemCaughtSound = sound
+            sound.play()
+        } catch {
+            print("File sound couldn't be loaded")
+        }
 
     }
 }
