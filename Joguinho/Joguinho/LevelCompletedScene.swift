@@ -22,8 +22,7 @@ class LevelCompletedScene: SKScene
     var totalGems: Double!
     //var scoreStar = Component!
     
-    override func didMove(to view: SKView)
-    {
+    override func didMove(to view: SKView) {
         
         setUserDefaultsWhenCompletedLevel()
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
@@ -108,11 +107,9 @@ class LevelCompletedScene: SKScene
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches
-        {
+        for touch in touches {
             let location = touch.location(in: self)
-            if self.nodes(at: location)[0] == self.retry
-            {
+            if self.nodes(at: location)[0] == self.retry {
                 let level = Level(id: levelId, planet: currentPlanet)
                 let  scene = GameScene(size: self.size, level: level)
                 let skView = self.view! as SKView
@@ -121,9 +118,8 @@ class LevelCompletedScene: SKScene
                 scene.scaleMode = .aspectFill
                 skView.presentScene(scene)
             }
-          //Tem que colocar o continue to next Level
-            if self.nodes(at: location)[0] == self.continueButton
-            {
+            
+            if self.nodes(at: location)[0] == self.continueButton {
                 //Esse if aqui é só pra não dar crash por enquanto que não tem level 5
                 if levelId == 1 || levelId == 2 || levelId == 3
                 {

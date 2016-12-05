@@ -35,6 +35,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gemName : [String] = []
     var currentlyTouching:Bool!
     var backgroundSound:AVAudioPlayer!
+    var hitRockSound:AVAudioPlayer!
+    var spaceshipOnSound:AVAudioPlayer!
     
     init(size: CGSize, level: Level) {
         super.init(size: size)
@@ -129,12 +131,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 k+=1
             case CollisionTypes.rock.rawValue:
-                print("Bateu na pedra e morreu")
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
              //   handleCollisionWithRock(name: secondBody.node!.name!)
-                //let action = SKAction.applyImpulse(CGVector.init(dx: -0.5, dy: -2), at: spaceship.position, duration: 0.5)
-                //spaceship.run(action)
-                //spaceship.collidedWithRock()
                 //     actWhenDead()
                 k+=1
             default:
@@ -146,6 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = true
         spaceship.fireMovement()
+      //  produceSoundWhenSpaceshipOn()
         if !(scene?.isPaused)!
         {
             let rotate = SKAction.rotate(toAngle: 0.5, duration: 0.8)
@@ -173,8 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = false
-        //let action = SKAction.rotate(toAngle: -0.5, duration: 0.8)
-        //spaceship.run(action)
+      //  spaceshipOnSound.stop()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -442,8 +440,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         skView.presentScene(scene, transition: transition)
     }
     
-    func animateRock(i:Int)
-    {
+    func animateRock(i:Int) {
         TextureAtlas = SKTextureAtlas (named: "rock")
         for i in 1...TextureAtlas.textureNames.count{
             let name = "rock\(i).png"
@@ -456,8 +453,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(realrocks[i])
 
     }
-    func handleCollisionWithRock(name:String)
-    {
+    func handleCollisionWithRock(name:String) {
         var index:Int = 0
         print(name)
         for i  in 0...realrocks.count - 1
@@ -470,6 +466,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         }
+        produceSoundWhenHitRock()
         animateRock(i: index)
+    }
+    
+    func produceSoundWhenHitRock() {
+        //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
+        let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do {
+            let sound = try AVAudioPlayer(contentsOf: url)
+            hitRockSound = sound
+            sound.play()
+        } catch {
+            print("File sound couldn't be loaded")
+        }
+
+
+    }
+    
+    func produceSoundWhenSpaceshipOn() {
+         //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
+        let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do {
+            let sound = try AVAudioPlayer(contentsOf: url)
+            spaceshipOnSound = sound
+            sound.play()
+        } catch {
+              print("File sound couldn't be loaded")
+        }
+
+
     }
 }
