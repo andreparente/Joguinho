@@ -92,6 +92,8 @@ class SelectedPlanetScene: SKScene {
             levelId = 2
             case level3:
             levelId = 3
+            case level4:
+            levelId = 4
             default:
             levelId = nil
             }

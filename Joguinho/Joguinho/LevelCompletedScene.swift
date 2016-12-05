@@ -124,8 +124,8 @@ class LevelCompletedScene: SKScene
           //Tem que colocar o continue to next Level
             if self.nodes(at: location)[0] == self.continueButton
             {
-                //Esse if aqui é só pra não dar crash por enquanto que não tem level 3
-                if levelId == 1 || levelId == 2
+                //Esse if aqui é só pra não dar crash por enquanto que não tem level 5
+                if levelId == 1 || levelId == 2 || levelId == 3
                 {
                 levelId = levelId! + 1
                 let level = Level(id: levelId , planet: currentPlanet)
