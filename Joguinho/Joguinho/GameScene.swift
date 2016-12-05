@@ -49,12 +49,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
+       
         if !(background.parent == self) {
             physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
             physicsWorld.contactDelegate = self
-            
+            let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
             
             currentlyTouching = false
             setUpInicialScene()
@@ -156,6 +156,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if self.nodes(at: location)[0] == self.pauseButton
                 {
                     scene?.isPaused = true
+                    currentlyTouching = false
                     let  scene1 = PauseScene()
                     let skView = self.view! as SKView
                     let transition = SKTransition.fade(withDuration: 1.0)
@@ -207,12 +208,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if isDead() {
                 actWhenDead()
             }
-        }
+        
         
         if spaceship.position.x > realgems[realgems.count-1].position.x {
             
             actWhenCompletedLevel()
         }
+    }
     }
     
     
