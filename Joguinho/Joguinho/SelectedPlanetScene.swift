@@ -34,12 +34,13 @@ class SelectedPlanetScene: SKScene {
         let size = view.frame.size
         let background = SKSpriteNode(imageNamed: "background")
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
+       background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
         addChild(background)
         
-        back = SKSpriteNode(imageNamed: "back")
+        back = SKSpriteNode(imageNamed: "BackArrow")
         back.position = CGPoint(x: 53 * size.width / 667, y: 350 * size.height / 375)
-        back.size = CGSize(width: 58 * size.width / 667, height: 22 * size.height / 375)
+        back.color = UIColor.blue
+      //  back.size = CGSize(width: 58 * size.width / 667, height: 22 * size.height / 375)
         self.addChild(back)
 
         selectedPlanet = SKSpriteNode(imageNamed: selectedPlanetClass.name.rawValue)
