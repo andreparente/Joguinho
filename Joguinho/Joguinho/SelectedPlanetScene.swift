@@ -37,8 +37,8 @@ class SelectedPlanetScene: SKScene {
        background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
         addChild(background)
         
-        back = SKSpriteNode(imageNamed: "BackArrow")
-        back.position = CGPoint(x: 53 * size.width / 667, y: 350 * size.height / 375)
+        back = SKSpriteNode(imageNamed: "BackArrow2")
+        back.position = CGPoint(x: 53 * size.width / 667, y: 340 * size.height / 375)
         back.color = UIColor.blue
       //  back.size = CGSize(width: 58 * size.width / 667, height: 22 * size.height / 375)
         self.addChild(back)
@@ -48,7 +48,7 @@ class SelectedPlanetScene: SKScene {
         selectedPlanet.size = CGSize(width: 188 * size.width / 667, height: 188 * size.height / 375)
         self.addChild(selectedPlanet)
         
-        moreInfo = SKSpriteNode(imageNamed: "moreInfo")
+        moreInfo = SKSpriteNode(imageNamed: "moreInfo2")
         moreInfo.position = CGPoint(x: 60 * size.width / 667, y: 129 * size.height / 375)
         moreInfo.size = CGSize(width: 55 * size.width / 667, height: 55 * size.height / 375)
         self.addChild(moreInfo)
@@ -72,7 +72,8 @@ class SelectedPlanetScene: SKScene {
         
         
         closeText = SKSpriteNode(imageNamed: "exit")
-        closeText.position = CGPoint(x:572 * size.width / 667,y:110 * size.height / 375)
+        closeText.position = CGPoint(x:620 * size.width / 667,y:279
+            * size.height / 375)
         closeText.zPosition = 10
         
         textAboutPlanet = SKSpriteNode(imageNamed: "textNeptune")
