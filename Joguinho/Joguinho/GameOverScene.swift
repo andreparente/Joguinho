@@ -16,6 +16,7 @@ class GameOverScene: SKScene
     let menuButtton = Component(imageNamed: "menu")
     
     override func didMove(to view: SKView) {
+    self.view?.isUserInteractionEnabled = true
     semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
     semibackground.size = CGSize(width:size.width, height:size.height)
     semibackground.zPosition = 0
