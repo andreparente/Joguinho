@@ -269,9 +269,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpFuelBar() {
         insideProgressBar = FuelBar(image: "fuel", spaceship: self.spaceship)
-        progressBar.zPosition = 11
+        progressBar.zPosition = 4
         progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
-        insideProgressBar.zPosition = 12
+        insideProgressBar.zPosition = 5
         addChild(insideProgressBar)
         addChild(progressBar)
     }
@@ -423,17 +423,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func isDead() -> Bool {
         let spaceshipRightBoundsX = spaceship.position.x + spaceship.frame.width/2
+        let spaceshipLeftBoundsX = spaceship.position.x - spaceship.frame.width/2
         let spaceshipUpBoundsY = spaceship.position.y + spaceship.frame.height/2
         let spaceshipDownBoundsY = spaceship.position.y - spaceship.frame.height/2
+        
         if spaceshipUpBoundsY < 0 {
             return true
         }
-        if spaceshipDownBoundsY > UIScreen.main.bounds.height {
+        
+        if spaceshipDownBoundsY > screenSize.height {
             return true
         }
-        if spaceshipRightBoundsX < 0 || spaceshipRightBoundsX > UIScreen.main.bounds.width {
+        
+        if spaceshipRightBoundsX < 0 {
             return true
         }
+        
+        if spaceshipLeftBoundsX > screenSize.width {
+            return true
+        }
+        
         if spaceship.fuelLevel <= 0 {
             return true
         }
@@ -454,17 +463,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func actWhenCompletedLevel() {
-        let transition = SKTransition.fade(withDuration: 1.0)
-        let  scene = LevelCompletedScene()
-        scene.level = self.level.id
-        let skView = self.view! as SKView
-        skView.ignoresSiblingOrder = false
-        scene.size = skView.bounds.size
-        scene.scaleMode = .aspectFill
-        scene.spaceShip = spaceship
-        scene.gemsCollected = Double(gemsCounter)
-        scene.totalGems = Double(realgems.count)
-        skView.presentScene(scene, transition: transition)
+        let spaceshipLeftBoundsX = spaceship.position.x - spaceship.frame.width/2
+        self.view?.isUserInteractionEnabled = false
+        spaceship.winningMove()
+        
+        if spaceshipLeftBoundsX > screenSize.width {
+            let transition = SKTransition.fade(withDuration: 1.0)
+            let  scene = LevelCompletedScene()
+            scene.level = self.level.id
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = false
+            scene.size = skView.bounds.size
+            scene.scaleMode = .aspectFill
+            scene.spaceShip = spaceship
+            scene.gemsCollected = Double(gemsCounter)
+            scene.totalGems = Double(realgems.count)
+            skView.presentScene(scene, transition: transition)
+        }
     }
     
     func animateRock(i:Int) {

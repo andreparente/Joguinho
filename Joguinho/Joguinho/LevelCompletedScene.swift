@@ -13,6 +13,8 @@ class LevelCompletedScene: SKScene
 {
     let semibackground = Component(imageNamed: "background")
     let background = Component(imageNamed: "gameWin")
+    let platform = Component(imageNamed: "platform")
+    let spaceship = Spaceship(fuelLevel: 1)
     let continueButton = Component(imageNamed: "continue")
     let retry = Component(imageNamed: "retry")
     var star: Component!
@@ -25,22 +27,38 @@ class LevelCompletedScene: SKScene
     override func didMove(to view: SKView) {
         
         setUserDefaultsWhenCompletedLevel()
+        
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         semibackground.size = CGSize(width:size.width, height:size.height)
         semibackground.zPosition = 0
+        
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.zPosition = 10
+        
+        platform.position = CGPoint(x: frame.size.width * 5/6, y: frame.size.height * 4/5)
+        platform.zPosition = 1
+        
+        spaceship.startMoment()
+        
         continueButton.position =  CGPoint(x: 5*screenSize.width/4 / 3, y: 1*screenSize.height/5)
         continueButton.zPosition = 10
+        
         retry.position = CGPoint(x: 6*screenSize.width/4 / 2 , y: 1*screenSize.height/5)
         retry.zPosition = 10
+        
         addChild(semibackground)
         addChild(background)
+        addChild(platform)
+        
+        // Só adicionar os outros childs depois da nave parar na plataforma
+//        let spaceshipLeftBoundsX = spaceship.position.x - spaceship.frame.width/2
+//        if spaceshipLeftBoundsX > screenSize.width {
+//            
+//        }
         addChild(continueButton)
         addChild(retry)
         setUpScore()
     }
-    
     
     func setUpScore() {
         print(spaceShip.fuelLevel)

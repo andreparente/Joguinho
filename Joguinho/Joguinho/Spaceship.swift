@@ -62,6 +62,17 @@ class Spaceship:Component {
         self.updateDirectionTo(vector: vector)
     }
     
+    func winningMove() {
+        let wait = SKAction.wait(forDuration: 0.2)
+        self.run(wait)
+        
+        self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        let vector = CGVector(dx: 4, dy: 4)
+        self.physicsBody?.applyImpulse(vector)
+        self.updateDirectionTo(vector: vector)
+        self.fireMovement()
+    }
+    
     func drag() {
         let vector = CGVector(dx: -0.07, dy: 0)
         self.physicsBody?.applyImpulse(vector)
