@@ -38,6 +38,8 @@ class PauseScene: SKScene
     fire = SKSpriteNode(imageNamed: "fire rocket menu")
     fire.zPosition = 9
     fire.position = CGPoint(x: resumeButton.position.x - resumeButton.frame.width/1.9, y: resumeButton.position.y - resumeButton.frame.height/8)
+    currentSceneState.countDownLabel.text = "3"
+    currentSceneState.timerDidEnd = false
     addChild(fire)
     addChild(menuLabel)
     addChild(resumeLabel)

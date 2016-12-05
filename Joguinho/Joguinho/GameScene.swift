@@ -28,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var pauseButton = Component(imageNamed: "pause")
     var countGems: SKLabelNode!
     var gemsCounter: Int = 0
-    
+    var timer:Timer!
     var TextureAtlas = SKTextureAtlas()
     var TextureArray = [SKTexture]()
     var fuelDropname : [String] = []
@@ -37,6 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backgroundSound:AVAudioPlayer!
     var hitRockSound:AVAudioPlayer!
     var spaceshipOnSound:AVAudioPlayer!
+    var countDownLabel:SKLabelNode!
+    var timerDidEnd:Bool = false
     
     init(size: CGSize, level: Level) {
         super.init(size: size)
@@ -84,12 +86,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // couldn't load file :(
                 print("Merda")
             }
-           
         }
-        scene?.isPaused = false
-        
+        setUpCountDownLabel()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true);
     }
     
+    func countDown() {
+        countDownLabel.text = String(Int(countDownLabel.text!)! - 1)
+        if countDownLabel.text == "0" {
+            timer.invalidate()
+            countDownLabel.removeFromParent()
+            scene?.isPaused = false
+            timerDidEnd = true
+        }
+    }
+    func setUpCountDownLabel() {
+        countDownLabel = SKLabelNode(fontNamed: "Futura")
+        countDownLabel.text = "3"
+        countDownLabel.position = CGPoint(x: screenSize.width/2, y: screenSize.height/2)
+        countDownLabel.color = UIColor.black
+        countDownLabel.fontSize = 20
+        countDownLabel.zPosition = 10
+        addChild(countDownLabel)
+
+    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
@@ -176,6 +196,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if !timerDidEnd{
+        scene?.isPaused = true
+        }
+    
         if !(scene?.isPaused)! {
             surface.position = CGPoint(x:surface.position.x - 5,y:surface.position.y)
             surface2.position = CGPoint(x:surface2.position.x - 5,y:surface2.position.y)
@@ -481,8 +505,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } catch {
             print("File sound couldn't be loaded")
         }
-
-
     }
     
     func produceSoundWhenSpaceshipOn() {
