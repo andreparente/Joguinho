@@ -74,7 +74,7 @@ class Spaceship:Component {
     }
     
     func drag() {
-        let vector = CGVector(dx: -0.07, dy: 0)
+        let vector = CGVector(dx: -0.05, dy: 0)
         self.physicsBody?.applyImpulse(vector)
         self.updateDirectionTo(vector: CGVector(dx: -0.05, dy: 0.05))
     }

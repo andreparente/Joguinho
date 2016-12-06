@@ -31,6 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timer:Timer!
     var TextureAtlas = SKTextureAtlas()
     var TextureArray = [SKTexture]()
+    var rockName:[Int] = []
     var fuelDropname : [String] = []
     var gemName : [String] = []
     var currentlyTouching:Bool!
@@ -230,16 +231,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             setUpActionsForComponents()
             
+            if spaceship.position.x > realgems[realgems.count-1].position.x {
+                
+                actWhenCompletedLevel()
+            }
+
             if isDead() {
                 actWhenDead()
             }
         
-        
-        if spaceship.position.x > realgems[realgems.count-1].position.x {
-            
-            actWhenCompletedLevel()
-        }
-    }
+           }
     }
     
     
@@ -310,15 +311,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setUpRocks() {
         realrocks.removeAll()
         for i in 0...level.rocks.count - 1 {
-            realrocks.append(Component(imageNamed: "rock1"))
+            let random = GKRandomDistribution(lowestValue: 1, highestValue: 5)
+            let nextInt = random.nextInt()
+            realrocks.append(Component(imageNamed: "rock\(nextInt)"))
             realrocks[i].name = "Rock\(i)"
+            rockName.append(nextInt)
             realrocks[i].position = level.rocks[i]
             realrocks[i].zPosition = 10
-            realrocks[i].physicsBody = SKPhysicsBody(texture: realrocks[i].texture!,
+            realrocks[i].physicsBody = SKPhysicsBody(texture: realrocks[i].texture!,alphaThreshold: 0.02,
                                                      size: CGSize(width: realrocks[i].size.width, height: realrocks[i].size.height))
             realrocks[i].physicsBody?.affectedByGravity = false
+            realrocks[i].physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             realrocks[i].physicsBody?.categoryBitMask = CollisionTypes.rock.rawValue
-            realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.gem.rawValue | CollisionTypes.fuelDrop.rawValue
+            realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue 
             realrocks[i].physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
             
             self.addChild(realrocks[i])
@@ -339,7 +344,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realgems[i].physicsBody = SKPhysicsBody(texture: realgems[i].texture!, alphaThreshold: 0.02, size: CGSize(width: realgems[i].size.width, height: realgems[i].size.height))
             realgems[i].physicsBody?.affectedByGravity = false
             realgems[i].physicsBody?.categoryBitMask = CollisionTypes.gem.rawValue
-            realgems[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue
+            realgems[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
             realgems[i].physicsBody?.collisionBitMask = 0
             
             if i == level.gems.count - 1
@@ -363,7 +368,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realFuelDrops[i].physicsBody = SKPhysicsBody(texture: realFuelDrops[i].texture!,size: CGSize(width: realFuelDrops[i].size.width, height: realFuelDrops[i].size.height))
             realFuelDrops[i].physicsBody?.affectedByGravity = false
             realFuelDrops[i].physicsBody?.categoryBitMask = CollisionTypes.fuelDrop.rawValue
-            realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.rock.rawValue | CollisionTypes.gem.rawValue
+            realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
             realrocks[i].physicsBody?.collisionBitMask = 0
             
             self.addChild(realFuelDrops[i])
@@ -406,9 +411,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func setUpActionsForComponents() {
+        var i = 0
+        var rockMove3 = SKAction()
         for rock in realrocks {
-            let rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+            print(rockName[i])
+            switch rockName[i]
+            {
+            case 1:
+             rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+            case 2:
+             rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
+            case 3:
+             rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.4)
+            case 4:
+             rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
+            case 5:
+             rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
+            default:
+            break
+            }
             rock.run(rockMove3)
+            i+=1
         }
         for gem in realgems {
             let gemMove = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
