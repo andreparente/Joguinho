@@ -39,6 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var hitRockSound:AVAudioPlayer!
     var spaceshipOnSound:AVAudioPlayer!
     var gemCaughtSound:AVAudioPlayer!
+    var fuelCaughtSound:AVAudioPlayer!
     var countDownLabel:SKLabelNode!
     var timerDidEnd:Bool = false
     
@@ -59,7 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !(background.parent == self) {
             physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
             physicsWorld.contactDelegate = self
-            let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
+            let path = Bundle.main.path(forResource: "background2.mp3", ofType:nil)!
             let url = URL(fileURLWithPath: path)
             
             currentlyTouching = false
@@ -82,6 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             do {
                 let sound = try AVAudioPlayer(contentsOf: url)
                 backgroundSound = sound
+                sound.volume = 0.1
                 print("Passou por aqui")
                 sound.play()
             } catch {
@@ -133,6 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if fuelDropname.contains(name1!) {
                     secondBody.node?.removeFromParent()
                    // produceSoundWhenCaughtGem()
+                    produceSoundWhenCaughtFuel()
                     insideProgressBar.change(increase: 6)
                     fuelDropname.remove(at: index!)
                 }
@@ -140,9 +143,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case  CollisionTypes.gem.rawValue:
                 let name1 = secondBody.node?.name
                 let index = gemName.index(of: name1!)
+                
                 if gemName.contains(name1!) {
+                    produceSoundWhenCaughtGem()
                     secondBody.node?.removeFromParent()
-                 //   produceSoundWhenCaughtGem()
                     gemsCounter += 1
                     countGems.text = "\(gemsCounter)/\(realgems.count)"
                     userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int + 1, forKey: "coinsBalance")
@@ -156,7 +160,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 k+=1
             case CollisionTypes.rock.rawValue:
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-             //   handleCollisionWithRock(name: secondBody.node!.name!)
+//                handleCollisionWithRock(name: secondBody.node!.name!)
+                produceSoundWhenHitRock()
                 //     actWhenDead()
                 k+=1
             default:
@@ -168,7 +173,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = true
         spaceship.fireMovement()
-      //  produceSoundWhenSpaceshipOn()
+//        produceSoundWhenSpaceshipOn()
         if !(scene?.isPaused)!
         {
             let rotate = SKAction.rotate(toAngle: 0.5, duration: 0.8)
@@ -539,11 +544,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func produceSoundWhenHitRock() {
         //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
-        let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
+        let path = Bundle.main.path(forResource: "rockCollision.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do {
             let sound = try AVAudioPlayer(contentsOf: url)
             hitRockSound = sound
+            sound.volume = 0.1
             sound.play()
         } catch {
             print("File sound couldn't be loaded")
@@ -552,7 +558,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func produceSoundWhenSpaceshipOn() {
          //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
-        let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
+        let path = Bundle.main.path(forResource: "fuelSound.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do {
             let sound = try AVAudioPlayer(contentsOf: url)
@@ -565,7 +571,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func produceSoundWhenCaughtGem() {
         //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
-        let path = Bundle.main.path(forResource: "background.mp3", ofType:nil)!
+        let path = Bundle.main.path(forResource: "gemSound.wav", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do {
             let sound = try AVAudioPlayer(contentsOf: url)
@@ -575,5 +581,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("File sound couldn't be loaded")
         }
 
+    }
+    
+    func produceSoundWhenCaughtFuel(){
+        let path = Bundle.main.path(forResource: "fuelSound.mp3", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        do{
+            let sound = try AVAudioPlayer(contentsOf: url)
+            fuelCaughtSound = sound
+            sound.play()
+        } catch {
+            print("File sound couldn't be loaded")
+        }
+        
     }
 }

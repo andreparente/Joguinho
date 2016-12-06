@@ -11,6 +11,10 @@
 		3D2369501DD238D500C749BA /* PhysicalPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */; };
 		496EFB471DD3BB2300A7B163 /* Futura.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 496EFB461DD3BABC00A7B163 /* Futura.ttc */; };
 		49B7A5E81DECBD13003ED5FB /* fire.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 49B7A5E71DECBD13003ED5FB /* fire.atlas */; };
+		49F39B441DF750A7006CFB06 /* background2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49F39B431DF750A7006CFB06 /* background2.mp3 */; };
+		49F39B481DF750EF006CFB06 /* gemSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49F39B471DF750EF006CFB06 /* gemSound.wav */; };
+		49F39B4C1DF75133006CFB06 /* fuelSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49F39B4B1DF75133006CFB06 /* fuelSound.mp3 */; };
+		49F39B501DF75327006CFB06 /* rockCollision.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49F39B4F1DF75327006CFB06 /* rockCollision.mp3 */; };
 		8A61114A1DDCA79900D6109D /* FuelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6111491DDCA79900D6109D /* FuelBar.swift */; };
 		8A61114C1DDCAB1C00D6109D /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */; };
 		8A78FA8D1DE6556300276774 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A78FA8B1DE6556300276774 /* Model.xcdatamodeld */; };
@@ -65,6 +69,10 @@
 		3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalPlanet.swift; sourceTree = "<group>"; };
 		496EFB461DD3BABC00A7B163 /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
 		49B7A5E71DECBD13003ED5FB /* fire.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fire.atlas; sourceTree = "<group>"; };
+		49F39B431DF750A7006CFB06 /* background2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background2.mp3; sourceTree = "<group>"; };
+		49F39B471DF750EF006CFB06 /* gemSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gemSound.wav; sourceTree = "<group>"; };
+		49F39B4B1DF75133006CFB06 /* fuelSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fuelSound.mp3; sourceTree = "<group>"; };
+		49F39B4F1DF75327006CFB06 /* rockCollision.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rockCollision.mp3; sourceTree = "<group>"; };
 		8A6111491DDCA79900D6109D /* FuelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuelBar.swift; sourceTree = "<group>"; };
 		8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		8A78FA8C1DE6556300276774 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -183,6 +191,10 @@
 			isa = PBXGroup;
 			children = (
 				9CD911401DF4DD4800EFDF62 /* background.mp3 */,
+				49F39B431DF750A7006CFB06 /* background2.mp3 */,
+				49F39B4F1DF75327006CFB06 /* rockCollision.mp3 */,
+				49F39B471DF750EF006CFB06 /* gemSound.wav */,
+				49F39B4B1DF75133006CFB06 /* fuelSound.mp3 */,
 				8AAEA82C1DBA5D5400B908A0 /* Model */,
 				8AAEA82B1DBA5D4C00B908A0 /* View */,
 				8AAEA8291DBA5D3100B908A0 /* Controller */,
@@ -384,13 +396,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F39B501DF75327006CFB06 /* rockCollision.mp3 in Resources */,
 				49B7A5E81DECBD13003ED5FB /* fire.atlas in Resources */,
 				496EFB471DD3BB2300A7B163 /* Futura.ttc in Resources */,
 				8AAEA8001DBA5CCC00B908A0 /* Main.storyboard in Resources */,
 				9CD911411DF4DD4800EFDF62 /* background.mp3 in Resources */,
+				49F39B4C1DF75133006CFB06 /* fuelSound.mp3 in Resources */,
 				8AAEA8021DBA5CCC00B908A0 /* Assets.xcassets in Resources */,
 				9C9544ED1DEF40BE005833F4 /* Localizable.strings in Resources */,
 				8AAEA8051DBA5CCC00B908A0 /* LaunchScreen.storyboard in Resources */,
+				49F39B441DF750A7006CFB06 /* background2.mp3 in Resources */,
+				49F39B481DF750EF006CFB06 /* gemSound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
