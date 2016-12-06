@@ -76,7 +76,7 @@ class SelectedPlanetScene: SKScene {
             * size.height / 375)
         closeText.zPosition = 10
         
-        textAboutPlanet = SKSpriteNode(imageNamed: "textNeptune")
+        textAboutPlanet = SKSpriteNode(imageNamed: NSLocalizedString("Neptune_Description_Image", comment: "Description"))
         textAboutPlanet.position = CGPoint(x: size.width / 2, y: size.height / 2)
         textAboutPlanet.zPosition = 10
 
