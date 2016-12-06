@@ -310,12 +310,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpRocks() {
         realrocks.removeAll()
+        var cont = 1
         for i in 0...level.rocks.count - 1 {
-            let random = GKRandomDistribution(lowestValue: 1, highestValue: 5)
-            let nextInt = random.nextInt()
-            realrocks.append(Component(imageNamed: "rock\(nextInt)"))
+            if cont > 5 {
+                cont = 1
+            }
+            realrocks.append(Component(imageNamed: "rock\(cont)"))
             realrocks[i].name = "Rock\(i)"
-            rockName.append(nextInt)
+            rockName.append(cont)
             realrocks[i].position = level.rocks[i]
             realrocks[i].zPosition = 10
             realrocks[i].physicsBody = SKPhysicsBody(texture: realrocks[i].texture!,alphaThreshold: 0.02,
@@ -325,7 +327,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realrocks[i].physicsBody?.categoryBitMask = CollisionTypes.rock.rawValue
             realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue 
             realrocks[i].physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
-            
+            cont+=1
             self.addChild(realrocks[i])
         }
     }
@@ -422,7 +424,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case 2:
              rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
             case 3:
-             rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.4)
+             rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.2)
             case 4:
              rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
             case 5:
