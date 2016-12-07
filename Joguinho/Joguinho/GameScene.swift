@@ -207,10 +207,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        let gemRightBoundsX = realgems[realgems.count-1].position.x + realgems[realgems.count-1].frame.width/2
-        let gemLeftBoundsX = realgems[realgems.count-1].position.x - realgems[realgems.count-1].frame.width/2
-        let gemUpBoundsY = realgems[realgems.count-1].position.y + realgems[realgems.count-1].frame.height/2
-        let gemDownBoundsY = realgems[realgems.count-1].position.y - realgems[realgems.count-1].frame.height/2
         if !timerDidEnd{
         scene?.isPaused = true
         }
