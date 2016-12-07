@@ -116,19 +116,23 @@ class LevelCompletedScene: SKScene
     func setUserDefaultsWhenCompletedLevel() {
         
         if !levelFound() {
-            if userDefaults.value(forKey: "lastLevel") as! Int >= 8 {
-                //imagino que tenha que fazer algo aqui 
-                //porque nao pode ser lastlevel 9! 
-                //volta pro 1? to com medo de mexer e fazer merda!
-                
+            userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
+            player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
+            
+            if userDefaults.value(forKey: "lastLevel") as! Int % 8 == 0  {
+    
+                levels[currentPlanet.index.rawValue][7] = "8"
+                levels[currentPlanet.index.rawValue + 1][0] = "1"
+                userDefaults.set(levels, forKey: "levels")
+                print(levels)
+                print(userDefaults.value(forKey: "levels") as! [[String]])
+
+
             } else {
-                // aqui é de boas o caso normal!
                 
-                userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
-                player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
                 print(userDefaults.value(forKey: "lastLevel") as! Int + 1)
                 print(player.lastLevel)
-                levels[currentPlanet.index.rawValue][userDefaults.value(forKey: "lastLevel") as! Int - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int)
+                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int)
                 userDefaults.set(levels, forKey: "levels")
                 print(levels)
                 print(userDefaults.value(forKey: "levels") as! [[String]])
@@ -152,7 +156,7 @@ class LevelCompletedScene: SKScene
             
             if self.nodes(at: location)[0] == self.continueButton {
                 //Esse if aqui é só pra não dar crash por enquanto que não tem level 5
-                if levelId == 1 || levelId == 2 || levelId == 3
+                if levelId != 8
                 {
                 levelId = levelId! + 1
                 let level = Level(id: levelId , planet: currentPlanet)
