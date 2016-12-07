@@ -42,7 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var fuelCaughtSound:AVAudioPlayer!
     var countDownLabel:SKLabelNode!
     var timerDidEnd:Bool = false
-    
+    var cauhgtFinalGem:Bool = false
     init(size: CGSize, level: Level) {
         super.init(size: size)
         
@@ -153,8 +153,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player.coinsBalance = userDefaults.value(forKey: "coinsBalance") as! Int
                     gemName.remove(at: index!)
                 }
+                print("Passou por aqui")
                 if secondBody.node?.name == realgems[realgems.count - 1].name
                 {
+                    cauhgtFinalGem = true
                     actWhenCompletedLevel()
                 }
                 k+=1
@@ -205,6 +207,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        let gemRightBoundsX = realgems[realgems.count-1].position.x + realgems[realgems.count-1].frame.width/2
+        let gemLeftBoundsX = realgems[realgems.count-1].position.x - realgems[realgems.count-1].frame.width/2
+        let gemUpBoundsY = realgems[realgems.count-1].position.y + realgems[realgems.count-1].frame.height/2
+        let gemDownBoundsY = realgems[realgems.count-1].position.y - realgems[realgems.count-1].frame.height/2
         if !timerDidEnd{
         scene?.isPaused = true
         }
@@ -236,8 +242,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             setUpActionsForComponents()
             
-            if spaceship.position.x > realgems[realgems.count-1].position.x {
-                
+            if cauhgtFinalGem || spaceship.position.x > realgems[realgems.count-1].position.x   {
                 actWhenCompletedLevel()
             }
 
@@ -429,7 +434,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case 2:
              rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
             case 3:
-             rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.2)
+             rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
             case 4:
              rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
             case 5:
@@ -494,10 +499,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func actWhenCompletedLevel() {
         let spaceshipLeftBoundsX = spaceship.position.x - spaceship.frame.width/2
+        let spaceshipUpBoundsY = spaceship.position.y + spaceship.frame.height/2
         self.view?.isUserInteractionEnabled = false
         spaceship.winningMove()
         
-        if spaceshipLeftBoundsX > screenSize.width {
+        if spaceshipLeftBoundsX > screenSize.width || spaceshipUpBoundsY > screenSize.height{
             let transition = SKTransition.fade(withDuration: 1.0)
             let  scene = LevelCompletedScene()
             scene.level = self.level.id

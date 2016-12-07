@@ -25,7 +25,7 @@ class LevelCompletedScene: SKScene
     //var scoreStar = Component!
     
     override func didMove(to view: SKView) {
-        
+        self.view?.isUserInteractionEnabled = true
         setUserDefaultsWhenCompletedLevel()
         
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)

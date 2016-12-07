@@ -67,14 +67,14 @@ class Spaceship:Component {
         self.run(wait)
         
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        let vector = CGVector(dx: 4, dy: 4)
+        let vector = CGVector(dx: 4, dy: 10)
         self.physicsBody?.applyImpulse(vector)
         self.updateDirectionTo(vector: vector)
         self.fireMovement()
     }
     
     func drag() {
-        let vector = CGVector(dx: -0.05, dy: 0)
+        let vector = CGVector(dx: -0.06, dy: 0)
         self.physicsBody?.applyImpulse(vector)
         self.updateDirectionTo(vector: CGVector(dx: -0.05, dy: 0.05))
     }
