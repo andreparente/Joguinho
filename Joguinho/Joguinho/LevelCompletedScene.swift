@@ -116,12 +116,23 @@ class LevelCompletedScene: SKScene
     func setUserDefaultsWhenCompletedLevel() {
         
         if !levelFound() {
-            userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
-            player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
-            levels[currentPlanet.index.rawValue][userDefaults.value(forKey: "lastLevel") as! Int - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int)
-            userDefaults.set(levels, forKey: "levels")
-            print(levels)
-            print(userDefaults.value(forKey: "levels") as! [[String]])
+            if userDefaults.value(forKey: "lastLevel") as! Int >= 8 {
+                //imagino que tenha que fazer algo aqui 
+                //porque nao pode ser lastlevel 9! 
+                //volta pro 1? to com medo de mexer e fazer merda!
+                
+            } else {
+                // aqui é de boas o caso normal!
+                
+                userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
+                player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
+                print(userDefaults.value(forKey: "lastLevel") as! Int + 1)
+                print(player.lastLevel)
+                levels[currentPlanet.index.rawValue][userDefaults.value(forKey: "lastLevel") as! Int - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int)
+                userDefaults.set(levels, forKey: "levels")
+                print(levels)
+                print(userDefaults.value(forKey: "levels") as! [[String]])
+            }
         }
     }
     

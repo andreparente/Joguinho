@@ -136,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     secondBody.node?.removeFromParent()
                    // produceSoundWhenCaughtGem()
                     produceSoundWhenCaughtFuel()
-                    insideProgressBar.change(increase: 6)
+                    insideProgressBar.change(increase: 15)
                     fuelDropname.remove(at: index!)
                 }
                 k+=1
@@ -227,7 +227,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if insideProgressBar.spaceship.fuelLevel < 2 {
                     insideProgressBar.finish()
                 } else {
-                    insideProgressBar.change(increase: -0.5)
+                    insideProgressBar.change(increase: -1.2)
                 }
             }
             
