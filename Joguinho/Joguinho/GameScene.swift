@@ -84,11 +84,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let sound = try AVAudioPlayer(contentsOf: url)
                 backgroundSound = sound
                 sound.volume = 0.1
-                print("Passou por aqui")
                 sound.play()
             } catch {
                 // couldn't load file :(
-                print("Merda")
+                print("Couldn't load file")
             }
         }
         setUpCountDownLabel()
@@ -153,7 +152,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player.coinsBalance = userDefaults.value(forKey: "coinsBalance") as! Int
                     gemName.remove(at: index!)
                 }
-                print("Passou por aqui")
                 if secondBody.node?.name == realgems[realgems.count - 1].name
                 {
                     cauhgtFinalGem = true
@@ -422,7 +420,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var i = 0
         var rockMove3 = SKAction()
         for rock in realrocks {
-            print(rockName[i])
             switch rockName[i]
             {
             case 1:
@@ -520,7 +517,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let name = "rock\(i).png"
             TextureArray.append(SKTexture(imageNamed: name))
         }
-        print(TextureArray)
         realrocks[i] = Component(imageNamed: TextureAtlas.textureNames[0])
         let action = SKAction.repeatForever(SKAction.animate(with: TextureArray, timePerFrame: 0.1))
         realrocks[i].run(action, withKey: "rockMovement")
@@ -529,13 +525,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func handleCollisionWithRock(name:String) {
         var index:Int = 0
-        print(name)
         for i  in 0...realrocks.count - 1
         {
             if realrocks[i].name == name
             {
                 index = i
-                print("Entrou aqui")
                 break
             }
             
