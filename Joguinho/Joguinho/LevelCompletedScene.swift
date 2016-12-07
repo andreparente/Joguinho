@@ -35,10 +35,12 @@ class LevelCompletedScene: SKScene
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.zPosition = 10
         
-        platform.position = CGPoint(x: frame.size.width * 5/6, y: frame.size.height * 4/5)
-        platform.zPosition = 1
+        platform.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 7)
+        platform.zPosition = 15
+        platform.size = CGSize(width: frame.size.width / 4, height: frame.size.height / 5)
         
-        spaceship.startMoment()
+        spaceship.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 4)
+        spaceship.zPosition = 15
         
         continueButton.position =  CGPoint(x: 5*screenSize.width/4 / 3, y: 1*screenSize.height/5)
         continueButton.zPosition = 10
@@ -49,7 +51,7 @@ class LevelCompletedScene: SKScene
         addChild(semibackground)
         addChild(background)
         addChild(platform)
-        
+        addChild(spaceship)
         // Só adicionar os outros childs depois da nave parar na plataforma
 //        let spaceshipLeftBoundsX = spaceship.position.x - spaceship.frame.width/2
 //        if spaceshipLeftBoundsX > screenSize.width {
