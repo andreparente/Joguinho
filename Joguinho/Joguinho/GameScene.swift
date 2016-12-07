@@ -227,7 +227,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if insideProgressBar.spaceship.fuelLevel < 2 {
                     insideProgressBar.finish()
                 } else {
-                    insideProgressBar.change(increase: -1.2)
+                    insideProgressBar.change(increase: -0.8)
                 }
             }
             

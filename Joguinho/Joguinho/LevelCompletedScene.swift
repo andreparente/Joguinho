@@ -132,7 +132,7 @@ class LevelCompletedScene: SKScene
                 
                 print(userDefaults.value(forKey: "lastLevel") as! Int + 1)
                 print(player.lastLevel)
-                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int)
+                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
                 userDefaults.set(levels, forKey: "levels")
                 print(levels)
                 print(userDefaults.value(forKey: "levels") as! [[String]])
