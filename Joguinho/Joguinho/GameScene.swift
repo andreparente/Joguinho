@@ -162,7 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case CollisionTypes.rock.rawValue:
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
 //                handleCollisionWithRock(name: secondBody.node!.name!)
-                produceSoundWhenHitRock()
+             //   produceSoundWhenHitRock()
                 //     actWhenDead()
                 k+=1
             default:
@@ -540,7 +540,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func produceSoundWhenHitRock() {
-        //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
+        if hitRockSound != nil
+        {
+        if !(hitRockSound.isPlaying)
+        {
         let path = Bundle.main.path(forResource: "rockCollision.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do {
@@ -550,6 +553,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             sound.play()
         } catch {
             print("File sound couldn't be loaded")
+        }
+        }
         }
     }
     
