@@ -57,7 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-       
+        
         if !(background.parent == self) {
             physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
             physicsWorld.contactDelegate = self
@@ -81,14 +81,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 setUpOxygenDrops()
             }
             
-            do {
-                let sound = try AVAudioPlayer(contentsOf: url)
-                backgroundSound = sound
-                sound.volume = 0.1
-                sound.play()
-            } catch {
-                // couldn't load file :(
-                print("Couldn't load file")
+            if userDefaults.bool(forKey: "soundOn") {
+                do {
+                    let sound = try AVAudioPlayer(contentsOf: url)
+                    backgroundSound = sound
+                    sound.volume = 0.1
+                    sound.play()
+                } catch {
+                    // couldn't load file :(
+                    print("Couldn't load file")
+                }
             }
         }
         setUpCountDownLabel()
@@ -112,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         countDownLabel.fontSize = 20
         countDownLabel.zPosition = 10
         addChild(countDownLabel)
-
+        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -134,8 +136,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if fuelDropname.contains(name1!) {
                     secondBody.node?.removeFromParent()
-                   // produceSoundWhenCaughtGem()
-                    produceSoundWhenCaughtFuel()
+                    
+                    if userDefaults.bool(forKey: "soundOn") {
+                        produceSoundWhenCaughtFuel()
+                    }
                     insideProgressBar.change(increase: 15)
                     fuelDropname.remove(at: index!)
                 }
@@ -145,7 +149,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let index = gemName.index(of: name1!)
                 
                 if gemName.contains(name1!) {
-                    produceSoundWhenCaughtGem()
+                    
+                    if userDefaults.bool(forKey: "soundOn") {
+                        produceSoundWhenCaughtGem()
+                    }
                     secondBody.node?.removeFromParent()
                     gemsCounter += 1
                     countGems.text = "\(gemsCounter)/\(realgems.count)"
@@ -161,8 +168,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 k+=1
             case CollisionTypes.rock.rawValue:
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-//                handleCollisionWithRock(name: secondBody.node!.name!)
-             //   produceSoundWhenHitRock()
+                //                handleCollisionWithRock(name: secondBody.node!.name!)
+                //   produceSoundWhenHitRock()
                 //     actWhenDead()
                 k+=1
             default:
@@ -174,7 +181,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = true
         spaceship.fireMovement()
-//        produceSoundWhenSpaceshipOn()
+        //        produceSoundWhenSpaceshipOn()
         if !(scene?.isPaused)!
         {
             let rotate = SKAction.rotate(toAngle: 0.5, duration: 0.8)
@@ -202,14 +209,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = false
-      //  spaceshipOnSound.stop()
+        //  spaceshipOnSound.stop()
     }
     
     override func update(_ currentTime: TimeInterval) {
         if !timerDidEnd{
-        scene?.isPaused = true
+            scene?.isPaused = true
         }
-    
+        
         if !(scene?.isPaused)! {
             surface.position = CGPoint(x:surface.position.x - 5,y:surface.position.y)
             surface2.position = CGPoint(x:surface2.position.x - 5,y:surface2.position.y)
@@ -223,14 +230,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if currentlyTouching == true {
                 spaceship.spaceshipMovement()
-
+                
                 if insideProgressBar.spaceship.fuelLevel < 2 {
                     insideProgressBar.finish()
                 } else {
                     insideProgressBar.change(increase: -0.8)
                 }
             }
-            
+                
             else {
                 spaceship.drag()
                 spaceship.removeAllChildren()
@@ -240,12 +247,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if cauhgtFinalGem || spaceship.position.x > realgems[realgems.count-1].position.x   {
                 actWhenCompletedLevel()
             }
-
+            
             if isDead() {
                 actWhenDead()
             }
-        
-           }
+            
+        }
     }
     
     
@@ -330,7 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             realrocks[i].physicsBody?.affectedByGravity = false
             realrocks[i].physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             realrocks[i].physicsBody?.categoryBitMask = CollisionTypes.rock.rawValue
-            realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue 
+            realrocks[i].physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
             realrocks[i].physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
             cont+=1
             self.addChild(realrocks[i])
@@ -424,17 +431,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             switch rockName[i]
             {
             case 1:
-             rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+                rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
             case 2:
-             rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
+                rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
             case 3:
-             rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
+                rockMove3 = SKAction.applyForce(CGVector(dx: -0.1, dy: 0), duration: 0.5)
             case 4:
-             rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
+                rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
             case 5:
-             rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
+                rockMove3 = SKAction.applyForce(CGVector(dx: -0000.1, dy: 0), duration: 0.2)
             default:
-            break
+                break
             }
             rock.run(rockMove3)
             i+=1
@@ -522,7 +529,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let action = SKAction.repeatForever(SKAction.animate(with: TextureArray, timePerFrame: 0.1))
         realrocks[i].run(action, withKey: "rockMovement")
         addChild(realrocks[i])
-
+        
     }
     func handleCollisionWithRock(name:String) {
         var index:Int = 0
@@ -542,24 +549,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func produceSoundWhenHitRock() {
         if hitRockSound != nil
         {
-        if !(hitRockSound.isPlaying)
-        {
-        let path = Bundle.main.path(forResource: "rockCollision.mp3", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
-        do {
-            let sound = try AVAudioPlayer(contentsOf: url)
-            hitRockSound = sound
-            sound.volume = 0.1
-            sound.play()
-        } catch {
-            print("File sound couldn't be loaded")
-        }
-        }
+            if !(hitRockSound.isPlaying)
+            {
+                let path = Bundle.main.path(forResource: "rockCollision.mp3", ofType:nil)!
+                let url = URL(fileURLWithPath: path)
+                do {
+                    let sound = try AVAudioPlayer(contentsOf: url)
+                    hitRockSound = sound
+                    sound.volume = 0.1
+                    sound.play()
+                } catch {
+                    print("File sound couldn't be loaded")
+                }
+            }
         }
     }
     
     func produceSoundWhenSpaceshipOn() {
-         //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
+        //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
         let path = Bundle.main.path(forResource: "fuelSound.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do {
@@ -567,7 +574,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spaceshipOnSound = sound
             sound.play()
         } catch {
-              print("File sound couldn't be loaded")
+            print("File sound couldn't be loaded")
         }
     }
     
@@ -582,7 +589,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } catch {
             print("File sound couldn't be loaded")
         }
-
+        
     }
     
     func produceSoundWhenCaughtFuel(){

@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set(0, forKey: "coinsBalance")
             planetsGlobal = getArrayPlanets()
             DAO().savePlanets(planets: planetsGlobal)
+            userDefaults.set(true, forKey: "soundOn")
         } else {
             planetsGlobal = DAO().getPlanets()
         }

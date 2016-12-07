@@ -22,9 +22,28 @@ class PlanetsScene: SKScene{
     var venus: Component!
     var mercury: Component!
     var saturnShade:Component!
+    var soundButton: SKSpriteNode!
+    var buttonTexture: SKTexture!
     
     
     override func didMove(to view: SKView) {
+        
+        
+        
+        if userDefaults.bool(forKey: "soundOn") {
+            buttonTexture = SKTexture(imageNamed: "soundOn")
+            soundButton = SKSpriteNode(texture: buttonTexture)
+            soundButton.position = CGPoint(x: 6*screenSize.width/8, y: screenSize.height/4)
+            soundButton.zPosition = 3
+            self.addChild(soundButton)
+        } else {
+            buttonTexture = SKTexture(imageNamed: "soundOff")
+            soundButton = SKSpriteNode(texture: buttonTexture)
+            soundButton.position = CGPoint(x: 6*screenSize.width/8, y: screenSize.height/4)
+            soundButton.zPosition = 3
+            self.addChild(soundButton)
+        }
+        
         
         instructionLabel = SKLabelNode(fontNamed: "Futura")
         instructionLabel.text = NSLocalizedString("Planet_Instruction", comment: "Select a Planet")
@@ -167,6 +186,19 @@ class PlanetsScene: SKScene{
             // Get the location of the touch in this scene
             let location = (touch as AnyObject).location(in: self)
             // Check if the location of the touch is within the button's bounds
+            
+            if soundButton.contains(location) {
+                print("entrou aqui")
+                if userDefaults.bool(forKey: "soundOn") {
+                    print("entrou no true")
+                    soundButton.texture = SKTexture(imageNamed:"soundOff")
+                    userDefaults.set(false, forKey: "soundOn")
+                } else {
+                    print("entrou no false")
+                    soundButton.texture = SKTexture(imageNamed:"soundOn")
+                    userDefaults.set(true, forKey: "soundOn")
+                }
+            }
             if neptune.contains(location) {
                 
                 currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
