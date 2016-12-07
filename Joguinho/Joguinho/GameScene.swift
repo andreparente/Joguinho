@@ -43,6 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var countDownLabel:SKLabelNode!
     var timerDidEnd:Bool = false
     var cauhgtFinalGem:Bool = false
+    
     init(size: CGSize, level: Level) {
         super.init(size: size)
         
