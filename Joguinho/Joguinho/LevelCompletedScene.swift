@@ -50,10 +50,10 @@ class LevelCompletedScene: SKScene
         
         addChild(semibackground)
         addChild(background)
-        addChild(platform)
-        addChild(spaceship)
+       // addChild(platform)
+      //  addChild(spaceship)
         // Só adicionar os outros childs depois da nave parar na plataforma
-//        let spaceshipLeftBoundsX = spaceship.position.x - spaceship.frame.width/2
+    //    let spaceshipLeftBoundsX = spaceship.position.x - spaceship.frame.width/2
 //        if spaceshipLeftBoundsX > screenSize.width {
 //            
 //        }
