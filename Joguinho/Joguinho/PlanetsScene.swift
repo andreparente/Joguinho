@@ -28,18 +28,19 @@ class PlanetsScene: SKScene{
     
     override func didMove(to view: SKView) {
         
-        
+        let size = view.frame.size
+
         
         if userDefaults.bool(forKey: "soundOn") {
             buttonTexture = SKTexture(imageNamed: "soundOn")
             soundButton = SKSpriteNode(texture: buttonTexture)
-            soundButton.position = CGPoint(x: 6*screenSize.width/8, y: screenSize.height/4)
+            soundButton.position = CGPoint(x: 550 * size.width / 667, y: 43 * size.height / 375)
             soundButton.zPosition = 3
             self.addChild(soundButton)
         } else {
             buttonTexture = SKTexture(imageNamed: "soundOff")
             soundButton = SKSpriteNode(texture: buttonTexture)
-            soundButton.position = CGPoint(x: 6*screenSize.width/8, y: screenSize.height/4)
+            soundButton.position = CGPoint(x: 550 * size.width / 667, y: 43 * size.height / 375)
             soundButton.zPosition = 3
             self.addChild(soundButton)
         }
@@ -70,7 +71,6 @@ class PlanetsScene: SKScene{
         
         
 //        self.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-        let size = view.frame.size
          levels = userDefaults.value(forKey: "levels") as! [[String]]
         //backgroung
         let background = SKSpriteNode(imageNamed: "background")
