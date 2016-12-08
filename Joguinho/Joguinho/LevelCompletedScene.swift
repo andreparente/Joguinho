@@ -17,6 +17,7 @@ class LevelCompletedScene: SKScene
     let spaceship = Spaceship(fuelLevel: 1)
     let continueButton = Component(imageNamed: "continue")
     let retry = Component(imageNamed: "retry")
+    let menu = Component(imageNamed: "menu")
     var star: Component!
     var level: Int!
     var spaceShip: Spaceship!
@@ -42,14 +43,17 @@ class LevelCompletedScene: SKScene
         spaceship.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 4)
         spaceship.zPosition = 15
         
-        continueButton.position =  CGPoint(x: 5*screenSize.width/4 / 3, y: 1*screenSize.height/5)
+        continueButton.position =  CGPoint(x: 5*screenSize.width/4 / 2.3, y: 1*screenSize.height/5)
         continueButton.zPosition = 10
         
         retry.position = CGPoint(x: 6*screenSize.width/4 / 2 , y: 1*screenSize.height/5)
         retry.zPosition = 10
         
+        menu.position = CGPoint(x: 5*screenSize.width/4 / 4.3, y: 1*screenSize.height/5)
+        menu.zPosition = 10
         addChild(semibackground)
         addChild(background)
+        addChild(menu)
        // addChild(platform)
       //  addChild(spaceship)
         // Só adicionar os outros childs depois da nave parar na plataforma
@@ -145,6 +149,8 @@ class LevelCompletedScene: SKScene
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
+            let transition = SKTransition.fade(withDuration: 1.0)
+
             if self.nodes(at: location)[0] == self.retry {
                 let level = Level(id: levelId, planet: currentPlanet)
                 let  scene = GameScene(size: self.size, level: level)
@@ -152,7 +158,7 @@ class LevelCompletedScene: SKScene
                 skView.ignoresSiblingOrder = false
                 scene.size = skView.bounds.size
                 scene.scaleMode = .aspectFill
-                skView.presentScene(scene)
+                skView.presentScene(scene, transition: transition)
             }
             
             if self.nodes(at: location)[0] == self.continueButton {
@@ -166,8 +172,17 @@ class LevelCompletedScene: SKScene
                 skView.ignoresSiblingOrder = false
                 scene.size = skView.bounds.size
                 scene.scaleMode = .aspectFill
-                skView.presentScene(scene)
+                skView.presentScene(scene, transition: transition)
                 }
+            }
+            
+            if self.nodes(at: location)[0] == self.menu {
+                let  scene = PlanetsScene(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene, transition: transition)
             }
         }
     }

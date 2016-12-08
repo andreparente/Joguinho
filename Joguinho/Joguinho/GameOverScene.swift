@@ -38,6 +38,7 @@ class GameOverScene: SKScene
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
+            let transition = SKTransition.fade(withDuration: 1.0)
             if self.nodes(at: location)[0] == self.playAgainButton {
                 let level = Level(id: levelId, planet: currentPlanet)
                 let  scene = GameScene(size: self.size, level: level)
@@ -45,11 +46,11 @@ class GameOverScene: SKScene
                 skView.ignoresSiblingOrder = false
                 scene.size = skView.bounds.size
                 scene.scaleMode = .aspectFill
-                skView.presentScene(scene)
+                skView.presentScene(scene, transition: transition)
+
             }
             else {
                 if  self.nodes(at: location)[0] == self.menuButtton {
-                    let transition = SKTransition.fade(withDuration: 1.0)
                     let  scene = PlanetsScene()
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = false

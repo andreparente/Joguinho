@@ -167,7 +167,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 k+=1
             case CollisionTypes.rock.rawValue:
+                if userDefaults.bool(forKey: "soundOn") {
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                }
                 //                handleCollisionWithRock(name: secondBody.node!.name!)
                 //   produceSoundWhenHitRock()
                 //     actWhenDead()
