@@ -77,7 +77,8 @@ class LevelCompletedScene: SKScene
             //3 estrelas!!
             //setar a scoreStar bonitinha
             star = Component(imageNamed: "stars3")
-            star.position = background.position
+            star.position = CGPoint (x: background.position.x, y: 105)
+                //background.position
             star.zPosition = 11
             
             print("3 estrelas!!!!")
@@ -85,7 +86,7 @@ class LevelCompletedScene: SKScene
             //2 estrelas!!
             //setar a scoreStar bonitinha
             star = Component(imageNamed: "stars2")
-            star.position = background.position
+            star.position = CGPoint (x: background.position.x, y: 105)
             star.zPosition = 11
 
             print("2 estrelas!!!!")
@@ -94,7 +95,7 @@ class LevelCompletedScene: SKScene
             //1 estrela loser total
             //setar a scoreStar bonitinha
             star = Component(imageNamed: "stars1")
-            star.position = background.position
+            star.position = CGPoint (x: background.position.x, y: 105)
             star.zPosition = 11
 
             print("1 estrela!!!!")
