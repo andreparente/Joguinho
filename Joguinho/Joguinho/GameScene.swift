@@ -111,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         countDownLabel.text = "3"
         countDownLabel.position = CGPoint(x: screenSize.width/2, y: screenSize.height/2)
         countDownLabel.color = UIColor.black
-        countDownLabel.fontSize = 20
+        countDownLabel.fontSize = 40
         countDownLabel.zPosition = 10
         addChild(countDownLabel)
         
