@@ -465,11 +465,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let spaceshipUpBoundsY = spaceship.position.y + spaceship.frame.height/2
         let spaceshipDownBoundsY = spaceship.position.y - spaceship.frame.height/2
         
-        if spaceshipUpBoundsY < 0 {
+        if spaceshipUpBoundsY < 10 {
             return true
         }
         
-        if spaceshipDownBoundsY > screenSize.height {
+        if spaceshipDownBoundsY > (screenSize.height - 10) {
             return true
         }
         

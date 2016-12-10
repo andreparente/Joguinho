@@ -67,7 +67,7 @@ class Spaceship:Component {
         self.run(wait)
         
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        let vector = CGVector(dx: 4, dy: 10)
+        let vector = CGVector(dx: 6, dy: 10)
         self.physicsBody?.applyImpulse(vector)
         self.updateDirectionTo(vector: vector)
         self.fireMovement()
