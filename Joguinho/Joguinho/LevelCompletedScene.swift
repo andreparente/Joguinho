@@ -23,7 +23,7 @@ class LevelCompletedScene: SKScene
     var spaceShip: Spaceship!
     var gemsCollected: Double!
     var totalGems: Double!
-    //var scoreStar = Component!
+    var numOfStars: Int = 0
     
     override func didMove(to view: SKView) {
         self.view?.isUserInteractionEnabled = true
@@ -86,6 +86,7 @@ class LevelCompletedScene: SKScene
             star.zPosition = 11
             
             print("3 estrelas!!!!")
+            numOfStars = 3
         } else if (Double(spaceShip.fuelLevel) >= (fuelDivFor3) && gemsCollected >= (gemsDivFor3)) || (Double(spaceShip.fuelLevel) >= (fuelDivFor3*2.0) && gemsCollected >= 0) || (Double(spaceShip.fuelLevel) >= 0 && gemsCollected >= (gemsDivFor3*2.0)) {
             //2 estrelas!!
             //setar a scoreStar bonitinha
@@ -94,6 +95,7 @@ class LevelCompletedScene: SKScene
             star.zPosition = 11
 
             print("2 estrelas!!!!")
+            numOfStars = 2
 
         } else {
             //1 estrela loser total
@@ -103,6 +105,8 @@ class LevelCompletedScene: SKScene
             star.zPosition = 11
 
             print("1 estrela!!!!")
+            numOfStars = 1
+
         }
         self.addChild(star)
     }
@@ -126,7 +130,7 @@ class LevelCompletedScene: SKScene
             
             if userDefaults.value(forKey: "lastLevel") as! Int % 8 == 0  {
     
-                levels[currentPlanet.index.rawValue][7] = ("8",0)
+                levels[currentPlanet.index.rawValue][7] = ("8",numOfStars)
                 levels[currentPlanet.index.rawValue + 1][0] = ("1",0)
                 userDefaults.set(levels, forKey: "levels")
                 print(levels)
@@ -138,6 +142,7 @@ class LevelCompletedScene: SKScene
                 print(userDefaults.value(forKey: "lastLevel") as! Int + 1)
                 print(player.lastLevel)
                 levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ].0 = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
+                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ].1 = numOfStars
                 userDefaults.set(levels, forKey: "levels")
                 print(levels)
                 print(userDefaults.value(forKey: "levels") as! [[(String,Int)]])
