@@ -27,7 +27,6 @@ class LevelCompletedScene: SKScene
     
     override func didMove(to view: SKView) {
         self.view?.isUserInteractionEnabled = true
-        setUserDefaultsWhenCompletedLevel()
         
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         semibackground.size = CGSize(width:size.width, height:size.height)
@@ -64,6 +63,8 @@ class LevelCompletedScene: SKScene
         addChild(continueButton)
         addChild(retry)
         setUpScore()
+        setUserDefaultsWhenCompletedLevel()
+
     }
     
     func setUpScore() {
@@ -114,7 +115,7 @@ class LevelCompletedScene: SKScene
     func levelFound() -> Bool {
         
         for levelAux in levels[currentPlanet.index.rawValue] {
-            if (levelAux.0 == String(level + 1)) {
+            if (levelAux == String(level + 1)) {
                 return true
             }
         }
@@ -124,30 +125,36 @@ class LevelCompletedScene: SKScene
     
     func setUserDefaultsWhenCompletedLevel() {
         
+        levelsStars[currentPlanet.index.rawValue][level % 8 - 1 ] = numOfStars
+         userDefaults.set(levelsStars, forKey: "levelStars")
+        print(userDefaults.value(forKey: "levelStars") as! [[Int]])
         if !levelFound() {
             userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
             player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
             
             if userDefaults.value(forKey: "lastLevel") as! Int % 8 == 0  {
     
-                levels[currentPlanet.index.rawValue][7] = ("8",numOfStars)
-                levels[currentPlanet.index.rawValue + 1][0] = ("1",0)
+                levels[currentPlanet.index.rawValue][7] = "8"
+                levels[currentPlanet.index.rawValue + 1][0] = "1"
                 userDefaults.set(levels, forKey: "levels")
                 print(levels)
-                print(userDefaults.value(forKey: "levels") as! [[(String,Int)]])
+                print(userDefaults.value(forKey: "levels") as! [[String]])
+                
+                
 
 
             } else {
                 
                 print(userDefaults.value(forKey: "lastLevel") as! Int + 1)
                 print(player.lastLevel)
-                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ].0 = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
-                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ].1 = numOfStars
+                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
                 userDefaults.set(levels, forKey: "levels")
                 print(levels)
-                print(userDefaults.value(forKey: "levels") as! [[(String,Int)]])
+                print(userDefaults.value(forKey: "levels") as! [[String]])
+                print(userDefaults.value(forKey: "levelStars") as! [[Int]])
             }
         }
+        userDefaults.synchronize()
     }
     
     

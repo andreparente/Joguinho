@@ -29,15 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if userDefaults.value(forKey: "levels") == nil {
         levels.removeAll()
+            levelsStars.removeAll()
            for _ in 0...7 {
-            levels.append([("lock",0),("lock",0),("lock",0),("lock",0),("lock",0),("lock",0),("lock",0),("lock",0)])
+            levels.append(["lock","lock","lock","lock","lock","lock","lock","lock","lock"])
+            levelsStars.append([0,0,0,0,0,0,0,0])
          }
            
-            levels[0][0] = ("1",0)
+            levels[0][0] = "1"
+            levelsStars[0][0] = 0
             
             print("\(levels) \n")
             
             userDefaults.set(levels, forKey: "levels")
+            userDefaults.set(levelsStars, forKey: "levelStars")
         }
         
         return true
