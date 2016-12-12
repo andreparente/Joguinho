@@ -110,7 +110,7 @@ class LevelCompletedScene: SKScene
     func levelFound() -> Bool {
         
         for levelAux in levels[currentPlanet.index.rawValue] {
-            if (levelAux == String(level + 1)) {
+            if (levelAux.0 == String(level + 1)) {
                 return true
             }
         }
@@ -126,21 +126,21 @@ class LevelCompletedScene: SKScene
             
             if userDefaults.value(forKey: "lastLevel") as! Int % 8 == 0  {
     
-                levels[currentPlanet.index.rawValue][7] = "8"
-                levels[currentPlanet.index.rawValue + 1][0] = "1"
+                levels[currentPlanet.index.rawValue][7] = ("8",0)
+                levels[currentPlanet.index.rawValue + 1][0] = ("1",0)
                 userDefaults.set(levels, forKey: "levels")
                 print(levels)
-                print(userDefaults.value(forKey: "levels") as! [[String]])
+                print(userDefaults.value(forKey: "levels") as! [[(String,Int)]])
 
 
             } else {
                 
                 print(userDefaults.value(forKey: "lastLevel") as! Int + 1)
                 print(player.lastLevel)
-                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
+                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ].0 = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
                 userDefaults.set(levels, forKey: "levels")
                 print(levels)
-                print(userDefaults.value(forKey: "levels") as! [[String]])
+                print(userDefaults.value(forKey: "levels") as! [[(String,Int)]])
             }
         }
     }

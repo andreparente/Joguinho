@@ -11,7 +11,7 @@ import Foundation
 let userDefaults = UserDefaults.standard
 
 //Variavél local para armazenar o avanço do usuário no jogo
-var levels:[[String]] = [[]]
+var levels:[[(String,Int)]] = [[]]
 
 //Level atual que o usuário está jogando
 var levelId:Int? = 1

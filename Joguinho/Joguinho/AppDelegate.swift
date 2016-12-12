@@ -30,10 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userDefaults.value(forKey: "levels") == nil {
         levels.removeAll()
            for _ in 0...7 {
-            levels.append(["lock","lock","lock","lock","lock","lock","lock","lock"])
+            levels.append([("lock",0),("lock",0),("lock",0),("lock",0),("lock",0),("lock",0),("lock",0),("lock",0)])
          }
            
-            levels[0][0] = "1"
+            levels[0][0] = ("1",0)
             
             print("\(levels) \n")
             

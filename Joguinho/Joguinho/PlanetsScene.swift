@@ -71,7 +71,7 @@ class PlanetsScene: SKScene{
         
         
 //        self.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-         levels = userDefaults.value(forKey: "levels") as! [[String]]
+         levels = userDefaults.value(forKey: "levels") as! [[(String,Int)]]
         //backgroung
         let background = SKSpriteNode(imageNamed: "background")
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)

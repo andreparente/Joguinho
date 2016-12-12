@@ -152,26 +152,26 @@ class SelectedPlanetScene: SKScene {
     }
     func setSpriteForLevels() {
         
-        level1 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][0])
+        level1 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][0].0)
         
         
-        level2 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][1])
+        level2 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][1].0)
         
-        level3 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][2])
+        level3 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][2].0)
         
-        level4 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][3])
-        
-        
-        level5 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][4])
+        level4 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][3].0)
         
         
-        level6 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][5])
+        level5 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][4].0)
         
         
-        level7 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][6])
+        level6 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][5].0)
         
         
-        level8 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][7])
+        level7 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][6].0)
+        
+        
+        level8 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][7].0)
 
     }
     
