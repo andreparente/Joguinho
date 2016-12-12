@@ -72,12 +72,20 @@ class SelectedPlanetScene: SKScene {
         
         
         closeText = SKSpriteNode(imageNamed: "exit")
-        closeText.position = CGPoint(x:620 * size.width / 667,y:279
-            * size.height / 375)
-        closeText.zPosition = 10
+        closeText.position = CGPoint(x:620 * screenSize.width / 667,y:279 * screenSize.height / 375)
+        closeText.zPosition = 11
         
         textAboutPlanet = SKSpriteNode(imageNamed: NSLocalizedString("Neptune_Description_Image", comment: "Description"))
-        textAboutPlanet.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        textAboutPlanet.position = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2 + 10)
+        switch screenSize.width
+        {
+        case 667:
+        textAboutPlanet.setScale(1.2)
+        case 736:
+        textAboutPlanet.setScale(1.4)
+        default:
+        break
+        }
         textAboutPlanet.zPosition = 10
 
     }
