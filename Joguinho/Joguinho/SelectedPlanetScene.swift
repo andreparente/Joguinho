@@ -27,7 +27,7 @@ class SelectedPlanetScene: SKScene {
     var textAboutPlanet:SKNode!
     var closeText:SKNode!
     var descriptionLabel: SKLabelNode!
-    
+    var levelStarsImages:[Component] = []
     
     override func didMove(to view: SKView) {
         
@@ -87,7 +87,46 @@ class SelectedPlanetScene: SKScene {
         break
         }
         textAboutPlanet.zPosition = 10
-
+        
+        for i in 0...7
+        {
+            let numStars = levelsStars[currentPlanet.index.rawValue][i]
+            if numStars == 0 {
+                break
+            }
+            levelStarsImages.append(Component(imageNamed: "miniStars\(numStars)"))
+        }
+        var f = 0
+        for level in levelStarsImages
+        {
+            if levelStarsImages[f].imageNamed != nil
+            {
+                switch f
+                {
+                case 0:
+                levelStarsImages[f].position = CGPoint(x: 281 * size.width / 667, y: 180 * size.height / 375)
+                case 1:
+                levelStarsImages[f].position = CGPoint(x: 378 * size.width / 667, y: 180 * size.height / 375)
+                case 2:
+                levelStarsImages[f].position = CGPoint(x: 475 * size.width / 667, y: 180 * size.height / 375)
+                case 3:
+                levelStarsImages[f].position =  CGPoint(x: 572 * size.width / 667, y: 180 * size.height / 375)
+                case 4:
+                levelStarsImages[f].position  = CGPoint(x: 281 * size.width / 667, y: 70 * size.height / 375)
+                case 5:
+                levelStarsImages[f].position = CGPoint(x: 378 * size.width / 667, y: 70 * size.height / 375)
+                case 6:
+                levelStarsImages[f].position =  CGPoint(x: 475 * size.width / 667, y: 70 * size.height / 375)
+                case 7:
+                levelStarsImages[f].position = CGPoint(x: 572 * size.width / 667, y: 70 * size.height / 375)
+                default:
+                break
+                }
+                self.addChild(levelStarsImages[f])
+                f += 1
+            }
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

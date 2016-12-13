@@ -125,10 +125,14 @@ class LevelCompletedScene: SKScene
     
     func setUserDefaultsWhenCompletedLevel() {
         if level % 8 != 0 {
+              if levelsStars[currentPlanet.index.rawValue][level % 8 - 1 ] != 3 {
         levelsStars[currentPlanet.index.rawValue][level % 8 - 1 ] = numOfStars
+              }
         }
         else {
+            if levelsStars[currentPlanet.index.rawValue][level % 8 - 1 ] != 3 {
             levelsStars[currentPlanet.index.rawValue][7] = numOfStars
+            }
         }
         
         userDefaults.set(levelsStars, forKey: "levelStars")
