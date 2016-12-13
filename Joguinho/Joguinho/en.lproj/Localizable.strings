@@ -19,7 +19,10 @@ Neptune_Complete_Description = "Dark,cold and whipped by supersonic winds,Neptun
 
 Neptune_Description_Image = "textNeptune";
 
+You_Lost = "YOU LOST :(";
 
-You_Lost = "You Lost :(  No prob you can try again";
+You_Won = "YOU DID IT!";
 
-You_Won = "You Did It.Congratulations you rock";
+Won_Message = "congratulations, you rock";
+
+Lost_Message = "no prob, you can try again";

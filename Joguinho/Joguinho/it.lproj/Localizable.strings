@@ -19,7 +19,10 @@ Neptune_Complete_Description = "Oscuro,freddo e colpito tutti i giorni per venti
 
 Neptune_Description_Image = "textNeptune_Ita";
 
+You_Lost = "HAI PERSO :(";
 
-You_Lost = "Hai Perso :(  Riprova";
+You_Won = "CE L'HAI FATTA";
 
-You_Won = "Ce L'hai fatta.Congratulazioni.";
+Won_Message = "congratulazioni";
+
+Lost_Message = "riprova";

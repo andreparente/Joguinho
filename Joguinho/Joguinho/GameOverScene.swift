@@ -14,6 +14,8 @@ class GameOverScene: SKScene
     let background = Component(imageNamed: "gameOver")
     let playAgainButton = Component(imageNamed: "playAgain")
     let menuButtton = Component(imageNamed: "menu")
+    var lostLabel: SKLabelNode!
+    var lostMessage: SKLabelNode!
     
     override func didMove(to view: SKView) {
     self.view?.isUserInteractionEnabled = true
@@ -29,6 +31,22 @@ class GameOverScene: SKScene
         
     menuButtton.position = CGPoint(x: 5.3*screenSize.width/8 , y: 1*screenSize.height/5)
     menuButtton.zPosition = 10
+        
+    lostLabel = SKLabelNode(fontNamed: "Futura-Bold")
+    lostLabel.text = NSLocalizedString("You_Lost", comment: "YOU LOST :(")
+    lostLabel.fontSize = 25/568 * screenSize.width
+    lostLabel.fontColor = UIColor(red:0.82, green:0.01, blue:0.11, alpha:1.0)
+    lostLabel.position = CGPoint(x: screenSize.width/2, y: screenSize.height - 65)
+    lostLabel.zPosition = 20
+    addChild(lostLabel)
+        
+    lostMessage = SKLabelNode(fontNamed: "Futura")
+    lostMessage.text = NSLocalizedString("Lost_Message", comment: "no prob, you can try again")
+    lostMessage.fontSize = 18/568 * screenSize.width
+    lostMessage.fontColor = UIColor(red:0.09, green:0.01, blue:0.27, alpha:1.0)
+    lostMessage.position = CGPoint(x: screenSize.width/2, y: screenSize.height - 90)
+    lostMessage.zPosition = 20
+    addChild(lostMessage)
         
     addChild(semibackground)
     addChild(background)

@@ -19,7 +19,10 @@ Neptune_Complete_Description = "Escuro,frio y golpeado por vientos supersónicos
 
 Neptune_Description_Image = "textNeptune_Esp";
 
+You_Lost = "PERDISTE :(";
 
-You_Lost = "Perdiste :(  Intenta de nuevo";
+You_Won = "LO HAS LOGRADO!";
 
-You_Won = "Lo has logrado.Enhorabuena.";
+Won_Message = "Enhorabuena";
+
+Lost_Message = "intenta de nuevo";

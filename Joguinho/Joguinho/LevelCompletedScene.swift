@@ -24,6 +24,9 @@ class LevelCompletedScene: SKScene
     var gemsCollected: Double!
     var totalGems: Double!
     var numOfStars: Int = 0
+    var winLabel: SKLabelNode!
+    var winMessage: SKLabelNode!
+
     
     override func didMove(to view: SKView) {
         self.view?.isUserInteractionEnabled = true
@@ -50,6 +53,23 @@ class LevelCompletedScene: SKScene
         
         menu.position = CGPoint(x: 5*screenSize.width/4 / 4.3, y: 1*screenSize.height/5)
         menu.zPosition = 10
+        
+        winLabel = SKLabelNode(fontNamed: "Futura-Bold")
+        winLabel.text = NSLocalizedString("You_Won", comment: "YOU DID IT!")
+        winLabel.fontSize = 25/568 * screenSize.width
+        winLabel.fontColor = UIColor(red:0.82, green:0.01, blue:0.11, alpha:1.0)
+        winLabel.position = CGPoint(x: screenSize.width/2, y: screenSize.height - 65)
+        winLabel.zPosition = 20
+        addChild(winLabel)
+        
+        winMessage = SKLabelNode(fontNamed: "Futura")
+        winMessage.text = NSLocalizedString("Won_Message", comment: "congratulations, you rock")
+        winMessage.fontSize = 18/568 * screenSize.width
+        winMessage.fontColor = UIColor(red:0.09, green:0.01, blue:0.27, alpha:1.0)
+        winMessage.position = CGPoint(x: screenSize.width/2, y: screenSize.height - 90)
+        winMessage.zPosition = 20
+        addChild(winMessage)
+        
         addChild(semibackground)
         addChild(background)
         addChild(menu)
