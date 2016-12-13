@@ -18,3 +18,8 @@ Total_Coins = "Total coins: ";
 Neptune_Complete_Description = "Dark,cold and whipped by supersonic winds,Neptune is \n the last of the hydrogen and helium gas giants in our solar system.\n More than 30 times as far from the sun as Earth,the planet takes almost 165 Earth years to orbit our sun.\n In 2011 Neptune completed its first orbit since its discovery in 1846.";
 
 Neptune_Description_Image = "textNeptune";
+
+
+You_Lost = "You Lost :(  No prob you can try again";
+
+You_Won = "You Did It.Congratulations you rock";

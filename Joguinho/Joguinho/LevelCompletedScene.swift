@@ -124,10 +124,17 @@ class LevelCompletedScene: SKScene
     
     
     func setUserDefaultsWhenCompletedLevel() {
-        
+        if level % 8 != 0 {
         levelsStars[currentPlanet.index.rawValue][level % 8 - 1 ] = numOfStars
-         userDefaults.set(levelsStars, forKey: "levelStars")
+        }
+        else {
+            levelsStars[currentPlanet.index.rawValue][7] = numOfStars
+        }
+        
+        userDefaults.set(levelsStars, forKey: "levelStars")
         print(userDefaults.value(forKey: "levelStars") as! [[Int]])
+        
+        
         if !levelFound() {
             userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
             player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
@@ -136,24 +143,15 @@ class LevelCompletedScene: SKScene
     
                 levels[currentPlanet.index.rawValue][7] = "8"
                 levels[currentPlanet.index.rawValue + 1][0] = "1"
-                userDefaults.set(levels, forKey: "levels")
-                print(levels)
-                print(userDefaults.value(forKey: "levels") as! [[String]])
                 
-                
-
-
             } else {
-                
-                print(userDefaults.value(forKey: "lastLevel") as! Int + 1)
-                print(player.lastLevel)
                 levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
-                userDefaults.set(levels, forKey: "levels")
-                print(levels)
-                print(userDefaults.value(forKey: "levels") as! [[String]])
-                print(userDefaults.value(forKey: "levelStars") as! [[Int]])
             }
         }
+        userDefaults.set(levels, forKey: "levels")
+        print(levels)
+        print(userDefaults.value(forKey: "levels") as! [[String]])
+        print(userDefaults.value(forKey: "levelStars") as! [[Int]])
         userDefaults.synchronize()
     }
     

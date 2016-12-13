@@ -18,3 +18,8 @@ Total_Coins = "Total de monedas: ";
 Neptune_Complete_Description = "Escuro,frio y golpeado por vientos supersónicos,Neptuno es el último de los gigantes de gas compuestos de hidrógeno y helio  en nuestro sistema solar. Tiene una distancia en relación al Sol  30 vezes más grande que la distancia de la Tierra.Por eso,el planeta tarda casi 165 años terrestres para orbitar el Sol. En 2011 Neptuno completó su primera órbita desde su descubrimiento en 1846.";
 
 Neptune_Description_Image = "textNeptune_Esp";
+
+
+You_Lost = "Perdiste :(  Intenta de nuevo";
+
+You_Won = "Lo has logrado.Enhorabuena.";
