@@ -150,7 +150,7 @@ class LevelCompletedScene: SKScene
               }
         }
         else {
-            if levelsStars[currentPlanet.index.rawValue][level % 8 - 1 ] < numOfStars {
+            if levelsStars[currentPlanet.index.rawValue][7] < numOfStars {
             levelsStars[currentPlanet.index.rawValue][7] = numOfStars
             }
         }
