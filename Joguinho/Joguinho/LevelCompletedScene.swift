@@ -26,10 +26,20 @@ class LevelCompletedScene: SKScene
     var numOfStars: Int = 0
     var winLabel: SKLabelNode!
     var winMessage: SKLabelNode!
+    var textFinal8 = Component(imageNamed: NSLocalizedString("Final_Description_Image", comment: "Description"))
+    var closeText: SKNode!
 
     
     override func didMove(to view: SKView) {
         self.view?.isUserInteractionEnabled = true
+        
+        textFinal8.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        textFinal8.size = CGSize(width: 402.52 * size.width / 667, height: 310 * size.height / 375)
+        textFinal8.zPosition = 21
+        
+        closeText = SKSpriteNode(imageNamed: "exit")
+        closeText.position = CGPoint(x:500 * size.width / 667, y:300 * size.height / 375)
+        closeText.zPosition = 22
         
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         semibackground.size = CGSize(width:size.width, height:size.height)
@@ -89,6 +99,10 @@ class LevelCompletedScene: SKScene
         addChild(retry)
         setUpScore()
         setUserDefaultsWhenCompletedLevel()
+        
+        //        self.surface = Component(imageNamed: "\(level.planet.name.rawValue)Surface")
+
+
 
     }
     
@@ -200,8 +214,15 @@ class LevelCompletedScene: SKScene
                 skView.presentScene(scene, transition: transition)
             }
             
+            if self.nodes(at: location)[0] == self.closeText
+            {
+                textFinal8.removeFromParent()
+                closeText.removeFromParent()
+            }
+            
             if self.nodes(at: location)[0] == self.continueButton {
                 //Esse if aqui é só pra não dar crash por enquanto que não tem level 5
+//                if levelId != 8
                 if levelId != 8
                 {
                 levelId = levelId! + 1
@@ -213,6 +234,11 @@ class LevelCompletedScene: SKScene
                 scene.scaleMode = .aspectFill
                 skView.presentScene(scene, transition: transition)
                 }
+                else{
+                    addChild(textFinal8)
+                    addChild(closeText)
+                }
+
             }
             
             if self.nodes(at: location)[0] == self.menu {

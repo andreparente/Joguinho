@@ -26,3 +26,5 @@ You_Won = "VOCÊ CONSEGUIU!";
 Won_Message = "parabéns, você arrasou";
 
 Lost_Message = "sem problemas, tente de novo";
+
+Final_Description_Image = "final8_Port";

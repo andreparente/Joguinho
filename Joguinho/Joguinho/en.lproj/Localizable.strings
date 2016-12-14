@@ -26,3 +26,5 @@ You_Won = "YOU DID IT!";
 Won_Message = "congratulations, you rock";
 
 Lost_Message = "no prob, you can try again";
+
+Final_Description_Image = "final8";

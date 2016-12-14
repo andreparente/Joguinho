@@ -26,3 +26,5 @@ You_Won = "CE L'HAI FATTA";
 Won_Message = "congratulazioni";
 
 Lost_Message = "riprova";
+
+Final_Description_Image = "final8_Ita";

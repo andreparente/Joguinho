@@ -26,3 +26,5 @@ You_Won = "LO HAS LOGRADO!";
 Won_Message = "Enhorabuena";
 
 Lost_Message = "intenta de nuevo";
+
+Final_Description_Image = "final8_Esp";
