@@ -36,7 +36,7 @@ class GameOverScene: SKScene
     lostLabel.text = NSLocalizedString("You_Lost", comment: "YOU LOST :(")
     lostLabel.fontSize = 25/568 * screenSize.width
     lostLabel.fontColor = UIColor(red:0.82, green:0.01, blue:0.11, alpha:1.0)
-    lostLabel.position = CGPoint(x: screenSize.width/2, y: screenSize.height - 65)
+    lostLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 3*lostLabel.frame.height)
     lostLabel.zPosition = 20
     addChild(lostLabel)
         
@@ -44,7 +44,7 @@ class GameOverScene: SKScene
     lostMessage.text = NSLocalizedString("Lost_Message", comment: "no prob, you can try again")
     lostMessage.fontSize = 18/568 * screenSize.width
     lostMessage.fontColor = UIColor(red:0.09, green:0.01, blue:0.27, alpha:1.0)
-    lostMessage.position = CGPoint(x: screenSize.width/2, y: screenSize.height - 90)
+    lostMessage.position = CGPoint(x: lostLabel.position.x, y: lostLabel.position.y - lostMessage.frame.height/2 - 15)
     lostMessage.zPosition = 20
     addChild(lostMessage)
         

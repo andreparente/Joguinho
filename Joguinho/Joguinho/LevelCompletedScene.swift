@@ -58,7 +58,7 @@ class LevelCompletedScene: SKScene
         winLabel.text = NSLocalizedString("You_Won", comment: "YOU DID IT!")
         winLabel.fontSize = 25/568 * screenSize.width
         winLabel.fontColor = UIColor(red:0.82, green:0.01, blue:0.11, alpha:1.0)
-        winLabel.position = CGPoint(x: screenSize.width/2, y: screenSize.height - 65)
+        winLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 3.5*winLabel.frame.height)
         winLabel.zPosition = 20
         addChild(winLabel)
         
@@ -66,7 +66,7 @@ class LevelCompletedScene: SKScene
         winMessage.text = NSLocalizedString("Won_Message", comment: "congratulations, you rock")
         winMessage.fontSize = 18/568 * screenSize.width
         winMessage.fontColor = UIColor(red:0.09, green:0.01, blue:0.27, alpha:1.0)
-        winMessage.position = CGPoint(x: screenSize.width/2, y: screenSize.height - 90)
+        winMessage.position = CGPoint(x: screenSize.width/2, y: winLabel.position.y - winMessage.frame.height/2 - 15)
         winMessage.zPosition = 20
         addChild(winMessage)
         
