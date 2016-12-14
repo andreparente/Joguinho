@@ -20,7 +20,7 @@ class FuelBar: Component {
         spaceship.fuelLevel = spaceship.fuelLevel + newValue
         self.size.width = CGFloat(spaceship.fuelLevel)
         self.position = CGPoint(x: pivo + CGFloat(spaceship.fuelLevel/2), y: 7*screenSize.height/8)
-
+//       self.position = CGPoint(x: 80 + CGFloat(spaceship.fuelLevel/2) * size.width / 667, y: 5150 * size.height / 375)
     }
     
     init(image: String?, spaceship: Spaceship) {
@@ -29,6 +29,7 @@ class FuelBar: Component {
         self.spaceship = spaceship
         self.size.width = CGFloat(spaceship.fuelLevel)
         self.position = CGPoint(x: (pivo + CGFloat(spaceship.fuelLevel/2)), y: 7*screenSize.height/8)
+//       self.position = CGPoint(x: 80 + CGFloat(spaceship.fuelLevel/2) * size.width / 667, y: 5150 * size.height / 375)
         print(pivo + CGFloat(spaceship.fuelLevel/2))
         
        
@@ -38,6 +39,7 @@ class FuelBar: Component {
         spaceship.fuelLevel = 0
         self.size.width = CGFloat(spaceship.fuelLevel)
         self.position = CGPoint(x: (pivo + CGFloat(spaceship.fuelLevel/2)), y: 7*screenSize.height/8)
+//        self.position = CGPoint(x: 80 + CGFloat(spaceship.fuelLevel/2) * size.width / 667, y: 5150 * size.height / 375)
         print(pivo + CGFloat(spaceship.fuelLevel/2))
     }
     

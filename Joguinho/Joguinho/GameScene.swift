@@ -50,6 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.level = level
         self.surface = Component(imageNamed: "\(level.planet.name.rawValue)Surface")
         self.surface2 = Component(imageNamed: "\(level.planet.name.rawValue)Surface")
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,6 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
+        
         
         if !(background.parent == self) {
             physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
@@ -183,6 +185,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = true
         spaceship.fireMovement()
+
         //        produceSoundWhenSpaceshipOn()
         if !(scene?.isPaused)!
         {
@@ -237,6 +240,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     insideProgressBar.finish()
                 } else {
                     insideProgressBar.change(increase: -0.8)
+
                 }
             }
                 
@@ -286,7 +290,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         insideProgressBar = FuelBar(image: "fuel", spaceship: self.spaceship)
         progressBar.zPosition = 4
         progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
+//        progressBar.position = CGPoint(x: screenSize.width/2, y: 330 * size.height / 375)
+//        progressBar.size = CGSize(width: 496 * size.width / 667, height: 31 * size.height / 375)
         insideProgressBar.zPosition = 5
+//        insideProgressBar.size = CGSize(width: 422 * size.width / 667, height: 24 * size.height / 375)
+//        insideProgressBar.position = CGPoint(x: screenSize.width/2, y: 330 * size.height / 375)
         addChild(insideProgressBar)
         addChild(progressBar)
     }
@@ -297,7 +305,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         countGems.text = "0/\(realgems.count)"
         countGems.fontSize = 20
         countGems.color = UIColor.white
-        countGems.position = CGPoint(x: progressBar.position.x - progressBar.frame.width/2 - countGems.frame.width/2 - 20 , y:progressBar.position.y - 10)
+//        countGems.position = CGPoint(x: progressBar.position.x - progressBar.frame.width/2 - countGems.frame.width/2 - 20 , y:progressBar.position.y - 10)
+        countGems.position = CGPoint(x: 60 * size.width / 667 , y:progressBar.position.y - 10)
         countGems.zPosition = 4
         addChild(countGems)
         
@@ -305,7 +314,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setPauseButton() {
-        pauseButton.position = CGPoint(x: 7.5*screenSize.width/8, y: 7*screenSize.height/8)
+//        pauseButton.position = CGPoint(x: 7.5*screenSize.width/8, y: 7*screenSize.height/8)
+        pauseButton.position = CGPoint(x: 610 * size.width / 667, y: 7*screenSize.height/8)
         pauseButton.zPosition = 4
         addChild(pauseButton)
         
@@ -491,7 +501,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func actWhenDead() {
         let transition = SKTransition.fade(withDuration: 1.0)
-        let  scene = GameOverScene()
+        let  scene = GameOverScene()        
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = false
         scene.size = skView.bounds.size

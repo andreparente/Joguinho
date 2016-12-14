@@ -36,6 +36,7 @@ class LevelCompletedScene: SKScene
         semibackground.zPosition = 0
         
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        background.size = CGSize(width: 402.52 * size.width / 667, height: 310 * size.height / 375)
         background.zPosition = 10
         
         platform.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 7)
@@ -45,20 +46,24 @@ class LevelCompletedScene: SKScene
         spaceship.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 4)
         spaceship.zPosition = 15
         
-        continueButton.position =  CGPoint(x: 5*screenSize.width/4 / 2.3, y: 1*screenSize.height/5)
+//        continueButton.position =  CGPoint(x: 5*screenSize.width/4 / 2.3, y: 1*screenSize.height/5)
+        continueButton.position =  CGPoint(x: 230 * size.width / 667, y: 70 * size.height / 375)
         continueButton.zPosition = 10
         
-        retry.position = CGPoint(x: 6*screenSize.width/4 / 2 , y: 1*screenSize.height/5)
+//        retry.position = CGPoint(x: 6*screenSize.width/4 / 2 , y: 1*screenSize.height/5)
+        retry.position =  CGPoint(x: 360 * size.width / 667, y: 70 * size.height / 375)
         retry.zPosition = 10
         
-        menu.position = CGPoint(x: 5*screenSize.width/4 / 4.3, y: 1*screenSize.height/5)
+//        menu.position = CGPoint(x: 5*screenSize.width/4 / 4.3, y: 1*screenSize.height/5)
+        menu.position =  CGPoint(x: 460 * size.width / 667, y: 70 * size.height / 375)
         menu.zPosition = 10
         
         winLabel = SKLabelNode(fontNamed: "Futura-Bold")
         winLabel.text = NSLocalizedString("You_Won", comment: "YOU DID IT!")
         winLabel.fontSize = 25/568 * screenSize.width
         winLabel.fontColor = UIColor(red:0.82, green:0.01, blue:0.11, alpha:1.0)
-        winLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 3.5*winLabel.frame.height)
+//        winLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 3.5*winLabel.frame.height)
+        winLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 100 * size.height / 375)
         winLabel.zPosition = 20
         addChild(winLabel)
         
@@ -102,7 +107,7 @@ class LevelCompletedScene: SKScene
             //3 estrelas!!
             //setar a scoreStar bonitinha
             star = Component(imageNamed: "stars3")
-            star.position = CGPoint (x: background.position.x, y: 105)
+            star.position = CGPoint (x: background.position.x, y: 120 * size.height / 375)
                 //background.position
             star.zPosition = 11
             
@@ -112,7 +117,7 @@ class LevelCompletedScene: SKScene
             //2 estrelas!!
             //setar a scoreStar bonitinha
             star = Component(imageNamed: "stars2")
-            star.position = CGPoint (x: background.position.x, y: 105)
+            star.position = CGPoint (x: background.position.x, y: 120 * size.height / 375)
             star.zPosition = 11
 
             print("2 estrelas!!!!")
@@ -122,7 +127,7 @@ class LevelCompletedScene: SKScene
             //1 estrela loser total
             //setar a scoreStar bonitinha
             star = Component(imageNamed: "stars1")
-            star.position = CGPoint (x: background.position.x, y: 105)
+            star.position = CGPoint (x: background.position.x, y: 120 * size.height / 375)
             star.zPosition = 11
 
             print("1 estrela!!!!")
