@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "final8_It.png",
+      "filename" : "final8_Ita.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "final8_It@2x.png",
+      "filename" : "final8_Ita@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "final8_It@3x.png",
+      "filename" : "final8_Ita@3x.png",
       "scale" : "3x"
     }
   ],
