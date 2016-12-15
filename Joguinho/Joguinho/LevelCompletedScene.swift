@@ -107,9 +107,6 @@ class LevelCompletedScene: SKScene
     }
     
     func setUpScore() {
-        print(spaceShip.fuelLevel)
-        print("total de gems  ", totalGems)
-        print("total coletado ", gemsCollected)
         let fuelDivFor3 = Double(350/3)
         let gemsDivFor3 = Double(totalGems/3)
         //setar a scoreStar bonitinha
@@ -125,7 +122,6 @@ class LevelCompletedScene: SKScene
                 //background.position
             star.zPosition = 11
             
-            print("3 estrelas!!!!")
             numOfStars = 3
         } else if (Double(spaceShip.fuelLevel) >= (fuelDivFor3) && gemsCollected >= (gemsDivFor3)) || (Double(spaceShip.fuelLevel) >= (fuelDivFor3*2.0) && gemsCollected >= 0) || (Double(spaceShip.fuelLevel) >= 0 && gemsCollected >= (gemsDivFor3*2.0)) {
             //2 estrelas!!
@@ -134,7 +130,6 @@ class LevelCompletedScene: SKScene
             star.position = CGPoint (x: background.position.x, y: 120 * size.height / 375)
             star.zPosition = 11
 
-            print("2 estrelas!!!!")
             numOfStars = 2
 
         } else {
@@ -143,8 +138,6 @@ class LevelCompletedScene: SKScene
             star = Component(imageNamed: "stars1")
             star.position = CGPoint (x: background.position.x, y: 120 * size.height / 375)
             star.zPosition = 11
-
-            print("1 estrela!!!!")
             numOfStars = 1
 
         }
@@ -175,7 +168,6 @@ class LevelCompletedScene: SKScene
         }
         
         userDefaults.set(levelsStars, forKey: "levelStars")
-        print(userDefaults.value(forKey: "levelStars") as! [[Int]])
         
         
         if !levelFound() {
@@ -192,9 +184,6 @@ class LevelCompletedScene: SKScene
             }
         }
         userDefaults.set(levels, forKey: "levels")
-        print(levels)
-        print(userDefaults.value(forKey: "levels") as! [[String]])
-        print(userDefaults.value(forKey: "levelStars") as! [[Int]])
         userDefaults.synchronize()
     }
     

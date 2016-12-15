@@ -97,7 +97,7 @@ class SelectedPlanetScene: SKScene {
             levelStarsImages.append(Component(imageNamed: "miniStars\(numStars)"))
         }
         var f = 0
-        for level in levelStarsImages
+        for _ in levelStarsImages
         {
             if levelStarsImages[f].imageNamed != nil
             {

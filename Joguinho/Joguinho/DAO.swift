@@ -50,7 +50,6 @@ class DAO {
             //save the object
             do {
                 try context.save()
-                print("saved \(planet.name)")
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
                 break
@@ -70,7 +69,7 @@ class DAO {
                 let searchResults = try getContext().fetch(fetchRequest)
                 
                 //I like to check the size of the returned results!
-                print ("num of planets = \(searchResults.count)")
+
 
                 //You need to convert to NSManagedObject to use 'for' loops
                 for planet in searchResults as! [NSManagedObject] {

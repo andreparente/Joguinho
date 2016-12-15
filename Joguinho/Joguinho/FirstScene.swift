@@ -64,7 +64,6 @@ class FirstScene: SKScene {
             let location = (touch as AnyObject).location(in: self)
             // Check if the location of the touch is within the button's bounds
             if startButton.contains(location) {
-                print("tapped Start!")
                 let transition = SKTransition.reveal(with: SKTransitionDirection.up, duration: 1.0)
                 
                 let nextScene = PlanetsScene(size: self.size)
@@ -72,7 +71,6 @@ class FirstScene: SKScene {
                 
                 self.scene?.view?.presentScene(nextScene, transition: transition)
             } else if shoppingButton.contains(location) {
-                print("tapped shopping!")
             }
         }
     }

@@ -189,13 +189,10 @@ class PlanetsScene: SKScene{
             // Check if the location of the touch is within the button's bounds
             
             if soundButton.contains(location) {
-                print("entrou aqui")
                 if userDefaults.bool(forKey: "soundOn") {
-                    print("entrou no true")
                     soundButton.texture = SKTexture(imageNamed:"soundOff")
                     userDefaults.set(false, forKey: "soundOn")
                 } else {
-                    print("entrou no false")
                     soundButton.texture = SKTexture(imageNamed:"soundOn")
                     userDefaults.set(true, forKey: "soundOn")
                 }

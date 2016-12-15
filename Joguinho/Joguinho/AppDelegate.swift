@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             levels[0][0] = "1"
             levelsStars[0][0] = 0
             
-            print("\(levels) \n")
             
             userDefaults.set(levels, forKey: "levels")
             userDefaults.set(levelsStars, forKey: "levelStars")
