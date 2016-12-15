@@ -21,7 +21,6 @@ class PlanetsScene: SKScene{
     var earth: Component!
     var venus: Component!
     var mercury: Component!
-    var saturnShade:Component!
     var soundButton: SKSpriteNode!
     var buttonTexture: SKTexture!
     
@@ -70,7 +69,6 @@ class PlanetsScene: SKScene{
         addChild(gem)
         
         
-//        self.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         levels = userDefaults.value(forKey: "levels") as! [[String]]
         levelsStars = userDefaults.value(forKey: "levelStars") as! [[Int]]
         //background
@@ -82,91 +80,99 @@ class PlanetsScene: SKScene{
         
         //neptune
         neptune = Component(imageNamed: "Neptune")
-//        neptune.position = CGPoint(x: 50.5 * size.width / 667, y: 216 * size.height / 375)
         neptune.position = CGPoint(x: 50.5 * size.width / 667, y: frame.size.height / 2)
         neptune.size = CGSize(width: 49 * size.width / 667, height: 49 * size.height / 375)
         addChild(neptune)
         
-        
-        //uranus
-   /*     uranus = Component(imageNamed: "Uranus")
-        uranus.position = CGPoint(x: 124.5 * size.width / 667, y: frame.size.height / 2)
-        uranus.size = CGSize(width: 51 * size.width / 667, height: 65 * size.height / 375)
-        addChild(uranus)
- */
+        if levels[PlanetIndex.Uranus.rawValue][0] == "lock" {
         //Uranus blocked
         uranus = Component(imageNamed: "uranusShade")
+        }
+        else {
+            //uranus
+             uranus = Component(imageNamed: "Uranus")
+        }
+        
         uranus.position = CGPoint(x: 124.5 * size.width / 667, y: frame.size.height / 2)
         uranus.size = CGSize(width: 51 * size.width / 667, height: 65 * size.height / 375)
         addChild(uranus)
+
+        if levels[PlanetIndex.Saturn.rawValue][0] == "lock" {
+            //Saturn blocked
+            saturn = Component(imageNamed: "saturnShade")
+        }
+        else {
+            //saturn
+             saturn = Component(imageNamed: "Saturn")
+        }
         
-        //saturn
-      /*  saturn = Component(imageNamed: "Saturn")
         saturn.position = CGPoint(x: 237 * size.width / 667, y: frame.size.height / 2)
         saturn.size = CGSize(width: 158 * size.width / 667, height: 116 * size.height / 375)
         addChild(saturn)
- */
-        //Saturn blocked
-        saturnShade = Component(imageNamed: "saturnShade")
-        saturnShade.position = CGPoint(x: 237 * size.width / 667, y: frame.size.height / 2)
-        saturnShade.size = CGSize(width: 158 * size.width / 667, height: 116 * size.height / 375)
-        addChild(saturnShade)
+        
+        if levels[PlanetIndex.Jupiter.rawValue][0] == "lock" {
+            //Jupiter blocked
+            jupiter = Component(imageNamed: "jupiterShade")
+           
+        }
+        else {
+            //jupiter
+            jupiter = Component(imageNamed: "Jupiter")
+        }
+        
+        jupiter.position = CGPoint(x: 393 * size.width / 667, y: frame.size.height / 2)
+        jupiter.size = CGSize(width: 140 * size.width / 667, height: 140 * size.height / 375)
+        addChild(jupiter)
+        
+        if levels[PlanetIndex.Mars.rawValue][0] == "lock" {
+            //Mars blocked
+            mars = Component(imageNamed: "marsShade")
+        }
+        else {
+            //mars
+             mars = Component(imageNamed: "Mars")
+        }
+        mars.position = CGPoint(x: 489.5 * size.width / 667, y: frame.size.height / 2)
+        mars.size = CGSize(width: 7 * size.width / 667, height: 7 * size.height / 375)
+        addChild(mars)
 
         
-        //jupiter
-     /*   jupiter = Component(imageNamed: "Jupiter")
-        jupiter.position = CGPoint(x: 393 * size.width / 667, y: frame.size.height / 2)
-        jupiter.size = CGSize(width: 140 * size.width / 667, height: 140 * size.height / 375)
-        addChild(jupiter)
-    */
-        //Jupiter blocked
-        jupiter = Component(imageNamed: "jupiterShade")
-        jupiter.position = CGPoint(x: 393 * size.width / 667, y: frame.size.height / 2)
-        jupiter.size = CGSize(width: 140 * size.width / 667, height: 140 * size.height / 375)
-        addChild(jupiter)
-        //mars
-    /*    mars = Component(imageNamed: "Mars")
-        mars.position = CGPoint(x: 489.5 * size.width / 667, y: frame.size.height / 2)
-        mars.size = CGSize(width: 7 * size.width / 667, height: 7 * size.height / 375)
-        addChild(mars)
-    */
-        //Mars blocked
-        mars = Component(imageNamed: "marsShade")
-        mars.position = CGPoint(x: 489.5 * size.width / 667, y: frame.size.height / 2)
-        mars.size = CGSize(width: 7 * size.width / 667, height: 7 * size.height / 375)
-        addChild(mars)
+        if levels[PlanetIndex.Earth.rawValue][0] == "lock" {
+            //Earth blocked
+            earth = Component(imageNamed: "terraShade")
+        }
+        else {
+            //earth
+             earth = Component(imageNamed: "Earth")
+        }
         
-        //earth
-      /*  earth = Component(imageNamed: "Earth")
-        earth.position = CGPoint(x: 520.5 * size.width / 667, y: frame.size.height / 2)
-        earth.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
-        addChild(earth)
-     */
-        //Earth blocked
-        earth = Component(imageNamed: "terraShade")
         earth.position = CGPoint(x: 520.5 * size.width / 667, y: frame.size.height / 2)
         earth.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
         addChild(earth)
         
-        //venus
-     /*   venus = Component(imageNamed: "Venus")
-        venus.position = CGPoint(x: 551.5 * size.width / 667, y: frame.size.height / 2)
-        venus.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
-        addChild(venus)
-       */
-        //Venus blocked
-        venus = Component(imageNamed: "venusShade")
+        if levels[PlanetIndex.Venus.rawValue][0] == "lock" {
+             //Venus blocked
+            venus = Component(imageNamed: "venusShade")
+        }
+        else {
+            //venus
+             venus = Component(imageNamed: "Venus")
+        }
+            
+
         venus.position = CGPoint(x: 551.5 * size.width / 667, y: frame.size.height / 2)
         venus.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
         addChild(venus)
         
-        //mercury
-      /*  mercury = Component(imageNamed: "Mercury")
-        mercury.position = CGPoint(x: 580.5 * size.width / 667, y: frame.size.height / 2)
-        mercury.size = CGSize(width: 5 * size.width / 667, height: 5 * size.height / 375)
-        addChild(mercury)
-     */
-        mercury = Component(imageNamed: "mercuryShade")
+        if levels[PlanetIndex.Venus.rawValue][0] == "lock" {
+            //mercuryShade
+            mercury = Component(imageNamed: "mercuryShade")
+
+        }
+        else {
+            //mercury
+            mercury = Component(imageNamed: "Mercury")
+        }
         mercury.position = CGPoint(x: 580.5 * size.width / 667, y: frame.size.height / 2)
         mercury.size = CGSize(width: 5 * size.width / 667, height: 5 * size.height / 375)
         addChild(mercury)
