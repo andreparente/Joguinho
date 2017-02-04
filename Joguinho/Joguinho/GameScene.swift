@@ -63,8 +63,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !(background.parent == self) {
             physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
             physicsWorld.contactDelegate = self
-            let path = Bundle.main.path(forResource: "background2.mp3", ofType:nil)!
-            let url = URL(fileURLWithPath: path)
             
             currentlyTouching = false
             setUpInicialScene()
@@ -82,42 +80,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else {
                 setUpOxygenDrops()
             }
-            
-            if userDefaults.bool(forKey: "soundOn") {
-                do {
-                    let sound = try AVAudioPlayer(contentsOf: url)
-                    backgroundSound = sound
-                    sound.volume = 0.1
-                    sound.play()
-                } catch {
-                    // couldn't load file :(
-                    print("Couldn't load file")
-                }
-            }
+            produceBackgroundSound()
         }
         setUpCountDownLabel()
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true);
     }
     
-    func countDown() {
-        countDownLabel.text = String(Int(countDownLabel.text!)! - 1)
-        if countDownLabel.text == "0" {
-            timer.invalidate()
-            countDownLabel.removeFromParent()
-            scene?.isPaused = false
-            timerDidEnd = true
-        }
-    }
-    func setUpCountDownLabel() {
-        countDownLabel = SKLabelNode(fontNamed: "Futura")
-        countDownLabel.text = "3"
-        countDownLabel.position = CGPoint(x: screenSize.width/2, y: screenSize.height/2)
-        countDownLabel.color = UIColor.black
-        countDownLabel.fontSize = 40
-        countDownLabel.zPosition = 10
-        addChild(countDownLabel)
-        
-    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
@@ -172,9 +140,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if userDefaults.bool(forKey: "soundOn") {
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
-                //                handleCollisionWithRock(name: secondBody.node!.name!)
-                //   produceSoundWhenHitRock()
-                //     actWhenDead()
                 k+=1
             default:
                 break
@@ -262,7 +227,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    //Funções auxiliares da classe
+    //MARK: Setup Functions
     
     func setUpInicialScene() {
         background.anchorPoint = CGPoint(x: 0, y: 0)
@@ -285,16 +250,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func countDown() {
+        countDownLabel.text = String(Int(countDownLabel.text!)! - 1)
+        if countDownLabel.text == "0" {
+            timer.invalidate()
+            countDownLabel.removeFromParent()
+            scene?.isPaused = false
+            timerDidEnd = true
+        }
+    }
+    func setUpCountDownLabel() {
+        countDownLabel = SKLabelNode(fontNamed: "Futura")
+        countDownLabel.text = "3"
+        countDownLabel.position = CGPoint(x: screenSize.width/2, y: screenSize.height/2)
+        countDownLabel.color = UIColor.black
+        countDownLabel.fontSize = 40
+        countDownLabel.zPosition = 10
+        addChild(countDownLabel)
+        
+    }
+
     
     func setUpFuelBar() {
         insideProgressBar = FuelBar(image: "fuel", spaceship: self.spaceship)
         progressBar.zPosition = 4
         progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
-//        progressBar.position = CGPoint(x: screenSize.width/2, y: 330 * size.height / 375)
-//        progressBar.size = CGSize(width: 496 * size.width / 667, height: 31 * size.height / 375)
         insideProgressBar.zPosition = 5
-//        insideProgressBar.size = CGSize(width: 422 * size.width / 667, height: 24 * size.height / 375)
-//        insideProgressBar.position = CGPoint(x: screenSize.width/2, y: 330 * size.height / 375)
         addChild(insideProgressBar)
         addChild(progressBar)
     }
@@ -305,7 +286,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         countGems.text = "0/\(realgems.count)"
         countGems.fontSize = 20
         countGems.color = UIColor.white
-//        countGems.position = CGPoint(x: progressBar.position.x - progressBar.frame.width/2 - countGems.frame.width/2 - 20 , y:progressBar.position.y - 10)
         countGems.position = CGPoint(x: 60 * size.width / 667 , y:progressBar.position.y - 10)
         countGems.zPosition = 4
         addChild(countGems)
@@ -314,23 +294,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setPauseButton() {
-//        pauseButton.position = CGPoint(x: 7.5*screenSize.width/8, y: 7*screenSize.height/8)
         pauseButton.position = CGPoint(x: 610 * size.width / 667, y: 7*screenSize.height/8)
         pauseButton.zPosition = 4
         addChild(pauseButton)
         
     }
     
-    func pressedPause() {
-        if j == 0 {
-            scene?.view?.isPaused = true
-            j+=1
-        }
-        else {
-            scene?.view?.isPaused = false
-            j = 0
-        }
-    }
     
     func setUpRocks() {
         realrocks.removeAll()
@@ -468,6 +437,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
+    //MARK:Pause Functions
+    func pressedPause() {
+        if j == 0 {
+            scene?.view?.isPaused = true
+            j+=1
+        }
+        else {
+            scene?.view?.isPaused = false
+            j = 0
+        }
+    }
+    
+    //MARK:Actions Functions
     
     func isDead() -> Bool {
         let spaceshipRightBoundsX = spaceship.position.x + spaceship.frame.width/2
@@ -558,6 +540,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         animateRock(i: index)
     }
     
+    //MARK:Sound functions
+    func produceBackgroundSound () {
+        let path = Bundle.main.path(forResource: "background2.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+
+        if userDefaults.bool(forKey: "soundOn") {
+            do {
+                let sound = try AVAudioPlayer(contentsOf: url)
+                backgroundSound = sound
+                sound.volume = 0.1
+                sound.play()
+            } catch {
+                // couldn't load file :(
+                print("Couldn't load file")
+            }
+        }
+
+    }
+    
     func produceSoundWhenHitRock() {
         if hitRockSound != nil
         {
@@ -578,7 +579,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func produceSoundWhenSpaceshipOn() {
-        //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
         let path = Bundle.main.path(forResource: "fuelSound.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do {
@@ -591,7 +591,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func produceSoundWhenCaughtGem() {
-        //Aqui tem que alterar só o nome do arquivo quando tiver o som certo
         let path = Bundle.main.path(forResource: "gemSound.wav", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do {

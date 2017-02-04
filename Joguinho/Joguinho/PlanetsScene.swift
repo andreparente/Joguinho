@@ -27,8 +27,44 @@ class PlanetsScene: SKScene{
     
     override func didMove(to view: SKView) {
         
-        let size = view.frame.size
-
+         setupInitialScene()
+        
+         setupPlanets()
+    }
+    
+    
+    //FUNCAO USADA PARA ACHAR QUAL BOTAO/PLANETA FOI SELECIONADO!
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        for touch in touches {
+            // Get the location of the touch in this scene
+            let location = (touch as AnyObject).location(in: self)
+            // Check if the location of the touch is within the button's bounds
+            
+            if soundButton.contains(location) {
+                if userDefaults.bool(forKey: "soundOn") {
+                    soundButton.texture = SKTexture(imageNamed:"soundOff")
+                    userDefaults.set(false, forKey: "soundOn")
+                } else {
+                    soundButton.texture = SKTexture(imageNamed:"soundOn")
+                    userDefaults.set(true, forKey: "soundOn")
+                }
+            }
+            if neptune.contains(location) {
+                
+                currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
+                let transition2 = SKTransition.fade(withDuration: 1.0)
+                let nextScene = SelectedPlanetScene(size: self.size)
+                nextScene.scaleMode = SKSceneScaleMode.aspectFill
+                nextScene.selectedPlanetClass = currentPlanet
+                self.scene?.view?.presentScene(nextScene, transition: transition2)
+            }
+        }
+    }
+    
+    //MARK:Setup Functions
+    
+    func setupInitialScene() {
         
         if userDefaults.bool(forKey: "soundOn") {
             buttonTexture = SKTexture(imageNamed: "soundOn")
@@ -76,7 +112,9 @@ class PlanetsScene: SKScene{
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
         addChild(background)
-        
+    }
+    
+    func setupPlanets() {
         
         //neptune
         neptune = Component(imageNamed: "Neptune")
@@ -84,36 +122,36 @@ class PlanetsScene: SKScene{
         neptune.size = CGSize(width: 49 * size.width / 667, height: 49 * size.height / 375)
         addChild(neptune)
         
-        if levels[PlanetIndex.Uranus.rawValue][0] == "lock" {
-        //Uranus blocked
-        uranus = Component(imageNamed: "uranusShade")
+        if isLocked(Planet: PlanetIndex.Uranus) {
+            //Uranus blocked
+            uranus = Component(imageNamed: "uranusShade")
         }
         else {
             //uranus
-             uranus = Component(imageNamed: "Uranus")
+            uranus = Component(imageNamed: "Uranus")
         }
         
         uranus.position = CGPoint(x: 124.5 * size.width / 667, y: frame.size.height / 2)
         uranus.size = CGSize(width: 51 * size.width / 667, height: 65 * size.height / 375)
         addChild(uranus)
-
-        if levels[PlanetIndex.Saturn.rawValue][0] == "lock" {
+        
+        if isLocked(Planet: PlanetIndex.Saturn) {
             //Saturn blocked
             saturn = Component(imageNamed: "saturnShade")
         }
         else {
             //saturn
-             saturn = Component(imageNamed: "Saturn")
+            saturn = Component(imageNamed: "Saturn")
         }
         
         saturn.position = CGPoint(x: 237 * size.width / 667, y: frame.size.height / 2)
         saturn.size = CGSize(width: 158 * size.width / 667, height: 116 * size.height / 375)
         addChild(saturn)
         
-        if levels[PlanetIndex.Jupiter.rawValue][0] == "lock" {
+        if isLocked(Planet: PlanetIndex.Jupiter) {
             //Jupiter blocked
             jupiter = Component(imageNamed: "jupiterShade")
-           
+            
         }
         else {
             //jupiter
@@ -124,50 +162,50 @@ class PlanetsScene: SKScene{
         jupiter.size = CGSize(width: 140 * size.width / 667, height: 140 * size.height / 375)
         addChild(jupiter)
         
-        if levels[PlanetIndex.Mars.rawValue][0] == "lock" {
+        if isLocked(Planet: PlanetIndex.Mars) {
             //Mars blocked
             mars = Component(imageNamed: "marsShade")
         }
         else {
             //mars
-             mars = Component(imageNamed: "Mars")
+            mars = Component(imageNamed: "Mars")
         }
         mars.position = CGPoint(x: 489.5 * size.width / 667, y: frame.size.height / 2)
         mars.size = CGSize(width: 7 * size.width / 667, height: 7 * size.height / 375)
         addChild(mars)
-
         
-        if levels[PlanetIndex.Earth.rawValue][0] == "lock" {
+        
+        if isLocked(Planet: PlanetIndex.Earth) {
             //Earth blocked
             earth = Component(imageNamed: "terraShade")
         }
         else {
             //earth
-             earth = Component(imageNamed: "Earth")
+            earth = Component(imageNamed: "Earth")
         }
         
         earth.position = CGPoint(x: 520.5 * size.width / 667, y: frame.size.height / 2)
         earth.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
         addChild(earth)
         
-        if levels[PlanetIndex.Venus.rawValue][0] == "lock" {
-             //Venus blocked
+        if isLocked(Planet: PlanetIndex.Venus) {
+            //Venus blocked
             venus = Component(imageNamed: "venusShade")
         }
         else {
             //venus
-             venus = Component(imageNamed: "Venus")
+            venus = Component(imageNamed: "Venus")
         }
-            
-
+        
+        
         venus.position = CGPoint(x: 551.5 * size.width / 667, y: frame.size.height / 2)
         venus.size = CGSize(width: 13 * size.width / 667, height: 13 * size.height / 375)
         addChild(venus)
         
-        if levels[PlanetIndex.Venus.rawValue][0] == "lock" {
+        if isLocked(Planet: PlanetIndex.Mercury) {
             //mercuryShade
             mercury = Component(imageNamed: "mercuryShade")
-
+            
         }
         else {
             //mercury
@@ -182,36 +220,16 @@ class PlanetsScene: SKScene{
         sun.size = CGSize(width: 466 * size.width / 667, height: 466 * size.height / 375)
         addChild(sun)
         
-        
+
     }
     
-    
-    //FUNCAO USADA PARA ACHAR QUAL BOTAO/PLANETA FOI SELECIONADO!
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        for touch in touches {
-            // Get the location of the touch in this scene
-            let location = (touch as AnyObject).location(in: self)
-            // Check if the location of the touch is within the button's bounds
-            
-            if soundButton.contains(location) {
-                if userDefaults.bool(forKey: "soundOn") {
-                    soundButton.texture = SKTexture(imageNamed:"soundOff")
-                    userDefaults.set(false, forKey: "soundOn")
-                } else {
-                    soundButton.texture = SKTexture(imageNamed:"soundOn")
-                    userDefaults.set(true, forKey: "soundOn")
-                }
-            }
-            if neptune.contains(location) {
-                
-                currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
-                let transition2 = SKTransition.fade(withDuration: 1.0)
-                let nextScene = SelectedPlanetScene(size: self.size)
-                nextScene.scaleMode = SKSceneScaleMode.aspectFill
-                nextScene.selectedPlanetClass = currentPlanet
-                self.scene?.view?.presentScene(nextScene, transition: transition2)
-            }
+    func isLocked(Planet:PlanetIndex) -> Bool {
+        if levels[Planet.rawValue][0] == "lock" {
+            return true
+        }
+        else {
+            return false
         }
     }
+    
 }

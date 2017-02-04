@@ -31,101 +31,11 @@ class SelectedPlanetScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        let size = view.frame.size
-        let background = SKSpriteNode(imageNamed: "background")
-        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-       background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
-        addChild(background)
-        
-        back = SKSpriteNode(imageNamed: "BackArrow2")
-        back.position = CGPoint(x: 53 * size.width / 667, y: 340 * size.height / 375)
-        back.color = UIColor.blue
-      //  back.size = CGSize(width: 58 * size.width / 667, height: 22 * size.height / 375)
-        self.addChild(back)
-
-        selectedPlanet = SKSpriteNode(imageNamed: "Big"+selectedPlanetClass.name.rawValue)
-        selectedPlanet.position = CGPoint(x: 116 * size.width / 667, y: 220 * size.height / 375)
-        selectedPlanet.size = CGSize(width: 188 * size.width / 667, height: 188 * size.height / 375)
-        self.addChild(selectedPlanet)
-        
-        moreInfo = SKSpriteNode(imageNamed: "moreInfo2")
-        moreInfo.position = CGPoint(x: 60 * size.width / 667, y: 129 * size.height / 375)
-        moreInfo.size = CGSize(width: 55 * size.width / 667, height: 55 * size.height / 375)
-        self.addChild(moreInfo)
-        
-        
-        planetLabel = SKLabelNode(fontNamed: "Futura-Bold")
-        planetLabel.text = NSLocalizedString("\(selectedPlanetClass.name.rawValue)",comment:"Planet Name")
-        planetLabel.fontSize = 27
-        planetLabel.position = CGPoint(x: 0.95*screenSize.width/2, y: 4*screenSize.height/5)
-        self.addChild(planetLabel)
-        
-        descriptionLabel = SKLabelNode(fontNamed: "Futura")
-        descriptionLabel.text = NSLocalizedString("Neptune_Description", comment: "Description")
-        descriptionLabel.fontSize = 20
-        descriptionLabel.position = CGPoint(x: planetLabel.position.x  + planetLabel.frame.width/2 + descriptionLabel.frame.width/2 + 15, y: planetLabel.position.y)
-        self.addChild(descriptionLabel)
+        setupInitialScene()
         
         setSpriteForLevels()
         
         setPositionsForLevels()
-        
-        
-        closeText = SKSpriteNode(imageNamed: "exit")
-        closeText.position = CGPoint(x:620 * screenSize.width / 667,y:279 * screenSize.height / 375)
-        closeText.zPosition = 11
-        
-        textAboutPlanet = SKSpriteNode(imageNamed: NSLocalizedString("Neptune_Description_Image", comment: "Description"))
-        textAboutPlanet.position = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2 + 10)
-        switch screenSize.width
-        {
-        case 667:
-        textAboutPlanet.setScale(1.2)
-        case 736:
-        textAboutPlanet.setScale(1.4)
-        default:
-        break
-        }
-        textAboutPlanet.zPosition = 10
-        
-        for i in 0...7
-        {
-            let numStars = levelsStars[currentPlanet.index.rawValue][i]
-            if numStars == 0 {
-                break
-            }
-            levelStarsImages.append(Component(imageNamed: "miniStars\(numStars)"))
-        }
-        var f = 0
-        for _ in levelStarsImages
-        {
-            if levelStarsImages[f].imageNamed != nil
-            {
-                switch f
-                {
-                case 0:
-                levelStarsImages[f].position = CGPoint(x: 281 * size.width / 667, y: 180 * size.height / 375)
-                case 1:
-                levelStarsImages[f].position = CGPoint(x: 378 * size.width / 667, y: 180 * size.height / 375)
-                case 2:
-                levelStarsImages[f].position = CGPoint(x: 475 * size.width / 667, y: 180 * size.height / 375)
-                case 3:
-                levelStarsImages[f].position =  CGPoint(x: 572 * size.width / 667, y: 180 * size.height / 375)
-                case 4:
-                levelStarsImages[f].position  = CGPoint(x: 281 * size.width / 667, y: 70 * size.height / 375)
-                case 5:
-                levelStarsImages[f].position = CGPoint(x: 378 * size.width / 667, y: 70 * size.height / 375)
-                case 6:
-                levelStarsImages[f].position =  CGPoint(x: 475 * size.width / 667, y: 70 * size.height / 375)
-                case 7:
-                levelStarsImages[f].position = CGPoint(x: 572 * size.width / 667, y: 70 * size.height / 375)
-                default:
-                break
-                }
-                self.addChild(levelStarsImages[f])
-                f += 1
-            }
-        }
         
     }
     
@@ -189,6 +99,107 @@ class SelectedPlanetScene: SKScene {
             }
         }
     }
+    
+    //MARK:Setup Functions
+    
+    func setupInitialScene() {
+        let background = SKSpriteNode(imageNamed: "background")
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
+        addChild(background)
+        
+        
+        back = SKSpriteNode(imageNamed: "BackArrow2")
+        back.position = CGPoint(x: 53 * size.width / 667, y: 340 * size.height / 375)
+        back.color = UIColor.blue
+        self.addChild(back)
+        
+        selectedPlanet = SKSpriteNode(imageNamed: "Big"+selectedPlanetClass.name.rawValue)
+        selectedPlanet.position = CGPoint(x: 116 * size.width / 667, y: 220 * size.height / 375)
+        selectedPlanet.size = CGSize(width: 188 * size.width / 667, height: 188 * size.height / 375)
+        self.addChild(selectedPlanet)
+        
+        
+        moreInfo = SKSpriteNode(imageNamed: "moreInfo2")
+        moreInfo.position = CGPoint(x: 60 * size.width / 667, y: 129 * size.height / 375)
+        moreInfo.size = CGSize(width: 55 * size.width / 667, height: 55 * size.height / 375)
+        self.addChild(moreInfo)
+        
+        
+        planetLabel = SKLabelNode(fontNamed: "Futura-Bold")
+        planetLabel.text = NSLocalizedString("\(selectedPlanetClass.name.rawValue)",comment:"Planet Name")
+        planetLabel.fontSize = 27
+        planetLabel.position = CGPoint(x: 0.95*screenSize.width/2, y: 4*screenSize.height/5)
+        self.addChild(planetLabel)
+        
+        
+        descriptionLabel = SKLabelNode(fontNamed: "Futura")
+        descriptionLabel.text = NSLocalizedString("Neptune_Description", comment: "Description")
+        descriptionLabel.fontSize = 20
+        descriptionLabel.position = CGPoint(x: planetLabel.position.x  + planetLabel.frame.width/2 + descriptionLabel.frame.width/2 + 15, y: planetLabel.position.y)
+        self.addChild(descriptionLabel)
+        
+        
+        closeText = SKSpriteNode(imageNamed: "exit")
+        closeText.position = CGPoint(x:620 * screenSize.width / 667,y:279 * screenSize.height / 375)
+        closeText.zPosition = 11
+        
+        
+        textAboutPlanet = SKSpriteNode(imageNamed: NSLocalizedString("Neptune_Description_Image", comment: "Description"))
+        textAboutPlanet.position = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2 + 10)
+        switch screenSize.width
+        {
+        case 667:
+            textAboutPlanet.setScale(1.2)
+        case 736:
+            textAboutPlanet.setScale(1.4)
+        default:
+            break
+        }
+        textAboutPlanet.zPosition = 10
+        
+        
+        for i in 0...7
+        {
+            let numStars = levelsStars[currentPlanet.index.rawValue][i]
+            if numStars == 0 {
+                break
+            }
+            levelStarsImages.append(Component(imageNamed: "miniStars\(numStars)"))
+        }
+        var f = 0
+        for _ in levelStarsImages
+        {
+            if levelStarsImages[f].imageNamed != nil
+            {
+                switch f
+                {
+                case 0:
+                    levelStarsImages[f].position = CGPoint(x: 281 * size.width / 667, y: 180 * size.height / 375)
+                case 1:
+                    levelStarsImages[f].position = CGPoint(x: 378 * size.width / 667, y: 180 * size.height / 375)
+                case 2:
+                    levelStarsImages[f].position = CGPoint(x: 475 * size.width / 667, y: 180 * size.height / 375)
+                case 3:
+                    levelStarsImages[f].position =  CGPoint(x: 572 * size.width / 667, y: 180 * size.height / 375)
+                case 4:
+                    levelStarsImages[f].position  = CGPoint(x: 281 * size.width / 667, y: 70 * size.height / 375)
+                case 5:
+                    levelStarsImages[f].position = CGPoint(x: 378 * size.width / 667, y: 70 * size.height / 375)
+                case 6:
+                    levelStarsImages[f].position =  CGPoint(x: 475 * size.width / 667, y: 70 * size.height / 375)
+                case 7:
+                    levelStarsImages[f].position = CGPoint(x: 572 * size.width / 667, y: 70 * size.height / 375)
+                default:
+                    break
+                }
+                self.addChild(levelStarsImages[f])
+                f += 1
+            }
+        }
+
+    }
+    
     func setSpriteForLevels() {
         
         level1 = SKSpriteNode(imageNamed: levels[currentPlanet.index.rawValue][0])

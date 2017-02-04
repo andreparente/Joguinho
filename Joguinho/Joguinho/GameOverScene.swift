@@ -27,11 +27,10 @@ class GameOverScene: SKScene
     background.size = CGSize(width: 402.52 * size.width / 667, height: 310 * size.height / 375)
     background.zPosition = 10
         
-//    playAgainButton.position =  CGPoint(x: 4.3*screenSize.width/12, y: 1*screenSize.height/5)
+
     playAgainButton.position =  CGPoint(x: 240 * size.width / 667, y: 70 * size.height / 375)
     playAgainButton.zPosition = 10
         
-//    menuButtton.position = CGPoint(x: 5.3*screenSize.width/8 , y: 1*screenSize.height/5)
     menuButtton.position =  CGPoint(x: 450 * size.width / 667, y: 70 * size.height / 375)
     menuButtton.zPosition = 10
         
@@ -39,10 +38,10 @@ class GameOverScene: SKScene
     lostLabel.text = NSLocalizedString("You_Lost", comment: "YOU LOST :(")
     lostLabel.fontSize = 25/568 * screenSize.width
     lostLabel.fontColor = UIColor(red:0.82, green:0.01, blue:0.11, alpha:1.0)
-//    lostLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 3*lostLabel.frame.height)
     lostLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 100 * size.height / 375)
     lostLabel.zPosition = 20
     addChild(lostLabel)
+        
         
     lostMessage = SKLabelNode(fontNamed: "Futura")
     lostMessage.text = NSLocalizedString("Lost_Message", comment: "no prob, you can try again")
@@ -57,6 +56,8 @@ class GameOverScene: SKScene
     addChild(playAgainButton)
     addChild(menuButtton)
     }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)

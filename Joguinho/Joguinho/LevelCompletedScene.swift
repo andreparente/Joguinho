@@ -56,15 +56,15 @@ class LevelCompletedScene: SKScene
         spaceship.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 4)
         spaceship.zPosition = 15
         
-//        continueButton.position =  CGPoint(x: 5*screenSize.width/4 / 2.3, y: 1*screenSize.height/5)
+        
         continueButton.position =  CGPoint(x: 230 * size.width / 667, y: 70 * size.height / 375)
         continueButton.zPosition = 10
         
-//        retry.position = CGPoint(x: 6*screenSize.width/4 / 2 , y: 1*screenSize.height/5)
+
         retry.position =  CGPoint(x: 360 * size.width / 667, y: 70 * size.height / 375)
         retry.zPosition = 10
         
-//        menu.position = CGPoint(x: 5*screenSize.width/4 / 4.3, y: 1*screenSize.height/5)
+
         menu.position =  CGPoint(x: 460 * size.width / 667, y: 70 * size.height / 375)
         menu.zPosition = 10
         
@@ -72,10 +72,10 @@ class LevelCompletedScene: SKScene
         winLabel.text = NSLocalizedString("You_Won", comment: "YOU DID IT!")
         winLabel.fontSize = 25/568 * screenSize.width
         winLabel.fontColor = UIColor(red:0.82, green:0.01, blue:0.11, alpha:1.0)
-//        winLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 3.5*winLabel.frame.height)
         winLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 100 * size.height / 375)
         winLabel.zPosition = 20
         addChild(winLabel)
+        
         
         winMessage = SKLabelNode(fontNamed: "Futura")
         winMessage.text = NSLocalizedString("Won_Message", comment: "congratulations, you rock")
@@ -105,6 +105,60 @@ class LevelCompletedScene: SKScene
 
 
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let transition = SKTransition.fade(withDuration: 1.0)
+            
+            if self.nodes(at: location)[0] == self.retry {
+                let level = Level(id: levelId, planet: currentPlanet)
+                let  scene = GameScene(size: self.size, level: level)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene, transition: transition)
+            }
+            
+            if self.nodes(at: location)[0] == self.closeText
+            {
+                textFinal8.removeFromParent()
+                closeText.removeFromParent()
+            }
+            
+            if self.nodes(at: location)[0] == self.continueButton {
+                
+                if levelId != 8
+                {
+                    levelId = levelId! + 1
+                    let level = Level(id: levelId , planet: currentPlanet)
+                    let  scene = GameScene(size: self.size, level: level)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = false
+                    scene.size = skView.bounds.size
+                    scene.scaleMode = .aspectFill
+                    skView.presentScene(scene, transition: transition)
+                }
+                else{
+                    addChild(textFinal8)
+                    addChild(closeText)
+                }
+                
+            }
+            
+            if self.nodes(at: location)[0] == self.menu {
+                let  scene = PlanetsScene(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene, transition: transition)
+            }
+        }
+    }
+
+    //MARK:Setup Functions
     
     func setUpScore() {
         let fuelDivFor3 = Double(350/3)
@@ -154,6 +208,7 @@ class LevelCompletedScene: SKScene
         return false
     }
     
+    //MARK:User Defaults functions
     
     func setUserDefaultsWhenCompletedLevel() {
         if level % 8 != 0 {
@@ -187,58 +242,4 @@ class LevelCompletedScene: SKScene
         userDefaults.synchronize()
     }
     
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: self)
-            let transition = SKTransition.fade(withDuration: 1.0)
-
-            if self.nodes(at: location)[0] == self.retry {
-                let level = Level(id: levelId, planet: currentPlanet)
-                let  scene = GameScene(size: self.size, level: level)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = false
-                scene.size = skView.bounds.size
-                scene.scaleMode = .aspectFill
-                skView.presentScene(scene, transition: transition)
-            }
-            
-            if self.nodes(at: location)[0] == self.closeText
-            {
-                textFinal8.removeFromParent()
-                closeText.removeFromParent()
-            }
-            
-            if self.nodes(at: location)[0] == self.continueButton {
-                //Esse if aqui é só pra não dar crash por enquanto que não tem level 5
-//                if levelId != 8
-                if levelId != 8
-                {
-                levelId = levelId! + 1
-                let level = Level(id: levelId , planet: currentPlanet)
-                let  scene = GameScene(size: self.size, level: level)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = false
-                scene.size = skView.bounds.size
-                scene.scaleMode = .aspectFill
-                skView.presentScene(scene, transition: transition)
-                }
-                else{
-                    addChild(textFinal8)
-                    addChild(closeText)
-                }
-
-            }
-            
-            if self.nodes(at: location)[0] == self.menu {
-                let  scene = PlanetsScene(size: self.size)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = false
-                scene.size = skView.bounds.size
-                scene.scaleMode = .aspectFill
-                skView.presentScene(scene, transition: transition)
-            }
-        }
-    }
-
 }
