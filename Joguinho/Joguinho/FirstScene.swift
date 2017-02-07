@@ -20,7 +20,15 @@ class FirstScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-       
+       setupInitialScene()
+
+    }
+    
+    
+    //MARK:Setup Functions
+    
+    func setupInitialScene() {
+        
         background = SKSpriteNode(imageNamed: "background")
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
@@ -39,7 +47,7 @@ class FirstScene: SKScene {
         shoppingLabel.fontSize = 20
         shoppingLabel.position = CGPoint(x: shoppingButton.position.x , y:shoppingButton.position.y - 80)
         self.addChild(shoppingLabel)
-
+        
         startButton = SKSpriteNode(imageNamed: "rocket menu")
         startButton.position = CGPoint(x: 3*screenSize.width/4, y: screenSize.height/2)
         startButton.zPosition = 2
@@ -54,23 +62,25 @@ class FirstScene: SKScene {
         startLabel.fontSize = 20
         startLabel.position = CGPoint(x: startButton.position.x , y:startButton.position.y - 80)
         self.addChild(startLabel)
-        
 
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             // Get the location of the touch in this scene
             let location = (touch as AnyObject).location(in: self)
             // Check if the location of the touch is within the button's bounds
+            let transition = SKTransition.fade(withDuration: 1.0)
             if startButton.contains(location) {
-                let transition = SKTransition.reveal(with: SKTransitionDirection.up, duration: 1.0)
-                
+             
                 let nextScene = PlanetsScene(size: self.size)
                 nextScene.scaleMode = SKSceneScaleMode.aspectFill
-                
                 self.scene?.view?.presentScene(nextScene, transition: transition)
+                
             } else if shoppingButton.contains(location) {
+              let nextScene = StoreScene()
+              self.scene?.view?.presentScene(nextScene, transition: transition)
             }
         }
     }

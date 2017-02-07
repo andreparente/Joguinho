@@ -31,79 +31,8 @@ class LevelCompletedScene: SKScene
 
     
     override func didMove(to view: SKView) {
-        self.view?.isUserInteractionEnabled = true
         
-        textFinal8.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        textFinal8.size = CGSize(width: 402.52 * size.width / 667, height: 310 * size.height / 375)
-        textFinal8.zPosition = 21
-        
-        closeText = SKSpriteNode(imageNamed: "exit")
-        closeText.position = CGPoint(x:500 * size.width / 667, y:300 * size.height / 375)
-        closeText.zPosition = 22
-        
-        semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        semibackground.size = CGSize(width:size.width, height:size.height)
-        semibackground.zPosition = 0
-        
-        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        background.size = CGSize(width: 402.52 * size.width / 667, height: 310 * size.height / 375)
-        background.zPosition = 10
-        
-        platform.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 7)
-        platform.zPosition = 15
-        platform.size = CGSize(width: frame.size.width / 4, height: frame.size.height / 5)
-        
-        spaceship.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 4)
-        spaceship.zPosition = 15
-        
-        
-        continueButton.position =  CGPoint(x: 230 * size.width / 667, y: 70 * size.height / 375)
-        continueButton.zPosition = 10
-        
-
-        retry.position =  CGPoint(x: 360 * size.width / 667, y: 70 * size.height / 375)
-        retry.zPosition = 10
-        
-
-        menu.position =  CGPoint(x: 460 * size.width / 667, y: 70 * size.height / 375)
-        menu.zPosition = 10
-        
-        winLabel = SKLabelNode(fontNamed: "Futura-Bold")
-        winLabel.text = NSLocalizedString("You_Won", comment: "YOU DID IT!")
-        winLabel.fontSize = 25/568 * screenSize.width
-        winLabel.fontColor = UIColor(red:0.82, green:0.01, blue:0.11, alpha:1.0)
-        winLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 100 * size.height / 375)
-        winLabel.zPosition = 20
-        addChild(winLabel)
-        
-        
-        winMessage = SKLabelNode(fontNamed: "Futura")
-        winMessage.text = NSLocalizedString("Won_Message", comment: "congratulations, you rock")
-        winMessage.fontSize = 18/568 * screenSize.width
-        winMessage.fontColor = UIColor(red:0.09, green:0.01, blue:0.27, alpha:1.0)
-        winMessage.position = CGPoint(x: screenSize.width/2, y: winLabel.position.y - winMessage.frame.height/2 - 15)
-        winMessage.zPosition = 20
-        addChild(winMessage)
-        
-        addChild(semibackground)
-        addChild(background)
-        addChild(menu)
-       // addChild(platform)
-      //  addChild(spaceship)
-        // Só adicionar os outros childs depois da nave parar na plataforma
-    //    let spaceshipLeftBoundsX = spaceship.position.x - spaceship.frame.width/2
-//        if spaceshipLeftBoundsX > screenSize.width {
-//            
-//        }
-        addChild(continueButton)
-        addChild(retry)
-        setUpScore()
-        setUserDefaultsWhenCompletedLevel()
-        
-        //        self.surface = Component(imageNamed: "\(level.planet.name.rawValue)Surface")
-
-
-
+       setupInitialScene()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -159,6 +88,84 @@ class LevelCompletedScene: SKScene
     }
 
     //MARK:Setup Functions
+    
+    func setupInitialScene () {
+        self.view?.isUserInteractionEnabled = true
+        
+        textFinal8.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        textFinal8.size = CGSize(width: 402.52 * size.width / 667, height: 310 * size.height / 375)
+        textFinal8.zPosition = 21
+        
+        closeText = SKSpriteNode(imageNamed: "exit")
+        closeText.position = CGPoint(x:500 * size.width / 667, y:300 * size.height / 375)
+        closeText.zPosition = 22
+        
+        semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        semibackground.size = CGSize(width:size.width, height:size.height)
+        semibackground.zPosition = 0
+        addChild(semibackground)
+        
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        background.size = CGSize(width: 402.52 * size.width / 667, height: 310 * size.height / 375)
+        background.zPosition = 10
+        addChild(background)
+        
+        platform.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 7)
+        platform.zPosition = 15
+        platform.size = CGSize(width: frame.size.width / 4, height: frame.size.height / 5)
+        
+        spaceship.position = CGPoint(x: frame.size.width / 1.2, y: frame.size.height / 4)
+        spaceship.zPosition = 15
+        
+        
+        continueButton.position =  CGPoint(x: 230 * size.width / 667, y: 70 * size.height / 375)
+        continueButton.zPosition = 10
+        addChild(continueButton)
+        
+        retry.position =  CGPoint(x: 360 * size.width / 667, y: 70 * size.height / 375)
+        retry.zPosition = 10
+        addChild(retry)
+        
+        menu.position =  CGPoint(x: 460 * size.width / 667, y: 70 * size.height / 375)
+        menu.zPosition = 10
+        addChild(menu)
+        
+        winLabel = SKLabelNode(fontNamed: "Futura-Bold")
+        winLabel.text = NSLocalizedString("You_Won", comment: "YOU DID IT!")
+        winLabel.fontSize = 25/568 * screenSize.width
+        winLabel.fontColor = UIColor(red:0.82, green:0.01, blue:0.11, alpha:1.0)
+        winLabel.position = CGPoint(x: screenSize.width/2, y: background.position.y + 100 * size.height / 375)
+        winLabel.zPosition = 20
+        addChild(winLabel)
+        
+        
+        winMessage = SKLabelNode(fontNamed: "Futura")
+        winMessage.text = NSLocalizedString("Won_Message", comment: "congratulations, you rock")
+        winMessage.fontSize = 18/568 * screenSize.width
+        winMessage.fontColor = UIColor(red:0.09, green:0.01, blue:0.27, alpha:1.0)
+        winMessage.position = CGPoint(x: screenSize.width/2, y: winLabel.position.y - winMessage.frame.height/2 - 15)
+        winMessage.zPosition = 20
+        addChild(winMessage)
+        
+       
+        
+       
+        // addChild(platform)
+        //  addChild(spaceship)
+        // Só adicionar os outros childs depois da nave parar na plataforma
+        //    let spaceshipLeftBoundsX = spaceship.position.x - spaceship.frame.width/2
+        //        if spaceshipLeftBoundsX > screenSize.width {
+        //
+        //        }
+       
+      
+        setUpScore()
+        setUserDefaultsWhenCompletedLevel()
+        
+        //        self.surface = Component(imageNamed: "\(level.planet.name.rawValue)Surface")
+
+    }
+    
     
     func setUpScore() {
         let fuelDivFor3 = Double(350/3)

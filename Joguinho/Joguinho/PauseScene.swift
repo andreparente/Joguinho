@@ -20,50 +20,56 @@ class PauseScene: SKScene
     
     override func didMove(to view: SKView) {
         
-      currentSceneState.isPaused = true
+        setupInitialScene()
         
-      background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-      background.size = CGSize(width:size.width, height:size.height)
-      background.zPosition = 0
-        
-        
-      resumeButton.position =  CGPoint(x: 6*screenSize.width/4 / 2, y: screenSize.height/2)
-      resumeButton.zPosition = 10
-        
-        
-      menuButtton.position = CGPoint(x: 2*screenSize.width/4 / 2 , y: screenSize.height/2)
-      menuButtton.zPosition = 10
-        
-        
-      resumeLabel.text = NSLocalizedString("RESUME",comment:"Resume")
-      resumeLabel.fontSize = 20
-      resumeLabel.position = CGPoint(x: resumeButton.position.x , y:resumeButton.position.y - 80)
-      resumeLabel.zPosition = 10
-        
-        
-      menuLabel.text = "Menu"
-      menuLabel.fontSize = 20
-      menuLabel.position =  CGPoint(x: menuButtton.position.x , y:menuButtton.position.y - 85)
-      menuLabel.zPosition = 10
-        
-        
-      fire = SKSpriteNode(imageNamed: "fire rocket menu")
-      fire.zPosition = 9
-      fire.position = CGPoint(x: resumeButton.position.x - resumeButton.frame.width/1.9, y: resumeButton.position.y - resumeButton.frame.height/8)
-        
-        
-    currentSceneState.countDownLabel.text = "3"
-    currentSceneState.timerDidEnd = false
-        
-        
-    addChild(fire)
-    addChild(menuLabel)
-    addChild(resumeLabel)
-    addChild(background)
-    addChild(resumeButton)
-    addChild(menuButtton)
     }
     
+    //MARK:Setup Functions
+    
+    func setupInitialScene () {
+        
+        currentSceneState.isPaused = true
+        
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        background.size = CGSize(width:size.width, height:size.height)
+        background.zPosition = 0
+        addChild(background)
+        
+        
+        resumeButton.position =  CGPoint(x: 6*screenSize.width/4 / 2, y: screenSize.height/2)
+        resumeButton.zPosition = 10
+        addChild(resumeButton)
+        
+        
+        menuButtton.position = CGPoint(x: 2*screenSize.width/4 / 2 , y: screenSize.height/2)
+        menuButtton.zPosition = 10
+        addChild(menuButtton)
+        
+        
+        resumeLabel.text = NSLocalizedString("RESUME",comment:"Resume")
+        resumeLabel.fontSize = 20
+        resumeLabel.position = CGPoint(x: resumeButton.position.x , y:resumeButton.position.y - 80)
+        resumeLabel.zPosition = 10
+        addChild(resumeLabel)
+        
+        
+        menuLabel.text = "Menu"
+        menuLabel.fontSize = 20
+        menuLabel.position =  CGPoint(x: menuButtton.position.x , y:menuButtton.position.y - 85)
+        menuLabel.zPosition = 10
+        addChild(menuLabel)
+        
+        
+        fire = SKSpriteNode(imageNamed: "fire rocket menu")
+        fire.zPosition = 9
+        fire.position = CGPoint(x: resumeButton.position.x - resumeButton.frame.width/1.9, y: resumeButton.position.y - resumeButton.frame.height/8)
+        addChild(fire)
+
+
+        currentSceneState.countDownLabel.text = "3"
+        currentSceneState.timerDidEnd = false
+        
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches
         {

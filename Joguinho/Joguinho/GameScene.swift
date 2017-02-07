@@ -541,6 +541,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //MARK:Sound functions
+    
     func produceBackgroundSound () {
         let path = Bundle.main.path(forResource: "background2.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
