@@ -65,7 +65,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physicsWorld.contactDelegate = self
             
             currentlyTouching = false
-            setUpInicialScene()
+            checkPlanet()
             setUpPlayer()
             setUpFuelBar()
             spaceship.startMoment()
@@ -227,28 +227,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    //MARK: Setup Functions
+    //MARK:Specific setup for each planet
     
-    func setUpInicialScene() {
+    func checkPlanet() {
+        //Aqui é onde as funções de Setup dos outros Planetas vão ser chamadas
+        switch level.planet.name.rawValue {
+        case PlanetName.Neptune.rawValue:
+            setUpInitialSceneNeptune()
+            
+        case PlanetName.Uranus.rawValue:
+             setUpInitialSceneUranus()
+        
+        case PlanetName.Saturn.rawValue:
+            setUpInitialSceneSaturn()
+            
+        default:
+            setUpInitialSceneNeptune()
+        }
+    }
+    
+    func setUpInitialSceneNeptune() {
         background.anchorPoint = CGPoint(x: 0, y: 0)
         background.position = CGPoint(x: 0, y: 0)
         background.zPosition = 1
         background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        addChild(background)
+        
         
         surface.position = CGPoint(x: 0, y: surface.size.height/3)
         surface.zPosition = 2
         surface.size = CGSize(width: UIScreen.main.bounds.width + 800, height: surface.size.height)
+        addChild(surface)
+        
         
         surface2.position = CGPoint(x: surface.size.width, y: surface.size.height/3)
         surface2.zPosition = 2
         surface2.size = CGSize(width: UIScreen.main.bounds.width + 800, height: surface.size.height)
-        
-        
-        addChild(background)
-        addChild(surface)
         addChild(surface2)
+    }
+    
+    func setUpInitialSceneUranus() {
         
     }
+    
+    func setUpInitialSceneSaturn() {
+        
+    }
+    
+    //MARK: General Setup Functions
     
     func countDown() {
         countDownLabel.text = String(Int(countDownLabel.text!)! - 1)
@@ -272,12 +298,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     func setUpFuelBar() {
-        insideProgressBar = FuelBar(image: "fuel", spaceship: self.spaceship)
         progressBar.zPosition = 4
         progressBar.position = CGPoint(x: screenSize.width/2, y: 7*screenSize.height/8)
+        addChild(progressBar)
+        
+        insideProgressBar = FuelBar(image: "fuel", spaceship: self.spaceship)
         insideProgressBar.zPosition = 5
         addChild(insideProgressBar)
-        addChild(progressBar)
+       
     }
     
     func setUpCountGems() {
@@ -289,7 +317,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         countGems.position = CGPoint(x: 60 * size.width / 667 , y:progressBar.position.y - 10)
         countGems.zPosition = 4
         addChild(countGems)
-        
         
     }
     
@@ -457,23 +484,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let spaceshipUpBoundsY = spaceship.position.y + spaceship.frame.height/2
         let spaceshipDownBoundsY = spaceship.position.y - spaceship.frame.height/2
         
-        if spaceshipUpBoundsY < 10 {
-            return true
-        }
-        
-        if spaceshipDownBoundsY > (screenSize.height - 10) {
-            return true
-        }
-        
-        if spaceshipRightBoundsX < 0 {
-            return true
-        }
-        
-        if spaceshipLeftBoundsX > screenSize.width {
-            return true
-        }
-        
-        if spaceship.fuelLevel <= 0 {
+        if (spaceshipUpBoundsY < 10) || (spaceshipDownBoundsY > (screenSize.height - 10)) || (spaceshipRightBoundsX < 0)  || (spaceshipLeftBoundsX > screenSize.width) || (spaceship.fuelLevel <= 0) {
+            
             return true
         }
         
