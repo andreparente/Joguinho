@@ -15,7 +15,7 @@ Planet_Instruction = "Escolha um planeta";
 
 Total_Coins = "Total de moedas: ";
 
-Neptune_Complete_Description = "Escuro,frio e atingido diariamente por ventos supersônicos,Netuno é o último dos gigantes de gás compostos de hélio e hidrogênio do nosso sistema solar.Tendo uma distância em relação ao sol 30 vezes maior que a Terra,o planeta leva quase 165 anos terrestres para orbitar nosso Sol. Em 2011 Netuno completou sua primeira órbita desde seu descobrimento em 1846.";
+Neptune_Complete_Description = "Escuro,frio e atingido diariamente por ventos supersônicos,Netuno é o último dos gigantes de gás compostos de hélio e hidrogênio do nosso sistema solar.Tendo uma distância em relação ao sol 30 vezes maior que a Terra,o planeta leva quase 165 anos terrestres para orbitar nosso Sol. Em 2011 Netuno completou sua primeira órbita desde seu descobrimento em 1846. Gravidade:11.15";
 
 Neptune_Description_Image = "textNeptune_Port";
 
@@ -28,3 +28,5 @@ Won_Message = "parabéns, você arrasou";
 Lost_Message = "sem problemas, tente de novo";
 
 Final_Description_Image = "final8_Port";
+
+Uranus_Complete_Description = "Urano é outro dos gigantes gasosos no nosso sistema solar.De várias formas é muito parecido com Netuno.Algumas similaridades são a sua composição física e o fato de ambos terem anéis.Algumas das peculiaridades sobre Urano são o fato dele não ter nenhuma forma de aquecimento interno própria acarretando a quase ausência de superfície vísivel.Além disso seus anéis são muito menores do que os dos outros planetas que os possuem. Gravidade:8.87";
