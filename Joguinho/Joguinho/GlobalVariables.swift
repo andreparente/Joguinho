@@ -23,8 +23,7 @@ var levelId:Int? = 1
 var player = Player(coinsBalance: userDefaults.value(forKey: "coinsBalance") as! Int, lastLevel: userDefaults.value(forKey: "lastLevel") as! Int, spaceShip: nil, astronaut: nil, itens: nil)
 
 
-//MUDAR ESSA PORRA
-var currentPlanet:Planet = Planet(name: PlanetName.Neptune, gravity: 1.115, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
+var currentPlanet:Planet!
 
 //variavel que será usada pra guardar o que vier do CoreData, e usar essa variável pra povoar o app
 var planetsGlobal: [Planet]!
