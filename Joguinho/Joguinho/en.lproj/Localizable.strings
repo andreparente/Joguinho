@@ -5,19 +5,14 @@
   Created by Felipe Viberti on 30/11/16.
   Copyright © 2016 Andre Machado Parente. All rights reserved.
 */
+
+//General Description
+
 RESUME = "Resume";
-
-Neptune = "Neptune";
-
-Neptune_Description = "the windiest planet";
 
 Planet_Instruction = "Select a planet";
 
 Total_Coins = "Total coins: ";
-
-Neptune_Complete_Description = "Dark,cold and whipped by supersonic winds,Neptune is \n the last of the hydrogen and helium gas giants in our solar system.\n More than 30 times as far from the sun as Earth,the planet takes almost 165 Earth years to orbit our sun.\n In 2011 Neptune completed its first orbit since its discovery in 1846. Gravity:11.15";
-
-Neptune_Description_Image = "textNeptune";
 
 You_Lost = "YOU LOST :(";
 
@@ -29,4 +24,33 @@ Lost_Message = "no prob, you can try again";
 
 Final_Description_Image = "final8";
 
+//Neptune Description
+
+Neptune = "Neptune";
+
+Neptune_Description = "the windiest planet";
+
+Neptune_Complete_Description = "Dark,cold and whipped by supersonic winds,Neptune is \n the last of the hydrogen and helium gas giants in our solar system.\n More than 30 times as far from the sun as Earth,the planet takes almost 165 Earth years to orbit our sun.\n In 2011 Neptune completed its first orbit since its discovery in 1846. Gravity:11.15";
+
+Neptune_Description_Image = "textNeptune";
+
+//Uranus Description
+
+Uranus = "Uranus";
+
+Uranus_Description = "the surfaceless planet";
+
 Uranus_Complete_Description = "Uranus is another one of the gas giants in our solar system.It is very similar to Neptune in many ways, like it’s composition and the fact that they both have rings.Some of the peculiarities about Uranus are that it has no internal source of heat which causes it to display very few surface  when observed from a great distance and that its rings are much smaller than the ones from other planets.Gravity:8.87";
+
+Uranus_Description_Image = "textUranus";
+
+//Saturn Description
+
+Saturn = "Saturn";
+
+Saturn_Description = "the planet of the rings";
+
+Saturn_Complete_Description = "";
+
+Saturn_Description_Image = "textSaturn";
+

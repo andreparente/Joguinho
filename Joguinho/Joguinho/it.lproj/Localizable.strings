@@ -5,19 +5,14 @@
   Created by Felipe Viberti on 30/11/16.
   Copyright © 2016 Andre Machado Parente. All rights reserved.
 */
+
+//General Description
+
 RESUME = "Continuare";
-
-Neptune = "Nettuno";
-
-Neptune_Description = "il pianeta del vento";
 
 Planet_Instruction = "Scegli un pianeta";
 
 Total_Coins = "Totale di monete: ";
-
-Neptune_Complete_Description = "Oscuro,freddo e colpito tutti i giorni per venti supersoniche,Nettuno è l'ultimo dei giganti di gas composti di elio e idrogeno del nostro sistema solare.La sua  distanza in relazione al sole è 30 volte piú grande que la distanza della Terra.Per questo motivo, il pianeta tarda quasi 165 anni terrestri per orbitare il sole. In 2011 Nettuno ha completato la  sua prima orbita da quando è stato scoperto in 1846.";
-
-Neptune_Description_Image = "textNeptune_Ita";
 
 You_Lost = "HAI PERSO :(";
 
@@ -29,4 +24,32 @@ Lost_Message = "riprova";
 
 Final_Description_Image = "final8_Ita";
 
-Uranus_Complete_Description = "";
+//Neptune Description
+
+Neptune = "Nettuno";
+
+Neptune_Description = "il pianeta del vento";
+
+Neptune_Complete_Description = "Oscuro,freddo e colpito tutti i giorni per venti supersoniche,Nettuno è l'ultimo dei giganti di gas composti di elio e idrogeno del nostro sistema solare.La sua  distanza in relazione al sole è 30 volte piú grande che la distanza della Terra.Per questo motivo, il pianeta tarda quasi 165 anni terrestri per orbitare il sole. In 2011 Nettuno ha completato la  sua prima orbita da quando è stato scoperto in 1846.";
+
+Neptune_Description_Image = "textNeptune_Ita";
+
+//Uranus Description
+
+Uranus = "Urano";
+
+Uranus_Description = "il pianeta senza superficie";
+
+Uranus_Complete_Description = "Urano è un altro degli giganti di gas del nostro sistema solare.In molti modi si assomiglia a Nettuno.Alcune dalle cose in comune sono la sua composizione è il fato di che entrambi possiedono anelli.Alcune dalle particolarità di Urano sono il fato di che non possiede nessuna maniera di riscaldamento interno causando la sensazione che non c'è superficie.Suoi anelli anche sono molto piu picolli che gli altri pianeti che tengono anelli. ";
+
+Uranus_Description_Image = "textUranus_Ita";
+
+//Saturn Description
+
+Saturn = "Saturno";
+
+Saturn_Description = "il pianeta degli anelli";
+
+Saturn_Complete_Description = "";
+
+Saturn_Description_Image = "textSaturn_Ita";
