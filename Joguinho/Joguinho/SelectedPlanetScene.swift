@@ -134,7 +134,7 @@ class SelectedPlanetScene: SKScene {
         
         
         descriptionLabel = SKLabelNode(fontNamed: "Futura")
-        descriptionLabel.text = NSLocalizedString("Neptune_Description", comment: "Description")
+        descriptionLabel.text = NSLocalizedString(selectedPlanetClass.name.rawValue + "_Description", comment: "Description")
         descriptionLabel.fontSize = 20
         descriptionLabel.position = CGPoint(x: planetLabel.position.x  + planetLabel.frame.width/2 + descriptionLabel.frame.width/2 + 15, y: planetLabel.position.y)
         self.addChild(descriptionLabel)
@@ -145,7 +145,7 @@ class SelectedPlanetScene: SKScene {
         closeText.zPosition = 11
         
         
-        textAboutPlanet = SKSpriteNode(imageNamed: NSLocalizedString("Neptune_Description_Image", comment: "Description"))
+        textAboutPlanet = SKSpriteNode(imageNamed: NSLocalizedString(selectedPlanetClass.name.rawValue + "_Description_Image", comment: "Description"))
         textAboutPlanet.position = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2 + 10)
         switch screenSize.width
         {
