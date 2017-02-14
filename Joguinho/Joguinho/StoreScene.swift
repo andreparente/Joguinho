@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import StoreKit
 
-class StoreScene: SKScene,SKPaymentTransactionObserver,SKProductsRequestDelegate {
+class StoreScene: SKScene {
 
     var buybutton = Spaceship(fuelLevel: 100)
     var list = [SKProduct]()
@@ -42,7 +42,7 @@ class StoreScene: SKScene,SKPaymentTransactionObserver,SKProductsRequestDelegate
                 let prodID = product.productIdentifier
                 if(prodID == "100_gems_pack") {
                     p = product
-                    buyProduct()  //This is one of the functions we added earlier
+                    buyProduct() 
                     break;
                     }
                 }
@@ -52,8 +52,14 @@ class StoreScene: SKScene,SKPaymentTransactionObserver,SKProductsRequestDelegate
         }
     }
     
-    //MARK:Setup Functions
+//MARK:Setup Functions
+    
     func setupInitialScene () {
+        let background = SKSpriteNode(imageNamed: "background")
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
+        addChild(background)
+        
         
         buybutton.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         buybutton.size = CGSize(width: 100.52 * size.width / 667, height: 100 * size.height / 375)
@@ -66,6 +72,14 @@ class StoreScene: SKScene,SKPaymentTransactionObserver,SKProductsRequestDelegate
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(pay as SKPayment)
     }
+    
+}
+
+
+//MARK:Extensions to StoreScene
+
+
+extension StoreScene:SKProductsRequestDelegate {
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("product request")
@@ -81,19 +95,22 @@ class StoreScene: SKScene,SKPaymentTransactionObserver,SKProductsRequestDelegate
             list.append(product)
         }
     }
+}
+
+
+extension StoreScene:SKPaymentTransactionObserver {
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         print("transactions restored")
         
         for transaction in queue.transactions {
-            let t: SKPaymentTransaction = transaction 
+            let t: SKPaymentTransaction = transaction
             
             let prodID = t.payment.productIdentifier as String
             
             switch prodID {
             case "100_gems_pack":
-            print("Bought 100 gems")
-         //   goToScene()
+                print("Bought 100 gems")
             //Right here is where you should put the function that you want to execute when your in app purchase is complete
             default:
                 print("IAP not setup")
@@ -102,7 +119,7 @@ class StoreScene: SKScene,SKPaymentTransactionObserver,SKProductsRequestDelegate
         }
     }
     
-       func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]){
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("Received payment transaction response from Apple")
         
         for transaction:AnyObject in transactions {
@@ -116,9 +133,9 @@ class StoreScene: SKScene,SKPaymentTransactionObserver,SKProductsRequestDelegate
                 let prodID = p.productIdentifier as String
                 switch prodID {
                 case "100_gems_pack":
-                   numberOfGems += 100
+                    numberOfGems += 100
                     print(numberOfGems)
-                    //Here you should put the function you want to execute when the purchase is complete
+                //Here you should put the function you want to execute when the purchase is complete
                 default:
                     print("IAP not setup")
                 }
@@ -137,23 +154,12 @@ class StoreScene: SKScene,SKPaymentTransactionObserver,SKProductsRequestDelegate
         }
     }
     
-    func finishTransaction(trans:SKPaymentTransaction)
-    {
+    func finishTransaction(trans:SKPaymentTransaction) {
         
         print("finished transactions")
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
         print("removed Transactions")
-    }
-    
-    func goToScene() {
-        let  scene = PlanetsScene()
-        let transition = SKTransition.fade(withDuration: 1.0)
-        let skView = self.view! as SKView
-        skView.ignoresSiblingOrder = false
-        scene.size = skView.bounds.size
-        scene.scaleMode = .aspectFill
-        skView.presentScene(scene, transition: transition)
     }
 }
