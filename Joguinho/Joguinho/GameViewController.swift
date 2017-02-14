@@ -27,7 +27,9 @@ class GameViewController: UIViewController {
         let skView = self.view as! SKView
         skView.ignoresSiblingOrder = false
         self.scene = PlanetsScene(size: skView.frame.size)
-        skView.presentScene(scene)
+    //    self.menuScene = FirstScene(size: skView.frame.size)
+      //  skView.presentScene(menuScene)
+       skView.presentScene(scene)
         
     }
     override var shouldAutorotate: Bool {
