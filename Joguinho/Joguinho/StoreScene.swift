@@ -12,7 +12,7 @@ import StoreKit
 
 class StoreScene: SKScene {
 
-    var buybutton = Spaceship(fuelLevel: 100)
+    var buybutton = Spaceship(fuelLevel: 100,spaceShipName:"rocket fase")
     var list = [SKProduct]()
     var p = SKProduct()
     var numberOfGems = 0

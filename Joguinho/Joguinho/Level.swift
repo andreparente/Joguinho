@@ -335,7 +335,13 @@ class Level
     }
     
     func createLevelUranus() {
-        
+        //Colocar aqui as posições dos levels em Urano
+        switch self.id {
+        case 1:
+        break
+        default:
+        break
+        }
     }
     
     func createLevelSaturn() {

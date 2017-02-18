@@ -20,9 +20,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var surface2: Component!
     var spaceship: Spaceship!
     var astronaut: Astronaut!
-    var rock1:Component = Component(imageNamed: "rock1")
     var realrocks:[Component] = [Component(imageNamed: "rock1")]
-    var realgems:[Component] = [Component(imageNamed: "crystal")]
+    var realgems:[Gem] = [Gem(originPlanet: PlanetName.Neptune)]
     var realFuelDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Fuel")!)]
     var realOxygenDrops:[SurvivalArtifact] = [SurvivalArtifact(type: Artifact(rawValue: "Oxygen")!)]
     var pauseButton = Component(imageNamed: "pause")
@@ -358,7 +357,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         realgems.removeAll()
         for i in 0...level.gems.count - 1 {
             
-            realgems.append(Component(imageNamed: "crystal"))
+            realgems.append(Gem(originPlanet: level.planet.name))
             realgems[i].name = "Gem\(i)"
             gemName.append(realgems[i].name!)
             realgems[i].position = level.gems[i]
@@ -422,7 +421,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpPlayer() {
         if level.planet.type == .gaseous {
-            spaceship = Spaceship(fuelLevel: 350)
+            spaceship = Spaceship(fuelLevel: 350, spaceShipName: "rocket fase")
             addChild(spaceship)
         }
         else {

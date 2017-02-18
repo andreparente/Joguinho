@@ -53,12 +53,16 @@ class PlanetsScene: SKScene{
             if neptune.contains(location) {
                 
                 currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
-                let transition2 = SKTransition.fade(withDuration: 1.0)
-                let nextScene = SelectedPlanetScene(size: self.size)
-                nextScene.scaleMode = SKSceneScaleMode.aspectFill
-                nextScene.selectedPlanetClass = currentPlanet
-                self.scene?.view?.presentScene(nextScene, transition: transition2)
+                makeTransition()
+                
             }
+            if !isLocked(Planet: PlanetIndex.Uranus) && uranus.contains(location) {
+                
+                currentPlanet = Planet(name: PlanetName.Uranus, gravity: 0.887, type: PlanetType.gaseous,index:PlanetIndex.Uranus)
+                makeTransition()
+            }
+            
+            
         }
     }
     
@@ -96,7 +100,7 @@ class PlanetsScene: SKScene{
         gemsLabel.zPosition = 3
         self.addChild(gemsLabel)
         
-        gem = Component(imageNamed: "crystal")
+        gem = Gem(originPlanet: PlanetName.Neptune)
         let labelPosition = gemsLabel.position
         let labelSize = gemsLabel.frame.size
         gem.position = CGPoint(x: labelPosition.x + labelSize.width/2 + 10, y: labelPosition.y + 10)
@@ -230,6 +234,15 @@ class PlanetsScene: SKScene{
         else {
             return false
         }
+    }
+    
+    func makeTransition () {
+        
+        let transition = SKTransition.fade(withDuration: 1.0)
+        let nextScene = SelectedPlanetScene(size: self.size)
+        nextScene.scaleMode = SKSceneScaleMode.aspectFill
+        nextScene.selectedPlanetClass = currentPlanet
+        self.scene?.view?.presentScene(nextScene, transition: transition)
     }
     
 }

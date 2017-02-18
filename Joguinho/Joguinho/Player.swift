@@ -23,6 +23,7 @@ class Player {
         self.astronaut = astronaut
         self.itens = itens
     }
+    
     func buyItem() {
         
     }
@@ -31,4 +32,7 @@ class Player {
         
     }
     
+    func subtractCoins (value:Int) -> Int {
+        return self.coinsBalance - value
+    }
 }

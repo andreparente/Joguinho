@@ -14,14 +14,15 @@ class Spaceship:Component {
     var TextureAtlas = SKTextureAtlas()
     var TextureArray = [SKTexture]()
     var fire = SKSpriteNode()
-    
+    var spaceShipName:String!
     var fuelLevel:Double!
     
     
-    init(fuelLevel:Double) {
+    init(fuelLevel:Double,spaceShipName:String) {
         self.fuelLevel  = fuelLevel
+        self.spaceShipName = spaceShipName
         self.fire = SKSpriteNode(imageNamed: "fire_1")
-        super.init(imageNamed: "rocket fase")
+        super.init(imageNamed: self.spaceShipName)
     }
     
     required init?(coder aDecoder: NSCoder) {

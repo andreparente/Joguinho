@@ -14,7 +14,7 @@ class LevelCompletedScene: SKScene
     let semibackground = Component(imageNamed: "background")
     let background = Component(imageNamed: "gameWin")
     let platform = Component(imageNamed: "platform")
-    let spaceship = Spaceship(fuelLevel: 1)
+    let spaceship = Spaceship(fuelLevel: 1,spaceShipName:"rocket fase")
     let continueButton = Component(imageNamed: "continue")
     let retry = Component(imageNamed: "retry")
     let menu = Component(imageNamed: "menu")
