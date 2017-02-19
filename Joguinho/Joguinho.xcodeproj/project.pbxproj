@@ -156,15 +156,39 @@
 			isa = PBXGroup;
 			children = (
 				9C4E27061DDCD8EB00DE549C /* FirstScene.swift */,
+				9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */,
+				8AAEA7FA1DBA5CCC00B908A0 /* GameScene.swift */,
+				9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */,
+				9CB428001DDE2D4A0017E617 /* PauseScene.swift */,
 				9C4E27081DDCD94C00DE549C /* PlanetsScene.swift */,
 				9C4E270A1DDCD96100DE549C /* SelectedPlanetScene.swift */,
-				8AAEA7FA1DBA5CCC00B908A0 /* GameScene.swift */,
-				9CB428001DDE2D4A0017E617 /* PauseScene.swift */,
-				9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */,
-				9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */,
 				9C0066D01E4A0D82000D8E1E /* StoreScene.swift */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		3DA760D21E59FAEC00F28C24 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9CD911401DF4DD4800EFDF62 /* background.mp3 */,
+				49F39B431DF750A7006CFB06 /* background2.mp3 */,
+				49F39B4F1DF75327006CFB06 /* rockCollision.mp3 */,
+				49F39B471DF750EF006CFB06 /* gemSound.wav */,
+				49F39B4B1DF75133006CFB06 /* fuelSound.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		3DA760D31E59FB0500F28C24 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8AAEA8011DBA5CCC00B908A0 /* Assets.xcassets */,
+				49B7A5E71DECBD13003ED5FB /* fire.atlas */,
+				496EFB451DD3BA9200A7B163 /* Fonts */,
+				9C9544EF1DEF40BE005833F4 /* Localizable.strings */,
+				3DA760D21E59FAEC00F28C24 /* Sounds */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		496EFB451DD3BA9200A7B163 /* Fonts */ = {
@@ -199,17 +223,10 @@
 		8AAEA7F31DBA5CCC00B908A0 /* Joguinho */ = {
 			isa = PBXGroup;
 			children = (
-				9CD911401DF4DD4800EFDF62 /* background.mp3 */,
-				49F39B431DF750A7006CFB06 /* background2.mp3 */,
-				49F39B4F1DF75327006CFB06 /* rockCollision.mp3 */,
-				49F39B471DF750EF006CFB06 /* gemSound.wav */,
-				49F39B4B1DF75133006CFB06 /* fuelSound.mp3 */,
 				8AAEA82C1DBA5D5400B908A0 /* Model */,
 				8AAEA82B1DBA5D4C00B908A0 /* View */,
 				8AAEA8291DBA5D3100B908A0 /* Controller */,
-				9C9544EF1DEF40BE005833F4 /* Localizable.strings */,
-				8AAEA8011DBA5CCC00B908A0 /* Assets.xcassets */,
-				49B7A5E71DECBD13003ED5FB /* fire.atlas */,
+				3DA760D31E59FB0500F28C24 /* Assets */,
 				8AAEA8061DBA5CCC00B908A0 /* Info.plist */,
 			);
 			path = Joguinho;
@@ -255,10 +272,9 @@
 		8AAEA82C1DBA5D5400B908A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9CAB538C1DE64284006F9788 /* GlobalVariables.swift */,
-				496EFB451DD3BA9200A7B163 /* Fonts */,
-				8AAEA8431DC10E7700B908A0 /* Database */,
 				8AAEA8421DC10E6E00B908A0 /* Classes */,
+				8AAEA8431DC10E7700B908A0 /* Database */,
+				9CAB538C1DE64284006F9788 /* GlobalVariables.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -266,20 +282,20 @@
 		8AAEA8421DC10E6E00B908A0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8AAEA8351DBA76E700B908A0 /* Item.swift */,
-				8AAEA82D1DBA5D6900B908A0 /* Planet.swift */,
-				3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */,
 				8AAEA82F1DBA765200B908A0 /* Astronaut.swift */,
-				8AAEA8311DBA766D00B908A0 /* Spaceship.swift */,
-				8AAEA8331DBA76C400B908A0 /* Player.swift */,
 				8AAEA8371DBA770500B908A0 /* Clothing.swift */,
-				8AAEA83A1DBA778C00B908A0 /* Piece.swift */,
-				3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */,
 				9C493FC81DD3E51400A345F7 /* Component.swift */,
-				9C9BE4A61DD63E4400561120 /* Level.swift */,
 				8A6111491DDCA79900D6109D /* FuelBar.swift */,
-				8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */,
 				9CF2ED811E58B7E00096D6C3 /* Gem.swift */,
+				8AAEA8351DBA76E700B908A0 /* Item.swift */,
+				9C9BE4A61DD63E4400561120 /* Level.swift */,
+				3D23694F1DD238D500C749BA /* PhysicalPlanet.swift */,
+				8AAEA83A1DBA778C00B908A0 /* Piece.swift */,
+				8AAEA82D1DBA5D6900B908A0 /* Planet.swift */,
+				8AAEA8331DBA76C400B908A0 /* Player.swift */,
+				8AAEA8311DBA766D00B908A0 /* Spaceship.swift */,
+				8A61114B1DDCAB1C00D6109D /* ScreenSize.swift */,
+				3D23694D1DD236BB00C749BA /* SurvivalArtifact.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -369,7 +385,7 @@
 				TargetAttributes = {
 					8AAEA7F01DBA5CCC00B908A0 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = XBEPC2JPC9;
+						DevelopmentTeam = 6PMD3Q4LVK;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
@@ -651,7 +667,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XBEPC2JPC9;
+				DEVELOPMENT_TEAM = 6PMD3Q4LVK;
 				INFOPLIST_FILE = Joguinho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -666,7 +682,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XBEPC2JPC9;
+				DEVELOPMENT_TEAM = 6PMD3Q4LVK;
 				INFOPLIST_FILE = Joguinho/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
