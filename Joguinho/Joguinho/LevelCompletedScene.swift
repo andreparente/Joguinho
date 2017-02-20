@@ -7,7 +7,7 @@
 //
 
 import SpriteKit
-
+import SafariServices
 
 class LevelCompletedScene: SKScene
 {
@@ -85,6 +85,11 @@ class LevelCompletedScene: SKScene
                 scene.size = skView.bounds.size
                 scene.scaleMode = .aspectFill
                 skView.presentScene(scene, transition: transition)
+            }
+            
+            if facebookButton.contains(location) {
+                let safarivc = SFSafariViewController(url: URL(string: "https://www.facebook.com/SpaceTripTheJourney/?ref=ts&fref=ts")!)
+                self.view?.window?.rootViewController?.present(safarivc, animated: true, completion: nil)
             }
         }
     }
