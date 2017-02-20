@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         levels.removeAll()
             levelsStars.removeAll()
            for _ in 0...7 {
-            levels.append(["lock","lock","lock","lock","lock","lock","lock","lock","lock"])
+            levels.append(["lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer"])
             levelsStars.append([0,0,0,0,0,0,0,0])
          }
            

@@ -271,6 +271,7 @@ class SelectedPlanetScene: SKScene {
         }
         moreInfo.isHidden = true
     }
+    
     func showAll() {
         level1.isHidden = false
         level2.isHidden = false
