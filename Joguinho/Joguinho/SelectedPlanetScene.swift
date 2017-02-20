@@ -90,12 +90,17 @@ class SelectedPlanetScene: SKScene {
             {
                 addChild(textAboutPlanet)
                 addChild(closeText)
+               
+                hideAll()
             }
             
             if closeText.contains(location)
             {
                 textAboutPlanet.removeFromParent()
                 closeText.removeFromParent()
+                
+                showAll()
+
             }
         }
     }
@@ -249,5 +254,37 @@ class SelectedPlanetScene: SKScene {
         
         level8.position = CGPoint(x: 572 * size.width / 667, y: 110 * size.height / 375)
         self.addChild(level8)
+    }
+    
+    func hideAll () {
+        level1.isHidden = true
+        level2.isHidden = true
+        level3.isHidden = true
+        level4.isHidden = true
+        level5.isHidden = true
+        level6.isHidden = true
+        level7.isHidden = true
+        level8.isHidden = true
+        
+        for star in levelStarsImages {
+            star.isHidden = true
+        }
+        moreInfo.isHidden = true
+    }
+    func showAll() {
+        level1.isHidden = false
+        level2.isHidden = false
+        level3.isHidden = false
+        level4.isHidden = false
+        level5.isHidden = false
+        level6.isHidden = false
+        level7.isHidden = false
+        level8.isHidden = false
+        
+        for star in levelStarsImages {
+            star.isHidden = false
+        }
+        moreInfo.isHidden = false
+
     }
 }
