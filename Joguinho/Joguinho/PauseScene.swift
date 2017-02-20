@@ -17,6 +17,8 @@ class PauseScene: SKScene
     let resumeLabel:SKLabelNode = SKLabelNode(fontNamed: "Futura")
     let menuLabel:SKLabelNode = SKLabelNode(fontNamed: "Futura")
     var fire:SKNode!
+    var soundButton: SKSpriteNode!
+    var buttonTexture: SKTexture!
     
     override func didMove(to view: SKView) {
         
@@ -69,13 +71,25 @@ class PauseScene: SKScene
         currentSceneState.countDownLabel.text = "3"
         currentSceneState.timerDidEnd = false
         
+        if userDefaults.bool(forKey: "soundOn") {
+            buttonTexture = SKTexture(imageNamed: "soundOn")
+            soundButton = SKSpriteNode(texture: buttonTexture)
+            soundButton.position = CGPoint(x: 320 * size.width / 667, y: 50 * size.height / 375)
+            soundButton.zPosition = 3
+            self.addChild(soundButton)
+        } else {
+            buttonTexture = SKTexture(imageNamed: "soundOff")
+            soundButton = SKSpriteNode(texture: buttonTexture)
+            soundButton.position = CGPoint(x: 320 * size.width / 667, y: 50 * size.height / 375)
+            soundButton.zPosition = 3
+            self.addChild(soundButton)
+        }
+
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches
-        {
+        for touch in touches {
             let location = touch.location(in: self)
-            if self.nodes(at: location)[0] == self.resumeButton
-            {
+            if resumeButton.contains(location) {
                 let transition = SKTransition.fade(withDuration: 1.0)
                 let scene1 = currentSceneState
                 scene1?.isPaused = true
@@ -85,10 +99,8 @@ class PauseScene: SKScene
                 scene1!.scaleMode = .aspectFill
                 skView.presentScene(scene1!, transition: transition)
             }
-            else
-            {
-               if self.nodes(at: location)[0] == self.menuButtton
-                {
+            else {
+               if menuButtton.contains(location) {
                     let transition = SKTransition.fade(withDuration: 1.0)
                     let scene1 = PlanetsScene()
                     let skView = self.view! as SKView
@@ -98,8 +110,21 @@ class PauseScene: SKScene
                     skView.presentScene(scene1, transition: transition)
 
                 }
+            else {
+                if soundButton.contains(location) {
+                    if userDefaults.bool(forKey: "soundOn") {
+                        soundButton.texture = SKTexture(imageNamed:"soundOff")
+                        userDefaults.set(false, forKey: "soundOn")
+                        currentSceneState.backgroundSound.stop()
+                      
+                    } else {
+                        soundButton.texture = SKTexture(imageNamed:"soundOn")
+                        userDefaults.set(true, forKey: "soundOn")
+                        currentSceneState.backgroundSound.play()
+                    }
+                }
             }
-        }
-
+         }
+      }
     }
 }

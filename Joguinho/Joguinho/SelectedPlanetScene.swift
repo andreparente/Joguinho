@@ -76,7 +76,7 @@ class SelectedPlanetScene: SKScene {
             skView.presentScene(scene, transition: transition)
             }
             
-            if self.nodes(at: location)[0] == self.back{
+            if back.contains(location){
                 let scene = PlanetsScene()
                 let skView = self.view! as SKView
                 let transition = SKTransition.fade(withDuration: 1.0)
@@ -86,13 +86,13 @@ class SelectedPlanetScene: SKScene {
                 skView.presentScene(scene, transition: transition)
             }
             
-            if self.nodes(at: location)[0] == self.moreInfo
+            if moreInfo.contains(location)
             {
                 addChild(textAboutPlanet)
                 addChild(closeText)
             }
             
-            if self.nodes(at: location)[0] == self.closeText
+            if closeText.contains(location)
             {
                 textAboutPlanet.removeFromParent()
                 closeText.removeFromParent()

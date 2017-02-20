@@ -158,7 +158,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             for touch in touches
             {
                 let location = touch.location(in: self)
-                if self.nodes(at: location)[0] == self.pauseButton
+                if pauseButton.contains(location)
                 {
                     scene?.isPaused = true
                     currentlyTouching = false
@@ -552,7 +552,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //MARK:Sound functions
-    
+ 
     func produceBackgroundSound () {
         let path = Bundle.main.path(forResource: "background2.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)

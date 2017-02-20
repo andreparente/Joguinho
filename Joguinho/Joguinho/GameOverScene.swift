@@ -69,7 +69,8 @@ class GameOverScene: SKScene
         for touch in touches {
             let location = touch.location(in: self)
             let transition = SKTransition.fade(withDuration: 1.0)
-            if self.nodes(at: location)[0] == self.playAgainButton {
+            
+            if playAgainButton.contains(location) {
                 let level = Level(id: levelId, planet: currentPlanet)
                 let  scene = GameScene(size: self.size, level: level)
                 let skView = self.view! as SKView
@@ -80,7 +81,7 @@ class GameOverScene: SKScene
 
             }
             else {
-                if  self.nodes(at: location)[0] == self.menuButtton {
+                if  menuButtton.contains(location) {
                     let  scene = PlanetsScene()
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = false

@@ -50,13 +50,13 @@ class LevelCompletedScene: SKScene
                 skView.presentScene(scene, transition: transition)
             }
             
-            if self.nodes(at: location)[0] == self.closeText
+            if closeText.contains(location)
             {
                 textFinal8.removeFromParent()
                 closeText.removeFromParent()
             }
             
-            if self.nodes(at: location)[0] == self.continueButton {
+            if continueButton.contains(location) {
                 
                 if levelId != 8
                 {
@@ -76,7 +76,7 @@ class LevelCompletedScene: SKScene
                 
             }
             
-            if self.nodes(at: location)[0] == self.menu {
+            if menu.contains(location) {
                 let  scene = PlanetsScene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = false

@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import SafariServices
 
 class PlanetsScene: SKScene{
     
@@ -23,7 +24,7 @@ class PlanetsScene: SKScene{
     var mercury: Component!
     var soundButton: SKSpriteNode!
     var buttonTexture: SKTexture!
-    
+    var facebookButton:SKSpriteNode!
     
     override func didMove(to view: SKView) {
         
@@ -50,6 +51,11 @@ class PlanetsScene: SKScene{
                     userDefaults.set(true, forKey: "soundOn")
                 }
             }
+            if facebookButton.contains(location) {
+                
+                let safarivc = SFSafariViewController(url: URL(string: "https://www.facebook.com/SpaceTripTheJourney/?ref=ts&fref=ts")!)
+                self.view?.window?.rootViewController?.present(safarivc, animated: true, completion: nil)
+            }
             if neptune.contains(location) {
                 
                 currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
@@ -73,13 +79,13 @@ class PlanetsScene: SKScene{
         if userDefaults.bool(forKey: "soundOn") {
             buttonTexture = SKTexture(imageNamed: "soundOn")
             soundButton = SKSpriteNode(texture: buttonTexture)
-            soundButton.position = CGPoint(x: 550 * size.width / 667, y: 43 * size.height / 375)
+            soundButton.position = CGPoint(x: 450 * size.width / 667, y: 43 * size.height / 375)
             soundButton.zPosition = 3
             self.addChild(soundButton)
         } else {
             buttonTexture = SKTexture(imageNamed: "soundOff")
             soundButton = SKSpriteNode(texture: buttonTexture)
-            soundButton.position = CGPoint(x: 550 * size.width / 667, y: 43 * size.height / 375)
+            soundButton.position = CGPoint(x: 450 * size.width / 667, y: 43 * size.height / 375)
             soundButton.zPosition = 3
             self.addChild(soundButton)
         }
@@ -111,11 +117,19 @@ class PlanetsScene: SKScene{
         
         levels = userDefaults.value(forKey: "levels") as! [[String]]
         levelsStars = userDefaults.value(forKey: "levelStars") as! [[Int]]
+        
         //background
         let background = SKSpriteNode(imageNamed: "background")
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
         addChild(background)
+        
+        facebookButton = SKSpriteNode(imageNamed: "facebooklogo")
+        facebookButton.position = CGPoint(x: 550 * size.width / 667, y: 43 * size.height / 375)
+        facebookButton.zPosition = 3
+        addChild(facebookButton)
+
+        
     }
     
     func setupPlanets() {
