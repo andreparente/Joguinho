@@ -43,6 +43,7 @@
 		9C9544ED1DEF40BE005833F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C9544EF1DEF40BE005833F4 /* Localizable.strings */; };
 		9C9BE4A71DD63E4400561120 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9BE4A61DD63E4400561120 /* Level.swift */; };
 		9CA3C7351E5B7E4300807BA6 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA3C7341E5B7E4300807BA6 /* Enum.swift */; };
+		9CA3C7371E5B83E500807BA6 /* InGameStoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA3C7361E5B83E500807BA6 /* InGameStoreScene.swift */; };
 		9CAB538D1DE64284006F9788 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB538C1DE64284006F9788 /* GlobalVariables.swift */; };
 		9CB427FD1DDDE39F0017E617 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */; };
 		9CB427FF1DDDF1410017E617 /* LevelCompletedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */; };
@@ -120,6 +121,7 @@
 		9C9544F31DEF4540005833F4 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C9BE4A61DD63E4400561120 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		9CA3C7341E5B7E4300807BA6 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		9CA3C7361E5B83E500807BA6 /* InGameStoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InGameStoreScene.swift; sourceTree = "<group>"; };
 		9CAB538C1DE64284006F9788 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		9CB427FC1DDDE39F0017E617 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCompletedScene.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				9C4E27081DDCD94C00DE549C /* PlanetsScene.swift */,
 				9C4E270A1DDCD96100DE549C /* SelectedPlanetScene.swift */,
 				9C0066D01E4A0D82000D8E1E /* StoreScene.swift */,
+				9CA3C7361E5B83E500807BA6 /* InGameStoreScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				3D2369501DD238D500C749BA /* PhysicalPlanet.swift in Sources */,
 				9CB427FD1DDDE39F0017E617 /* GameOverScene.swift in Sources */,
 				8AAEA7FD1DBA5CCC00B908A0 /* GameViewController.swift in Sources */,
+				9CA3C7371E5B83E500807BA6 /* InGameStoreScene.swift in Sources */,
 				8A61114C1DDCAB1C00D6109D /* ScreenSize.swift in Sources */,
 				8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */,
 				8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */,
