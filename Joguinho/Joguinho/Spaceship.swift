@@ -14,15 +14,15 @@ class Spaceship:Component {
     var TextureAtlas = SKTextureAtlas()
     var TextureArray = [SKTexture]()
     var fire = SKSpriteNode()
-    var spaceShipName:String!
+    var spaceShipName:SpaceShipName!
     var fuelLevel:Double!
     
     
-    init(fuelLevel:Double,spaceShipName:String) {
+    init(fuelLevel:Double,spaceShipName:SpaceShipName) {
         self.fuelLevel  = fuelLevel
         self.spaceShipName = spaceShipName
         self.fire = SKSpriteNode(imageNamed: "fire_1")
-        super.init(imageNamed: self.spaceShipName)
+        super.init(imageNamed: self.spaceShipName.rawValue)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,9 +54,6 @@ class Spaceship:Component {
     }
     
     func spaceshipMovement() {
-//        let spaceshipMove = SKAction.applyImpulse(CGVector(dx: 0, dy: 1), duration: 0.1)
-//        self.run(spaceshipMove)
-        
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         let vector = CGVector(dx: 2, dy: 8)
         self.physicsBody?.applyImpulse(vector)
@@ -114,3 +111,4 @@ class Spaceship:Component {
         addChild(fire)
     }
 }
+

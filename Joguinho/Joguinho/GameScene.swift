@@ -425,7 +425,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpPlayer() {
         if level.planet.type == .gaseous {
-            spaceship = Spaceship(fuelLevel: 350, spaceShipName: "rocket fase")
+            spaceship = Spaceship(fuelLevel: 350, spaceShipName: SpaceShipName.standardSpaceShip)
             addChild(spaceship)
         }
         else {

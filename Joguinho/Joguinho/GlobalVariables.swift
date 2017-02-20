@@ -31,14 +31,7 @@ var planetsGlobal: [Planet]!
 var j = 0
 var k = 0
 
-//Tipos de colisão que são tratados na GameScene
-enum CollisionTypes: UInt32 {
-    case player = 1
-    case rock = 2
-    case fuelDrop = 4
-    case oxygenDrop = 8
-    case gem = 16
-}
+
 
 func getArrayPlanets() -> [Planet] {
     

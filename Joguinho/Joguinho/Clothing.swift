@@ -32,10 +32,3 @@ class Clothing: Item {
     }
 }
 
-enum ClothingType: String {
-    
-    case Helmet = "Helmet"
-    case UpperBody = "UpperBody"
-    case LowerBody = "LowerBody"
-    case Boot = "Boot"
-}

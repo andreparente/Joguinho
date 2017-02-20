@@ -22,25 +22,3 @@ class PhysicalPlanet: Component {
     }
 }
 
-enum PlanetName:String {
-    case Sun  = "Sun"
-    case Mercury = "Mercury"
-    case Venus = "Venus"
-    case Earth = "Earth"
-    case Mars = "Mars"
-    case Jupiter = "Jupiter"
-    case Saturn = "Saturn"
-    case Uranus = "Uranus"
-    case Neptune = "Neptune"
-}
-
-enum PlanetIndex:Int {
-    case Mercury = 7
-    case Venus = 6
-    case Earth = 5
-    case Mars = 4
-    case Jupiter = 3
-    case Saturn = 2
-    case Uranus = 1
-    case Neptune = 0
-}

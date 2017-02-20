@@ -27,10 +27,6 @@ class Planet {
     
 }
 
-enum PlanetType:String {
-    
-    case gaseous = "Gaseous"
-    case terrestrial = "Terrestrial"
-}
+
 
 

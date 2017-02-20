@@ -34,9 +34,4 @@ class Piece: Item {
 
 }
 
-enum PieceType: String {
-    
-    case Wing = "Wing"
-    case Tank = "Tank"
-    case Engine = "Engine"
-}
+

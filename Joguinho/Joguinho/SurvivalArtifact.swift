@@ -9,10 +9,7 @@
 import Foundation
 import SpriteKit
 
-enum Artifact:String {
-    case oxygen = "Oxygen"
-    case fuel = "Fuel"
-}
+
 
 class SurvivalArtifact:Component {
     
