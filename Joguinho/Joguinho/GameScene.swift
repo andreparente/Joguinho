@@ -212,6 +212,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 spaceship.drag()
                 spaceship.removeAllChildren()
             }
+      //      if spaceship.position.x > 3*screenSize.width/4 {
+        //        spaceship.dragWhenPassedThreeQuartersOfScreen()
+         //   }
             setUpActionsForComponents()
             
             if cauhgtFinalGem || spaceship.position.x > realgems[realgems.count-1].position.x   {
@@ -221,6 +224,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if isDead() {
                 actWhenDead()
             }
+    
             
         }
     }

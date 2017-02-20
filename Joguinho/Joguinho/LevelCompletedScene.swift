@@ -108,9 +108,8 @@ class LevelCompletedScene: SKScene
         closeText.zPosition = 22
         
         facebookButton = SKSpriteNode(imageNamed: "facebooklogo")
-        facebookButton.position = CGPoint(x: 550 * size.width / 667, y: 43 * size.height / 375)
+        facebookButton.position = CGPoint(x: 350 * size.width / 667, y: 43 * size.height / 375)
         facebookButton.zPosition = 22
-        addChild(facebookButton)
         
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         semibackground.size = CGSize(width:size.width, height:size.height)

@@ -80,6 +80,11 @@ class Spaceship:Component {
         self.updateDirectionTo(vector: CGVector(dx: -0.05, dy: 0.05))
     }
     
+    func dragWhenPassedThreeQuartersOfScreen () {
+        let vector = CGVector(dx: -0.1, dy: 0)
+        self.physicsBody?.applyImpulse(vector)
+        self.updateDirectionTo(vector: vector)
+    }
     func collidedWithRock() {
         let vector = CGVector(dx: -1, dy: -2)
         self.physicsBody?.applyImpulse(vector)
