@@ -19,7 +19,7 @@ class Gem:Component {
             case "Neptune":
             super.init(imageNamed: "neptuneGem")
             case "Uranus":
-            super.init(imageNamed: "uranusGem")
+            super.init(imageNamed: "neptuneGem")
             default:
             super.init(imageNamed: "")
             

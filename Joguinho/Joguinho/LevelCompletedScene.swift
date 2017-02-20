@@ -159,8 +159,7 @@ class LevelCompletedScene: SKScene
         winMessage.zPosition = 20
         addChild(winMessage)
         
-       
-        
+
        
         // addChild(platform)
         //  addChild(spaceship)
@@ -217,9 +216,10 @@ class LevelCompletedScene: SKScene
         self.addChild(star)
     }
     
-    func levelFound() -> Bool {
+    func nextLevelFound() -> Bool {
         
         for levelAux in levels[currentPlanet.index.rawValue] {
+            print(levelAux)
             if (levelAux == String(level + 1)) {
                 return true
             }
@@ -244,9 +244,11 @@ class LevelCompletedScene: SKScene
         userDefaults.set(levelsStars, forKey: "levelStars")
         
         
-        if !levelFound() {
+        if !nextLevelFound() {
+            print("userDefault ", userDefaults.value(forKey: "lastLevel") as! Int)
             userDefaults.set(userDefaults.value(forKey: "lastLevel") as! Int + 1, forKey: "lastLevel")
             player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
+            userDefaults.synchronize()
             
             if userDefaults.value(forKey: "lastLevel") as! Int % 8 == 0  {
     
@@ -254,6 +256,7 @@ class LevelCompletedScene: SKScene
                 levels[currentPlanet.index.rawValue + 1][0] = "1"
                 
             } else {
+//print(String(userDefaults.value(forKey: "lastLevel") as! Int % 8))
                 levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
             }
         }
