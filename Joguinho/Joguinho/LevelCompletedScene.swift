@@ -28,7 +28,7 @@ class LevelCompletedScene: SKScene
     var winMessage: SKLabelNode!
     var textFinal8 = Component(imageNamed: NSLocalizedString("Final_Description_Image", comment: "Description"))
     var closeText: SKNode!
-
+    var facebookButton:SKSpriteNode!
     
     override func didMove(to view: SKView) {
         
@@ -40,7 +40,7 @@ class LevelCompletedScene: SKScene
             let location = touch.location(in: self)
             let transition = SKTransition.fade(withDuration: 1.0)
             
-            if self.nodes(at: location)[0] == self.retry {
+            if retry.contains(location) {
                 let level = Level(id: levelId, planet: currentPlanet)
                 let  scene = GameScene(size: self.size, level: level)
                 let skView = self.view! as SKView
@@ -58,7 +58,7 @@ class LevelCompletedScene: SKScene
             
             if continueButton.contains(location) {
                 
-                if levelId != 8
+                if levelId != 8 && currentPlanet.name != PlanetName.Uranus
                 {
                     levelId = levelId! + 1
                     let level = Level(id: levelId , planet: currentPlanet)
@@ -72,6 +72,8 @@ class LevelCompletedScene: SKScene
                 else{
                     addChild(textFinal8)
                     addChild(closeText)
+                    addChild(facebookButton)
+                    
                 }
                 
             }
@@ -99,6 +101,11 @@ class LevelCompletedScene: SKScene
         closeText = SKSpriteNode(imageNamed: "exit")
         closeText.position = CGPoint(x:500 * size.width / 667, y:300 * size.height / 375)
         closeText.zPosition = 22
+        
+        facebookButton = SKSpriteNode(imageNamed: "facebooklogo")
+        facebookButton.position = CGPoint(x: 550 * size.width / 667, y: 43 * size.height / 375)
+        facebookButton.zPosition = 22
+        addChild(facebookButton)
         
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         semibackground.size = CGSize(width:size.width, height:size.height)
