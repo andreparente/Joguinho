@@ -68,7 +68,6 @@ class GameOverScene: SKScene
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
-            let transition = SKTransition.fade(withDuration: 1.0)
             
             if playAgainButton.contains(location) {
                 let level = Level(id: levelId, planet: currentPlanet)

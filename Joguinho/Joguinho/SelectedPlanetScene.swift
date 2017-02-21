@@ -69,7 +69,6 @@ class SelectedPlanetScene: SKScene {
             let level = Level(id: levelId, planet: currentPlanet)
             let scene = GameScene(size: self.size, level: level)
             let skView = self.view! as SKView
-            let transition = SKTransition.fade(withDuration: 1.0)
             skView.ignoresSiblingOrder = false
             scene.size = skView.bounds.size
             scene.scaleMode = .aspectFill
@@ -79,7 +78,6 @@ class SelectedPlanetScene: SKScene {
             if back.contains(location){
                 let scene = PlanetsScene()
                 let skView = self.view! as SKView
-                let transition = SKTransition.fade(withDuration: 1.0)
                 skView.ignoresSiblingOrder = false
                 scene.size = skView.bounds.size
                 scene.scaleMode = .aspectFill
@@ -114,9 +112,7 @@ class SelectedPlanetScene: SKScene {
         addChild(background)
         
         
-        back = SKSpriteNode(imageNamed: "BackArrow2")
-        back.position = CGPoint(x: 53 * size.width / 667, y: 340 * size.height / 375)
-        back.color = UIColor.blue
+        back = createBackButton(size: self.size)
         self.addChild(back)
         
         selectedPlanet = SKSpriteNode(imageNamed: "Big"+selectedPlanetClass.name.rawValue)

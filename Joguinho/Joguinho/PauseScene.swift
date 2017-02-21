@@ -90,7 +90,7 @@ class PauseScene: SKScene
         for touch in touches {
             let location = touch.location(in: self)
             if resumeButton.contains(location) {
-                let transition = SKTransition.fade(withDuration: 1.0)
+                
                 let scene1 = currentSceneState
                 scene1?.isPaused = true
                 let skView = self.view! as SKView
@@ -101,7 +101,6 @@ class PauseScene: SKScene
             }
             else {
                if menuButtton.contains(location) {
-                    let transition = SKTransition.fade(withDuration: 1.0)
                     let scene1 = PlanetsScene()
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = false

@@ -57,11 +57,15 @@ class PlanetsScene: SKScene{
                 let safarivc = SFSafariViewController(url: URL(string: "https://www.facebook.com/SpaceTripTheJourney/?ref=ts&fref=ts")!)
                 self.view?.window?.rootViewController?.present(safarivc, animated: true, completion: nil)
             }
+            
             if shoppingButton.contains(location) {
-                
+                let nextScene = SelectStoreScene(size: self.size)
+                nextScene.scaleMode = SKSceneScaleMode.aspectFill
+                self.scene?.view?.presentScene(nextScene, transition: transition)
+
             }
-            if
-                neptune.contains(location) {
+            
+            if neptune.contains(location) {
                 
                 currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
                 makeTransition()
@@ -261,8 +265,7 @@ class PlanetsScene: SKScene{
     }
     
     func makeTransition () {
-        
-        let transition = SKTransition.fade(withDuration: 1.0)
+    
         let nextScene = SelectedPlanetScene(size: self.size)
         nextScene.scaleMode = SKSceneScaleMode.aspectFill
         nextScene.selectedPlanetClass = currentPlanet

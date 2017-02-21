@@ -71,7 +71,6 @@ class FirstScene: SKScene {
             // Get the location of the touch in this scene
             let location = (touch as AnyObject).location(in: self)
             // Check if the location of the touch is within the button's bounds
-            let transition = SKTransition.fade(withDuration: 1.0)
             if startButton.contains(location) {
              
                 let nextScene = PlanetsScene(size: self.size)

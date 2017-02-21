@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 let userDefaults = UserDefaults.standard
 
@@ -31,6 +32,15 @@ var planetsGlobal: [Planet]!
 var j = 0
 var k = 0
 
+let transition = SKTransition.fade(withDuration: 1.0)
+
+func createBackButton (size:CGSize) -> SKSpriteNode {
+     var back:SKSpriteNode!
+     back = SKSpriteNode(imageNamed: "BackArrow2")
+     back.position = CGPoint(x: 53 * size.width / 667, y: 340 * size.height / 375)
+     back.color = UIColor.blue
+     return back
+}
 
 
 func getArrayPlanets() -> [Planet] {

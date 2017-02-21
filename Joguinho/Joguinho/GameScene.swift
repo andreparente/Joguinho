@@ -164,7 +164,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     currentlyTouching = false
                     let  scene1 = PauseScene()
                     let skView = self.view! as SKView
-                    let transition = SKTransition.fade(withDuration: 1.0)
                     scene1.currentSceneState = self
                     skView.ignoresSiblingOrder = false
                     scene1.size = skView.bounds.size
@@ -471,7 +470,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func actWhenDead() {
-        let transition = SKTransition.fade(withDuration: 1.0)
         let  scene = GameOverScene()        
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = false
@@ -488,7 +486,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceship.winningMove()
         
         if spaceshipLeftBoundsX > screenSize.width || spaceshipUpBoundsY > screenSize.height{
-            let transition = SKTransition.fade(withDuration: 1.0)
             let  scene = LevelCompletedScene()
             scene.level = self.level.id
           //  print(self.level.id)

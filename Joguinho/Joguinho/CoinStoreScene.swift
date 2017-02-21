@@ -16,6 +16,8 @@ class CoinStoreScene: SKScene {
     var list = [SKProduct]()
     var p = SKProduct()
     var numberOfGems = 0
+    var backButton:SKSpriteNode!
+    
     override func didMove(to view: SKView) {
       setupInitialScene()
         
@@ -36,6 +38,10 @@ class CoinStoreScene: SKScene {
         for touch in touches
         {
             let location = touch.location(in: self)
+            
+            if backButton.contains(location) {
+                
+            }
             switch self.nodes(at: location)[0] {
             case is Spaceship:
             for product in list {
@@ -64,6 +70,9 @@ class CoinStoreScene: SKScene {
         buybutton.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         buybutton.size = CGSize(width: 100.52 * size.width / 667, height: 100 * size.height / 375)
         addChild(buybutton)
+        
+        backButton = createBackButton(size:self.size)
+        addChild(backButton)
     }
     
     func buyProduct() {

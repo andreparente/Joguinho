@@ -24,6 +24,10 @@ Lost_Message = "no prob, you can try again";
 
 Final_Description_Image = "final8";
 
+Exchange = "Exchange";
+
+Spaceships = "Spaceships";
+
 //Neptune Description
 
 Neptune = "Neptune";

@@ -22,6 +22,10 @@ Lost_Message = "intenta de nuevo";
 
 Final_Description_Image = "final8_Esp";
 
+Exchange = "Cambio";
+
+Spaceships = "Astronavi";
+
 //Neptune Description
 
 Neptune = "Neptuno";
