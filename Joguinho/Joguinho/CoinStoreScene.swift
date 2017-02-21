@@ -40,7 +40,12 @@ class CoinStoreScene: SKScene {
             let location = touch.location(in: self)
             
             if backButton.contains(location) {
-                
+                let scene = SelectStoreScene(size:self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene, transition: transition)
             }
             switch self.nodes(at: location)[0] {
             case is Spaceship:
