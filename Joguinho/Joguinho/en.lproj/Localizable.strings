@@ -28,6 +28,10 @@ Exchange = "Exchange";
 
 Spaceships = "Spaceships";
 
+Choose_Spaceship = "Choose your spaceship";
+
+Currently_In_Use = "Currently in Use";
+
 //Neptune Description
 
 Neptune = "Neptune";

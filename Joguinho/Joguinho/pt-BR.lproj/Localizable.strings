@@ -27,6 +27,10 @@ Exchange = "Cambio";
 
 Spaceships = "Espaçonaves";
 
+Choose_Spaceship = "Escolha a sua nave";
+
+Currently_In_Use = "Em uso atualmente";
+
 //Neptune Description
 
 Neptune = "Netuno";

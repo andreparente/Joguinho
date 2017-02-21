@@ -13,6 +13,7 @@ class SelectStoreScene: SKScene {
 
     var backButton:SKSpriteNode!
     var satellite:Component!
+    var spaceship:Component!
     var satelliteText: SKLabelNode!
     var spaceshipText: SKLabelNode!
     
@@ -42,6 +43,16 @@ class SelectStoreScene: SKScene {
                 skView.presentScene(scene, transition: transition)
 
             }
+            
+            if spaceship.contains(location) {
+                let scene = InGameStoreScene()
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = false
+                scene.size = skView.bounds.size
+                scene.scaleMode = .aspectFill
+                skView.presentScene(scene, transition: transition)
+
+            }
         }
     }
     
@@ -60,6 +71,7 @@ class SelectStoreScene: SKScene {
         satellite.position = CGPoint(x: 210 * size.width / 667, y: 200 * size.height / 375)
         addChild(satellite)
         
+        
         satelliteText = SKLabelNode(fontNamed: "Futura")
         satelliteText.text = NSLocalizedString("Exchange",comment:"Exchange")
         satelliteText.fontSize = 20
@@ -74,6 +86,9 @@ class SelectStoreScene: SKScene {
         spaceshipText.zPosition = 10
         addChild(spaceshipText)
 
+        spaceship = Component(imageNamed: "rocket fase")
+        spaceship.position = CGPoint(x: spaceshipText.position.x, y: spaceshipText.position.y + 80)
+        addChild(spaceship)
         
         
     }
