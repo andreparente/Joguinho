@@ -76,6 +76,10 @@ class PlanetsScene: SKScene{
     
     func setupInitialScene() {
         
+        levels = userDefaults.value(forKey: "levels") as! [[String]]
+        levelsStars = userDefaults.value(forKey: "levelStars") as! [[Int]]
+        userDefaults.synchronize()
+        
         if userDefaults.bool(forKey: "soundOn") {
             buttonTexture = SKTexture(imageNamed: "soundOn")
             soundButton = SKSpriteNode(texture: buttonTexture)
@@ -89,7 +93,6 @@ class PlanetsScene: SKScene{
             soundButton.zPosition = 3
             self.addChild(soundButton)
         }
-        
         
         instructionLabel = SKLabelNode(fontNamed: "Futura")
         instructionLabel.text = NSLocalizedString("Planet_Instruction", comment: "Select a Planet")
@@ -106,17 +109,14 @@ class PlanetsScene: SKScene{
         gemsLabel.zPosition = 3
         self.addChild(gemsLabel)
         
-        gem = Gem(originPlanet: PlanetName.Neptune)
+        gem = Component(imageNamed: "coin")
         let labelPosition = gemsLabel.position
         let labelSize = gemsLabel.frame.size
         gem.position = CGPoint(x: labelPosition.x + labelSize.width/2 + 10, y: labelPosition.y + 10)
         gem.zPosition = 2
-        gem.size = CGSize(width: gem.size.width/2, height: gem.size.height/2)
+        gem.size = CGSize(width: gem.size.width/8, height: gem.size.height/8)
         addChild(gem)
         
-        
-        levels = userDefaults.value(forKey: "levels") as! [[String]]
-        levelsStars = userDefaults.value(forKey: "levelStars") as! [[Int]]
         
         //background
         let background = SKSpriteNode(imageNamed: "background")
@@ -242,7 +242,7 @@ class PlanetsScene: SKScene{
     }
     
     func isLocked(Planet:PlanetIndex) -> Bool {
-        if levels[Planet.rawValue][0] == "lock" {
+        if levels[Planet.rawValue][0] == "lockLayer" {
             return true
         }
         else {

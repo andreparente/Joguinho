@@ -64,7 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physicsWorld.contactDelegate = self
             
             currentlyTouching = false
-            checkPlanet()
+            setupInitialScene()
             setUpPlayer()
             setUpFuelBar()
             spaceship.startMoment()
@@ -229,27 +229,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    //MARK: General Setup Functions
     
-    //MARK:Specific setup for each planet
-    
-    func checkPlanet() {
-        //Aqui é onde as funções de Setup dos outros Planetas vão ser chamadas
-        switch level.planet.name.rawValue {
-        case PlanetName.Neptune.rawValue:
-            setUpInitialSceneNeptune()
-            
-        case PlanetName.Uranus.rawValue:
-             setUpInitialSceneUranus()
-        
-        case PlanetName.Saturn.rawValue:
-            setUpInitialSceneSaturn()
-            
-        default:
-            setUpInitialSceneNeptune()
-        }
-    }
-    
-    func setUpInitialSceneNeptune() {
+    func setupInitialScene() {
         background.anchorPoint = CGPoint(x: 0, y: 0)
         background.position = CGPoint(x: 0, y: 0)
         background.zPosition = 1
@@ -269,16 +251,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(surface2)
     }
     
-    func setUpInitialSceneUranus() {
-        
-    }
     
-    func setUpInitialSceneSaturn() {
-        
-    }
-    
-    //MARK: General Setup Functions
-    
+
     func countDown() {
         countDownLabel.text = String(Int(countDownLabel.text!)! - 1)
         if countDownLabel.text == "0" {

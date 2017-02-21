@@ -70,10 +70,19 @@ class LevelCompletedScene: SKScene
                     skView.presentScene(scene, transition: transition)
                 }
                 else{
+                    if levelId == 8  && currentPlanet.name == PlanetName.Neptune {
+                        let scene = PlanetsScene()
+                        let skView = self.view! as SKView
+                        skView.ignoresSiblingOrder = false
+                        scene.size = skView.bounds.size
+                        scene.scaleMode = .aspectFill
+                        skView.presentScene(scene, transition: transition)
+                    }
+                    else {
                     addChild(textFinal8)
                     addChild(closeText)
                     addChild(facebookButton)
-                    
+                    }
                 }
                 
             }
@@ -108,7 +117,7 @@ class LevelCompletedScene: SKScene
         closeText.zPosition = 22
         
         facebookButton = SKSpriteNode(imageNamed: "facebooklogo")
-        facebookButton.position = CGPoint(x: 350 * size.width / 667, y: 43 * size.height / 375)
+        facebookButton.position = CGPoint(x: 320 * size.width / 667, y: 70 * size.height / 375)
         facebookButton.zPosition = 22
         
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
