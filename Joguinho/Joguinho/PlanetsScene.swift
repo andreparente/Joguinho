@@ -25,6 +25,7 @@ class PlanetsScene: SKScene{
     var soundButton: SKSpriteNode!
     var buttonTexture: SKTexture!
     var facebookButton:SKSpriteNode!
+    var shoppingButton:SKSpriteNode!
     
     override func didMove(to view: SKView) {
         
@@ -56,7 +57,11 @@ class PlanetsScene: SKScene{
                 let safarivc = SFSafariViewController(url: URL(string: "https://www.facebook.com/SpaceTripTheJourney/?ref=ts&fref=ts")!)
                 self.view?.window?.rootViewController?.present(safarivc, animated: true, completion: nil)
             }
-            if neptune.contains(location) {
+            if shoppingButton.contains(location) {
+                
+            }
+            if
+                neptune.contains(location) {
                 
                 currentPlanet = Planet(name: PlanetName.Neptune, gravity: 1.15, type: PlanetType.gaseous,index:PlanetIndex.Neptune)
                 makeTransition()
@@ -83,13 +88,13 @@ class PlanetsScene: SKScene{
         if userDefaults.bool(forKey: "soundOn") {
             buttonTexture = SKTexture(imageNamed: "soundOn")
             soundButton = SKSpriteNode(texture: buttonTexture)
-            soundButton.position = CGPoint(x: 450 * size.width / 667, y: 43 * size.height / 375)
+            soundButton.position = CGPoint(x: 525 * size.width / 667, y: 43 * size.height / 375)
             soundButton.zPosition = 3
             self.addChild(soundButton)
         } else {
             buttonTexture = SKTexture(imageNamed: "soundOff")
             soundButton = SKSpriteNode(texture: buttonTexture)
-            soundButton.position = CGPoint(x: 450 * size.width / 667, y: 43 * size.height / 375)
+            soundButton.position = CGPoint(x: 525 * size.width / 667, y: 43 * size.height / 375)
             soundButton.zPosition = 3
             self.addChild(soundButton)
         }
@@ -125,9 +130,14 @@ class PlanetsScene: SKScene{
         addChild(background)
         
         facebookButton = SKSpriteNode(imageNamed: "facebooklogo")
-        facebookButton.position = CGPoint(x: 550 * size.width / 667, y: 43 * size.height / 375)
+        facebookButton.position = CGPoint(x: 600 * size.width / 667, y: 43 * size.height / 375)
         facebookButton.zPosition = 3
         addChild(facebookButton)
+        
+        shoppingButton = SKSpriteNode(imageNamed: "shopBtn")
+        shoppingButton.position = CGPoint(x: 450 * size.width / 667, y: 43 * size.height / 375)
+        shoppingButton.zPosition = 3
+        addChild(shoppingButton)
 
         
     }

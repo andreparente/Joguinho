@@ -35,7 +35,7 @@
 		8AAEA83B1DBA778C00B908A0 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA83A1DBA778C00B908A0 /* Piece.swift */; };
 		8AAEA8451DC112F500B908A0 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAEA8441DC112F500B908A0 /* DAO.swift */; };
 		9C0066CD1E490193000D8E1E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0066CC1E490193000D8E1E /* StoreKit.framework */; };
-		9C0066D11E4A0D82000D8E1E /* StoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0066D01E4A0D82000D8E1E /* StoreScene.swift */; };
+		9C0066D11E4A0D82000D8E1E /* CoinStoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0066D01E4A0D82000D8E1E /* CoinStoreScene.swift */; };
 		9C493FC91DD3E51400A345F7 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C493FC81DD3E51400A345F7 /* Component.swift */; };
 		9C4E27071DDCD8EB00DE549C /* FirstScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4E27061DDCD8EB00DE549C /* FirstScene.swift */; };
 		9C4E27091DDCD94C00DE549C /* PlanetsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4E27081DDCD94C00DE549C /* PlanetsScene.swift */; };
@@ -49,6 +49,7 @@
 		9CB427FF1DDDF1410017E617 /* LevelCompletedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */; };
 		9CB428011DDE2D4A0017E617 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB428001DDE2D4A0017E617 /* PauseScene.swift */; };
 		9CD911411DF4DD4800EFDF62 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CD911401DF4DD4800EFDF62 /* background.mp3 */; };
+		9CF239231E5C93BB003B77AB /* SelectStoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF239221E5C93BB003B77AB /* SelectStoreScene.swift */; };
 		9CF2ED821E58B7E00096D6C3 /* Gem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2ED811E58B7E00096D6C3 /* Gem.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,7 +105,7 @@
 		8AAEA83A1DBA778C00B908A0 /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		8AAEA8441DC112F500B908A0 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		9C0066CC1E490193000D8E1E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		9C0066D01E4A0D82000D8E1E /* StoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreScene.swift; sourceTree = "<group>"; };
+		9C0066D01E4A0D82000D8E1E /* CoinStoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinStoreScene.swift; sourceTree = "<group>"; };
 		9C01C22B1DF5F15500377F5C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		9C01C22C1DF5F15500377F5C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9C01C22D1DF5F15500377F5C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -127,6 +128,7 @@
 		9CB427FE1DDDF1410017E617 /* LevelCompletedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCompletedScene.swift; sourceTree = "<group>"; };
 		9CB428001DDE2D4A0017E617 /* PauseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		9CD911401DF4DD4800EFDF62 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		9CF239221E5C93BB003B77AB /* SelectStoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStoreScene.swift; sourceTree = "<group>"; };
 		9CF2ED811E58B7E00096D6C3 /* Gem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,8 +168,9 @@
 				9CB428001DDE2D4A0017E617 /* PauseScene.swift */,
 				9C4E27081DDCD94C00DE549C /* PlanetsScene.swift */,
 				9C4E270A1DDCD96100DE549C /* SelectedPlanetScene.swift */,
-				9C0066D01E4A0D82000D8E1E /* StoreScene.swift */,
+				9C0066D01E4A0D82000D8E1E /* CoinStoreScene.swift */,
 				9CA3C7361E5B83E500807BA6 /* InGameStoreScene.swift */,
+				9CF239221E5C93BB003B77AB /* SelectStoreScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				9C4E27071DDCD8EB00DE549C /* FirstScene.swift in Sources */,
 				9C4E27091DDCD94C00DE549C /* PlanetsScene.swift in Sources */,
 				9C493FC91DD3E51400A345F7 /* Component.swift in Sources */,
+				9CF239231E5C93BB003B77AB /* SelectStoreScene.swift in Sources */,
 				3D23694E1DD236BB00C749BA /* SurvivalArtifact.swift in Sources */,
 				8AAEA7FB1DBA5CCC00B908A0 /* GameScene.swift in Sources */,
 				8AAEA83B1DBA778C00B908A0 /* Piece.swift in Sources */,
@@ -491,7 +495,7 @@
 				8A61114C1DDCAB1C00D6109D /* ScreenSize.swift in Sources */,
 				8AAEA8301DBA765200B908A0 /* Astronaut.swift in Sources */,
 				8AAEA8361DBA76E700B908A0 /* Item.swift in Sources */,
-				9C0066D11E4A0D82000D8E1E /* StoreScene.swift in Sources */,
+				9C0066D11E4A0D82000D8E1E /* CoinStoreScene.swift in Sources */,
 				9CB428011DDE2D4A0017E617 /* PauseScene.swift in Sources */,
 				9CB427FF1DDDF1410017E617 /* LevelCompletedScene.swift in Sources */,
 				9C4E270B1DDCD96100DE549C /* SelectedPlanetScene.swift in Sources */,

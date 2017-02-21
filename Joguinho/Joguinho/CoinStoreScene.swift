@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import StoreKit
 
-class StoreScene: SKScene {
+class CoinStoreScene: SKScene {
 
     var buybutton = Spaceship(fuelLevel: 100,spaceShipName:SpaceShipName.standardSpaceShip)
     var list = [SKProduct]()
@@ -79,7 +79,7 @@ class StoreScene: SKScene {
 //MARK:Extensions to StoreScene
 
 
-extension StoreScene:SKProductsRequestDelegate {
+extension CoinStoreScene:SKProductsRequestDelegate {
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("product request")
@@ -98,7 +98,7 @@ extension StoreScene:SKProductsRequestDelegate {
 }
 
 
-extension StoreScene:SKPaymentTransactionObserver {
+extension CoinStoreScene:SKPaymentTransactionObserver {
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         print("transactions restored")

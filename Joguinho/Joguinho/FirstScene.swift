@@ -79,7 +79,7 @@ class FirstScene: SKScene {
                 self.scene?.view?.presentScene(nextScene, transition: transition)
                 
             } else if shoppingButton.contains(location) {
-              let nextScene = StoreScene()
+              let nextScene = CoinStoreScene()
               self.scene?.view?.presentScene(nextScene, transition: transition)
             }
         }
