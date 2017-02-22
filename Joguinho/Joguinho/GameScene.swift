@@ -156,10 +156,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        produceSoundWhenSpaceshipOn()
         if !(scene?.isPaused)!
         {
-            if spaceship.spaceShipName == SpaceShipName.standardSpaceShip {
             let rotate = SKAction.rotate(toAngle: 0.5, duration: 0.8)
             spaceship.run(rotate)
-            }
             for touch in touches
             {
                 let location = touch.location(in: self)
@@ -403,7 +401,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpPlayer() {
         if level.planet.type == .gaseous {
-            spaceship = Spaceship(fuelLevel: 350, spaceShipName: SpaceShipName.standardSpaceShip)
+            spaceship = Spaceship(fuelLevel: 350, spaceShipName: SpaceShipName.alienSpaceShip)
             addChild(spaceship)
         }
         else {

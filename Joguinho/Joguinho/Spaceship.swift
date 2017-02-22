@@ -59,9 +59,7 @@ class Spaceship:Component {
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         let vector = CGVector(dx: 2, dy: 8)
         self.physicsBody?.applyImpulse(vector)
-        if spaceShipName == SpaceShipName.standardSpaceShip {
         self.updateDirectionTo(vector: vector)
-        }
     }
     
     func winningMove() {
@@ -78,9 +76,7 @@ class Spaceship:Component {
     func drag() {
         let vector = CGVector(dx: -0.06, dy: 0)
         self.physicsBody?.applyImpulse(vector)
-        if spaceShipName == SpaceShipName.standardSpaceShip {
         self.updateDirectionTo(vector: CGVector(dx: -0.05, dy: 0.05))
-        }
     }
     
     func dragWhenPassedThreeQuartersOfScreen () {
