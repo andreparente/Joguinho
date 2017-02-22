@@ -17,9 +17,13 @@ class SurvivalArtifact:Component {
     
     init(type:Artifact) {
         self.type = type
+        
         if type.rawValue == "Fuel"
         {
         super.init(imageNamed: "fueldrop")
+            self.physicsBody?.allowsRotation = false
+            self.physicsBody?.angularDamping = 0
+            self.physicsBody?.angularVelocity = 0
         }
         else{
         super.init(imageNamed: "")

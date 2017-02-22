@@ -49,7 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.level = level
         self.surface = Component(imageNamed: "\(level.planet.name.rawValue)Surface")
         self.surface2 = Component(imageNamed: "\(level.planet.name.rawValue)Surface")
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -138,8 +138,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 k+=1
             case CollisionTypes.rock.rawValue:
                 if userDefaults.bool(forKey: "soundOn") {
-                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
+                
+                if spaceship.spaceShipName == SpaceShipName.alienSpaceShip {
+                    spaceship.physicsBody?.angularVelocity = 0
+                    spaceship.physicsBody?.angularDamping = 0
+                } else {
+                    
+                }
+                
                 k+=1
             default:
                 break
@@ -150,14 +158,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = true
         if spaceship.spaceShipName == SpaceShipName.standardSpaceShip {
-        spaceship.fireMovement()
+            spaceship.fireMovement()
         }
-
+        
         //        produceSoundWhenSpaceshipOn()
         if !(scene?.isPaused)!
         {
-            let rotate = SKAction.rotate(toAngle: 0.5, duration: 0.8)
-            spaceship.run(rotate)
+            if spaceship.spaceShipName == SpaceShipName.alienSpaceShip {
+                
+            } else {
+                let rotate = SKAction.rotate(toAngle: 0.5, duration: 0.8)
+                spaceship.run(rotate)
+            }
+            
             for touch in touches
             {
                 let location = touch.location(in: self)
@@ -206,7 +219,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     insideProgressBar.finish()
                 } else {
                     insideProgressBar.change(increase: -0.8)
-
+                    
                 }
             }
                 
@@ -214,9 +227,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 spaceship.drag()
                 spaceship.removeAllChildren()
             }
-      //      if spaceship.position.x > 3*screenSize.width/4 {
-        //        spaceship.dragWhenPassedThreeQuartersOfScreen()
-         //   }
+            //      if spaceship.position.x > 3*screenSize.width/4 {
+            //        spaceship.dragWhenPassedThreeQuartersOfScreen()
+            //   }
             setUpActionsForComponents()
             
             if cauhgtFinalGem || spaceship.position.x > realgems[realgems.count-1].position.x   {
@@ -226,7 +239,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if isDead() {
                 actWhenDead()
             }
-    
+            
             
         }
     }
@@ -254,7 +267,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-
+    
     func countDown() {
         countDownLabel.text = String(Int(countDownLabel.text!)! - 1)
         if countDownLabel.text == "0" {
@@ -274,7 +287,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(countDownLabel)
         
     }
-
+    
     
     func setUpFuelBar() {
         progressBar.zPosition = 4
@@ -284,7 +297,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         insideProgressBar = FuelBar(image: "fuel", spaceship: self.spaceship)
         insideProgressBar.zPosition = 5
         addChild(insideProgressBar)
-       
+        
     }
     
     func setUpCountGems() {
@@ -473,7 +486,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func actWhenDead() {
-        let  scene = GameOverScene()        
+        let  scene = GameOverScene()
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = false
         scene.size = skView.bounds.size
@@ -491,7 +504,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if spaceshipLeftBoundsX > screenSize.width || spaceshipUpBoundsY > screenSize.height{
             let  scene = LevelCompletedScene()
             scene.level = self.level.id
-          //  print(self.level.id)
+            //  print(self.level.id)
             let skView = self.view! as SKView
             skView.ignoresSiblingOrder = false
             scene.size = skView.bounds.size
@@ -531,11 +544,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //MARK:Sound functions
- 
+    
     func produceBackgroundSound () {
         let path = Bundle.main.path(forResource: "background2.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
-
+        
         if userDefaults.bool(forKey: "soundOn") {
             do {
                 let sound = try AVAudioPlayer(contentsOf: url)
@@ -547,7 +560,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 print("Couldn't load file")
             }
         }
-
+        
     }
     
     func produceSoundWhenHitRock() {

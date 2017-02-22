@@ -35,6 +35,7 @@ class Spaceship:Component {
     func changePieces() {
         
     }
+    
     func applyPrices () {
         switch spaceShipName.rawValue {
         case SpaceShipName.alienSpaceShip.rawValue:
@@ -47,9 +48,11 @@ class Spaceship:Component {
             price = 0
         }
     }
+    
     func increaseFuelLevel() {
         self.fuelLevel = self.fuelLevel + 10
     }
+    
     func decreaseFuelLevel() {
         self.fuelLevel = self.fuelLevel - 2
     }
@@ -65,13 +68,22 @@ class Spaceship:Component {
         self.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
         self.physicsBody?.contactTestBitMask = CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue | CollisionTypes.gem.rawValue
         self.physicsBody?.collisionBitMask = CollisionTypes.rock.rawValue
+        
+        if spaceShipName == SpaceShipName.alienSpaceShip {
+            self.physicsBody?.angularVelocity = 0
+            self.physicsBody?.allowsRotation = false
+        }
     }
     
     func spaceshipMovement() {
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         let vector = CGVector(dx: 2, dy: 8)
         self.physicsBody?.applyImpulse(vector)
-        self.updateDirectionTo(vector: vector)
+        if self.spaceShipName == SpaceShipName.alienSpaceShip {
+            
+        } else {
+            self.updateDirectionTo(vector: vector)
+        }
     }
     
     func winningMove() {
@@ -81,14 +93,21 @@ class Spaceship:Component {
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         let vector = CGVector(dx: 6, dy: 10)
         self.physicsBody?.applyImpulse(vector)
-        self.updateDirectionTo(vector: vector)
-        self.fireMovement()
+        
+        if !(self.spaceShipName == SpaceShipName.alienSpaceShip) {
+            self.updateDirectionTo(vector: vector)
+            self.fireMovement()
+        }
     }
     
     func drag() {
         let vector = CGVector(dx: -0.06, dy: 0)
         self.physicsBody?.applyImpulse(vector)
-        self.updateDirectionTo(vector: CGVector(dx: -0.05, dy: 0.05))
+        if self.spaceShipName == SpaceShipName.alienSpaceShip {
+            
+        } else {
+            self.updateDirectionTo(vector: CGVector(dx: -0.05, dy: 0.05))
+        }
     }
     
     func dragWhenPassedThreeQuartersOfScreen () {
@@ -96,6 +115,7 @@ class Spaceship:Component {
         self.physicsBody?.applyImpulse(vector)
         self.updateDirectionTo(vector: vector)
     }
+    
     func collidedWithRock() {
         let vector = CGVector(dx: -1, dy: -2)
         self.physicsBody?.applyImpulse(vector)
