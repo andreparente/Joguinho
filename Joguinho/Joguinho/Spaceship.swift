@@ -16,7 +16,7 @@ class Spaceship:Component {
     var fire = SKSpriteNode()
     var spaceShipName:SpaceShipName!
     var fuelLevel:Double!
-    
+    var price:Int?
     
     init(fuelLevel:Double,spaceShipName:SpaceShipName) {
         self.fuelLevel  = fuelLevel
@@ -25,6 +25,7 @@ class Spaceship:Component {
         self.fire = SKSpriteNode(imageNamed: "fire_1")
         }
         super.init(imageNamed: self.spaceShipName.rawValue)
+         applyPrices()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,7 +35,18 @@ class Spaceship:Component {
     func changePieces() {
         
     }
-    
+    func applyPrices () {
+        switch spaceShipName.rawValue {
+        case SpaceShipName.alienSpaceShip.rawValue:
+            price = 300
+        case SpaceShipName.carnivalSpaceship.rawValue:
+            price = 700
+        case SpaceShipName.starWarsSpaceship.rawValue:
+            price = 2000
+        default:
+            price = 0
+        }
+    }
     func increaseFuelLevel() {
         self.fuelLevel = self.fuelLevel + 10
     }

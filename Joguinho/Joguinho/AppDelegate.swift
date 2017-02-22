@@ -34,11 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         levels.append(["lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer"])
             levelsStars.append([0,0,0,0,0,0,0,0])
          }
-           
+            spaceships = [true,false,false,false]
             levels[0][0] = "1"
             levelsStars[0][0] = 0
             
-            
+            userDefaults.set(spaceships, forKey: "spaceships")
             userDefaults.set(levels, forKey: "levels")
             userDefaults.set(levelsStars, forKey: "levelStars")
         }

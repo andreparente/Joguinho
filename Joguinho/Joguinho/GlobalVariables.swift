@@ -19,6 +19,8 @@ var levelsStars:[[Int]] = [[]]
 //Level atual que o usuário está jogando
 var levelId:Int? = 1
 
+var spaceships:[Bool] = []
+
 //Por enquanto spaceship,astronaut e o array de items são todos nil porque não criamos a loja do jogo ainda.
 
 var player = Player(coinsBalance: userDefaults.value(forKey: "coinsBalance") as! Int, lastLevel: userDefaults.value(forKey: "lastLevel") as! Int, spaceShip: nil, astronaut: nil, itens: nil)

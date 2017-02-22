@@ -82,3 +82,9 @@ enum CollisionTypes: UInt32 {
     case oxygenDrop = 8
     case gem = 16
 }
+
+enum CheckBuy:String {
+    case isOk = "Ok"
+    case ErrorNotEnoughMoney = "NotEnoughMoney"
+    case ErrorAlreadyBought = "AlreadyBought"
+}

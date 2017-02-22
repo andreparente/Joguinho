@@ -87,6 +87,7 @@ class PlanetsScene: SKScene{
         
         levels = userDefaults.value(forKey: "levels") as! [[String]]
         levelsStars = userDefaults.value(forKey: "levelStars") as! [[Int]]
+        spaceships = userDefaults.value(forKey: "spaceships") as! [Bool]
         userDefaults.synchronize()
         
         if userDefaults.bool(forKey: "soundOn") {
