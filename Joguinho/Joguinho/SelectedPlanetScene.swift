@@ -261,6 +261,7 @@ class SelectedPlanetScene: SKScene {
         level6.isHidden = true
         level7.isHidden = true
         level8.isHidden = true
+        back.isHidden = true
         
         for star in levelStarsImages {
             star.isHidden = true
@@ -277,6 +278,7 @@ class SelectedPlanetScene: SKScene {
         level6.isHidden = false
         level7.isHidden = false
         level8.isHidden = false
+        back.isHidden = false
         
         for star in levelStarsImages {
             star.isHidden = false

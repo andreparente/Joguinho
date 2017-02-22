@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if userDefaults.value(forKey: "levels") == nil {
         levels.removeAll()
-            levelsStars.removeAll()
+           levelsStars.removeAll()
            for _ in 0...7 {
-            levels.append(["lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer"])
+        levels.append(["lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer"])
             levelsStars.append([0,0,0,0,0,0,0,0])
          }
            

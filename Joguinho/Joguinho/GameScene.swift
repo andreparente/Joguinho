@@ -82,6 +82,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             produceBackgroundSound()
         }
         setUpCountDownLabel()
+        spaceship.physicsBody?.mass = 0.09
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true);
     }
     
@@ -148,13 +149,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         currentlyTouching = true
+        if spaceship.spaceShipName == SpaceShipName.standardSpaceShip {
         spaceship.fireMovement()
+        }
 
         //        produceSoundWhenSpaceshipOn()
         if !(scene?.isPaused)!
         {
+            if spaceship.spaceShipName == SpaceShipName.standardSpaceShip {
             let rotate = SKAction.rotate(toAngle: 0.5, duration: 0.8)
             spaceship.run(rotate)
+            }
             for touch in touches
             {
                 let location = touch.location(in: self)
@@ -398,7 +403,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpPlayer() {
         if level.planet.type == .gaseous {
-            spaceship = Spaceship(fuelLevel: 350, spaceShipName: SpaceShipName.alienSpaceShip)
+            spaceship = Spaceship(fuelLevel: 350, spaceShipName: SpaceShipName.standardSpaceShip)
             addChild(spaceship)
         }
         else {

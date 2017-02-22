@@ -257,18 +257,25 @@ class LevelCompletedScene: SKScene
             player.lastLevel = userDefaults.value(forKey: "lastLevel") as! Int!
             userDefaults.synchronize()
             
-            if userDefaults.value(forKey: "lastLevel") as! Int % 8 == 0  {
-    
+            if userDefaults.value(forKey: "lastLevel") as! Int  % 8 == 0  {
+                print(String(userDefaults.value(forKey: "lastLevel") as! Int % 8))
                 levels[currentPlanet.index.rawValue][7] = "8"
-                levels[currentPlanet.index.rawValue + 1][0] = "1"
                 
             } else {
-//print(String(userDefaults.value(forKey: "lastLevel") as! Int % 8))
-                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1 ] = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
+                if userDefaults.value(forKey: "lastLevel") as! Int == 9 {
+                    levels[currentPlanet.index.rawValue + 1][0] = "1"
+
+                }
+                else {
+                print(String(userDefaults.value(forKey: "lastLevel") as! Int % 8))
+                levels[currentPlanet.index.rawValue][(userDefaults.value(forKey: "lastLevel") as! Int % 8) - 1] = String(userDefaults.value(forKey: "lastLevel") as! Int % 8)
+                }
             }
         }
+        
         userDefaults.set(levels, forKey: "levels")
         userDefaults.synchronize()
+        
     }
     
 }

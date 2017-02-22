@@ -86,7 +86,7 @@ class SelectStoreScene: SKScene {
         spaceshipText.zPosition = 10
         addChild(spaceshipText)
 
-        spaceship = Component(imageNamed: "rocket fase")
+        spaceship = Component(imageNamed: "spaceShipBtn")
         spaceship.position = CGPoint(x: spaceshipText.position.x, y: spaceshipText.position.y + 80)
         addChild(spaceship)
         
