@@ -84,7 +84,6 @@ class PlanetsScene: SKScene{
     //MARK:Setup Functions
     
     func setupInitialScene() {
-        
         levels = userDefaults.value(forKey: "levels") as! [[String]]
         levelsStars = userDefaults.value(forKey: "levelStars") as! [[Int]]
         spaceships = userDefaults.value(forKey: "spaceships") as! [Bool]

@@ -75,19 +75,19 @@ class SelectStoreScene: SKScene {
         satelliteText = SKLabelNode(fontNamed: "Futura")
         satelliteText.text = NSLocalizedString("Exchange",comment:"Exchange")
         satelliteText.fontSize = 20
-        satelliteText.position = CGPoint(x: satellite.position.x , y:satellite.position.y - 80)
+        satelliteText.position = CGPoint(x: satellite.position.x , y:satellite.position.y - screenSize.height/4)
         satelliteText.zPosition = 10
         addChild(satelliteText)
         
         spaceshipText = SKLabelNode(fontNamed: "Futura")
         spaceshipText.text = NSLocalizedString("Spaceship",comment:"Exchange")
         spaceshipText.fontSize = 20
-        spaceshipText.position = CGPoint(x: satelliteText.position.x + 200 , y:satelliteText.position.y)
+        spaceshipText.position = CGPoint(x: satelliteText.position.x + screenSize.width/2.84 , y:satelliteText.position.y)
         spaceshipText.zPosition = 10
         addChild(spaceshipText)
 
         spaceship = Component(imageNamed: "spaceShipBtn")
-        spaceship.position = CGPoint(x: spaceshipText.position.x, y: spaceshipText.position.y + 80)
+        spaceship.position = CGPoint(x: spaceshipText.position.x, y: spaceshipText.position.y + screenSize.height/4)
         addChild(spaceship)
         
         

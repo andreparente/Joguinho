@@ -103,7 +103,7 @@ class InGameStoreScene: SKScene {
         currentlyinUse = SKLabelNode(fontNamed: "Futura")
         currentlyinUse.fontSize = 15
         currentlyinUse.text =  NSLocalizedString("Currently_In_Use",comment:"Currently")
-        currentlyinUse.position = CGPoint(x: currentSpaceShipImage.position.x, y: currentSpaceShipImage.position.y - 100)
+        currentlyinUse.position = CGPoint(x: currentSpaceShipImage.position.x, y: currentSpaceShipImage.position.y - (0.315 * screenSize.height))
         addChild(currentlyinUse)
         
         spaceshipOneImage = Spaceship(fuelLevel: 1, spaceShipName: SpaceShipName.standardSpaceShip)
@@ -118,11 +118,11 @@ class InGameStoreScene: SKScene {
         priceAlienSpaceship = SKLabelNode(fontNamed: "Futura")
         priceAlienSpaceship.fontSize = 15
         priceAlienSpaceship.text = "\(spaceshipTwoImage.price!)"
-        priceAlienSpaceship.position = CGPoint(x: spaceshipTwoImage.position.x, y: spaceshipTwoImage.position.y - 60)
+        priceAlienSpaceship.position = CGPoint(x: spaceshipTwoImage.position.x, y: spaceshipTwoImage.position.y - 0.1875*screenSize.height)
         addChild(priceAlienSpaceship)
         
         coin1 = Component(imageNamed: "coin")
-        coin1.position = CGPoint(x: priceAlienSpaceship.position.x + 25, y: priceAlienSpaceship.position.y + 8)
+        coin1.position = CGPoint(x: priceAlienSpaceship.position.x + screenSize.width/22, y: priceAlienSpaceship.position.y + screenSize.height/40)
         coin1.size = CGSize(width: coin1.size.width/8, height: coin1.size.height/8)
         addChild(coin1)
             
@@ -135,11 +135,11 @@ class InGameStoreScene: SKScene {
             priceCarnivalSpaceship.text = "\(spaceshipTwoImage.price!)"
             
             //Alterar a position aqui quando tiver as imagens
-            priceCarnivalSpaceship.position = CGPoint(x: spaceshipThreeImage.position.x, y: spaceshipThreeImage.position.y - 60)
+            priceCarnivalSpaceship.position = CGPoint(x: spaceshipThreeImage.position.x, y: spaceshipThreeImage.position.y - 0.1875*screenSize.height)
             addChild(priceCarnivalSpaceship)
             
             coin2 = Component(imageNamed: "coin")
-            coin2.position = CGPoint(x: priceCarnivalSpaceship.position.x + 25, y: priceCarnivalSpaceship.position.y + 8)
+            coin2.position = CGPoint(x: priceCarnivalSpaceship.position.x + screenSize.width/22, y: priceCarnivalSpaceship.position.y + screenSize.height/40)
             coin2.size = CGSize(width: coin1.size.width/8, height: coin1.size.height/8)
             addChild(coin2)
         }
@@ -150,11 +150,11 @@ class InGameStoreScene: SKScene {
             priceStarWarsSpaceship.text = "\(spaceshipTwoImage.price!)"
             
             //Alterar a position aqui quando tiver as imagens
-            priceStarWarsSpaceship.position = CGPoint(x: spaceshipFourImage.position.x, y: spaceshipFourImage.position.y - 60)
+            priceStarWarsSpaceship.position = CGPoint(x: spaceshipFourImage.position.x, y: spaceshipFourImage.position.y - 0.1875*screenSize.height)
             addChild(priceStarWarsSpaceship)
             
             coin3 = Component(imageNamed: "coin")
-            coin3.position = CGPoint(x: priceStarWarsSpaceship.position.x + 25, y: priceStarWarsSpaceship.position.y + 8)
+            coin3.position = CGPoint(x: priceStarWarsSpaceship.position.x + screenSize.width/22, y: priceStarWarsSpaceship.position.y + screenSize.height/40)
             coin3.size = CGSize(width: coin1.size.width/8, height: coin1.size.height/8)
             addChild(coin3)
         }
