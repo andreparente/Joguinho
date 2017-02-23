@@ -80,7 +80,7 @@ class SelectStoreScene: SKScene {
         addChild(satelliteText)
         
         spaceshipText = SKLabelNode(fontNamed: "Futura")
-        spaceshipText.text = NSLocalizedString("Spaceship",comment:"Exchange")
+        spaceshipText.text = NSLocalizedString("Spaceships",comment:"Exchange")
         spaceshipText.fontSize = 20
         spaceshipText.position = CGPoint(x: satelliteText.position.x + screenSize.width/2.84 , y:satelliteText.position.y)
         spaceshipText.zPosition = 10

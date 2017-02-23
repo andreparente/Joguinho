@@ -142,7 +142,7 @@ class SelectedPlanetScene: SKScene {
         
         
         closeText = SKSpriteNode(imageNamed: "exit")
-        closeText.position = CGPoint(x:620 * screenSize.width / 667,y:290 * screenSize.height / 375)
+        closeText.position = CGPoint(x:620 * screenSize.width / 667,y:315 * screenSize.height / 375)
         closeText.zPosition = 11
         
         
