@@ -30,9 +30,8 @@ class CoinStoreScene: SKScene {
     
     override func didMove(to view: SKView) {
     setupInitialScene()
-     if Reachability.isConnectedToNetwork() {
      enablePayments()
-     }
+
 }
     
     
@@ -52,6 +51,9 @@ class CoinStoreScene: SKScene {
                 skView.presentScene(scene, transition: transition)
             }
             if firstPack.contains(location) {
+                
+            if Reachability.isConnectedToNetwork() {
+                
             for product in list {
                 let prodID = product.productIdentifier
                 if(prodID == "10_coins_pack") {
@@ -60,7 +62,14 @@ class CoinStoreScene: SKScene {
                     }
                 }
             }
+            else {
+                errorNoInternet()
+                }
+        }
             if secondPack.contains(location) {
+                
+            if Reachability.isConnectedToNetwork() {
+                
                 for product in list {
                     let prodID = product.productIdentifier
                     if(prodID == "100_coins_pack") {
@@ -69,8 +78,12 @@ class CoinStoreScene: SKScene {
                     }
                 }
             }
-        }
+            else {
+                 errorNoInternet()
+                 }
+            }
     }
+}
     
 //MARK:Setup Functions
     
@@ -160,6 +173,11 @@ class CoinStoreScene: SKScene {
     
     func addCoins(value:Int) {
         userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int + value, forKey: "coinsBalance")
+    }
+    func errorNoInternet() {
+        let alert=UIAlertController(title:NSLocalizedString("No_Internet_Title", comment: "title"), message: NSLocalizedString("No_Internet_Description", comment: "desc"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.default,handler: nil))
+        self.view?.window?.rootViewController?.present(alert,animated: true, completion: nil)
     }
 }
 

@@ -44,6 +44,10 @@ Coins = "monete";
 Not_Enough_Money_Title = "Quantità di monete insufficiente";
 
 Not_Enough_Money_Description = "Continua giocando per acquistare più monete è fare questa compra";
+
+No_Internet_Title = "Senza connessizione internet";
+
+No_Internet_Description = "Collega è riprova";
 //Neptune Description
 
 Neptune = "Nettuno";

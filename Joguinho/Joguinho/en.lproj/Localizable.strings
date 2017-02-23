@@ -44,6 +44,11 @@ Coins = "coins";
 Not_Enough_Money_Title = "Not enough coins";
 
 Not_Enough_Money_Description = "Keep playing to get more coins to make this purchase";
+
+No_Internet_Title = "No internet access";
+
+No_Internet_Description = "Connect and try again";
+
 //Neptune Description
 
 Neptune = "Neptune";
