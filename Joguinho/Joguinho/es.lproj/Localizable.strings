@@ -26,10 +26,11 @@ Exchange = "Cambio";
 
 Spaceships = "Astronaves";
 
-Choose_Spaceship = "Escoje tu nave";
+Choose_Spaceship = "Escoge tu nave";
 
 Currently_In_Use = "En uso nel momento";
 
+Choose_Your_Pack = "Escoge tu pack";
 //Alerts descriptions and titles
 Confirm_Purchase_Title = "Confirmar compra";
 

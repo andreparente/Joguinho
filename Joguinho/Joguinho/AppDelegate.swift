@@ -47,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var n = 0
 
             var levelsAntigos = userDefaults.value(forKey: "levels") as! [[String]]
-            print(levelsAntigos)
             for level in levelsAntigos {
                 for valor in level {
                     if valor == "lock" {
@@ -59,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 n = 0
                 m+=1
             }
-            print(levelsAntigos)
             userDefaults.set(levelsAntigos, forKey: "levels")
         }
         if userDefaults.value(forKey: "currentSpaceship")  == nil{

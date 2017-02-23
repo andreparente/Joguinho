@@ -12,7 +12,6 @@ import StoreKit
 
 class CoinStoreScene: SKScene {
 
-    var buybutton = Spaceship(fuelLevel: 100,spaceShipName:SpaceShipName.standardSpaceShip)
     var list = [SKProduct]()
     var p = SKProduct()
     var numberOfGems = 0
@@ -20,7 +19,14 @@ class CoinStoreScene: SKScene {
     var firstPack:Component!
     var secondPack:Component!
     var thirdPack:Component!
-    var fourthPack:Component!
+    var request: SKProductsRequest!
+    var chooseLabel:SKLabelNode!
+    var firstPrice:SKLabelNode!
+    var secondPrice:SKLabelNode!
+    var thirdPrice:SKLabelNode!
+    var firstQtdCoins:SKLabelNode!
+    var secondQtdCoins:SKLabelNode!
+    var thirdQtdCoins:SKLabelNode!
     
     override func didMove(to view: SKView) {
     setupInitialScene()
@@ -37,6 +43,7 @@ class CoinStoreScene: SKScene {
             let location = touch.location(in: self)
             
             if backButton.contains(location) {
+                request.cancel()
                 let scene = SelectStoreScene(size:self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = false
@@ -44,18 +51,23 @@ class CoinStoreScene: SKScene {
                 scene.scaleMode = .aspectFill
                 skView.presentScene(scene, transition: transition)
             }
-            switch self.nodes(at: location)[0] {
-            case is Spaceship:
+            if firstPack.contains(location) {
             for product in list {
                 let prodID = product.productIdentifier
-                if(prodID == "100_gems_pack") {
+                if(prodID == "10_coins_pack") {
                     p = product
-                    buyProduct() 
-                    break;
+                    buyProduct()
                     }
                 }
-            default:
-            break
+            }
+            if secondPack.contains(location) {
+                for product in list {
+                    let prodID = product.productIdentifier
+                    if(prodID == "100_coins_pack") {
+                        p = product
+                        buyProduct()
+                    }
+                }
             }
         }
     }
@@ -68,10 +80,58 @@ class CoinStoreScene: SKScene {
         background.size = CGSize(width: 667 * size.width / 667, height: 375 * size.height / 375)
         addChild(background)
         
+        firstPack = Component(imageNamed: "10coins_pack")
+        firstPack.position = CGPoint(x:100 * size.width / 667, y: 150 * size.height / 375)
+        firstPack.size = CGSize(width: firstPack.size.width/4, height: firstPack.size.height/4)
+        addChild(firstPack)
         
-        buybutton.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        buybutton.size = CGSize(width: 100.52 * size.width / 667, height: 100 * size.height / 375)
-        addChild(buybutton)
+        secondPack = Component(imageNamed: "100coins_pack")
+        secondPack.position = CGPoint(x: 330 * size.width/667, y: 180 * size.height / 375)
+        secondPack.size = CGSize(width: secondPack.size.width/4, height: secondPack.size.height/4)
+        addChild(secondPack)
+        
+        chooseLabel = SKLabelNode(fontNamed: "Futura")
+        chooseLabel.fontSize = 25
+        chooseLabel.text = NSLocalizedString("Choose_Your_Pack",comment:"Choose")
+        chooseLabel.position = CGPoint(x:screenSize.width/2, y: 4*screenSize.height/5)
+        addChild(chooseLabel)
+        
+        firstQtdCoins = SKLabelNode(fontNamed: "Futura")
+        firstQtdCoins.fontSize = 15
+        firstQtdCoins.text = "10" + " " + NSLocalizedString("Coins", comment: "Coins")
+        firstQtdCoins.fontColor = UIColor.white
+        firstQtdCoins.position = CGPoint(x: firstPack.position.x, y: firstPack.position.y - 0.1875*screenSize.height)
+        addChild(firstQtdCoins)
+        
+        firstPrice = SKLabelNode(fontNamed: "Futura")
+        firstPrice.fontSize = 15
+        firstPrice.text = "$0,99"
+        firstPrice.fontColor = UIColor.yellow
+        firstPrice.position = CGPoint(x: firstQtdCoins.position.x, y: firstQtdCoins.position.y - 0.05*screenSize.height)
+        addChild(firstPrice)
+        
+        
+        secondQtdCoins = SKLabelNode(fontNamed: "Futura")
+        secondQtdCoins.fontSize = 15
+        secondQtdCoins.text = "100" + " " + NSLocalizedString("Coins", comment: "Coins")
+        secondQtdCoins.fontColor = UIColor.white
+        secondQtdCoins.position = CGPoint(x: secondPack.position.x, y: secondPack.position.y - 0.3*screenSize.height)
+        addChild(secondQtdCoins)
+        
+        secondPrice = SKLabelNode(fontNamed: "Futura")
+        secondPrice.fontSize = 15
+        secondPrice.text = "$4,99"
+        secondPrice.fontColor = UIColor.yellow
+        secondPrice.position = CGPoint(x: secondQtdCoins.position.x, y: secondQtdCoins.position.y - 0.05*screenSize.height)
+        addChild(secondPrice)
+        
+    /*    thirdPrice = SKLabelNode(fontNamed: "Futura")
+        thirdPrice.fontSize = 15
+        thirdPrice.text = "$4,99"
+        thirdPrice.fontColor = UIColor.yellow
+        thirdPrice.position = CGPoint(x: thirdPack.position.x, y: thirdPack.position.y - 0.1875*screenSize.height)
+        addChild(thirdPrice)
+    */
         
         backButton = createBackButton(size:self.size)
         addChild(backButton)
@@ -88,9 +148,9 @@ class CoinStoreScene: SKScene {
         
         if(SKPaymentQueue.canMakePayments()) {
             print("IAP is enabled, loading")
-            let productID:NSSet = NSSet(objects: "100_gems_pack")
-          //  NSSet(object: ["100_gems_pack","200_gems_pack","500_gems_pack"])
-            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as Set<NSObject> as! Set<String>)
+            let productID:NSSet = NSSet(objects: "10_coins_pack","100_coins_pack","600_coins_pack")
+            print(productID)
+             request = SKProductsRequest(productIdentifiers: productID  as! Set<String>)
             request.delegate = self
             request.start()
         } else {
@@ -137,9 +197,13 @@ extension CoinStoreScene:SKPaymentTransactionObserver {
             let prodID = t.payment.productIdentifier as String
             
             switch prodID {
-            case "100_gems_pack":
-                print("Bought 100 gems")
-            //Right here is where you should put the function that you want to execute when your in app purchase is complete
+            case "10_coins_pack":
+                print("Bought 10 coins")
+            addCoins(value: 10)
+            case "100_coins_pack":
+                addCoins(value: 100)
+            case "600_coins_pack":
+                addCoins(value: 600)
             default:
                 print("IAP not setup")
             }
@@ -160,10 +224,12 @@ extension CoinStoreScene:SKPaymentTransactionObserver {
                 
                 let prodID = p.productIdentifier as String
                 switch prodID {
-                case "100_gems_pack":
-                    numberOfGems += 100
-                    print(numberOfGems)
-                //Here you should put the function you want to execute when the purchase is complete
+                case "10_coins_pack":
+                    addCoins(value: 10)
+                case "100_coins_pack":
+                    addCoins(value: 100)
+                case "600_coins_pack":
+                    addCoins(value: 600)
                 default:
                     print("IAP not setup")
                 }

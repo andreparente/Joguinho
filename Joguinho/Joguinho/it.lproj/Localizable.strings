@@ -32,6 +32,8 @@ Choose_Spaceship = "Scegli la tua nave";
 
 Currently_In_Use = "In uso al momento";
 
+Choose_Your_Pack = "Scegli il tuo pack";
+
 //Alerts descriptions and titles
 Confirm_Purchase_Title = "Conferma compra";
 
