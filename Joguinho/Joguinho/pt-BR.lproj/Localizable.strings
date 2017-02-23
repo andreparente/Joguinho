@@ -31,6 +31,17 @@ Choose_Spaceship = "Escolha a sua nave";
 
 Currently_In_Use = "Em uso atualmente";
 
+//Alerts descriptions and titles
+Confirm_Purchase_Title = "Confirmar compra";
+
+Confirm_Purchase_Description = "Confirmar sua compra da nave por";
+
+Coins = "moedas";
+
+Not_Enough_Money_Title = "Quantidade de moedas insuficiente";
+
+Not_Enough_Money_Description = "Continue jogando para conseguir mais moedas para fazer essa compra";
+
 //Neptune Description
 
 Neptune = "Netuno";

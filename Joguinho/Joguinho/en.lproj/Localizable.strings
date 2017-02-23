@@ -32,6 +32,16 @@ Choose_Spaceship = "Choose your spaceship";
 
 Currently_In_Use = "Currently in Use";
 
+//Alerts descriptions and titles
+Confirm_Purchase_Title = "Confirm purchase";
+
+Confirm_Purchase_Description = "Confirm your purchase of the spaceship for";
+
+Coins = "coins";
+
+Not_Enough_Money_Title = "Not enough coins";
+
+Not_Enough_Money_Description = "Keep playing to get more coins to make this purchase";
 //Neptune Description
 
 Neptune = "Neptune";

@@ -38,19 +38,38 @@ class InGameStoreScene: SKScene {
                 scene.scaleMode = .aspectFill
                 skView.presentScene(scene, transition: transition)
             }
+            
+            if spaceshipOneImage.contains(location) {
+                if currentSpaceship != SpaceShipName.standardSpaceShip {
+                    currentSpaceShipImage.removeFromParent()
+                    currentSpaceShipImage = Component(imageNamed: "spaceShipBtn")
+                    placeCurrentSpaceship()
+                    
+                    currentSpaceship = SpaceShipName.standardSpaceShip
+                    userDefaults.set(0, forKey: "currentSpaceship")
+                }
+            }
             if spaceshipTwoImage.contains(location) {
-                print(checkIfCanBuy(value: spaceshipTwoImage.price!,spaceshipNumber: 1))
-                if checkIfCanBuy(value: spaceshipTwoImage.price!,spaceshipNumber: 1) == .ErrorNotEnoughMoney {
-                    print("oi")
+                let result = checkIfCanBuy(value: spaceshipTwoImage.price!,spaceshipNumber: 1)
+                if result == .ErrorNotEnoughMoney {
                     errorNotEnoughMoney()
                 }
                     else {
-                        print("naaaaaaaaaaaao")
+                    if result == .ErrorAlreadyBought {
+                        currentSpaceShipImage.removeFromParent()
+                        currentSpaceShipImage = Component(imageNamed: spaceshipTwoImage.spaceShipName.rawValue)
+                        placeCurrentSpaceship()
+                        currentSpaceship = spaceshipTwoImage.spaceShipName
+                        userDefaults.set(1, forKey: "currentSpaceship")
                     }
+                    else {
+                        confirmBuy(value:spaceshipTwoImage.price!,spaceshipNumber:1,spaceShipName: spaceshipTwoImage.spaceShipName)
+                    }
+            }
                 
-              }
-          }
+        }
     }
+}
     
     //MARK:Setup Functions
     func setupInitialScene() {
@@ -65,9 +84,13 @@ class InGameStoreScene: SKScene {
         addChild(platform)
         
         //Colocar a spaceship Vertical Aqui
+        if currentSpaceship == SpaceShipName.standardSpaceShip {
         currentSpaceShipImage = Component(imageNamed: "spaceShipBtn")
-        currentSpaceShipImage.position = CGPoint(x: 150 * size.width / 667, y: 150 * size.height / 375)
-        addChild(currentSpaceShipImage)
+        }
+        else {
+            currentSpaceShipImage = Component(imageNamed: currentSpaceship.rawValue)
+        }
+        placeCurrentSpaceship()
         
         backButton = createBackButton(size: self.size)
         addChild(backButton)
@@ -94,25 +117,57 @@ class InGameStoreScene: SKScene {
         addChild(spaceshipTwoImage)
     }
     
+    func placeCurrentSpaceship () {
+        currentSpaceShipImage.position = CGPoint(x: 150 * size.width / 667, y: 150 * size.height / 375)
+        addChild(currentSpaceShipImage)
+
+    }
     func subtractCoins(value:Int) {
         userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int - value, forKey: "coinsBalance")
         userDefaults.synchronize()
     }
     
     func checkIfCanBuy(value:Int,spaceshipNumber:Int) -> CheckBuy {
-        if (userDefaults.value(forKey: "coinsBalance") as! Int) <= value  {
-            print("entrou aqui")
-            return .ErrorNotEnoughMoney
-        }
         if spaceships[spaceshipNumber] {
             return .ErrorAlreadyBought
         }
+        if (userDefaults.value(forKey: "coinsBalance") as! Int) < value  {
+            print("entrou aqui")
+            return .ErrorNotEnoughMoney
+        }
+        print(spaceships)
+        
         return .isOk
     }
     
     func errorNotEnoughMoney () {
-        let alert=UIAlertController(title:"Sem dinheiro", message: "Jogue mais para ter mais dinheiro ou compre com seu dinheiro real please", preferredStyle: UIAlertControllerStyle.alert)
+        let alert=UIAlertController(title:NSLocalizedString("Not_Enough_Money_Title", comment: "title"), message: NSLocalizedString("Not_Enough_Money_Description", comment: "desc"), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.default,handler: nil))
         self.view?.window?.rootViewController?.present(alert,animated: true, completion: nil)
+        
+    }
+    
+    func confirmBuy(value:Int,spaceshipNumber:Int,spaceShipName:SpaceShipName) {
+        
+        let alert=UIAlertController(title:NSLocalizedString("Confirm_Purchase_Title", comment: "confirm"), message: NSLocalizedString("Confirm_Purchase_Description", comment: "confirm") + " " + String(value) + " " + NSLocalizedString("Coins", comment: "Coins"), preferredStyle: UIAlertControllerStyle.alert)
+        
+      alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
+        self.actWhenBought(value: value,spaceshipNumber:spaceshipNumber,spaceshipName: spaceShipName)
+      }))
+         alert.addAction(UIAlertAction(title:"Cancel",style: UIAlertActionStyle.cancel,handler: nil))
+        self.view?.window?.rootViewController?.present(alert,animated: true, completion: nil)
+
+    }
+    
+    func actWhenBought (value:Int,spaceshipNumber:Int,spaceshipName:SpaceShipName) {
+        subtractCoins(value: value)
+        userDefaults.set(spaceshipNumber, forKey: "currentSpaceship")
+        spaceships[spaceshipNumber] = true
+        userDefaults.set(spaceships, forKey: "spaceships")
+        currentSpaceShipImage.removeFromParent()
+        currentSpaceShipImage = Component(imageNamed: spaceshipName.rawValue)
+        placeCurrentSpaceship()
+        currentSpaceship = spaceshipName
+
     }
 }

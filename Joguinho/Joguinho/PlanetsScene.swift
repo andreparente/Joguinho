@@ -88,8 +88,8 @@ class PlanetsScene: SKScene{
         levels = userDefaults.value(forKey: "levels") as! [[String]]
         levelsStars = userDefaults.value(forKey: "levelStars") as! [[Int]]
         spaceships = userDefaults.value(forKey: "spaceships") as! [Bool]
+        getCurrentSpaceship()
         userDefaults.synchronize()
-        
         if userDefaults.bool(forKey: "soundOn") {
             buttonTexture = SKTexture(imageNamed: "soundOn")
             soundButton = SKSpriteNode(texture: buttonTexture)
@@ -273,4 +273,19 @@ class PlanetsScene: SKScene{
         self.scene?.view?.presentScene(nextScene, transition: transition)
     }
     
+    func getCurrentSpaceship () {
+      let current = userDefaults.value(forKey: "currentSpaceship") as! Int
+        switch current {
+        case 0:
+            currentSpaceship = SpaceShipName.standardSpaceShip
+        case 1:
+            currentSpaceship = SpaceShipName.alienSpaceShip
+        case 2:
+            currentSpaceship = SpaceShipName.carnivalSpaceship
+        case 3:
+            currentSpaceship = SpaceShipName.starWarsSpaceship
+        default:
+            break
+        }
+    }
 }

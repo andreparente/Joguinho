@@ -24,11 +24,23 @@ Final_Description_Image = "final8_Esp";
 
 Exchange = "Cambio";
 
-Spaceships = "Astronavi";
+Spaceships = "Astronaves";
 
 Choose_Spaceship = "Escoje tu nave";
 
 Currently_In_Use = "En uso nel momento";
+
+//Alerts descriptions and titles
+Confirm_Purchase_Title = "Confirmar compra";
+
+Confirm_Purchase_Description = "Confirmar tu compra de la nave por";
+
+Coins = "monedas";
+
+Not_Enough_Money_Title = "Cantidad de monedas insuficiente";
+
+Not_Enough_Money_Description = "Continua jugando para tener más monedas y poder hacer esta compra";
+
 
 //Neptune Description
 

@@ -414,7 +414,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpPlayer() {
         if level.planet.type == .gaseous {
-            spaceship = Spaceship(fuelLevel: 350, spaceShipName: SpaceShipName.alienSpaceShip)
+            spaceship = Spaceship(fuelLevel: 350, spaceShipName: currentSpaceship)
             addChild(spaceship)
         }
         else {

@@ -57,16 +57,12 @@ class LevelCompletedScene: SKScene
             
             if continueButton.contains(location) {
                 
-                if levelId != 8 && currentPlanet.name != PlanetName.Uranus
+                if levelId == 8 && currentPlanet.name == PlanetName.Uranus
                 {
-                    levelId = levelId! + 1
-                    let level = Level(id: levelId , planet: currentPlanet)
-                    let  scene = GameScene(size: self.size, level: level)
-                    let skView = self.view! as SKView
-                    skView.ignoresSiblingOrder = false
-                    scene.size = skView.bounds.size
-                    scene.scaleMode = .aspectFill
-                    skView.presentScene(scene, transition: transition)
+                    addChild(textFinal8)
+                    addChild(closeText)
+                    addChild(facebookButton)
+
                 }
                 else{
                     if levelId == 8  && currentPlanet.name == PlanetName.Neptune {
@@ -78,9 +74,14 @@ class LevelCompletedScene: SKScene
                         skView.presentScene(scene, transition: transition)
                     }
                     else {
-                    addChild(textFinal8)
-                    addChild(closeText)
-                    addChild(facebookButton)
+                        levelId = levelId! + 1
+                        let level = Level(id: levelId , planet: currentPlanet)
+                        let  scene = GameScene(size: self.size, level: level)
+                        let skView = self.view! as SKView
+                        skView.ignoresSiblingOrder = false
+                        scene.size = skView.bounds.size
+                        scene.scaleMode = .aspectFill
+                        skView.presentScene(scene, transition: transition)
                     }
                 }
                 

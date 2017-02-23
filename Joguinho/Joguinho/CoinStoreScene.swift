@@ -19,18 +19,11 @@ class CoinStoreScene: SKScene {
     var backButton:SKSpriteNode!
     
     override func didMove(to view: SKView) {
-      setupInitialScene()
-        
-        if(SKPaymentQueue.canMakePayments()) {
-            print("IAP is enabled, loading")
-            let productID:NSSet = NSSet(objects: "100_gems_pack")
-            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as Set<NSObject> as! Set<String>)
-            request.delegate = self
-            request.start()
-        } else {
-            print("please enable IAPS")
-        }
+    setupInitialScene()
+    if Reachability.isConnectedToNetwork() {
+    enablePayments()
     }
+}
     
     
     
@@ -87,6 +80,18 @@ class CoinStoreScene: SKScene {
         SKPaymentQueue.default().add(pay as SKPayment)
     }
     
+    func enablePayments() {
+        
+        if(SKPaymentQueue.canMakePayments()) {
+            print("IAP is enabled, loading")
+            let productID:NSSet = NSSet(objects: "100_gems_pack")
+            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as Set<NSObject> as! Set<String>)
+            request.delegate = self
+            request.start()
+        } else {
+            print("please enable IAPS")
+        }
+    }
 }
 
 
