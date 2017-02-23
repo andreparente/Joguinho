@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userDefaults.value(forKey: "lastLevel") == nil {
             userDefaults.set(1, forKey: "lastLevel")
             userDefaults.set(0, forKey: "coinsBalance")
-            userDefaults.set(0, forKey: "currentSpaceship")
+            
             planetsGlobal = getArrayPlanets()
             DAO().savePlanets(planets: planetsGlobal)
             userDefaults.set(true, forKey: "soundOn")
@@ -34,15 +34,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         levels.append(["lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer","lockLayer"])
             levelsStars.append([0,0,0,0,0,0,0,0])
          }
-            spaceships = [true,false,false,false]
+            
             levels[0][0] = "1"
             levelsStars[0][0] = 0
             
-            userDefaults.set(spaceships, forKey: "spaceships")
+            
             userDefaults.set(levels, forKey: "levels")
             userDefaults.set(levelsStars, forKey: "levelStars")
         }
-        
+        else {
+            var m = 0
+            var n = 0
+
+            var levelsAntigos = userDefaults.value(forKey: "levels") as! [[String]]
+            print(levelsAntigos)
+            for level in levelsAntigos {
+                for valor in level {
+                    if valor == "lock" {
+                        print(valor)
+                        levelsAntigos[m][n] = "lockLayer"
+                    }
+                    n += 1
+                }
+                n = 0
+                m+=1
+            }
+            print(levelsAntigos)
+            userDefaults.set(levelsAntigos, forKey: "levels")
+        }
+        if userDefaults.value(forKey: "currentSpaceship")  == nil{
+            userDefaults.set(0, forKey: "currentSpaceship")
+            spaceships = [true,false,false,false]
+            userDefaults.set(spaceships, forKey: "spaceships")
+        }
         return true
     }
     
