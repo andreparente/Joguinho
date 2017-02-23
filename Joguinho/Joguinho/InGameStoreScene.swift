@@ -16,6 +16,12 @@ class InGameStoreScene: SKScene {
     var backButton:SKSpriteNode!
     var chooseSpaceshipLabel:SKLabelNode!
     var currentlyinUse:SKLabelNode!
+    var priceAlienSpaceship:SKLabelNode!
+    var priceCarnivalSpaceship:SKLabelNode!
+    var priceStarWarsSpaceship:SKLabelNode!
+    var coin1:Component!
+    var coin2:Component!
+    var coin3:Component!
     var spaceshipOneImage:Spaceship!
     var spaceshipTwoImage:Spaceship!
     var spaceshipThreeImage:Spaceship!
@@ -50,24 +56,16 @@ class InGameStoreScene: SKScene {
                 }
             }
             if spaceshipTwoImage.contains(location) {
-                let result = checkIfCanBuy(value: spaceshipTwoImage.price!,spaceshipNumber: 1)
-                if result == .ErrorNotEnoughMoney {
-                    errorNotEnoughMoney()
-                }
-                    else {
-                    if result == .ErrorAlreadyBought {
-                        currentSpaceShipImage.removeFromParent()
-                        currentSpaceShipImage = Component(imageNamed: spaceshipTwoImage.spaceShipName.rawValue)
-                        placeCurrentSpaceship()
-                        currentSpaceship = spaceshipTwoImage.spaceShipName
-                        userDefaults.set(1, forKey: "currentSpaceship")
-                    }
-                    else {
-                        confirmBuy(value:spaceshipTwoImage.price!,spaceshipNumber:1,spaceShipName: spaceshipTwoImage.spaceShipName)
-                    }
-            }
-                
+                buySpaceship(price: spaceshipTwoImage.price!, spaceshipNumber: 1, spaceshipName: spaceshipTwoImage.spaceShipName)
         }
+            /* Descomentar quando fizer as outras naves
+            if spaceshipThreeImage.contains(location) {
+                  buySpaceship(price: spaceshipThreeImage.price!, spaceshipNumber: 2, spaceshipName: spaceshipThreeImage.spaceShipName)
+            }
+            if spaceshipFourImage.contains(location) {
+                buySpaceship(price: spaceshipFourImage.price!, spaceshipNumber: 3, spaceshipName: spaceshipFourImage.spaceShipName)
+            }
+ */
     }
 }
     
@@ -115,6 +113,53 @@ class InGameStoreScene: SKScene {
         spaceshipTwoImage = Spaceship(fuelLevel: 1, spaceShipName: SpaceShipName.alienSpaceShip)
         spaceshipTwoImage.position = CGPoint(x: 1.7 * screenSize.width/2, y: 3*screenSize.height/5)
         addChild(spaceshipTwoImage)
+        
+        if !spaceships[1] {
+        priceAlienSpaceship = SKLabelNode(fontNamed: "Futura")
+        priceAlienSpaceship.fontSize = 15
+        priceAlienSpaceship.text = "\(spaceshipTwoImage.price!)"
+        priceAlienSpaceship.position = CGPoint(x: spaceshipTwoImage.position.x, y: spaceshipTwoImage.position.y - 60)
+        addChild(priceAlienSpaceship)
+        
+        coin1 = Component(imageNamed: "coin")
+        coin1.position = CGPoint(x: priceAlienSpaceship.position.x + 25, y: priceAlienSpaceship.position.y + 8)
+        coin1.size = CGSize(width: coin1.size.width/8, height: coin1.size.height/8)
+        addChild(coin1)
+            
+        }
+        /* Descomentar isso aqui quando tiver adicionado as outras spaceships
+         
+        if !spaceships[2] {
+            priceCarnivalSpaceship = SKLabelNode(fontNamed: "Futura")
+            priceCarnivalSpaceship.fontSize = 15
+            priceCarnivalSpaceship.text = "\(spaceshipTwoImage.price!)"
+            
+            //Alterar a position aqui quando tiver as imagens
+            priceCarnivalSpaceship.position = CGPoint(x: spaceshipThreeImage.position.x, y: spaceshipThreeImage.position.y - 60)
+            addChild(priceCarnivalSpaceship)
+            
+            coin2 = Component(imageNamed: "coin")
+            coin2.position = CGPoint(x: priceCarnivalSpaceship.position.x + 25, y: priceCarnivalSpaceship.position.y + 8)
+            coin2.size = CGSize(width: coin1.size.width/8, height: coin1.size.height/8)
+            addChild(coin2)
+        }
+
+        if !spaceships[3] {
+            priceStarWarsSpaceship = SKLabelNode(fontNamed: "Futura")
+            priceStarWarsSpaceship.fontSize = 15
+            priceStarWarsSpaceship.text = "\(spaceshipTwoImage.price!)"
+            
+            //Alterar a position aqui quando tiver as imagens
+            priceStarWarsSpaceship.position = CGPoint(x: spaceshipFourImage.position.x, y: spaceshipFourImage.position.y - 60)
+            addChild(priceStarWarsSpaceship)
+            
+            coin3 = Component(imageNamed: "coin")
+            coin3.position = CGPoint(x: priceStarWarsSpaceship.position.x + 25, y: priceStarWarsSpaceship.position.y + 8)
+            coin3.size = CGSize(width: coin1.size.width/8, height: coin1.size.height/8)
+            addChild(coin3)
+        }
+ */
+
     }
     
     func placeCurrentSpaceship () {
@@ -122,6 +167,8 @@ class InGameStoreScene: SKScene {
         addChild(currentSpaceShipImage)
 
     }
+    
+    //MARK:Buying Functions
     func subtractCoins(value:Int) {
         userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int - value, forKey: "coinsBalance")
         userDefaults.synchronize()
@@ -140,6 +187,26 @@ class InGameStoreScene: SKScene {
         return .isOk
     }
     
+    func buySpaceship (price:Int,spaceshipNumber:Int,spaceshipName:SpaceShipName) {
+        let result = checkIfCanBuy(value: price,spaceshipNumber: spaceshipNumber)
+        if result == .ErrorNotEnoughMoney {
+            errorNotEnoughMoney()
+        }
+        else {
+            if result == .ErrorAlreadyBought {
+                currentSpaceShipImage.removeFromParent()
+                currentSpaceShipImage = Component(imageNamed:spaceshipName.rawValue)
+                placeCurrentSpaceship()
+                currentSpaceship = spaceshipName
+                userDefaults.set(spaceshipNumber, forKey: "currentSpaceship")
+            }
+            else {
+                confirmBuy(value:price,spaceshipNumber:spaceshipNumber,spaceShipName:spaceshipName)
+            }
+        }
+
+        
+    }
     func errorNotEnoughMoney () {
         let alert=UIAlertController(title:NSLocalizedString("Not_Enough_Money_Title", comment: "title"), message: NSLocalizedString("Not_Enough_Money_Description", comment: "desc"), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title:"Ok",style: UIAlertActionStyle.default,handler: nil))

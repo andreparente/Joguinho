@@ -39,7 +39,7 @@ class Spaceship:Component {
     func applyPrices () {
         switch spaceShipName.rawValue {
         case SpaceShipName.alienSpaceShip.rawValue:
-            price = 5
+            price = 200
         case SpaceShipName.carnivalSpaceship.rawValue:
             price = 700
         case SpaceShipName.starWarsSpaceship.rawValue:
