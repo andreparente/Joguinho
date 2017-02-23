@@ -140,13 +140,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if userDefaults.bool(forKey: "soundOn") {
                     AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
-                
-                if spaceship.spaceShipName == SpaceShipName.alienSpaceShip {
                     spaceship.physicsBody?.angularVelocity = 0
                     spaceship.physicsBody?.angularDamping = 0
-                } else {
-                    
-                }
                 
                 k+=1
             default:
