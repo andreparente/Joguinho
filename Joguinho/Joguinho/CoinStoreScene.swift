@@ -82,7 +82,22 @@ class CoinStoreScene: SKScene {
                  errorNoInternet()
                  }
             }
-    }
+            if thirdPack.contains(location) {
+                if Reachability.isConnectedToNetwork() {
+                    
+                    for product in list {
+                        let prodID = product.productIdentifier
+                        if(prodID == "600_coins_pack") {
+                            p = product
+                            buyProduct()
+                        }
+                    }
+                }
+                else {
+                    errorNoInternet()
+                }
+            }
+        }
 }
     
 //MARK:- Setup Functions
@@ -105,7 +120,7 @@ class CoinStoreScene: SKScene {
         
         thirdPack = Component(imageNamed: "600coins_pack")
         thirdPack.position = CGPoint(x: 500 * size.width/667, y: 180 * size.height / 375)
-        thirdPack.size = CGSize(width: thirdPack.size.width/4, height: thirdPack.size.height/4)
+        thirdPack.size = CGSize(width: thirdPack.size.width/5, height: thirdPack.size.height/5)
         addChild(thirdPack)
         
         chooseLabel = SKLabelNode(fontNamed: "Futura")

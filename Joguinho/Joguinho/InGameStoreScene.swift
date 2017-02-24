@@ -83,7 +83,7 @@ class InGameStoreScene: SKScene {
         
         //Colocar a spaceship Vertical Aqui
         if currentSpaceship == SpaceShipName.standardSpaceShip {
-        currentSpaceShipImage = Component(imageNamed: "rocket default")
+        currentSpaceShipImage = Component(imageNamed: "spaceShipBtn")
         }
         else {
             currentSpaceShipImage = Component(imageNamed: currentSpaceship.rawValue)
@@ -97,7 +97,7 @@ class InGameStoreScene: SKScene {
         chooseSpaceshipLabel = SKLabelNode(fontNamed: "Futura")
         chooseSpaceshipLabel.fontSize = 25
         chooseSpaceshipLabel.text = NSLocalizedString("Choose_Spaceship",comment:"Choose")
-        chooseSpaceshipLabel.position = CGPoint(x:450*screenSize.width/667, y: 4*screenSize.height/5)
+        chooseSpaceshipLabel.position = CGPoint(x:screenSize.width/2, y: 4*screenSize.height/5)
         addChild(chooseSpaceshipLabel)
         
         currentlyinUse = SKLabelNode(fontNamed: "Futura")
@@ -163,8 +163,7 @@ class InGameStoreScene: SKScene {
     }
     
     func placeCurrentSpaceship () {
-        platform.frame.maxY
-        currentSpaceShipImage.position = CGPoint(x: 150 * size.width / 667, y: 170 * size.height / 375)
+        currentSpaceShipImage.position = CGPoint(x: 150 * screenSize.width / 667, y: 150 * screenSize.height / 375)
         addChild(currentSpaceShipImage)
 
     }
