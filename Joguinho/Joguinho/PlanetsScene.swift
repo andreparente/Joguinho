@@ -280,9 +280,7 @@ class PlanetsScene: SKScene{
         case 1:
             currentSpaceship = SpaceShipName.alienSpaceShip
         case 2:
-            currentSpaceship = SpaceShipName.carnivalSpaceship
-        case 3:
-            currentSpaceship = SpaceShipName.starWarsSpaceship
+            currentSpaceship = SpaceShipName.deathStarSpaceShip
         default:
             break
         }

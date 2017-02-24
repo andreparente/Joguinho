@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set(0, forKey: "UranusGems")
             userDefaults.set(0, forKey: "coinsBalance")
             userDefaults.set(0, forKey: "currentSpaceship")
-            spaceships = [true,false,false,false]
+            spaceships = [true,false,false]
             userDefaults.set(spaceships, forKey: "spaceships")
         }
         return true

@@ -25,7 +25,6 @@ class InGameStoreScene: SKScene {
     var spaceshipOneImage:Spaceship!
     var spaceshipTwoImage:Spaceship!
     var spaceshipThreeImage:Spaceship!
-    var spaceshipFourImage:Spaceship!
     
     override func didMove(to view: SKView) {
         setupInitialScene()
@@ -58,14 +57,9 @@ class InGameStoreScene: SKScene {
             if spaceshipTwoImage.contains(location) {
                 buySpaceship(price: spaceshipTwoImage.price!, spaceshipNumber: 1, spaceshipName: spaceshipTwoImage.spaceShipName)
         }
-            /* Descomentar quando fizer as outras naves
             if spaceshipThreeImage.contains(location) {
                   buySpaceship(price: spaceshipThreeImage.price!, spaceshipNumber: 2, spaceshipName: spaceshipThreeImage.spaceShipName)
             }
-            if spaceshipFourImage.contains(location) {
-                buySpaceship(price: spaceshipFourImage.price!, spaceshipNumber: 3, spaceshipName: spaceshipFourImage.spaceShipName)
-            }
- */
     }
 }
     
@@ -114,51 +108,39 @@ class InGameStoreScene: SKScene {
         spaceshipTwoImage.position = CGPoint(x: 1.7 * screenSize.width/2, y: 3*screenSize.height/5)
         addChild(spaceshipTwoImage)
         
-        if !spaceships[1] {
+        spaceshipThreeImage = Spaceship(fuelLevel: 1, spaceShipName: SpaceShipName.deathStarSpaceShip)
+        spaceshipThreeImage.position = CGPoint(x: 1.3 * screenSize.width/2, y: 1.5*screenSize.height/5)
+        addChild(spaceshipThreeImage)
+        
         priceAlienSpaceship = SKLabelNode(fontNamed: "Futura")
         priceAlienSpaceship.fontSize = 15
         priceAlienSpaceship.text = "\(spaceshipTwoImage.price!)"
         priceAlienSpaceship.position = CGPoint(x: spaceshipTwoImage.position.x, y: spaceshipTwoImage.position.y - 0.1875*screenSize.height)
-        addChild(priceAlienSpaceship)
+        
+        priceStarWarsSpaceship = SKLabelNode(fontNamed: "Futura")
+        priceStarWarsSpaceship.fontSize = 15
+        priceStarWarsSpaceship.text = "\(spaceshipThreeImage.price!)"
+        priceStarWarsSpaceship.position = CGPoint(x: spaceshipThreeImage.position.x, y: spaceshipThreeImage.position.y - 0.25*screenSize.height)
         
         coin1 = Component(imageNamed: "coin")
         coin1.position = CGPoint(x: priceAlienSpaceship.position.x + screenSize.width/22, y: priceAlienSpaceship.position.y + screenSize.height/40)
         coin1.size = CGSize(width: coin1.size.width/8, height: coin1.size.height/8)
+        
+        coin3 = Component(imageNamed: "coin")
+        coin3.position = CGPoint(x: priceStarWarsSpaceship.position.x + screenSize.width/22, y: priceStarWarsSpaceship.position.y + screenSize.height/40)
+        coin3.size = CGSize(width: coin3.size.width/8, height: coin3.size.height/8)
+
+        if !spaceships[1] {
+       
+        addChild(priceAlienSpaceship)
+
         addChild(coin1)
             
         }
-        /* Descomentar isso aqui quando tiver adicionado as outras spaceships
-         
         if !spaceships[2] {
-            priceCarnivalSpaceship = SKLabelNode(fontNamed: "Futura")
-            priceCarnivalSpaceship.fontSize = 15
-            priceCarnivalSpaceship.text = "\(spaceshipTwoImage.price!)"
-            
-            //Alterar a position aqui quando tiver as imagens
-            priceCarnivalSpaceship.position = CGPoint(x: spaceshipThreeImage.position.x, y: spaceshipThreeImage.position.y - 0.1875*screenSize.height)
-            addChild(priceCarnivalSpaceship)
-            
-            coin2 = Component(imageNamed: "coin")
-            coin2.position = CGPoint(x: priceCarnivalSpaceship.position.x + screenSize.width/22, y: priceCarnivalSpaceship.position.y + screenSize.height/40)
-            coin2.size = CGSize(width: coin1.size.width/8, height: coin1.size.height/8)
-            addChild(coin2)
-        }
-
-        if !spaceships[3] {
-            priceStarWarsSpaceship = SKLabelNode(fontNamed: "Futura")
-            priceStarWarsSpaceship.fontSize = 15
-            priceStarWarsSpaceship.text = "\(spaceshipTwoImage.price!)"
-            
-            //Alterar a position aqui quando tiver as imagens
-            priceStarWarsSpaceship.position = CGPoint(x: spaceshipFourImage.position.x, y: spaceshipFourImage.position.y - 0.1875*screenSize.height)
             addChild(priceStarWarsSpaceship)
-            
-            coin3 = Component(imageNamed: "coin")
-            coin3.position = CGPoint(x: priceStarWarsSpaceship.position.x + screenSize.width/22, y: priceStarWarsSpaceship.position.y + screenSize.height/40)
-            coin3.size = CGSize(width: coin1.size.width/8, height: coin1.size.height/8)
             addChild(coin3)
         }
- */
 
     }
     

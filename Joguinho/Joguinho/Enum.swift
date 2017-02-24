@@ -21,7 +21,7 @@ enum Artifact:String {
 enum SpaceShipName:String {
     case standardSpaceShip = "rocket fase"
     case alienSpaceShip = "AlienShip"
-    case starWarsSpaceship = "s"
+    case deathStarSpaceShip = "DeathstarShip"
     case carnivalSpaceship = ""
 }
 

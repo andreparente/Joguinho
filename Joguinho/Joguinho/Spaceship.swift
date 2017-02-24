@@ -40,9 +40,7 @@ class Spaceship:Component {
         switch spaceShipName.rawValue {
         case SpaceShipName.alienSpaceShip.rawValue:
             price = 100
-        case SpaceShipName.carnivalSpaceship.rawValue:
-            price = 250
-        case SpaceShipName.starWarsSpaceship.rawValue:
+        case SpaceShipName.deathStarSpaceShip.rawValue:
             price = 1000
         default:
             price = 0
