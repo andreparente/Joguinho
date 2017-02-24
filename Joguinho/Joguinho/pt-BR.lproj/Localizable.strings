@@ -32,6 +32,11 @@ Choose_Spaceship = "Escolha a sua nave";
 Currently_In_Use = "Em uso atualmente";
 
 Choose_Your_Pack = "Escolha o seu pack";
+
+Total_Gems = "Total de pedras: ";
+
+
+
 //Alerts descriptions and titles
 Confirm_Purchase_Title = "Confirmar compra";
 
@@ -46,6 +51,10 @@ Not_Enough_Money_Description = "Continue jogando para conseguir mais moedas para
 No_Internet_Title = "Sem acesso à internet";
 
 No_Internet_Description = "Connecte-se e tente novamente";
+
+Confirm_Trade_Title = "Troca realizada";
+
+Confirm_Trade_Description = "Você trocou suas pedras por moedas";
 
 //Neptune Description
 

@@ -34,6 +34,8 @@ Currently_In_Use = "Currently in Use";
 
 Choose_Your_Pack = "Choose your pack";
 
+Total_Gems = "Total Gems: ";
+
 //Alerts descriptions and titles
 Confirm_Purchase_Title = "Confirm purchase";
 
@@ -48,6 +50,10 @@ Not_Enough_Money_Description = "Keep playing to get more coins to make this purc
 No_Internet_Title = "No internet access";
 
 No_Internet_Description = "Connect and try again";
+
+Confirm_Trade_Title = "Exchange successful";
+
+Confirm_Trade_Description = "You have exchange your gems for coins";
 
 //Neptune Description
 

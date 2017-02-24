@@ -126,8 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     secondBody.node?.removeFromParent()
                     gemsCounter += 1
                     countGems.text = "\(gemsCounter)/\(realgems.count)"
-                    userDefaults.set(userDefaults.value(forKey: "coinsBalance") as! Int + 1, forKey: "coinsBalance")
-                    player.coinsBalance = userDefaults.value(forKey: "coinsBalance") as! Int
+                    addGems()
                     gemName.remove(at: index!)
                 }
                 if secondBody.node?.name == realgems[realgems.count - 1].name
@@ -451,6 +450,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
+    func addGems () {
+        userDefaults.set(userDefaults.value(forKey: "\(currentPlanet.name.rawValue)Gems") as! Int + 1, forKey: "\(currentPlanet.name.rawValue)Gems")
+        player.coinsBalance = userDefaults.value(forKey: "\(currentPlanet.name.rawValue)Gems") as! Int
+    }
+    
     //MARK:Pause Functions
     func pressedPause() {
         if j == 0 {

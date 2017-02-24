@@ -61,6 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set(levelsAntigos, forKey: "levels")
         }
         if userDefaults.value(forKey: "currentSpaceship")  == nil{
+            userDefaults.set(userDefaults.value(forKey: "coinsBalance"),forKey:"NeptuneGems")
+            userDefaults.set(0, forKey: "UranusGems")
+            userDefaults.set(0, forKey: "coinsBalance")
             userDefaults.set(0, forKey: "currentSpaceship")
             spaceships = [true,false,false,false]
             userDefaults.set(spaceships, forKey: "spaceships")

@@ -28,6 +28,8 @@ class SelectedPlanetScene: SKScene {
     var closeText:SKNode!
     var descriptionLabel: SKLabelNode!
     var levelStarsImages:[Component] = []
+    var numberOfGemsCurrentPlanet:SKLabelNode!
+    var trader:Component!
     
     override func didMove(to view: SKView) {
         
@@ -100,6 +102,10 @@ class SelectedPlanetScene: SKScene {
                 showAll()
 
             }
+            
+            if trader.contains(location) {
+                actWhenTrade()
+            }
         }
     }
     
@@ -115,6 +121,12 @@ class SelectedPlanetScene: SKScene {
         back = createBackButton(size: self.size)
         self.addChild(back)
         
+        setNumberOfGemsCurrentPlanet()
+        
+        trader = Component(imageNamed: "\(currentPlanet.name.rawValue)Exchange")
+        trader.position = CGPoint(x: 116 * size.width / 667, y: 40 * size.height / 375)
+        addChild(trader)
+        
         selectedPlanet = SKSpriteNode(imageNamed: "Big"+selectedPlanetClass.name.rawValue)
         selectedPlanet.position = CGPoint(x: 116 * size.width / 667, y: 220 * size.height / 375)
         selectedPlanet.size = CGSize(width: 188 * size.width / 667, height: 188 * size.height / 375)
@@ -125,7 +137,6 @@ class SelectedPlanetScene: SKScene {
         moreInfo.position = CGPoint(x: 60 * size.width / 667, y: 129 * size.height / 375)
         moreInfo.size = CGSize(width: 55 * size.width / 667, height: 55 * size.height / 375)
         self.addChild(moreInfo)
-        
         
         planetLabel = SKLabelNode(fontNamed: "Futura-Bold")
         planetLabel.text = NSLocalizedString("\(selectedPlanetClass.name.rawValue)",comment:"Planet Name")
@@ -262,6 +273,8 @@ class SelectedPlanetScene: SKScene {
         level7.isHidden = true
         level8.isHidden = true
         back.isHidden = true
+        numberOfGemsCurrentPlanet.isHidden = true
+        trader.isHidden = true
         
         for star in levelStarsImages {
             star.isHidden = true
@@ -279,11 +292,49 @@ class SelectedPlanetScene: SKScene {
         level7.isHidden = false
         level8.isHidden = false
         back.isHidden = false
+        numberOfGemsCurrentPlanet.isHidden = false
+        trader.isHidden = false
         
         for star in levelStarsImages {
             star.isHidden = false
         }
         moreInfo.isHidden = false
 
+    }
+    
+    func setNumberOfGemsCurrentPlanet () {
+        
+        numberOfGemsCurrentPlanet = SKLabelNode(fontNamed: "Futura")
+        numberOfGemsCurrentPlanet.fontSize = 15
+        numberOfGemsCurrentPlanet.position = CGPoint(x: 520 * size.width / 667, y: 30 * size.height / 375)
+        numberOfGemsCurrentPlanet.text = NSLocalizedString("Total_Gems", comment: "Total Gems") + "\(userDefaults.value(forKey: "\(currentPlanet.name.rawValue)Gems")!)"
+        addChild(numberOfGemsCurrentPlanet)
+
+    }
+    
+    func actWhenTrade() {
+        let alert=UIAlertController(title:NSLocalizedString("Confirm_Trade_Title", comment: "confirm"), message: NSLocalizedString("Confirm_Trade_Description", comment: "confirm"), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
+            self.actWhenTradeSuccess()
+        }))
+        self.view?.window?.rootViewController?.present(alert,animated: true, completion: nil)
+    }
+    
+    func actWhenTradeSuccess () {
+        let totalCoins = userDefaults.value(forKey: "coinsBalance") as! Int
+        var valueExchanged:Int = 0
+        if currentPlanet.name.rawValue == "Neptune" {
+        valueExchanged = userDefaults.value(forKey: "NeptuneGems") as! Int
+        }
+        if currentPlanet.name.rawValue == "Uranus" {
+        valueExchanged = userDefaults.value(forKey: "UranusGems") as! Int * 2
+        }
+        
+        userDefaults.set(valueExchanged + totalCoins, forKey: "coinsBalance")
+        userDefaults.set(0, forKey: "\(currentPlanet.name.rawValue)Gems")
+        userDefaults.synchronize()
+        
+        numberOfGemsCurrentPlanet.removeFromParent()
+        setNumberOfGemsCurrentPlanet()
     }
 }

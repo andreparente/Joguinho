@@ -34,6 +34,8 @@ Currently_In_Use = "In uso al momento";
 
 Choose_Your_Pack = "Scegli il tuo pack";
 
+Total_Gems = "Totale di pietre: ";
+
 //Alerts descriptions and titles
 Confirm_Purchase_Title = "Conferma compra";
 
@@ -48,6 +50,10 @@ Not_Enough_Money_Description = "Continua giocando per acquistare più monete è 
 No_Internet_Title = "Senza connessizione internet";
 
 No_Internet_Description = "Collega è riprova";
+
+Confirm_Trade_Title = "Scambio fatto";
+
+Confirm_Trade_Description = "Hai scambiato le tue pietre per monete";
 //Neptune Description
 
 Neptune = "Nettuno";
