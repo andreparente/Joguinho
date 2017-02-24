@@ -158,7 +158,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        produceSoundWhenSpaceshipOn()
         if !(scene?.isPaused)!
         {
-            if spaceship.spaceShipName == SpaceShipName.alienSpaceShip {
+            if spaceship.spaceShipName == SpaceShipName.alienSpaceShip || spaceship.spaceShipName == SpaceShipName.deathStarSpaceShip{
                 
             } else {
                 let rotate = SKAction.rotate(toAngle: 0.5, duration: 0.8)

@@ -67,7 +67,7 @@ class Spaceship:Component {
         self.physicsBody?.contactTestBitMask = CollisionTypes.rock.rawValue | CollisionTypes.fuelDrop.rawValue | CollisionTypes.gem.rawValue
         self.physicsBody?.collisionBitMask = CollisionTypes.rock.rawValue
         
-        if spaceShipName == SpaceShipName.alienSpaceShip {
+        if spaceShipName == SpaceShipName.alienSpaceShip || self.spaceShipName == SpaceShipName.deathStarSpaceShip {
             self.physicsBody?.angularVelocity = 0
             self.physicsBody?.allowsRotation = false
         }
@@ -77,7 +77,7 @@ class Spaceship:Component {
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         let vector = CGVector(dx: 2, dy: 8)
         self.physicsBody?.applyImpulse(vector)
-        if self.spaceShipName == SpaceShipName.alienSpaceShip {
+        if self.spaceShipName == SpaceShipName.alienSpaceShip || self.spaceShipName == SpaceShipName.deathStarSpaceShip {
             
         } else {
             self.updateDirectionTo(vector: vector)
@@ -92,7 +92,7 @@ class Spaceship:Component {
         let vector = CGVector(dx: 6, dy: 10)
         self.physicsBody?.applyImpulse(vector)
         
-        if !(self.spaceShipName == SpaceShipName.alienSpaceShip) {
+        if (self.spaceShipName == SpaceShipName.standardSpaceShip) {
             self.updateDirectionTo(vector: vector)
             self.fireMovement()
         }
@@ -101,7 +101,7 @@ class Spaceship:Component {
     func drag() {
         let vector = CGVector(dx: -0.06, dy: 0)
         self.physicsBody?.applyImpulse(vector)
-        if self.spaceShipName == SpaceShipName.alienSpaceShip {
+        if self.spaceShipName == SpaceShipName.alienSpaceShip || self.spaceShipName == SpaceShipName.deathStarSpaceShip {
             
         } else {
             self.updateDirectionTo(vector: CGVector(dx: -0.05, dy: 0.05))
