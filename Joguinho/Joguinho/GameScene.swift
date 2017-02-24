@@ -548,17 +548,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let path = Bundle.main.path(forResource: "background2.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         
-        if userDefaults.bool(forKey: "soundOn") {
-            do {
+           do {
                 let sound = try AVAudioPlayer(contentsOf: url)
                 backgroundSound = sound
                 sound.volume = 0.1
+                 if userDefaults.bool(forKey: "soundOn") {
                 sound.play()
+                }
             } catch {
                 // couldn't load file :(
                 print("Couldn't load file")
             }
-        }
         
     }
     
