@@ -85,7 +85,7 @@ class CoinStoreScene: SKScene {
     }
 }
     
-//MARK:Setup Functions
+//MARK:- Setup Functions
     
     func setupInitialScene () {
         let background = SKSpriteNode(imageNamed: "background")
@@ -94,14 +94,19 @@ class CoinStoreScene: SKScene {
         addChild(background)
         
         firstPack = Component(imageNamed: "10coins_pack")
-        firstPack.position = CGPoint(x:100 * size.width / 667, y: 150 * size.height / 375)
+        firstPack.position = CGPoint(x:100 * size.width / 667, y: 140 * size.height / 375)
         firstPack.size = CGSize(width: firstPack.size.width/4, height: firstPack.size.height/4)
         addChild(firstPack)
         
         secondPack = Component(imageNamed: "100coins_pack")
-        secondPack.position = CGPoint(x: 330 * size.width/667, y: 180 * size.height / 375)
+        secondPack.position = CGPoint(x: 270 * size.width/667, y: 180 * size.height / 375)
         secondPack.size = CGSize(width: secondPack.size.width/4, height: secondPack.size.height/4)
         addChild(secondPack)
+        
+        thirdPack = Component(imageNamed: "600coins_pack")
+        thirdPack.position = CGPoint(x: 500 * size.width/667, y: 180 * size.height / 375)
+        thirdPack.size = CGSize(width: thirdPack.size.width/4, height: thirdPack.size.height/4)
+        addChild(thirdPack)
         
         chooseLabel = SKLabelNode(fontNamed: "Futura")
         chooseLabel.fontSize = 25
@@ -138,13 +143,19 @@ class CoinStoreScene: SKScene {
         secondPrice.position = CGPoint(x: secondQtdCoins.position.x, y: secondQtdCoins.position.y - 0.05*screenSize.height)
         addChild(secondPrice)
         
-    /*    thirdPrice = SKLabelNode(fontNamed: "Futura")
+        thirdQtdCoins = SKLabelNode(fontNamed: "Futura")
+        thirdQtdCoins.fontSize = 15
+        thirdQtdCoins.text = "600" + " " + NSLocalizedString("Coins", comment: "Coins")
+        thirdQtdCoins.fontColor = UIColor.white
+        thirdQtdCoins.position = CGPoint(x: thirdPack.position.x, y: thirdPack.position.y - 0.3*screenSize.height)
+        addChild(thirdQtdCoins)
+        
+        thirdPrice = SKLabelNode(fontNamed: "Futura")
         thirdPrice.fontSize = 15
-        thirdPrice.text = "$4,99"
+        thirdPrice.text = "$9,99"
         thirdPrice.fontColor = UIColor.yellow
-        thirdPrice.position = CGPoint(x: thirdPack.position.x, y: thirdPack.position.y - 0.1875*screenSize.height)
+        thirdPrice.position = CGPoint(x: thirdQtdCoins.position.x, y: thirdQtdCoins.position.y - 0.05*screenSize.height)
         addChild(thirdPrice)
-    */
         
         backButton = createBackButton(size:self.size)
         addChild(backButton)
@@ -182,8 +193,7 @@ class CoinStoreScene: SKScene {
 }
 
 
-//MARK:Extensions to StoreScene
-
+//MARK:- Extensions to StoreScene
 
 extension CoinStoreScene:SKProductsRequestDelegate {
     
