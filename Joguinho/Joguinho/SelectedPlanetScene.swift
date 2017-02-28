@@ -48,21 +48,61 @@ class SelectedPlanetScene: SKScene {
             //Quando criar outro level adicionar nesse switch
             switch self.nodes(at: location)[0] {
             case level1:
+            if !levelIsLocked(levelNumber: 0) {
             levelId = 1
+            }
+            else {
+                levelId = nil
+            }
             case level2:
+            if !levelIsLocked(levelNumber: 1) {
             levelId = 2
+            }
+            else {
+            levelId = nil
+            }
             case level3:
+            if !levelIsLocked(levelNumber: 2) {
             levelId = 3
+            }
+            else {
+                levelId = nil
+            }
             case level4:
+            if !levelIsLocked(levelNumber: 3) {
             levelId = 4
+            }
+            else {
+                levelId = nil
+            }
             case level5:
+            if !levelIsLocked(levelNumber: 4) {
                 levelId = 5
+            }
+            else {
+                levelId = nil
+            }
             case level6:
+            if !levelIsLocked(levelNumber: 5) {
                 levelId = 6
+            }
+            else {
+                levelId = nil
+            }
             case level7:
+            if !levelIsLocked(levelNumber: 6) {
                 levelId = 7
+            }
+            else {
+                levelId = nil
+            }
             case level8:
+            if !levelIsLocked(levelNumber: 7) {
                 levelId = 8
+            }
+            else {
+                levelId = nil
+            }
             default:
             levelId = nil
             }
@@ -336,5 +376,13 @@ class SelectedPlanetScene: SKScene {
         
         numberOfGemsCurrentPlanet.removeFromParent()
         setNumberOfGemsCurrentPlanet()
+    }
+    
+    func levelIsLocked(levelNumber:Int) ->Bool {
+        if levels[currentPlanet.index.rawValue][levelNumber] == "lockLayer" {
+            print(levels[currentPlanet.index.rawValue][levelNumber])
+            return true
+        }
+        return false
     }
 }
