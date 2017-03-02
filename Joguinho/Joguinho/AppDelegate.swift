@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SpriteKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -76,6 +77,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        if currentScene != nil && isPlaying {
+            currentScene.isPaused = true
+            let  scene1 = PauseScene()
+            let skView = self.window?.rootViewController!.view as! SKView
+            scene1.currentSceneState = currentScene
+            scene1.size = skView.bounds.size
+            scene1.scaleMode = .aspectFill
+            skView.presentScene(scene1, transition: transition)
+        }
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

@@ -38,6 +38,11 @@ let transition = SKTransition.fade(withDuration: 1.0)
 
 var currentSpaceship:SpaceShipName = SpaceShipName.standardSpaceShip
 
+var currentScene:GameScene!
+
+var isPlaying:Bool! = false
+
+
 func createBackButton (size:CGSize) -> SKSpriteNode {
      var back:SKSpriteNode!
      back = SKSpriteNode(imageNamed: "BackArrow2")

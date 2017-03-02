@@ -63,6 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physicsWorld.gravity = CGVector(dx: 0, dy: -level.planet.gravity)
             physicsWorld.contactDelegate = self
             
+            
             currentlyTouching = false
             setupInitialScene()
             setUpPlayer()
@@ -81,6 +82,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             produceBackgroundSound()
         }
+        isPlaying = true
         setUpCountDownLabel()
         spaceship.physicsBody?.mass = 0.09
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true);
@@ -194,7 +196,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !timerDidEnd{
             scene?.isPaused = true
         }
-        
+        currentScene = self
         if !(scene?.isPaused)! {
             surface.position = CGPoint(x:surface.position.x - 5,y:surface.position.y)
             surface2.position = CGPoint(x:surface2.position.x - 5,y:surface2.position.y)

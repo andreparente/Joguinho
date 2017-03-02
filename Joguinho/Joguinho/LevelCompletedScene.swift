@@ -107,6 +107,7 @@ class LevelCompletedScene: SKScene
     
     func setupInitialScene () {
         self.view?.isUserInteractionEnabled = true
+        isPlaying = false
         
         textFinal8.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         textFinal8.size = CGSize(width: 402.52 * size.width / 667, height: 310 * size.height / 375)

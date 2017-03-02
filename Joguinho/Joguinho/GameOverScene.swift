@@ -27,6 +27,7 @@ class GameOverScene: SKScene
     func setupInitialScene() {
         
         self.view?.isUserInteractionEnabled = true
+        isPlaying = false
         semibackground.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         semibackground.size = CGSize(width:size.width, height:size.height)
         semibackground.zPosition = 0
