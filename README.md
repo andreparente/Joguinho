@@ -16,14 +16,12 @@ Baixe de graça!
 
 --------------------------------------------
 
-Essa é nossa primeira versão, então nós ainda estamos testando algumas coisas.
-Então, fique à vontade para nos dar sugestões e críticas sobre tudo!
-
+Fique à vontade para nos dar sugestões e críticas sobre tudo!
 Mande um e-mail para lucasferracof@gmail.com!
 Obrigado!
 
 ## EN-US:
-Repository related to the SpaceTrip - The Journey (made in Swift 3) game.
+Repository related to the SpaceTrip - The Journey game, made in Swift 3 and SpriteKite.
 
 Game description:
 Do you ever though about traveling to space?! 
@@ -38,10 +36,8 @@ Download FREE!
 
 --------------------------------------------
 
-This is our first version, so we're testing some stuff out.
-So feel free to give us feedback about everything!
-
-Send a message to lucasferracof@gmail.com!
+Feel free to give us feedback about anything!
+Send an e-mail to lucasferracof@gmail.com!
 Thank you!
 
 ## Apple Store:
